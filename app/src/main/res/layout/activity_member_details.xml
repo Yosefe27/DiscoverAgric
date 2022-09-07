@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        app:cardCornerRadius="10dp">-->
+<include layout="@layout/toolbar"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+
+            <TextView
+                android:id="@+id/full_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=""
+                android:hint="Full Name is missing"
+                android:textColorHint="@color/grey"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=""
+                android:hint="Email is missing"
+                android:textColorHint="@color/grey"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+            <TextView
+                android:id="@+id/nrc"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=""
+                android:hint="NRC is missing"
+                android:textColorHint="@color/grey"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textColorHint="@color/grey"
+                android:hint="Address is missing"
+                app:hintTextColor="@color/grey"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+            <TextView
+                android:id="@+id/group_id"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=""
+                android:hint="Group Id is missing"
+                android:textColorHint="@color/grey"
+                app:hintTextColor="@color/colorPrimary"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Request Review Status"/>
+
+        </LinearLayout>
+<!--    </androidx.cardview.widget.CardView>-->
+</LinearLayout>
