@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -8,9 +10,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#0099CC</color>
-    <color name="colorPrimaryDark">#0099CC</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#008FFC</color>
+    <color name="colorPrimaryDark">#C30052</color>
+    <color name="colorAccent">#03A9FA</color>
+    <color name="colorBottomCardStart">#008FFC</color>
+    <color name="colorBottomCardEnd">#D5A9E8</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorToolBarStart">#FB26F0</color>
+    <color name="colorToolBarEnd">#008FFC</color>
+    <color name="colorText">#880582</color>
+
 
     <color name="light_gray">#e6ebe6</color>
     <color name="app_yellow">#a59331</color>
