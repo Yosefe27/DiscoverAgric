@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,12 +7,20 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity">
-<include layout="@layout/toolbar"/>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android.id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="@drawable/toolbar_header" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:scrollbars="none">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,9 +28,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:orientation="vertical">
-
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,8 +39,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="Name of Member"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/select_member"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="Amount"
-                    android:textSize="12sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/amount"
@@ -52,33 +85,36 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Group Member"
-                    android:textSize="12sp" />
+                    android:text="Date"
+                    android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/select_member"
+                <EditText
+                    android:id="@+id/date_picker_actions"
                     style="@style/modifiedEditText"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_edit_bg"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center_vertical"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
 
             </LinearLayout>
-
-
 
 
 
@@ -102,10 +138,13 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Save Loan Request Details"
+                    android:text="Save"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="30sp" />
             </androidx.cardview.widget.CardView>
+
+
         </LinearLayout>
     </ScrollView>
 

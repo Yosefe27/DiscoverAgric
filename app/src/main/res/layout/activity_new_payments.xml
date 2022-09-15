@@ -6,12 +6,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <include layout="@layout/toolbar"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android.id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/toolbar_header" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:scrollbars="none">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +41,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="Amount"
-                    android:textSize="12sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/amount"
@@ -62,8 +69,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Group Member"
-                    android:textSize="12sp" />
+                    android:text="Name of Member"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/select_member"
@@ -76,10 +83,36 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
 
+
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Date"
+                    android:textSize="18sp" />
 
+                <EditText
+                    android:id="@+id/date_picker_actions"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
+            </LinearLayout>
 
 
             <androidx.cardview.widget.CardView
