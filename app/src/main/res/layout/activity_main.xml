@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/menu"
                     android:paddingLeft="10dp"
-                    android:text="Hello Grace"
+                    android:text=""
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp" />
 
@@ -53,7 +53,9 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/main_activity_background"
-                    android:padding="10dp" />
+                    android:padding="10dp"/>
+
+
 
             </RelativeLayout>
 
@@ -257,7 +259,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:textStyle="bold"
-                            android:text="Members"
+                            android:text="Groups"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -281,7 +283,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:textStyle="bold"
-                    android:text="Welcome"
+                    android:text="Welcome Grace"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
 
