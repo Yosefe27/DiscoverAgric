@@ -40,31 +40,16 @@
         <entry key="..\:/AndroidStudioProjects/WELedger/app/src/main/res/menu/menu_add_stuff.xml" value="0.27447916666666666" />
         <entry key="..\:/AndroidStudioProjects/WELedger/app/src/main/res/menu/menu_book_details.xml" value="0.1265625" />
         <entry key="..\:/AndroidStudioProjects/WELedger/app/src/main/res/menu/menu_home.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable-v24/button_bg.xml" value="0.164" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/bottom_card.xml" value="0.115" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/edittext_bg.xml" value="0.163" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_add_loan.xml" value="0.115" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_add_pay.xml" value="0.115" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_add_users.xml" value="0.115" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_baseline_menu.xml" value="0.115" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_edit_bg_box.xml" value="0.164" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1215" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_loans.xml" value="0.14" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_money.xml" value="0.14" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/login_background.xml" value="0.1215" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/main_activity_background.xml" value="0.112" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/toolbar_header.xml" value="0.12" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_bookwriter.xml" value="0.10643115942028986" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_bookwriter_add_new_member.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_bookwriter_add_savings.xml" value="0.14935064935064934" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_loan_request_details.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_repayment_details.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_facilitator_adds_new_group.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_facilitator_members.xml" value="0.15715579710144928" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_loan_request_form.xml" value="0.1" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_loan_requests.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_member_details.xml" value="0.10009057971014493" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/activity_members.xml" value="0.15715579710144928" />
@@ -87,6 +72,19 @@
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/layout/toolbar_transparent.xml" value="0.15715579710144928" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/menu/menu_add_stuff.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/menu/menu_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/drawable/toolbar_header.xml" value="0.2355" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter.xml" value="0.1852355072463768" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_add_new_member.xml" value="0.1852355072463768" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_add_savings.xml" value="0.1852355072463768" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_loan_request_details.xml" value="0.1852355072463768" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_new_group.xml" value="0.16485507246376813" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_new_member.xml" value="0.16485507246376813" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.16485507246376813" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.16485507246376813" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/list_item_groups.xml" value="0.16485507246376813" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/toolbar.xml" value="0.22010869565217392" />
       </map>
     </option>
   </component>

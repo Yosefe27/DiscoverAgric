@@ -1,30 +1,23 @@
 package com.bluecode.weledger;
 
-import android.content.Context;
+import static com.bluecode.weledger.Constants.BASE_URL;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.telephony.TelephonyManager;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import com.android.volley.Request;
@@ -40,81 +33,53 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.bluecode.weledger.Constants.BASE_URL;
-
-public class LoginActivity extends AppCompatActivity {
-
-    EditText email, password;
-    CheckBox checkBox;
-    TextView signin;
-    ProgressBar signin_progress;
+public class FacilitatorNewGroupActivity extends AppCompatActivity {
+    Toolbar toolbar;
     RequestQueue mRequestQueue;
-    String login_url = BASE_URL + "login_url.php",str_device_id,login_status;
-    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    EditText group_name,interest_rate;
+    String submit_group_url=BASE_URL+"submit_group.php";
+    TextView save_group_details;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.login_password);
-        checkBox = findViewById(R.id.stay_logged_in);
-        signin = findViewById(R.id.btn_login);
-
+        setContentView(R.layout.activity_facilitator_new_group);
+        toolbar = findViewById(R.id.toolbar);
+        group_name = findViewById(R.id.group_name);
+        interest_rate = findViewById(R.id.interest_rate);
+        save_group_details = findViewById(R.id.save_group_details);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Group");
+        toolbar.setSubtitle("New Group Details");
+        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
+                startActivity(intent);
+            }
+        });
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        try {
-            final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
-            str_device_id = "jgjggj";//tm.getDeviceId();
-//                tmSerial = "" + tm.getSimSerialNumber();
-//                androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-//                UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
-//                deviceId = deviceUuid.toString();
-        } catch (SecurityException e) {}
-//        checkAndRequestPermissions();
-
-
-        signin.setOnClickListener(new View.OnClickListener() {
+        save_group_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isNetworkAvailable()) {
-                    //deleteCache(context);
-                    if (checkBox.isChecked()) {
-                        login_status = "1";
-                    } else {
-                        login_status = "0";
-                    }
-                    String str_email_address = email.getText().toString();
-                    String str_password = password.getText().toString();
-                    if (email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                        errorDialog("Please Ensure All Fields are Filled");
-                    } else {
-                        startLogin(str_email_address, str_password,str_device_id);
-                    }
-
-
-                } else {
-//                   finish();
-//                   Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                   startActivity(intent);
-                    errorDialog("Please Check Your Internet Connection");
-
+                String str_group_name = group_name.getText().toString();
+                String str_interest_rate = interest_rate.getText().toString();
+                if(group_name.getText().toString().isEmpty()) {
+                    errorDialog("Group Name Cannot Be Empty");
+                }else {
+                    startSubmission(str_group_name, str_interest_rate, "1");
                 }
             }
         });
     }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null;
-    }
-
-
-    private void startLogin(
-            final String email_address,
-            final String password,
-            final String device_id) {
+    private void startSubmission(
+            final String group_name,
+            final String annual_interest_rate,
+            final String status) {
 //        signin_progress.setVisibility(View.VISIBLE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String str_a = preferences.getString("a", "");
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
@@ -134,31 +99,19 @@ public class LoginActivity extends AppCompatActivity {
         reportsAlert.setCanceledOnTouchOutside(true);
         reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, submit_group_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                Log.v("login_url", response);
+                Log.v("group_url", response);
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
 
                         String received_msg = object.getString("msg");
-                        String received_a = object.getString("a");
-                        String user_role = object.getString("user_role");
-                        String name = object.getString("name");
-                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("login_status", login_status);
-                        editor.putString("user_role", user_role);
-                        editor.putString("name", name);
-                        editor.putString("a", received_a);
-                        editor.putString("pref_login_status",login_status);
-                        editor.apply();
+
                         reportsAlert.dismiss();
-                        finish();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
+                        errorDialog(object.getString("msg"));
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
 //                        signin_progress.setVisibility(View.GONE);
@@ -179,10 +132,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
-                parms.put("email", email_address);
-                parms.put("password", password);
-                parms.put("device_id", str_device_id);
-
+                parms.put("group_name", group_name);
+                parms.put("annual_interest_rate", annual_interest_rate);
+                parms.put("status", status);
+                parms.put("a", str_a);
                 return parms;
             }
         };

@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -43,44 +45,72 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout linear_members, linear_loans, linear_payments, linear_facilitator_menu,linear_manage_members,linear_manage_loans,linear_manage_payments;
-    TextView name, group_balance;
+    LinearLayout linear_members, linear_loans, linear_payments,linear_manage_members,linear_manage_loans,linear_manage_payments;
+    GridLayout linear_bookkeeper_menu;
+    TextView name, group_balance,top_name;
+    TextView save_payment;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
+    LinearLayout linear_manage_groups,linear_center_container;
+    GridLayout linear_facilitator_menu,linear_ordinary_member_menu;
     String homepage_stats = BASE_URL + "homepage_stats.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("WE eLedger");
-        toolbar.setSubtitle("Home");
+       // toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        //toolbar.setTitle("WE eLedger");
+        //toolbar.setSubtitle("Home");
         name = findViewById(R.id.name);
         linear_members = findViewById(R.id.linear_members);
         linear_loans = findViewById(R.id.linear_loans);
         linear_payments = findViewById(R.id.linear_payments);
-        group_balance = findViewById(R.id.group_balance);
+        //group_balance = findViewById(R.id.group_balance);
+        //linear_center_container = findViewById(R.id.linear_center_container);
+        //top_name = findViewById(R.id.top_name);
+        linear_bookkeeper_menu = findViewById(R.id.linear_bookkeeper_menu);
+        linear_ordinary_member_menu = findViewById(R.id.linear_ordinary_member_menu);
+        linear_manage_groups = findViewById(R.id.linear_manage_groups);
         linear_facilitator_menu = findViewById(R.id.linear_facilitator_menu);
         linear_manage_members = findViewById(R.id.linear_manage_members);
         linear_manage_loans = findViewById(R.id.linear_manage_loans);
         linear_manage_payments = findViewById(R.id.linear_manage_payments);
+        save_payment = findViewById(R.id.save_payment_details);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         str_name = preferences.getString("name", "");
         str_user_role = preferences.getString("user_role", "");
         name.setText(String.valueOf("Welcome! " + str_name));
+        //top_name.setText(String.valueOf("Welcome! " + str_name));
         if (str_user_role.equals("2")) {
-            linear_facilitator_menu.setVisibility(View.VISIBLE);
-        } else {
+            //linear_bookkeeper_menu.setVisibility(View.VISIBLE);
             linear_facilitator_menu.setVisibility(View.GONE);
+            //top_name.setVisibility(View.GONE);
+        } else if (str_user_role.equals("3")) {
+            linear_facilitator_menu.setVisibility(View.VISIBLE);
+            //linear_bookkeeper_menu.setVisibility(View.GONE);
+            linear_ordinary_member_menu.setVisibility(View.GONE);
+            //linear_center_container.setVisibility(View.GONE);
+        } else {
+            //linear_bookkeeper_menu.setVisibility(View.GONE);
+            linear_facilitator_menu.setVisibility(View.GONE);
+            //top_name.setVisibility(View.GONE);
         }
         linear_members.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_manage_groups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
                 startActivity(intent);
             }
         });
@@ -124,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         myContributionsHistory();
     }
 
@@ -158,15 +189,15 @@ public class MainActivity extends AppCompatActivity {
 
                     String str_user_name = object.getString("full_name");
                     String group_name = object.getString("group_name");
-                    String s_group_balance = object.getString("group_balance");
+                    //String s_group_balance = object.getString("group_balance");
                     String my_contributions = object.getString("my_contributions");
                     String annual_interest_rate = object.getString("annual_interest_rate");
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("group_balance", s_group_balance);
+                    //editor.putString("group_balance", s_group_balance);
                     editor.putString("annual_interest_rate", annual_interest_rate);
                     editor.apply();
-                    group_balance.setText(String.valueOf("K " + s_group_balance));
+                   // group_balance.setText(String.valueOf("K " + s_group_balance));
 //                    txt_group_name.setText(group_name);
 //                    txt_prof_name.setText("Welcome " + str_user_name);
 //                    txt_my_contributions.setText(String.valueOf("K " + my_contributions));
