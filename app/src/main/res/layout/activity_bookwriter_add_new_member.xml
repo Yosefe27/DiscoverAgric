@@ -7,27 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-
-
-
-    <ImageView
-        android:id="@+id/we_logo"
-        android:layout_width="130dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="60dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/we_leger_login_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
     <ImageView
         android:id="@+id/icons"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="124dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="16dp"
         android:scaleType="centerInside"
         android:translationX="20dp"
@@ -52,14 +36,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
+            android:text="Add a new member"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:fontFamily="sans-serif-medium"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign in to continue"
+            android:text="Please Fill in the following details below"
             android:textSize="12sp"
             android:textColor="@color/fab_tint"
             android:fontFamily="sans-serif"/>
@@ -70,11 +54,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_bg"
             android:padding="16dp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
             android:layout_marginTop="30dp"
             android:textSize="20sp"
-            android:hint="Username"
+            android:hint="Full Names"
             android:inputType="text"
             android:drawablePadding="16dp"/>
 
@@ -83,51 +65,61 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_bg"
             android:padding="16dp"
-            android:drawableStart="@drawable/ic_baseline_lock_open_24"
-            android:drawableLeft="@drawable/ic_baseline_lock_open_24"
-            android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
-            android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:hint="Date of Admission"
+            android:inputType="date"
+            android:drawablePadding="16dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:hint="Gender"
+            android:inputType="text"
+            android:drawablePadding="16dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:hint="Single Female Caregiver Y/N"
+            android:inputType="text"
+            android:drawablePadding="16dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:hint="Next of Kin"
+            android:inputType="text"
+            android:drawablePadding="16dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:hint="ECAP II HH ID"
+            android:inputType="text"
             android:drawablePadding="16dp"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
-            android:text="Login"
+            android:text="Save"
             android:textColor="@color/white"
             android:layout_marginTop="25dp"/>
 
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/linlay_inputs"
-        android:text="Forgot Password"/>
-
-
-    <ImageView
-        android:id="@+id/coat_of_arms_of_zambia"
-        android:layout_width="160dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="576dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/coat_of_arms_of_zambia_ecap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
