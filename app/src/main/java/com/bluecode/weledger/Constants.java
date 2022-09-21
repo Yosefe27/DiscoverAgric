@@ -8,7 +8,8 @@ public final class Constants {
 
 
 //    /*=======================TEST SERVER URLS================================*/
-    public static final String BASE_URL = "https://myauthor.delatinotech.com/weeledger/apis/";
+    //public static final String BASE_URL = "https://myauthor.delatinotech.com/weeledger/apis/";
+    public static final String BASE_URL = "https://microlinksolutionsltd.com/apis/";
     public static final String MIXPANEL_TOKEN = "test";
 
 

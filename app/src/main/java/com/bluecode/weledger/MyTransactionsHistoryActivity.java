@@ -81,7 +81,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Contributions");
-        toolbar.setSubtitle("My Contributions History");
+        toolbar.setSubtitle("Contributions History");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

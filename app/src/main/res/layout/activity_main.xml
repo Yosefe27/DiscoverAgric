@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <androidx.appcompat.widget.Toolbar
         android.id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:background="@drawable/toolbar_header" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,27 +35,25 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/menu"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/ic_baseline_menu"
-                        android:contentDescription="Menu" />
-
                     <TextView
+                        android:id="@+id/btn_logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/menu"
+                        android:layout_marginTop="36dp"
+                        android:elevation="60dp"
                         android:paddingLeft="10dp"
-                        android:text=""
+                        android:text="Log Out"
+                        android:textAlignment="center"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold|italic" />
 
                     <ImageView
                         android:id="@+id/imageView"
                         android:layout_width="70dp"
                         android:layout_height="100dp"
-                        android:layout_marginLeft="200dp"
+                        android:layout_marginRight="75dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/we_logo" />
 
@@ -160,6 +160,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
+                        android:id="@+id/linear_repayments"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -193,6 +194,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
+                        android:id="@+id/linear_fines"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"

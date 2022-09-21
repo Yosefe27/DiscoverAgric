@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout linear_members, linear_loans, linear_payments,linear_manage_members,linear_manage_loans,linear_manage_payments;
     GridLayout linear_bookkeeper_menu;
     TextView name, group_balance,top_name;
-    TextView save_payment;
+    TextView save_payment,logout;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
-    LinearLayout linear_manage_groups,linear_facilitator_savings,linear_loans_facilitator;
+    LinearLayout linear_manage_groups,linear_facilitator_savings,linear_loans_facilitator,linear_repayments,linear_ledger_member,linear_fines;
     LinearLayout linear_repayments_facilitator,linear_fines_facilitator,linear_ledger_facilitator,linear_center_container;
     GridLayout linear_facilitator_menu,linear_ordinary_member_menu;
     String homepage_stats = BASE_URL + "homepage_stats.php";
@@ -64,10 +65,16 @@ public class MainActivity extends AppCompatActivity {
         //setSupportActionBar(toolbar);
         //toolbar.setTitle("WE eLedger");
         //toolbar.setSubtitle("Home");
+
+        logout = findViewById(R.id.btn_logout);
+
         name = findViewById(R.id.name);
         linear_members = findViewById(R.id.linear_members);
         linear_loans = findViewById(R.id.linear_loans);
         linear_payments = findViewById(R.id.linear_payments);
+        linear_repayments = findViewById(R.id.linear_repayments);
+        linear_fines = findViewById(R.id.linear_fines);
+        linear_ledger_member = findViewById(R.id.linear_ledger_member);
         //group_balance = findViewById(R.id.group_balance);
         //linear_center_container = findViewById(R.id.linear_center_container);
         //top_name = findViewById(R.id.top_name);
@@ -143,25 +150,19 @@ public class MainActivity extends AppCompatActivity {
         linear_repayments_facilitator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
             }
         });
         linear_fines_facilitator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
             }
         });
         linear_ledger_facilitator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
             }
         });
         linear_payments.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +179,24 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MyLoanRequestsActivity.class);
                 startActivity(intent);
+            }
+        });
+        linear_repayments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        linear_fines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        linear_ledger_member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
             }
         });
         linear_manage_members.setOnClickListener(new View.OnClickListener() {
@@ -202,6 +221,13 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), LoanRequestsApprovalsActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogLogout();
             }
         });
 
@@ -398,6 +424,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
