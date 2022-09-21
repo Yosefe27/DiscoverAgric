@@ -70,7 +70,20 @@ public class LoginActivity extends AppCompatActivity {
 //                deviceId = deviceUuid.toString();
         } catch (SecurityException e) {}
 //        checkAndRequestPermissions();
-
+        InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                char[] chars = {'\'', '"', '\\', '*', '(', ')', '<', '>', '?', '!', ' ', '+', '-', ';', ','};
+                for (int i = start; i < end; i++) {
+                    if (new String(chars).contains(String.valueOf(source.charAt(i)))) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        };
+        email.setFilters(new InputFilter[]{filter});
+        password.setFilters(new InputFilter[]{filter});
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override

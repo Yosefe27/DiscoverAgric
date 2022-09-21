@@ -4,20 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorWhite"
     tools:context=".MainActivity">
 
 
-
-
         <ImageView
-            android:id="@+id/splash_img"
+            android:id="@+id/we_logo"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_app_icon" />
+            android:src="@drawable/login_we_logo" />
 
-
+        <ImageView
+            android:id="@+id/bluecode_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/we_logo"
+            android:layout_alignEnd="@+id/we_logo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="362dp"
+            android:layout_marginBottom="010dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_app_icon"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 </RelativeLayout>

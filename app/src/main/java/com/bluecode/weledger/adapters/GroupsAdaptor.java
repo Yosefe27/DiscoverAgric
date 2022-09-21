@@ -109,6 +109,4 @@ public class GroupsAdaptor extends RecyclerView.Adapter<GroupsAdaptor.SingleView
             }
         });
     }
-
-
 }

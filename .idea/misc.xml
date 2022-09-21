@@ -79,12 +79,16 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_loan_request_details.xml" value="0.1852355072463768" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_new_group.xml" value="0.16485507246376813" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_new_member.xml" value="0.16485507246376813" />
-        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.16485507246376813" />
-        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.16485507246376813" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.1" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.1" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_splash.xml" value="0.1671195652173913" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/dialog_logout.xml" value="0.20018115942028986" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/list_item_groups.xml" value="0.16485507246376813" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/toolbar.xml" value="0.22010869565217392" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/menu/menu_add_stuff.xml" value="0.25" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/menu/menu_home.xml" value="0.25" />
       </map>
     </option>
   </component>

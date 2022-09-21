@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     TextView save_payment;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
-    LinearLayout linear_manage_groups,linear_center_container;
+    LinearLayout linear_manage_groups,linear_facilitator_savings,linear_loans_facilitator;
+    LinearLayout linear_repayments_facilitator,linear_fines_facilitator,linear_ledger_facilitator,linear_center_container;
     GridLayout linear_facilitator_menu,linear_ordinary_member_menu;
     String homepage_stats = BASE_URL + "homepage_stats.php";
 
@@ -72,7 +73,14 @@ public class MainActivity extends AppCompatActivity {
         //top_name = findViewById(R.id.top_name);
         linear_bookkeeper_menu = findViewById(R.id.linear_bookkeeper_menu);
         linear_ordinary_member_menu = findViewById(R.id.linear_ordinary_member_menu);
+
         linear_manage_groups = findViewById(R.id.linear_manage_groups);
+        linear_facilitator_savings = findViewById(R.id.linear_facilitator_savings);
+        linear_loans_facilitator = findViewById(R.id.linear_loans_facilitator);
+        linear_repayments_facilitator = findViewById(R.id.linear_repayments_facilitator);
+        linear_fines_facilitator = findViewById(R.id.linear_fines_facilitator);
+        linear_ledger_facilitator = findViewById(R.id.linear_ledger_facilitator);
+
         linear_facilitator_menu = findViewById(R.id.linear_facilitator_menu);
         linear_manage_members = findViewById(R.id.linear_manage_members);
         linear_manage_loans = findViewById(R.id.linear_manage_loans);
@@ -82,19 +90,20 @@ public class MainActivity extends AppCompatActivity {
         str_a = preferences.getString("a", "");
         str_name = preferences.getString("name", "");
         str_user_role = preferences.getString("user_role", "");
-        name.setText(String.valueOf("Welcome! " + str_name));
+        //name.setText(String.valueOf("Welcome! " + str_name));
         //top_name.setText(String.valueOf("Welcome! " + str_name));
         if (str_user_role.equals("2")) {
-            //linear_bookkeeper_menu.setVisibility(View.VISIBLE);
+            linear_bookkeeper_menu.setVisibility(View.VISIBLE);
             linear_facilitator_menu.setVisibility(View.GONE);
+            linear_ordinary_member_menu.setVisibility(View.GONE);
             //top_name.setVisibility(View.GONE);
         } else if (str_user_role.equals("3")) {
             linear_facilitator_menu.setVisibility(View.VISIBLE);
-            //linear_bookkeeper_menu.setVisibility(View.GONE);
+            linear_bookkeeper_menu.setVisibility(View.GONE);
             linear_ordinary_member_menu.setVisibility(View.GONE);
             //linear_center_container.setVisibility(View.GONE);
         } else {
-            //linear_bookkeeper_menu.setVisibility(View.GONE);
+            linear_bookkeeper_menu.setVisibility(View.GONE);
             linear_facilitator_menu.setVisibility(View.GONE);
             //top_name.setVisibility(View.GONE);
         }
@@ -106,7 +115,48 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //Facilitator Menu Options
         linear_manage_groups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_facilitator_savings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_loans_facilitator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MyLoanRequestsActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_repayments_facilitator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_fines_facilitator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_ledger_facilitator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

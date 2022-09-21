@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.os.Handler;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -63,6 +64,8 @@ public class SplashActivity extends AppCompatActivity {
     TextView btn_login;
     ArrayList<PaymentOptions> listPaymentOptions = new ArrayList();
     RequestQueue mRequestQueue;
+    // Splash screen timer
+    private static int SPLASH_TIME_OUT = 2500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,15 +80,27 @@ public class SplashActivity extends AppCompatActivity {
 
         context = SplashActivity.this;
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        if (login_status.equals("1")) {
-            finish();
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-        } else {
-            finish();
-            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-            startActivity(intent);
-        }
+        new Handler().postDelayed(new Runnable() {
+            /*
+             * Showing splash screen with a timer. This will be useful when you
+             * want to show case your app logo / company
+             */
+            @Override
+            public void run() {
+                // This method will be executed once the timer is over
+                // Start your app main activity
+                if (login_status.equals("1")) {
+                    finish();
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    finish();
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }, SPLASH_TIME_OUT);
+
 
     }
 

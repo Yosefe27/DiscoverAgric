@@ -35,7 +35,10 @@
         <activity android:name=".FacilitatorGroupTransactionsHistoryActivity"/>
         <activity android:name=".LoanRequestsApprovalsActivity"/>
         <activity android:name=".NewPaymentActivity"/>
+        <activity android:name=".FacilitatorGroupsActivity"/>
+        <activity android:name=".FacilitatorNewMemberActivity"/>
         <activity android:name=".FacilitatorNewGroupActivity"/>
+        <activity android:name=".GroupDetailsActivity"/>
 
     </application>
 
