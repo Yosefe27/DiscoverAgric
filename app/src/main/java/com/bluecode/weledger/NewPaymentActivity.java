@@ -69,10 +69,10 @@ TextView select_member;
         amount = findViewById(R.id.amount);
         select_member = findViewById(R.id.select_member);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Payment Details");
-        toolbar.setSubtitle("New Payment Details");
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        //toolbar.setTitle("Payment Details");
+        //toolbar.setSubtitle("New Payment Details");
+        //toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+        /*toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -80,6 +80,8 @@ TextView select_member;
                 startActivity(intent);
             }
         });
+
+         */
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         context = NewPaymentActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
