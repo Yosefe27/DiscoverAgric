@@ -52,8 +52,8 @@
                         android:id="@+id/imageView"
                         android:layout_width="70dp"
                         android:layout_height="100dp"
-                        android:layout_marginRight="75dp"
                         android:layout_marginTop="15dp"
+                        android:layout_marginRight="75dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/we_logo" />
 
@@ -108,9 +108,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Savings"
-                            android:textStyle="bold"
                             android:textColor="@color/blue"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -142,10 +142,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Loan Request"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -176,10 +176,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Repayments"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -210,10 +210,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Fines"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -279,14 +279,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Ledger"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
             </GridLayout>
+
             <GridLayout
                 android:id="@+id/linear_bookkeeper_menu"
                 android:layout_width="match_parent"
@@ -323,9 +324,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Savings"
-                            android:textStyle="bold"
                             android:textColor="@color/blue"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -357,10 +358,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Loan Request"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -390,10 +391,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Repayments"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -423,10 +424,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Fines"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -492,14 +493,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Ledger"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
             </GridLayout>
+
             <GridLayout
                 android:id="@+id/linear_facilitator_menu"
                 android:layout_width="match_parent"
@@ -535,7 +537,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Groups"
+                            android:text="Groups Admin"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -570,9 +572,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Savings"
-                            android:textStyle="bold"
                             android:textColor="@color/blue"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -603,10 +605,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Loan Requests"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -637,10 +639,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Repayments"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -671,10 +673,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Fines"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -706,10 +708,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:textStyle="bold"
                             android:text="Ledger"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

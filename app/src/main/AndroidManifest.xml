@@ -39,6 +39,7 @@
         <activity android:name=".FacilitatorNewMemberActivity"/>
         <activity android:name=".FacilitatorNewGroupActivity"/>
         <activity android:name=".GroupDetailsActivity"/>
+        <activity android:name=".FacilitatorManageGroupsActivity"/>
 
     </application>
 

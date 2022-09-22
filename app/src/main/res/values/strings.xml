@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">WE eLedger</string>
     <string name="welcome">Welcome</string>
+    <string-array name="group_management">
+        <item>  </item>
+        <item>Supervised</item>
+        <item>Self-Managed</item>
+        <item>Spontaneous</item>
+    </string-array>
 </resources>
