@@ -41,6 +41,7 @@
         <entry key="..\:/AndroidStudioProjects/WELedger/app/src/main/res/menu/menu_book_details.xml" value="0.1265625" />
         <entry key="..\:/AndroidStudioProjects/WELedger/app/src/main/res/menu/menu_home.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/chapo/.gradle/caches/transforms-3/f4cc199f6c8324cb1401d4db44774d12/transformed/appcompat-1.5.1/res/drawable/abc_ic_ab_back_material.xml" value="0.1" />
+        <entry key="..\:/Users/chapo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/auto_complete_list.xml" value="0.25" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/bottom_card.xml" value="0.115" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_add_loan.xml" value="0.115" />
         <entry key="..\:/Users/gyaba/AndroidStudioProjects/we_ledger/app/src/main/res/drawable/ic_add_pay.xml" value="0.115" />
@@ -80,10 +81,15 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_add_savings.xml" value="0.1852355072463768" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_loan_request_details.xml" value="0.1852355072463768" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_adds_new_group.xml" value="0.24864130434782608" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_fines.xml" value="0.25" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_ledger.xml" value="0.24895833333333334" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_loans.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_manage_groups.xml" value="0.2391304347826087" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_members.xml" value="0.2391304347826087" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_new_group.xml" value="0.264" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_new_member.xml" value="0.16485507246376813" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_repayments.xml" value="0.25" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_savings.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.176" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.1" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_login.xml" value="0.264" />

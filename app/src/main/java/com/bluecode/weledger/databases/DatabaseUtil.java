@@ -10,9 +10,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 
-/**
- * Created by Harold King on 8/06/2019.
- */
 
 public class DatabaseUtil {
 

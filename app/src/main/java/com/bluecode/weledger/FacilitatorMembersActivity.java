@@ -73,7 +73,7 @@ public class FacilitatorMembersActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Group Members");
-        toolbar.setSubtitle("My Group Members");
+        toolbar.setSubtitle("Group Members Savings");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +81,7 @@ public class FacilitatorMembersActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupSavings.class);
                 startActivity(intent);
             }
         });
@@ -395,35 +395,9 @@ str_user_role = object.getString("user_role");
                 reportsAlert.dismiss();
             }
         });
-
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-
-
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_add) {
-            Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
-            startActivity(intent);
-        }
-
-
-
-        return super.onOptionsItemSelected(item);
     }
     @Override
     public void onBackPressed() {
-
         finish();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

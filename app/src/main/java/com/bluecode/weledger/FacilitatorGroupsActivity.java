@@ -64,6 +64,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
     String str_user_role,str_my_name,str_group_name;
     GroupsAdaptor groupsAdapter;
     ImageView groups_approvals;
+    TextView add_group;
     Toolbar toolbar;
 
     @Override
@@ -71,6 +72,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
         toolbar = findViewById(R.id.toolbar);
+        add_group = findViewById(R.id.btn_add_group);
         setSupportActionBar(toolbar);
         toolbar.setTitle("GROUPS");
         toolbar.setSubtitle("LIST OF GROUPS");
@@ -97,7 +99,14 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
             errorDialog("Please Check Your Internet Connection");
 
         }
-
+        add_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorNewGroupActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -331,6 +340,15 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
 
             startActivity(intent);
         }
+
+        add_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorNewGroupActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

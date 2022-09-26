@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupSavings.class);
                 startActivity(intent);
             }
         });
@@ -143,20 +143,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MyLoanRequestsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupLoans.class);
                 startActivity(intent);
             }
         });
         linear_repayments_facilitator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupRepayments.class);
+                startActivity(intent);
             }
         });
         linear_fines_facilitator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupFines.class);
+                startActivity(intent);
             }
         });
         linear_ledger_facilitator.setOnClickListener(new View.OnClickListener() {

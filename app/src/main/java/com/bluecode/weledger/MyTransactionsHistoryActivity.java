@@ -81,7 +81,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Contributions");
-        toolbar.setSubtitle("Contributions History");
+        toolbar.setSubtitle("My Contributions");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,12 +152,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
                 reportsAlert.dismiss();
             }
         });
-
-
     }
-
-
-
 
     public void myContributionsHistory() {
         ViewGroup viewGroup = findViewById(android.R.id.content);
@@ -219,7 +214,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
                                 MyContributions myContributions = listMytransactions.get(position);
                                 fullname_str = myContributions.getTransaction_type();
 
-                                msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
+                                msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" for the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
                             }
 
 

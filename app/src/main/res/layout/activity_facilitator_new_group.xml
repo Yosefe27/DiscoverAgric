@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
-        android:scrollbars="none">
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:id="@+id/linlay_inputs"
@@ -61,6 +61,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <EditText
                 android:id="@+id/group_name"
                 android:layout_width="match_parent"
@@ -82,6 +83,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17sp" />
+
             <EditText
                 android:id="@+id/interest_rate"
                 android:layout_width="match_parent"
@@ -103,6 +105,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,6 +126,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,6 +147,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,6 +168,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,17 +189,18 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <Spinner
                 android:id="@+id/group_management_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_gravity="left"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edittext_bg"
                 android:dropDownWidth="wrap_content"
                 android:dropDownSelector="@color/colorBottomCardEnd"
-                android:entries="@array/group_management"
-                android:layout_gravity="left"/>
+                android:entries="@array/group_management" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -203,6 +210,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -223,6 +231,7 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

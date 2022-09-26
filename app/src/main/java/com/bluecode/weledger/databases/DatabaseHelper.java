@@ -1,8 +1,5 @@
 package com.bluecode.weledger.databases;
 
-/**
- * Created by Harold King on 6/05/2020.
- */
 
 
 import android.annotation.SuppressLint;

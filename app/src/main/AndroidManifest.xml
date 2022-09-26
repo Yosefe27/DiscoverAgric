@@ -40,6 +40,13 @@
         <activity android:name=".FacilitatorNewGroupActivity"/>
         <activity android:name=".GroupDetailsActivity"/>
         <activity android:name=".FacilitatorManageGroupsActivity"/>
+        <activity android:name=".FacilitatorGroupSavings"/>
+        <activity android:name=".FacilitatorGroupLoans"/>
+        <activity android:name=".FacilitatorGroupRepayments"/>
+        <activity android:name=".FacilitatorGroupFines"/>
+        <activity android:name=".FacilitatorMembersFines"/>
+        <activity android:name=".FacilitatorMembersLoans"/>
+        <activity android:name=".FacilitatorMembersRepayments"/>
 
     </application>
 

@@ -2,6 +2,7 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,17 +20,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bluecode.weledger.adapters.MembersAdapter;
+import com.bluecode.weledger.models.Members;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +45,12 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
     RequestQueue mRequestQueue;
     EditText group_name,interest_rate;
     String submit_group_url=BASE_URL+"submit_group.php";
-    TextView save_group_details;
+    TextView save_group_details,select_member;
+    String str_a, members_list = BASE_URL + "list_of_group_members.php";
+    String membership_response = BASE_URL + "membership_response.php";
+    MembersAdapter membersAdapter;
+    ArrayList<Members> listMembers = new ArrayList<>();
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +58,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         group_name = findViewById(R.id.group_name);
         interest_rate = findViewById(R.id.interest_rate);
+        select_member = findViewById(R.id.select_member);
         save_group_details = findViewById(R.id.save_group_details);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Group");
@@ -141,6 +154,62 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         };
         stringRequest.setShouldCache(false);
         mRequestQueue.add(stringRequest);
+    }
+
+    public void membersDisplayDialog() {
+        RecyclerView members_recyclerview;
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_payment_options, viewGroup, false);
+
+        members_recyclerview = dialogView.findViewById(R.id.recyclerview_payment_options);
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+        //finally creating the alert dialog and displaying it
+        final AlertDialog reportsAlert = builder.create();
+        // Let's start with animation work. We just need to create a style and use it here as follow.
+        if (reportsAlert.getWindow() != null)
+            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+
+        reportsAlert.show();
+        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        members_recyclerview.setHasFixedSize(true);
+        members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
+        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
+        members_recyclerview.setAdapter(membersAdapter);
+        membersAdapter.setClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = members_recyclerview.getChildLayoutPosition(view);
+                Members members = listMembers.get(position);
+                select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
+
+//                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
+//                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
+//                                intent.putExtra("intent_email", members.getEmail());
+//                                intent.putExtra("intent_nrc", members.getNrc());
+//                                intent.putExtra("intent_address", members.getAddress());
+//                                intent.putExtra("intent_group_id", members.getGroup_id());
+//                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
+//                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
+//                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
+//                                startActivity(intent);
+                reportsAlert.dismiss();
+            }
+
+
+        });
+//                        reportsAlert.dismiss();
+
+
+
+
+
     }
 
     public void errorDialog(String error_text) {
