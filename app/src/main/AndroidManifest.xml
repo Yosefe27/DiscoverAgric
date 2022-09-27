@@ -47,6 +47,7 @@
         <activity android:name=".FacilitatorMembersFines"/>
         <activity android:name=".FacilitatorMembersLoans"/>
         <activity android:name=".FacilitatorMembersRepayments"/>
+        <activity android:name=".BookwriterRepaymentsActivity"/>
 
     </application>
 

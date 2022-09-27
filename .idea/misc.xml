@@ -80,6 +80,8 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_add_new_member.xml" value="0.1852355072463768" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_add_savings.xml" value="0.1852355072463768" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_loan_request_details.xml" value="0.1852355072463768" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_repayment_details.xml" value="0.23007246376811594" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_repayments.xml" value="0.2391304347826087" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_adds_new_group.xml" value="0.24864130434782608" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_fines.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_ledger.xml" value="0.24895833333333334" />
@@ -92,6 +94,7 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_savings.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.176" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.1" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_loan_requests.xml" value="0.2391304347826087" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_members.xml" value="0.2391304347826087" />

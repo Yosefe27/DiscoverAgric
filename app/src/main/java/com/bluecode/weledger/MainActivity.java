@@ -114,23 +114,7 @@ public class MainActivity extends AppCompatActivity {
             linear_facilitator_menu.setVisibility(View.GONE);
             //top_name.setVisibility(View.GONE);
         }
-        linear_members.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
-                startActivity(intent);
-            }
-        });
         //Facilitator Menu Options
-        linear_manage_groups.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
-                startActivity(intent);
-            }
-        });
         linear_facilitator_savings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,11 +153,21 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
             }
         });
-        linear_payments.setOnClickListener(new View.OnClickListener() {
+        linear_manage_groups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Bookwriter Menu Options
+        linear_repayments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), BookwriterRepaymentsActivity.class);
                 startActivity(intent);
             }
         });
@@ -182,32 +176,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), MyLoanRequestsActivity.class);
-                startActivity(intent);
-            }
-        });
-        linear_repayments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-            }
-        });
-        linear_fines.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-            }
-        });
-        linear_ledger_member.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-            }
-        });
-        linear_manage_members.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorMembersActivity.class);
                 startActivity(intent);
             }
         });
@@ -224,6 +192,44 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), LoanRequestsApprovalsActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_manage_members.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorMembersActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_fines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Member Menu Options
+        linear_ledger_member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        linear_members.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
+                startActivity(intent);
+            }
+        });
+        linear_payments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
                 startActivity(intent);
             }
         });

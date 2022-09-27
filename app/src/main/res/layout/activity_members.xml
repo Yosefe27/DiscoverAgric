@@ -13,7 +13,32 @@
 <!--        app:cardElevation="5dp"-->
 <!--        app:cardBackgroundColor="@color/dark_white"-->
 <!--        app:cardCornerRadius="10dp">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#e3badb"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/btn_add_group"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:background="#eb2fc8"
+            android:text="ADD MEMBER"
+            android:textAlignment="textEnd"
+            android:textColor="#ffffff"
+            android:textSize="22dp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#e3badb"
+            android:layout_marginTop="10dp"
+            android:text="GROUP MEMBERS"
+            android:textColor="#0C1C75"
+            android:textSize="22dp" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/members_recyclerview"
         android:layout_width="match_parent"

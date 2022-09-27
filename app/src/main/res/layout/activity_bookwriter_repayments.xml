@@ -14,12 +14,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/btn_add_loan_request"
+            android:id="@+id/btn_add_loan_repayment"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="0dp"
             android:background="#eb2fc8"
-            android:text="ADD LOAN REQUEST"
+            android:text="ADD LOAN REPAYMENT"
             android:textAlignment="textEnd"
             android:textColor="#ffffff"
             android:textSize="18dp" />
@@ -29,28 +29,28 @@
             android:layout_height="40dp"
             android:background="#e3badb"
             android:layout_marginTop="10dp"
-            android:text="LOAN REQUESTS HISTORY"
+            android:text="LOAN REPAYMENTS HISTORY"
             android:textColor="#0C1C75"
             android:textSize="18dp" />
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:cardCornerRadius="10dp"
-        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="10dp"
+            android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/loan_requests_recylerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scrollbars="none"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/loan_requests_recylerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"/>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
 </LinearLayout>
