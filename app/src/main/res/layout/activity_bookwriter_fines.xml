@@ -15,27 +15,27 @@
     <!--        app:cardCornerRadius="10dp">-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:background="#e3badb"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/btn_add_payment"
+            android:id="@+id/btn_add_group"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginTop="0dp"
             android:background="#eb2fc8"
-            android:text="ADD REPAYMENT  "
+            android:text="ADD FINE  "
             android:textAlignment="textEnd"
             android:textColor="#ffffff"
             android:textSize="14dp" />
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:background="#e3badb"
             android:layout_marginTop="10dp"
-            android:text="  GROUP REPAYMENTS"
+            android:text="  GROUP FINES"
             android:textColor="#0C1C75"
             android:textSize="16dp" />
     </LinearLayout>

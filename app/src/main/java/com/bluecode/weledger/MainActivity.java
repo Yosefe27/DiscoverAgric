@@ -46,13 +46,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout linear_members, linear_loans, linear_payments,linear_manage_members,linear_manage_loans,linear_manage_payments;
     GridLayout linear_bookkeeper_menu;
     TextView name, group_balance,top_name;
     TextView save_payment,logout;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
-    LinearLayout linear_manage_groups,linear_facilitator_savings,linear_loans_facilitator,linear_repayments,linear_ledger_member,linear_fines;
+    LinearLayout linear_members, linear_loans, member_payments,linear_manage_payments;
+    LinearLayout bookwriter_savings,bookwriter_repayments,bookwriter_members,bookwriter_loans,bookwriter_ledger,bookwriter_fines;
+    LinearLayout linear_manage_groups,linear_facilitator_savings,linear_loans_facilitator,linear_ledger_member,linear_fines;
     LinearLayout linear_repayments_facilitator,linear_fines_facilitator,linear_ledger_facilitator,linear_center_container;
     GridLayout linear_facilitator_menu,linear_ordinary_member_menu;
     String homepage_stats = BASE_URL + "homepage_stats.php";
@@ -61,18 +62,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bookwriter_savings = findViewById(R.id.bookwriter_savings);
+        bookwriter_repayments = findViewById(R.id.bookwriter_repayments);
+        bookwriter_members = findViewById(R.id.bookwriter_members);
+        bookwriter_loans = findViewById(R.id.bookwriter_loans);
+        bookwriter_fines = findViewById(R.id.bookwriter_fines);
+        bookwriter_ledger = findViewById(R.id.bookwriter_ledger);
+
        // toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         //toolbar.setTitle("WE eLedger");
         //toolbar.setSubtitle("Home");
-
         logout = findViewById(R.id.btn_logout);
-
         name = findViewById(R.id.name);
         linear_members = findViewById(R.id.linear_members);
         linear_loans = findViewById(R.id.linear_loans);
-        linear_payments = findViewById(R.id.linear_payments);
-        linear_repayments = findViewById(R.id.linear_repayments);
         linear_fines = findViewById(R.id.linear_fines);
         linear_ledger_member = findViewById(R.id.linear_ledger_member);
         //group_balance = findViewById(R.id.group_balance);
@@ -89,9 +94,7 @@ public class MainActivity extends AppCompatActivity {
         linear_ledger_facilitator = findViewById(R.id.linear_ledger_facilitator);
 
         linear_facilitator_menu = findViewById(R.id.linear_facilitator_menu);
-        linear_manage_members = findViewById(R.id.linear_manage_members);
-        linear_manage_loans = findViewById(R.id.linear_manage_loans);
-        linear_manage_payments = findViewById(R.id.linear_manage_payments);
+        //linear_manage_payments = findViewById(R.id.linear_manage_payments);
         save_payment = findViewById(R.id.save_payment_details);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
@@ -163,23 +166,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Bookwriter Menu Options
-        linear_repayments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), BookwriterRepaymentsActivity.class);
-                startActivity(intent);
-            }
-        });
-        linear_loans.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MyLoanRequestsActivity.class);
-                startActivity(intent);
-            }
-        });
-        linear_manage_payments.setOnClickListener(new View.OnClickListener() {
+        bookwriter_savings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -187,7 +174,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        linear_manage_loans.setOnClickListener(new View.OnClickListener() {
+        bookwriter_repayments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), BookwriterRepaymentsActivity.class);
+                startActivity(intent);
+            }
+        });
+        bookwriter_ledger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), BookwriterLedgerActivity.class);
+                startActivity(intent);
+            }
+        });
+        bookwriter_loans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -195,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        linear_manage_members.setOnClickListener(new View.OnClickListener() {
+        bookwriter_members.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -203,10 +206,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        linear_fines.setOnClickListener(new View.OnClickListener() {
+        bookwriter_fines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), BookwriterFinesActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -225,14 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        linear_payments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

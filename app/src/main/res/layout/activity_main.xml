@@ -307,7 +307,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
-                        android:id="@+id/linear_manage_payments"
+                        android:id="@+id/bookwriter_savings"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -342,7 +342,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
-                        android:id="@+id/linear_manage_loans"
+                        android:id="@+id/bookwriter_loans"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -358,7 +358,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Loan Request"
+                            android:text="Loan Requests"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -376,6 +376,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
+                        android:id="@+id/bookwriter_repayments"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -409,6 +410,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
+                        android:id="@+id/bookwriter_fines"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -443,7 +445,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
-                        android:id="@+id/linear_manage_members"
+                        android:id="@+id/bookwriter_members"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -477,7 +479,7 @@
                     app:cardElevation="4dp">
 
                     <LinearLayout
-                        android:id="@+id/linear_ledger_bookmaker"
+                        android:id="@+id/bookwriter_ledger"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"

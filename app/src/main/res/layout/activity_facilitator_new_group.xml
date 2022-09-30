@@ -4,46 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#ECA2E4"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include layout="@layout/toolbar" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"
+        android:background="#eb2fc8"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"
+        android:text="ADD NEW GROUP"
+        android:background="#eb2fc8"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="#eb2fc8"
+        android:fontFamily="sans-serif"
+        android:text="Please Fill in the following details below"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="170dp"
+        android:background="#ffffff"
         android:scrollbars="vertical">
 
         <LinearLayout
             android:id="@+id/linlay_inputs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginRight="30dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icons">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Add A New Group"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="Please Fill in the following details below"
-                android:textColor="@color/fab_tint"
-                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,6 +122,7 @@
                 android:textSize="17dp" />
 
             <EditText
+                android:id="@+id/cycle_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
@@ -128,14 +144,14 @@
                 android:textSize="17dp" />
 
             <EditText
+                android:id="@+id/first_training_meeting_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edittext_bg"
                 android:drawablePadding="16dp"
-                android:hint="Date of first training meeting"
-                android:inputType="date"
+                android:hint="Date of first training meeting (YYYY-MM-DD)"
                 android:padding="16dp"
                 android:textSize="13sp" />
 
@@ -149,14 +165,14 @@
                 android:textSize="17dp" />
 
             <EditText
+                android:id="@+id/date_savings_started"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/edittext_bg"
                 android:drawablePadding="16dp"
-                android:hint="Date savings started"
-                android:inputType="date"
+                android:hint="Date savings started (YYYY-MM-DD)"
                 android:padding="16dp"
                 android:textSize="13sp" />
 
@@ -170,6 +186,7 @@
                 android:textSize="17dp" />
 
             <EditText
+                android:id="@+id/reinvested_savings_cycle_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
@@ -191,7 +208,7 @@
                 android:textSize="17dp" />
 
             <Spinner
-                android:id="@+id/group_management_spinner"
+                android:id="@+id/group_mgt_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="left"
@@ -212,6 +229,7 @@
                 android:textSize="17dp" />
 
             <EditText
+                android:id="@+id/registered_members_cycle_start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
@@ -219,27 +237,6 @@
                 android:background="@drawable/edittext_bg"
                 android:drawablePadding="16dp"
                 android:hint="Number of registered members at the start of the cycle"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textSize="13sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="Group's Bookwriter"
-                android:textAlignment="textStart"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="17dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/edittext_bg"
-                android:drawablePadding="16dp"
-                android:hint="Group's Bookwriter"
                 android:inputType="text"
                 android:padding="16dp"
                 android:textSize="13sp" />

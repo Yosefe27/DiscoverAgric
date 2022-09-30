@@ -40,6 +40,8 @@ public class GroupDetailsActivity extends AppCompatActivity {
     String str_a, members_list = BASE_URL+"list_of_group_members.php";
     MembersAdapter membersAdapter;
     TextView group_name_txt,group_id_txt,group_interest_rate_txt,group_date_created_txt;
+    TextView cycle_number_txt,first_training_meeting_date_txt,date_savings_started_txt,reinvested_savings_cycle_start_txt;
+    TextView registered_members_cycle_start_txt,group_management_spinner_txt;
     ImageView chairperson_approval_img,treasurer_approval_img,secretary_approval_img,prof_img_big;
     CircleImageView prof_img_small;
 
@@ -56,6 +58,12 @@ public class GroupDetailsActivity extends AppCompatActivity {
         group_name_txt = findViewById(R.id.group_name);
         group_interest_rate_txt = findViewById(R.id.interest_rate);
         group_date_created_txt = findViewById(R.id.date_created);
+        cycle_number_txt = findViewById(R.id.cycle_number);
+        first_training_meeting_date_txt = findViewById(R.id.first_training_meeting_date);
+        date_savings_started_txt = findViewById(R.id.date_savings_started);
+        reinvested_savings_cycle_start_txt = findViewById(R.id.reinvested_savings_cycle_start);
+        registered_members_cycle_start_txt = findViewById(R.id.registered_members_cycle_start);
+        group_management_spinner_txt = findViewById(R.id.group_management_spinner);
         setSupportActionBar(toolbar);
         ;
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
@@ -65,7 +73,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
                 startActivity(intent);
             }
         });
@@ -74,6 +82,12 @@ public class GroupDetailsActivity extends AppCompatActivity {
         String intent_group_name = getIntent().getStringExtra("intent_group_name");
         String intent_group_date_created = getIntent().getStringExtra("intent_group_date_created");
         String intent_group_annual_interest_rate = getIntent().getStringExtra("intent_group_annual_interest_rate");
+        String intent_cycle_number = getIntent().getStringExtra("intent_cycle_number");
+        String intent_first_training_meeting_date = getIntent().getStringExtra("intent_first_training_meeting_date");
+        String intent_date_savings_started = getIntent().getStringExtra("intent_date_savings_started");
+        String intent_reinvested_savings_cycle_start = getIntent().getStringExtra("intent_reinvested_savings_cycle_start");
+        String intent_registered_members_cycle_start = getIntent().getStringExtra("intent_registered_members_cycle_start");
+        String intent_group_management_spinner = getIntent().getStringExtra("intent_group_management_spinner");
         String intent_group_status = getIntent().getStringExtra("intent_group_status");
 
 
@@ -81,9 +95,13 @@ public class GroupDetailsActivity extends AppCompatActivity {
         group_name_txt.setText(intent_group_name);
         group_date_created_txt.setText(intent_group_date_created);
         group_interest_rate_txt.setText(intent_group_annual_interest_rate);
+        cycle_number_txt.setText(intent_cycle_number);
+        first_training_meeting_date_txt.setText(intent_first_training_meeting_date);
+        date_savings_started_txt.setText(intent_date_savings_started);
+        reinvested_savings_cycle_start_txt.setText(intent_reinvested_savings_cycle_start);
+        registered_members_cycle_start_txt.setText(intent_registered_members_cycle_start);
+        group_management_spinner_txt.setText(intent_group_management_spinner);
         toolbar.setSubtitle(intent_group_name+"'s Details");
-
-
     }
 
     private boolean isNetworkAvailable() {
@@ -92,7 +110,6 @@ public class GroupDetailsActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null;
     }
-
 
     public void errorDialog(String error_text) {
 
@@ -145,8 +162,6 @@ public class GroupDetailsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-
-
         return true;
 
     }
@@ -158,9 +173,6 @@ public class GroupDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), FacilitatorNewMemberActivity.class);
             startActivity(intent);
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 

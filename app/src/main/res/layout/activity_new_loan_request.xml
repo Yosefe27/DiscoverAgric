@@ -7,20 +7,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <include layout="@layout/toolbar" />
 
-
-    <androidx.appcompat.widget.Toolbar
-        android.id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="125dp"
-        android:background="@drawable/toolbar_header" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:scrollbars="none">
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,10 +131,10 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Save"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:text="SAVE LOAN REQUEST"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
 

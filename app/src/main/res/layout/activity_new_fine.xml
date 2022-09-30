@@ -15,6 +15,8 @@
         android:layout_marginBottom="56dp"
         android:scrollbars="none">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,16 +25,6 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="New Member Details"
-                android:visibility="gone"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textSize="20sp" />
 
 
             <LinearLayout
@@ -45,56 +37,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="First Name"
-                    android:textSize="12sp" />
+                    android:text="Amount"
+                    android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/first_name"
-                    style="@style/modifiedEditText"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/ic_edit_bg"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center_vertical"
-                    android:hint=""
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:maxLines="1"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Last Name"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/last_name"
-                    style="@style/modifiedEditText"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/ic_edit_bg"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center_vertical"
-                    android:hint=""
-                    android:imeOptions="actionNext"
-                    android:inputType="textPersonName"
-                    android:maxLines="1"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="NRC"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/nrc"
+                    android:id="@+id/amount"
                     style="@style/modifiedEditText"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_edit_bg"
@@ -103,56 +50,66 @@
                     android:hint=""
                     android:imeOptions="actionNext"
                     android:inputType="phone"
-                    android:maxLines="1"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Phone Number"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/phone_number"
-                    style="@style/modifiedEditText"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/ic_edit_bg"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center_vertical"
-                    android:hint=""
-                    android:imeOptions="actionNext"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Group Member Role"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/select_user_role"
-                    style="@style/modifiedEditText"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/ic_edit_bg"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center_vertical"
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Name of Member"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/select_member"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Date"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/date_picker_actions"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+
+            </LinearLayout>
 
 
             <androidx.cardview.widget.CardView
@@ -175,7 +132,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="SAVE MEMBER"
+                    android:text="SAVE FINE DETAILS"
                     android:textColor="@color/yellow"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>

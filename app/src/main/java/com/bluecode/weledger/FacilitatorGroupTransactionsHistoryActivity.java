@@ -74,8 +74,8 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
         transactions_recylerview = findViewById(R.id.transactions_recyclerview);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Contributions");
-        toolbar.setSubtitle("Group Contributions History");
+        toolbar.setTitle("Savings");
+        toolbar.setSubtitle("Group Savings History");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,18 +146,12 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
                 reportsAlert.dismiss();
             }
         });
-
-
     }
-
-
-
 
     public void myContributionsHistory() {
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
-
 
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -216,10 +210,8 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
                                 msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
                             }
 
-
                         });
                         reportsAlert.dismiss();
-
                     }
 
                 } catch (JSONException e) {
@@ -307,9 +299,7 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
 
-
         return true;
-
     }
 
     @Override
@@ -319,9 +309,6 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
             Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
             startActivity(intent);
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 

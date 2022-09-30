@@ -1,7 +1,5 @@
 package com.bluecode.weledger;
 
-import static com.bluecode.weledger.Constants.BASE_URL;
-
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,16 +10,18 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -42,71 +42,72 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bluecode.weledger.adapters.MyLoanRequestsAdapter;
-import com.bluecode.weledger.models.LoanRequests;
-import com.bluecode.weledger.utils.Connectivity;
+import com.bluecode.weledger.models.MyContributions;
+import com.bluecode.weledger.adapters.MyContributionsAdapter;
+import com.bluecode.weledger.models.MyContributions;
+import com.bluecode.weledger.models.Transactions;
+import com.bluecode.weledger.utils.RecyclerTouchListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BookwriterRepaymentsActivity extends AppCompatActivity {
-    RecyclerView loan_requests_recylerview;
-    ArrayList<LoanRequests> listLoanRequests = new ArrayList<>();
-    MyLoanRequestsAdapter myLoanRequestAdapter;
+import static com.bluecode.weledger.Constants.BASE_URL;
+import static com.bluecode.weledger.Constants.BASE_URL;
+
+public class BookwriterSavingsActivity extends AppCompatActivity {
+    RecyclerView transactions_recylerview;
+    ArrayList<Transactions> listTransactions = new ArrayList<>();
     DatePickerDialog picker;
     Context context;
-    Toolbar toolbar;
+    ImageView back_btn;
+    MyContributionsAdapter myTransactionsAdapter;
+    ArrayList<MyContributions> listMytransactions = new ArrayList<>();
     RequestQueue mRequestQueue;
-    ImageView loan_approvals;
-    String str_a, str_user_role, str_my_name, str_group_name;
-    String my_loan_requests = BASE_URL + "my_loan_requests.php";
-    String loan_response = BASE_URL + "loan_response.php";
-
+    String submit_contribution = BASE_URL + "submit_contributions.php",fullname_str;
+    String my_contributions = BASE_URL + "my_contributions.php",str_a,str_user_name;
+    ImageView group_contributions;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bookwriter_repayments);
-        loan_requests_recylerview = findViewById(R.id.loan_requests_recylerview);
+        setContentView(R.layout.activity_my_transactions_history);
+        transactions_recylerview = findViewById(R.id.transactions_recyclerview);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Loan Repayments");
-        toolbar.setSubtitle("Loan Repayments");
+        toolbar.setTitle("Contributions");
+        toolbar.setSubtitle("My Contributions");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
-//        loan_approvals.setVisibility(View.GONE);
-        mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = BookwriterRepaymentsActivity.this;
+
+        context = BookwriterSavingsActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
-        if (isNetworkAvailable()) {
-            myLoanRequests();
-        } else {
-            errorDialog("Please Check Your Internet Connection");
-
-        }
+        if (isNetworkAvailable())
+            myContributionsHistory();
+        else
+//            Toast.makeText(getApplicationContext(), "Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+            errorDialog("Check Your Internet Connection");
 
     }
-
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null;
     }
-
     public void errorDialog(String error_text) {
 
         ViewGroup viewGroup = findViewById(android.R.id.content);
@@ -151,11 +152,9 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
                 reportsAlert.dismiss();
             }
         });
-
-
     }
 
-    public void myLoanRequests() {
+    public void myContributionsHistory() {
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
@@ -174,69 +173,51 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
 
         reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        StringRequest request = new StringRequest(Request.Method.POST, my_loan_requests, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, my_contributions, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 //                Toast.makeText(getApplicationContext(),"Response : "+response,Toast.LENGTH_SHORT).show();
 //                textView.setText(response.toString());
-                Log.v("loan_requests_response", response);
+                Log.v("transactions_response", response);
                 try {
                     JSONObject object = new JSONObject(response);
-
-                    str_my_name = object.getString("full_name");
-                    str_user_role = object.getString("user_role");
-                    str_group_name = object.getString("group_name");
-                    JSONArray array = object.getJSONArray("loan_requests");
+                    str_user_name = object.getString("full_name");
+                    JSONArray array = object.getJSONArray("my_contributions");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
 //                        JSONObject stackObject2 = array2.getJSONObject(i);
 
                         // textView.setText(object1.toString());
-                        LoanRequests loanRequests = new LoanRequests(
-                                stackObject.getString("id"),
+                        MyContributions myTransactions = new MyContributions(
+                                stackObject.getString("payment_mode"),
                                 stackObject.getString("amount"),
-                                stackObject.getString("duration"),
-                                stackObject.getString("contributor_id"),
-                                stackObject.getString("loan_reason"),
-                                stackObject.getString("group_id"),
-                                stackObject.getString("start_date"),
-                                stackObject.getString("end_date"),
-                                stackObject.getString("secretary_approval"),
-                                stackObject.getString("treasurer_approval"),
-                                stackObject.getString("chairperson_approval"),
-                                stackObject.getString("secretary_id"),
-                                stackObject.getString("treasurer_id"),
-                                stackObject.getString("chairperson_id"),
-                                stackObject.getString("secretary_approval_date"),
-                                stackObject.getString("treasurer_approval_date"),
-                                stackObject.getString("chairperson_approval_date"),
-                                stackObject.getString("secretary_approval_comment"),
-                                stackObject.getString("treasurer_approval_comment"),
-                                stackObject.getString("chairperson_approval_comment"),
-                                stackObject.getString("date_created")
+                                stackObject.getString("month_contributed_for"),
+                                stackObject.getString("payment_ref_number")
 
                         );
-                        listLoanRequests.add(loanRequests);
+                        listMytransactions.add(myTransactions);
                     }
-
-                    if (listLoanRequests.size() <= 0) {
-                        loan_requests_recylerview.setVisibility(View.GONE);
+                    if (listMytransactions.size() <= 0) {
+                        transactions_recylerview.setVisibility(View.GONE);
 //                        no_transactions_txt.setVisibility(View.VISIBLE);
                         reportsAlert.dismiss();
                     } else {
-                        loan_requests_recylerview.setHasFixedSize(true);
-                        loan_requests_recylerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                        loan_requests_recylerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        myLoanRequestAdapter = new MyLoanRequestsAdapter(getBaseContext(), listLoanRequests);
-                        loan_requests_recylerview.setAdapter(myLoanRequestAdapter);
-                        myLoanRequestAdapter.setClickListener(new View.OnClickListener() {
+                        transactions_recylerview.setHasFixedSize(true);
+                        transactions_recylerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                        transactions_recylerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
+                        myTransactionsAdapter = new MyContributionsAdapter(getBaseContext(), listMytransactions,"");
+                        transactions_recylerview.setAdapter(myTransactionsAdapter);
+                        myTransactionsAdapter.setClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                int position = loan_requests_recylerview.getChildLayoutPosition(view);
-                                LoanRequests currentLoanRequests = listLoanRequests.get(position);
+                                int position = transactions_recylerview.getChildLayoutPosition(view);
+                                MyContributions myContributions = listMytransactions.get(position);
+                                fullname_str = myContributions.getTransaction_type();
 
-
+                                msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" for the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
                             }
+
+
                         });
                         reportsAlert.dismiss();
 
@@ -275,71 +256,55 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+    public void msgDialog(String error_text) {
 
-    private void loanResponse(
-            final String response,
-            final String loan_id) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loan_response, new Response.Listener<String>() {
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        final TextView main_text;
+        final Button btn_ok;
+        final LinearLayout linear_buttons;
+        final CardView card_ok;
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_error, viewGroup, false);
+
+
+        btn_ok = dialogView.findViewById(R.id.btn_ok);
+//        card_ok = dialogView.findViewById(R.id.card_ok);
+        main_text = dialogView.findViewById(R.id.main_text);
+        linear_buttons = dialogView.findViewById(R.id.linear_buttons);
+
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+        //finally creating the alert dialog and displaying it
+        final AlertDialog reportsAlert = builder.create();
+        // Let's start with animation work. We just need to create a style and use it here as follow.
+        if (reportsAlert.getWindow() != null)
+            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+
+        reportsAlert.show();
+        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        btn_ok.setVisibility(View.VISIBLE);
+        linear_buttons.setVisibility(View.GONE);
+//        To prevent dialog box from getting dismissed on back key pressed use this
+        reportsAlert.setCancelable(false);
+
+//        And to prevent dialog box from getting dismissed on outside touch use this
+        reportsAlert.setCanceledOnTouchOutside(false);
+        main_text.setText(error_text);
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                //Log.v("login_url",response);
-                try {
-                    JSONObject object = new JSONObject(response);
-                    if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
-
-                        errorDialog(object.getString("msg"));
-                    } else if (object.getString("status").equals("failed")) {
-
-                        errorDialog(object.getString("msg"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            public void onClick(View view) {
+                reportsAlert.dismiss();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        });
 
-            }
-        }) {
-
-            //            first_name, surname, nrc, phone, email, pas, dob
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> parms = new HashMap<String, String>();
-                parms.put("loan_id", loan_id);
-                parms.put("response", response);
-                parms.put("a", str_a);
-
-                return parms;
-            }
-        };
-        stringRequest.setShouldCache(false);
-        mRequestQueue.add(stringRequest);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_add) {
-
-            Intent intent = new Intent(getApplicationContext(), LoanRepaymentActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-
         finish();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

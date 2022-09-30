@@ -9,29 +9,29 @@
     <include layout="@layout/toolbar" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="60dp"
         android:background="#e3badb"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/btn_add_loan_request"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
             android:layout_marginTop="0dp"
             android:background="#eb2fc8"
-            android:text="ADD LOAN REQUEST"
+            android:text="ADD LOAN REQUEST  "
             android:textAlignment="textEnd"
             android:textColor="#ffffff"
-            android:textSize="18dp" />
+            android:textSize="14dp" />
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:background="#e3badb"
             android:layout_marginTop="10dp"
-            android:text="LOAN REQUESTS HISTORY"
+            android:text="  LOAN REQUESTS HISTORY"
             android:textColor="#0C1C75"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"

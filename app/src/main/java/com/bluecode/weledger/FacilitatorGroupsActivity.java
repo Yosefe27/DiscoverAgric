@@ -107,8 +107,6 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     private boolean isNetworkAvailable() {
@@ -157,6 +155,12 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
                                 stackObject.getString("group_name"),
                                 stackObject.getString("date_created"),
                                 stackObject.getString("annual_interest_rate"),
+                                stackObject.getString("cycle_number"),
+                                stackObject.getString("first_training_meeting_date"),
+                                stackObject.getString("date_savings_started"),
+                                stackObject.getString("reinvested_savings_cycle_start"),
+                                //stackObject.getString("registered_members_cycle_start"),
+                                //stackObject.getString("group_management_spinner"),
                                 stackObject.getString("status")
 
                         );
@@ -188,6 +192,10 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
                                 intent.putExtra("intent_group_name", groups.getGroup_name());
                                 intent.putExtra("intent_group_date_created", groups.getDate_created());
                                 intent.putExtra("intent_group_annual_interest_rate", groups.getAnnual_interest_rate());
+                                intent.putExtra("intent_cycle_number", groups.getCycle_number());
+                                intent.putExtra("intent_first_training_meeting_date", groups.getFirst_training_meeting_date());
+                                intent.putExtra("intent_date_savings_started", groups.getDate_savings_started());
+                                intent.putExtra("intent_reinvested_savings_cycle_start", groups.getReinvested_savings_cycle_start());
                                 intent.putExtra("intent_group_status", groups.getStatus());
                                 startActivity(intent);
 

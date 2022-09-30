@@ -4,11 +4,9 @@
 
     <item
         android:id="@+id/action_add"
-        android:icon="@drawable/notepad"
+        android:icon="@drawable/plus"
         android:orderInCategory="1"
         android:title="Add"
+        app:itemIconPadding="?attr/actionBarSize"
         app:showAsAction="ifRoom" />
-
-
-
 </menu>

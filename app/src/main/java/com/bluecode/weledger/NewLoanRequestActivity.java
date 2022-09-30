@@ -76,7 +76,7 @@ TextView select_member;
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoanRequestsApprovalsActivity.class);
                 startActivity(intent);
             }
         });

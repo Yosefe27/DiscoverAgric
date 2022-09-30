@@ -51,7 +51,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewPaymentActivity extends AppCompatActivity {
+public class NewFineActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText amount;
     TextView select_member;
@@ -64,25 +64,25 @@ public class NewPaymentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_payments);
+        setContentView(R.layout.activity_new_fine);
         toolbar = findViewById(R.id.toolbar);
         amount = findViewById(R.id.amount);
         select_member = findViewById(R.id.select_member);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Payment Details");
-        toolbar.setSubtitle("New Payment Details");
+        toolbar.setTitle("Fine Details");
+        toolbar.setSubtitle("New Fine Details");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupTransactionsHistoryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BookwriterFinesActivity.class);
                 startActivity(intent);
             }
         });
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = NewPaymentActivity.this;
+        context = NewFineActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
@@ -94,7 +94,7 @@ public class NewPaymentActivity extends AppCompatActivity {
         select_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    membersDisplayDialog();
+                membersDisplayDialog();
 
             }
         });
@@ -164,7 +164,7 @@ public class NewPaymentActivity extends AppCompatActivity {
                     }
 
 
-                        reportsAlert.dismiss();
+                    reportsAlert.dismiss();
 
 
 
@@ -222,17 +222,17 @@ public class NewPaymentActivity extends AppCompatActivity {
         reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-                        members_recyclerview.setHasFixedSize(true);
-                        members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                        members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
-                        members_recyclerview.setAdapter(membersAdapter);
-                        membersAdapter.setClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                int position = members_recyclerview.getChildLayoutPosition(view);
-                                Members members = listMembers.get(position);
-                                select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
+        members_recyclerview.setHasFixedSize(true);
+        members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
+        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
+        members_recyclerview.setAdapter(membersAdapter);
+        membersAdapter.setClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = members_recyclerview.getChildLayoutPosition(view);
+                Members members = listMembers.get(position);
+                select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
 
 //                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
 //                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
@@ -244,11 +244,11 @@ public class NewPaymentActivity extends AppCompatActivity {
 //                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
 //                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
 //                                startActivity(intent);
-                                reportsAlert.dismiss();
-                            }
+                reportsAlert.dismiss();
+            }
 
 
-                        });
+        });
 //                        reportsAlert.dismiss();
 
 

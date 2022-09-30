@@ -77,7 +77,7 @@ public class LoanRequestsApprovalsActivity extends AppCompatActivity {
        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Loan Requests");
-        toolbar.setSubtitle("Loan Requests Mgmt");
+        toolbar.setSubtitle("Loan Requests");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -325,23 +325,16 @@ public class LoanRequestsApprovalsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-
-
         return true;
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add) {
-
             Intent intent = new Intent(getApplicationContext(), NewLoanRequestActivity.class);
             startActivity(intent);
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 

@@ -65,6 +65,7 @@ public class FacilitatorMembersActivity extends AppCompatActivity {
     MembersAdapter membersAdapter;
     ImageView members_approvals;
     Toolbar toolbar;
+    TextView add_member_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +73,9 @@ public class FacilitatorMembersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_members);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        add_member_button = findViewById(R.id.btn_add_member);
         toolbar.setTitle("Group Members");
-        toolbar.setSubtitle("Group Members Savings");
+        toolbar.setSubtitle("My Group Members");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +83,7 @@ public class FacilitatorMembersActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupSavings.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -137,7 +139,7 @@ public class FacilitatorMembersActivity extends AppCompatActivity {
                 try {
                     JSONObject object = new JSONObject(response);
                     str_my_name = object.getString("full_name");
-str_user_role = object.getString("user_role");
+                    str_user_role = object.getString("user_role");
                     str_group_name = object.getString("group_name");
                     JSONArray array = object.getJSONArray("group_members");
                     for (int i = 0; i < array.length(); i++) {
@@ -186,16 +188,16 @@ str_user_role = object.getString("user_role");
                                 Members members = listMembers.get(position);
 
 
-                                        Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
-                                        intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
-                                        intent.putExtra("intent_email", members.getEmail());
-                                        intent.putExtra("intent_nrc", members.getNrc());
-                                        intent.putExtra("intent_address", members.getAddress());
-                                        intent.putExtra("intent_group_id", members.getGroup_id());
-                                        intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
-                                        intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
-                                        intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
-                                        startActivity(intent);
+                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
+                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
+                                intent.putExtra("intent_email", members.getEmail());
+                                intent.putExtra("intent_nrc", members.getNrc());
+                                intent.putExtra("intent_address", members.getAddress());
+                                intent.putExtra("intent_group_id", members.getGroup_id());
+                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
+                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
+                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
+                                startActivity(intent);
 
                             }
 
@@ -395,9 +397,41 @@ str_user_role = object.getString("user_role");
                 reportsAlert.dismiss();
             }
         });
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
+
+
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_add) {
+            Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
+            startActivity(intent);
+        }
+        add_member_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return super.onOptionsItemSelected(item);
     }
     @Override
     public void onBackPressed() {
+
         finish();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

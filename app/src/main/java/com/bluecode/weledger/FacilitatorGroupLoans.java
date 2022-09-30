@@ -147,6 +147,12 @@ public class FacilitatorGroupLoans extends AppCompatActivity {
                                 stackObject.getString("group_name"),
                                 stackObject.getString("date_created"),
                                 stackObject.getString("annual_interest_rate"),
+                                stackObject.getString("cycle_number"),
+                                stackObject.getString("first_training_meeting_date"),
+                                stackObject.getString("date_savings_started"),
+                                stackObject.getString("reinvested_savings_cycle_start"),
+                                //stackObject.getString("registered_members_cycle_start"),
+                                //stackObject.getString("group_management_spinner"),
                                 stackObject.getString("status")
 
                         );

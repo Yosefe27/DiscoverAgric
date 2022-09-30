@@ -2,6 +2,7 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +12,13 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +44,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.MembersAdapter;
+import com.bluecode.weledger.adapters.MyContributionsAdapter;
 import com.bluecode.weledger.models.Members;
+import com.bluecode.weledger.models.MyContributions;
+import com.bluecode.weledger.models.Transactions;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -51,7 +58,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewPaymentActivity extends AppCompatActivity {
+public class BookwriterFinesActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText amount;
     TextView select_member;
@@ -64,25 +71,24 @@ public class NewPaymentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_payments);
+        setContentView(R.layout.activity_bookwriter_fines);
         toolbar = findViewById(R.id.toolbar);
         amount = findViewById(R.id.amount);
         select_member = findViewById(R.id.select_member);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Payment Details");
-        toolbar.setSubtitle("New Payment Details");
+        toolbar.setTitle("Group Fines");
+        toolbar.setSubtitle("Group Fines Details");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupTransactionsHistoryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
-
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = NewPaymentActivity.this;
+        context = BookwriterFinesActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
@@ -91,13 +97,16 @@ public class NewPaymentActivity extends AppCompatActivity {
             errorDialog("Please Check Your Internet Connection");
 
         }
+       /*
         select_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    membersDisplayDialog();
+                membersDisplayDialog();
 
             }
         });
+
+        */
 
     }
     private boolean isNetworkAvailable() {
@@ -164,7 +173,7 @@ public class NewPaymentActivity extends AppCompatActivity {
                     }
 
 
-                        reportsAlert.dismiss();
+                    reportsAlert.dismiss();
 
 
 
@@ -222,17 +231,17 @@ public class NewPaymentActivity extends AppCompatActivity {
         reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-                        members_recyclerview.setHasFixedSize(true);
-                        members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                        members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
-                        members_recyclerview.setAdapter(membersAdapter);
-                        membersAdapter.setClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                int position = members_recyclerview.getChildLayoutPosition(view);
-                                Members members = listMembers.get(position);
-                                select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
+        members_recyclerview.setHasFixedSize(true);
+        members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
+        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
+        members_recyclerview.setAdapter(membersAdapter);
+        membersAdapter.setClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = members_recyclerview.getChildLayoutPosition(view);
+                Members members = listMembers.get(position);
+                select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
 
 //                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
 //                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
@@ -244,11 +253,11 @@ public class NewPaymentActivity extends AppCompatActivity {
 //                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
 //                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
 //                                startActivity(intent);
-                                reportsAlert.dismiss();
-                            }
+                reportsAlert.dismiss();
+            }
 
 
-                        });
+        });
 //                        reportsAlert.dismiss();
 
 
@@ -300,8 +309,23 @@ public class NewPaymentActivity extends AppCompatActivity {
                 reportsAlert.dismiss();
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
 
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_add) {
+            Intent intent = new Intent(getApplicationContext(), NewFineActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
