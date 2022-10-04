@@ -3,32 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_group_admins"
-            android:icon="@drawable/ic_home_test"
-            android:title="Group Admins" />
-        <item
-            android:id="@+id/nav_group_savings"
-            android:icon="@drawable/ic_home_test"
-            android:title="Group Savings" />
-        <item
-            android:id="@+id/nav_group_loans"
-            android:icon="@drawable/ic_home_test"
-            android:title="Group Loans" />
-        <item
-            android:id="@+id/nav_repayments"
-            android:icon="@drawable/ic_home_test"
-            android:title="Repayments" />
-        <item
-            android:id="@+id/nav_group_fines"
-            android:icon="@drawable/ic_home_test"
-            android:title="Group Fines" />
-        <item
-            android:id="@+id/nav_ledger"
-            android:icon="@drawable/ic_home_test"
-            android:title="Ledger" />
+            android:icon="@drawable/ic_about"
+            android:title="About" />
+
 
 
     </group>
+
 </menu>

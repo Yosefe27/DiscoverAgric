@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
       recyclerView = findViewById(R.id.mainRecycler);
        models = (ArrayList<MainActivityModel>) getData();
         MainActivityAdapter mainActivityAdapter = new MainActivityAdapter(models,MainActivity.this);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,3);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mainActivityAdapter);
 
@@ -107,27 +107,27 @@ public class MainActivity extends AppCompatActivity {
 //                        startActivity(i);
                         Toast.makeText(getApplicationContext(),"Admin",Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.nav_group_savings:
-                        Toast.makeText(getApplicationContext(),"Savings",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_group_loans:
-
-//                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
-//                        startActivity(i);
-                        Toast.makeText(getApplicationContext(),"Loans",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_repayments:
-                        Toast.makeText(getApplicationContext(),"Repayment",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_group_fines:
-
-//                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
-//                        startActivity(i);
-                        Toast.makeText(getApplicationContext(),"Group Fines",Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_ledger:
-                        Toast.makeText(getApplicationContext(),"Ledger",Toast.LENGTH_SHORT).show();
-                        break;
+//                    case R.id.nav_group_savings:
+//                        Toast.makeText(getApplicationContext(),"Savings",Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.nav_group_loans:
+//
+////                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
+////                        startActivity(i);
+//                        Toast.makeText(getApplicationContext(),"Loans",Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.nav_repayments:
+//                        Toast.makeText(getApplicationContext(),"Repayment",Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.nav_group_fines:
+//
+////                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
+////                        startActivity(i);
+//                        Toast.makeText(getApplicationContext(),"Group Fines",Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.nav_ledger:
+//                        Toast.makeText(getApplicationContext(),"Ledger",Toast.LENGTH_SHORT).show();
+//                        break;
                     default:
                         break;
 
@@ -540,6 +540,51 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
+    public void dialogLogout() {
+
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        TextView btn_yes, btn_no;
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_logout, viewGroup, false);
+        btn_yes = dialogView.findViewById(R.id.btn_yes);
+        btn_no = dialogView.findViewById(R.id.btn_no);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+        //finally creating the alert dialog and displaying it
+        final AlertDialog reportsAlert = builder.create();
+        // Let's start with animation work. We just need to create a style and use it here as follow.
+        if (reportsAlert.getWindow() != null)
+            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+
+        reportsAlert.show();
+        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.white);
+        btn_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reportsAlert.dismiss();
+            }
+        });
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("pref_login_status", "0");
+                editor.apply();
+                reportsAlert.dismiss();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_tool_bar,menu);
@@ -553,14 +598,8 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 drawer.openDrawer(GravityCompat.START);
                 return true;
-            case R.id.action_profile:
-                Toast.makeText(this,"Profile",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_reload:
-                Toast.makeText(this,"Reload",Toast.LENGTH_SHORT).show();
-                break;
             case R.id.action_logout:
-                Toast.makeText(this,"Logout",Toast.LENGTH_SHORT).show();
+                dialogLogout();
                 break;
             default:
                 break;
@@ -568,14 +607,42 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
     private List<MainActivityModel> getData(){
         ArrayList<MainActivityModel> mainModel = new ArrayList<>();
-        mainModel.add(new MainActivityModel("Group Admin",R.drawable.members_icon));
-        mainModel.add(new MainActivityModel("Group Savings",R.drawable.save_icon));
-        mainModel.add(new MainActivityModel("Group Loans",R.drawable.loan_icon));
-        mainModel.add(new MainActivityModel("Repayment",R.drawable.repayment_icon));
-        mainModel.add(new MainActivityModel("Group Fines",R.drawable.fine_icon));
-        mainModel.add(new MainActivityModel("Ledger",R.drawable.ledger_icon));
-        return mainModel;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        str_a = preferences.getString("a", "");
+        str_name = preferences.getString("name", "");
+        str_user_role = preferences.getString("user_role", "");
+        if(str_user_role.equals("2")){ //2 is for book writer
+            mainModel.add(new MainActivityModel("Member Admin",R.drawable.ic_admin,R.color.container_color,1));
+            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color2,2));
+            mainModel.add(new MainActivityModel("Loan Requests",R.drawable.ic_loan,R.color.container_color,3));
+            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color2,4));
+            mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,5));
+            mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color2,6));
+
+        }
+        else if(str_user_role.equals("3")){//3 is for facilitator
+            mainModel.add(new MainActivityModel("Group Admin",R.drawable.ic_admin,R.color.container_color,7));
+            mainModel.add(new MainActivityModel("Group Savings",R.drawable.ic_saving,R.color.container_color2,8));
+            mainModel.add(new MainActivityModel("Group Loans",R.drawable.ic_loan,R.color.container_color,9));
+            mainModel.add(new MainActivityModel("Repayment",R.drawable.ic_payments,R.color.container_color2,10));
+            mainModel.add(new MainActivityModel("Group Fines",R.drawable.ic_fine,R.color.container_color,11));
+            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color2,12));
+
+        }
+        else {
+
+            mainModel.add(new MainActivityModel("Members",R.drawable.ic_member,R.color.container_color,13));
+            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color2,14));
+            mainModel.add(new MainActivityModel("Loans Request",R.drawable.ic_loan,R.color.container_color,15));
+            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color2,16));
+            mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,17));
+            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color2,18));
+
+        }
+             return mainModel;
     }
 }

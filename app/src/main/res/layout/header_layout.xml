@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:background="#000"
+    android:background="@color/container_color"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
+
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
         android:id="@+id/imageVieV"
-        android:layout_width="99dp"
-        android:layout_height="74dp"
-        android:background="@drawable/login_we_logo"
+        android:layout_width="355dp"
+        android:layout_height="146dp"
+        android:background="@drawable/round_login_logo"
         android:contentDescription=""
         android:paddingTop="8dp" />
 

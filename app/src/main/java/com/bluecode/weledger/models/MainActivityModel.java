@@ -6,11 +6,14 @@ import android.widget.ImageView;
 public class MainActivityModel {
     String nameType;
     int imageView;
+    int color;
+    int cardNumber;
 
-
-    public MainActivityModel(String nameType, int imageView) {
+    public MainActivityModel(String nameType, int imageView, int color, int cardNumber) {
         this.nameType = nameType;
         this.imageView = imageView;
+        this.color = color;
+        this.cardNumber = cardNumber;
     }
 
     public String getNameType() {
@@ -27,5 +30,21 @@ public class MainActivityModel {
 
     public void setImageView(int imageView) {
         this.imageView = imageView;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public int getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(int cardNumber) {
+        this.cardNumber = cardNumber;
     }
 }

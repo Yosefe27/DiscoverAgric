@@ -41,8 +41,11 @@
         <entry key="..\:/AndroidStudioProjects/WELedger/app/src/main/res/menu/menu_book_details.xml" value="0.1265625" />
         <entry key="..\:/AndroidStudioProjects/WELedger/app/src/main/res/menu/menu_home.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/drawable/ic__menu.xml" value="0.167" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/drawable/ic_logout.xml" value="0.1" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/dialog_logout.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/header_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/list_item_payment_options.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/main_activity_holder.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/main_layout_cardview.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
