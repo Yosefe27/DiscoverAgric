@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -178,7 +176,7 @@ public class FacilitatorGroupSavings extends AppCompatActivity {
                                 int position = groups_recyclerview.getChildLayoutPosition(view);
                                 Groups groups = listGroups.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), FacilitatorMembersActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), BookWriterMembersActivity.class);
                                 /*
                                 intent.putExtra("intent_group_id", groups.getId());
                                 intent.putExtra("intent_group_name", groups.getGroup_name());
