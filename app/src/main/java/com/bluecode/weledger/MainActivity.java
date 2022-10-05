@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     TextView save_payment,logout;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
-    LinearLayout linear_members, linear_loans, member_payments,linear_manage_payments;
+    LinearLayout linear_members, linear_loans, member_payments,linear_manage_payments,bookwriter_social_fund;
     LinearLayout bookwriter_savings,bookwriter_repayments,bookwriter_members,bookwriter_loans,bookwriter_ledger,bookwriter_fines;
     LinearLayout linear_manage_groups,linear_facilitator_savings,linear_loans_facilitator,linear_ledger_member,linear_fines;
     LinearLayout linear_repayments_facilitator,linear_fines_facilitator,linear_ledger_facilitator,linear_center_container;
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         bookwriter_loans = findViewById(R.id.bookwriter_loans);
         bookwriter_fines = findViewById(R.id.bookwriter_fines);
         bookwriter_ledger = findViewById(R.id.bookwriter_ledger);
+        bookwriter_social_fund = findViewById(R.id.bookwriter_social_fund);
 
        // toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -211,6 +212,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), BookwriterFinesActivity.class);
+                startActivity(intent);
+            }
+        });
+        bookwriter_social_fund.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), BookwriterSocialFundActivity.class);
                 startActivity(intent);
             }
         });
