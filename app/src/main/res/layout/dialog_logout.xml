@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="#FF8BDA">
 
 
     <TextView
@@ -16,7 +17,10 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:layout_gravity="center"
-        android:text="Are You sure you want to logout?"/>
+        android:text="Are You sure you want to logout?"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
     <LinearLayout
         android:id="@+id/linear_buttons"
         android:layout_width="match_parent"
@@ -38,7 +42,7 @@
             android:elevation="7dp"
             android:gravity="center_horizontal"
             android:textAlignment="center"
-            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="10dp">
 
             <TextView
@@ -51,7 +55,7 @@
                 android:text="Yes"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorPrimaryDark" />
         </androidx.cardview.widget.CardView>
         <TextView
             android:layout_width="40dp"
@@ -59,7 +63,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="No"
+            android:text="  "
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/white" />
@@ -72,7 +76,7 @@
             android:layout_weight="1"
             android:elevation="7dp"
             android:gravity="center_horizontal"
-            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
             app:cardCornerRadius="10dp">
 
             <TextView

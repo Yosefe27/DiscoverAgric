@@ -53,7 +53,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FacilitatorMembersActivity extends AppCompatActivity {
+public class BookWriterMembersActivity extends AppCompatActivity {
 
     RecyclerView members_recyclerview;
     RequestQueue mRequestQueue;
@@ -90,7 +90,7 @@ public class FacilitatorMembersActivity extends AppCompatActivity {
         members_recyclerview = findViewById(R.id.members_recyclerview);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = FacilitatorMembersActivity.this;
+        context = BookWriterMembersActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
