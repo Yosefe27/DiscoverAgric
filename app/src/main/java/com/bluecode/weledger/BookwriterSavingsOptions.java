@@ -6,19 +6,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class BookwriterSavingsOptions extends AppCompatActivity {
     Toolbar toolbar;
-    LinearLayout my_savings_option,group_savings_option;
+    LinearLayout my_savings_option,group_savings_option,add_savings,edit_savings;
     @Override
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookwriter_savings_options);
         my_savings_option = findViewById(R.id.my_savings);
         group_savings_option = findViewById(R.id.group_savings);
+        add_savings = findViewById(R.id.add_savings);
+        edit_savings = findViewById(R.id.edit_savings);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Savings");
@@ -47,6 +50,20 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
                 startActivity(intent);
+            }
+        });
+        add_savings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
+                startActivity(intent);
+            }
+        });
+        edit_savings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
             }
         });
 
