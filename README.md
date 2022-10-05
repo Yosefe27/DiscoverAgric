@@ -3,8 +3,11 @@
 
 Login credentials:
 
-username1: 661318/71/1
+username1: facilitator
 Password: 123456
 
-username2: 235848/71/1
+username2: bookwriter
 Password: 123456
+
+username3: member
+password: 123456

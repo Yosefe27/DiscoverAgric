@@ -97,6 +97,7 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_fines.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_ledger.xml" value="0.20833333333333334" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_repayments.xml" value="0.2391304347826087" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_savings_options.xml" value="0.20969202898550723" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_adds_new_group.xml" value="0.24864130434782608" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_fines.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_ledger.xml" value="0.24895833333333334" />
@@ -122,6 +123,7 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_splash.xml" value="0.1671195652173913" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activityfacilitator_group_transactions_history.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/dialog_logout.xml" value="0.20018115942028986" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/dialog_payment_options.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/list_item_group_members.xml" value="0.24864130434782608" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/list_item_groups.xml" value="0.16485507246376813" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/list_item_transactions.xml" value="0.20833333333333334" />

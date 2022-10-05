@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
+
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_group_admins:
@@ -131,9 +132,6 @@ public class MainActivity extends AppCompatActivity {
 //                        break;
                     default:
                         break;
-
-
-
                 }
                 item.setChecked(true);
                 drawer.closeDrawers();
@@ -141,183 +139,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        bookwriter_savings = findViewById(R.id.bookwriter_savings);
-//        bookwriter_repayments = findViewById(R.id.bookwriter_repayments);
-//        bookwriter_members = findViewById(R.id.bookwriter_members);
-//        bookwriter_loans = findViewById(R.id.bookwriter_loans);
-//        bookwriter_fines = findViewById(R.id.bookwriter_fines);
-//        bookwriter_ledger = findViewById(R.id.bookwriter_ledger);
-//
-//       // toolbar = findViewById(R.id.toolbar);
-//        //setSupportActionBar(toolbar);
-//        //toolbar.setTitle("WE eLedger");
-//        //toolbar.setSubtitle("Home");
-//        logout = findViewById(R.id.btn_logout);
-//        name = findViewById(R.id.name);
-//        linear_members = findViewById(R.id.linear_members);
-//        linear_loans = findViewById(R.id.linear_loans);
-//        linear_fines = findViewById(R.id.linear_fines);
-//        linear_ledger_member = findViewById(R.id.linear_ledger_member);
-//        //group_balance = findViewById(R.id.group_balance);
-//        //linear_center_container = findViewById(R.id.linear_center_container);
-//        //top_name = findViewById(R.id.top_name);
-//        linear_bookkeeper_menu = findViewById(R.id.linear_bookkeeper_menu);
-//        linear_ordinary_member_menu = findViewById(R.id.linear_ordinary_member_menu);
-//
-//        linear_manage_groups = findViewById(R.id.linear_manage_groups);
-//        linear_facilitator_savings = findViewById(R.id.linear_facilitator_savings);
-//        linear_loans_facilitator = findViewById(R.id.linear_loans_facilitator);
-//        linear_repayments_facilitator = findViewById(R.id.linear_repayments_facilitator);
-//        linear_fines_facilitator = findViewById(R.id.linear_fines_facilitator);
-//        linear_ledger_facilitator = findViewById(R.id.linear_ledger_facilitator);
-//
-//        linear_facilitator_menu = findViewById(R.id.linear_facilitator_menu);
-//        //linear_manage_payments = findViewById(R.id.linear_manage_payments);
-//        save_payment = findViewById(R.id.save_payment_details);
-//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        str_a = preferences.getString("a", "");
-//        str_name = preferences.getString("name", "");
-//        str_user_role = preferences.getString("user_role", "");
-//        //name.setText(String.valueOf("Welcome! " + str_name));
-//        //top_name.setText(String.valueOf("Welcome! " + str_name));
-//        if (str_user_role.equals("2")) {
-//            linear_bookkeeper_menu.setVisibility(View.VISIBLE);
-//            linear_facilitator_menu.setVisibility(View.GONE);
-//            linear_ordinary_member_menu.setVisibility(View.GONE);
-//            //top_name.setVisibility(View.GONE);
-//        } else if (str_user_role.equals("3")) {
-//            linear_facilitator_menu.setVisibility(View.VISIBLE);
-//            linear_bookkeeper_menu.setVisibility(View.GONE);
-//            linear_ordinary_member_menu.setVisibility(View.GONE);
-//            //linear_center_container.setVisibility(View.GONE);
-//        } else {
-//            linear_bookkeeper_menu.setVisibility(View.GONE);
-//            linear_facilitator_menu.setVisibility(View.GONE);
-//            //top_name.setVisibility(View.GONE);
-//        }
-//        //Facilitator Menu Options
-//        linear_facilitator_savings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupSavings.class);
-//                startActivity(intent);
-//            }
-//        });
-//        linear_loans_facilitator.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupLoans.class);
-//                startActivity(intent);
-//            }
-//        });
-//        linear_repayments_facilitator.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupRepayments.class);
-//                startActivity(intent);
-//            }
-//        });
-//        linear_fines_facilitator.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupFines.class);
-//                startActivity(intent);
-//            }
-//        });
-//        linear_ledger_facilitator.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        linear_manage_groups.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //Bookwriter Menu Options
-//        bookwriter_savings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupTransactionsHistoryActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        bookwriter_repayments.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), BookwriterRepaymentsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        bookwriter_ledger.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), BookwriterLedgerActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        bookwriter_loans.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), LoanRequestsApprovalsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        bookwriter_members.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorMembersActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        bookwriter_fines.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), BookwriterFinesActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //Member Menu Options
-//        linear_ledger_member.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        linear_members.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialogLogout();
-//            }
-//        });
-//
-//        myContributionsHistory();
     }
 
 //    public void myContributionsHistory() {

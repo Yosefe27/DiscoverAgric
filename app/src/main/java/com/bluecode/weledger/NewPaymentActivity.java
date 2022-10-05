@@ -54,7 +54,8 @@ import java.util.Map;
 public class NewPaymentActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText amount;
-    TextView select_member;
+    TextView select_member,post_member_saving,selected_member;
+    String submit_saving_url=BASE_URL+"submit_saving.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
     String membership_response = BASE_URL + "membership_response.php";
     MembersAdapter membersAdapter;
@@ -68,9 +69,10 @@ public class NewPaymentActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         amount = findViewById(R.id.amount);
         select_member = findViewById(R.id.select_member);
+        post_member_saving = findViewById(R.id.save_payment_details);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Payment Details");
-        toolbar.setSubtitle("New Payment Details");
+        toolbar.setTitle("Savings Details");
+        toolbar.setSubtitle("Post Member Saving");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +97,91 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     membersDisplayDialog();
-
             }
         });
+        post_member_saving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str_amount = amount.getText().toString();
+                //select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
+                String str_select_member = select_member.getText().toString();
+                if(amount.getText().toString().isEmpty()){
+                    errorDialog("Amount should not be empty.");
+                }
+                if(select_member.getText().toString().isEmpty()){
+                    errorDialog("Member Name should not be empty.");
+                }
+                else{
+                    startSubmission(str_amount,
+                            str_select_member);
+                }
+            }
+        });
+    }
+    private void startSubmission(final String amount,String select_member){
+        //        signin_progress.setVisibility(View.VISIBLE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String str_a = preferences.getString("a", "");
+        ViewGroup viewGroup = findViewById(android.R.id.content);
 
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
+
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+        //finally creating the alert dialog and displaying it
+        final AlertDialog reportsAlert = builder.create();
+        // Let's start with animation work. We just need to create a style and use it here as follow.
+        if (reportsAlert.getWindow() != null)
+            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+        reportsAlert.setCancelable(true);
+        reportsAlert.setCanceledOnTouchOutside(true);
+        reportsAlert.show();
+        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, submit_saving_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                Log.v("group_url", response);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
+
+                        String received_msg = object.getString("msg");
+
+                        reportsAlert.dismiss();
+                        errorDialog(object.getString("msg"));
+                    } else if (object.getString("status").equals("failed")) {
+                        reportsAlert.dismiss();
+//                        signin_progress.setVisibility(View.GONE);
+                        errorDialog(object.getString("msg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+
+            //amount
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> parms = new HashMap<String, String>();
+                parms.put("amount", amount);
+                parms.put("select_member", select_member);
+                parms.put("a", str_a);
+                return parms;
+            }
+        };
+        stringRequest.setShouldCache(false);
+        mRequestQueue.add(stringRequest);
     }
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager

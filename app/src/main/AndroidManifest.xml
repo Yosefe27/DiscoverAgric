@@ -51,6 +51,8 @@
         <activity android:name=".FacilitatorMembersLoans"/>
         <activity android:name=".FacilitatorMembersRepayments"/>
         <activity android:name=".BookwriterRepaymentsActivity"/>
+        <activity android:name="BookwriterSavingsOptions"/>
+        <activity android:name="BookwriterSavingsActivity"/>
 
     </application>
 
