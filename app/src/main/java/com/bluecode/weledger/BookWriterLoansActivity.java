@@ -55,7 +55,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class LoanRequestsApprovalsActivity extends AppCompatActivity {
+public class BookWriterLoansActivity extends AppCompatActivity {
     RecyclerView loan_requests_recylerview;
     ArrayList<LoanRequests> listLoanRequests = new ArrayList<>();
     MyLoanRequestsAdapter myLoanRequestAdapter;
@@ -91,7 +91,7 @@ public class LoanRequestsApprovalsActivity extends AppCompatActivity {
         });
 //        loan_approvals.setVisibility(View.GONE);
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = LoanRequestsApprovalsActivity.this;
+        context = BookWriterLoansActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {

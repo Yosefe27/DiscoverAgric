@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     TextView save_payment,logout;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
-    LinearLayout linear_members, linear_loans, member_payments,linear_manage_payments;
+    LinearLayout linear_members, linear_loans, member_payments,linear_manage_payments,bookwriter_social_fund;
     LinearLayout bookwriter_savings,bookwriter_repayments,bookwriter_members,bookwriter_loans,bookwriter_ledger,bookwriter_fines;
     LinearLayout linear_manage_groups,linear_facilitator_savings,linear_loans_facilitator,linear_ledger_member,linear_fines;
     LinearLayout linear_repayments_facilitator,linear_fines_facilitator,linear_ledger_facilitator,linear_center_container;
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -101,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
 //                    case R.id.nav_group_admins:
@@ -474,25 +474,31 @@ public class MainActivity extends AppCompatActivity {
             mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color2,4));
             mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,5));
             mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color2,6));
+            mainModel.add(new MainActivityModel("Member Register",R.drawable.ic_register,R.color.container_color,7));
+
 
         }
         else if(str_user_role.equals("3")){//3 is for facilitator
-            mainModel.add(new MainActivityModel("Group Admin",R.drawable.ic_admin,R.color.container_color,7));
-            mainModel.add(new MainActivityModel("Group Savings",R.drawable.ic_saving,R.color.container_color2,8));
-            mainModel.add(new MainActivityModel("Group Loans",R.drawable.ic_loan,R.color.container_color,9));
-            mainModel.add(new MainActivityModel("Repayment",R.drawable.ic_payments,R.color.container_color2,10));
-            mainModel.add(new MainActivityModel("Group Fines",R.drawable.ic_fine,R.color.container_color,11));
-            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color2,12));
+            mainModel.add(new MainActivityModel("Group Admin",R.drawable.ic_admin,R.color.container_color,8));
+            mainModel.add(new MainActivityModel("Group Savings",R.drawable.ic_saving,R.color.container_color2,9));
+            mainModel.add(new MainActivityModel("Group Loans",R.drawable.ic_loan,R.color.container_color,10));
+            mainModel.add(new MainActivityModel("Repayment",R.drawable.ic_payments,R.color.container_color2,11));
+            mainModel.add(new MainActivityModel("Group Fines",R.drawable.ic_fine,R.color.container_color,12));
+            mainModel.add(new MainActivityModel("Member Register",R.drawable.ic_register,R.color.container_color2,13));
+            mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color,14));
 
         }
         else {
 
-            mainModel.add(new MainActivityModel("Members",R.drawable.ic_member,R.color.container_color,13));
-            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color2,14));
-            mainModel.add(new MainActivityModel("Loans Request",R.drawable.ic_loan,R.color.container_color,15));
-            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color2,16));
-            mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,17));
-            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color2,18));
+            mainModel.add(new MainActivityModel("Members",R.drawable.ic_member,R.color.container_color,15));
+            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color2,16));
+            mainModel.add(new MainActivityModel("Loans Request",R.drawable.ic_loan,R.color.container_color,17));
+            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color2,18));
+            mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,19));
+            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color2,20));
+            mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color,21));
+            mainModel.add(new MainActivityModel("Attendance Register",R.drawable.ic_register,R.color.container_color2,22));
+
 
         }
              return mainModel;

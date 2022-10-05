@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -39,8 +41,8 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bluecode.weledger.adapters.GroupsAdaptor;
-import com.bluecode.weledger.models.Groups;
+import com.bluecode.weledger.adapters.MembersAdapter;
+import com.bluecode.weledger.models.Members;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -51,27 +53,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FacilitatorGroupSavings extends AppCompatActivity {
+public class BookWriterMembersActivity extends AppCompatActivity {
 
-    RecyclerView groups_recyclerview;
+    RecyclerView members_recyclerview;
     RequestQueue mRequestQueue;
-    ArrayList<Groups> listGroups = new ArrayList<>();
+    ArrayList<Members> listMembers = new ArrayList<>();
     Context context;
-    String str_a, groups_list = BASE_URL + "list_of_groups.php";
-    String groupship_response = BASE_URL + "groupship_response.php";
+    String str_a, members_list = BASE_URL + "list_of_group_members.php";
+    String membership_response = BASE_URL + "membership_response.php";
     String str_user_role,str_my_name,str_group_name;
-    GroupsAdaptor groupsAdapter;
-    ImageView groups_approvals;
+    MembersAdapter membersAdapter;
+    ImageView members_approvals;
     Toolbar toolbar;
+    TextView add_member_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_facilitator_savings);
+        setContentView(R.layout.activity_members);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("GROUPS");
-        toolbar.setSubtitle("LIST OF GROUPS");
+        add_member_button = findViewById(R.id.btn_add_member);
+        toolbar.setTitle("Group Members");
+        toolbar.setSubtitle("My Group Members");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,18 +87,20 @@ public class FacilitatorGroupSavings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        groups_recyclerview = findViewById(R.id.groups_recyclerview);
+        members_recyclerview = findViewById(R.id.members_recyclerview);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = FacilitatorGroupSavings.this;
+        context = BookWriterMembersActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
-            groupsList();
+            membersList();
         } else {
             errorDialog("Please Check Your Internet Connection");
 
         }
+
+
 
     }
 
@@ -105,7 +111,7 @@ public class FacilitatorGroupSavings extends AppCompatActivity {
         return activeNetworkInfo != null;
     }
 
-    public void groupsList() {
+    public void membersList() {
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
@@ -124,67 +130,73 @@ public class FacilitatorGroupSavings extends AppCompatActivity {
 
         reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        StringRequest request = new StringRequest(Request.Method.POST, groups_list, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, members_list, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 //                Toast.makeText(getApplicationContext(),"Response : "+response,Toast.LENGTH_SHORT).show();
 //                textView.setText(response.toString());
-                Log.v("groups_response", response);
+                Log.v("transactions_response", response);
                 try {
                     JSONObject object = new JSONObject(response);
-
-                    JSONArray array = object.getJSONArray("groups");
+                    str_my_name = object.getString("full_name");
+                    str_user_role = object.getString("user_role");
+                    str_group_name = object.getString("group_name");
+                    JSONArray array = object.getJSONArray("group_members");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
 //                        JSONObject stackObject2 = array2.getJSONObject(i);
 
                         // textView.setText(object1.toString());
-                        Groups groups = new Groups(
+                        Members members = new Members(
                                 stackObject.getString("id"),
-                                stackObject.getString("group_name"),
-                                stackObject.getString("date_created"),
-                                stackObject.getString("annual_interest_rate"),
-                                stackObject.getString("cycle_number"),
-                                stackObject.getString("first_training_meeting_date"),
-                                stackObject.getString("date_savings_started"),
-                                stackObject.getString("reinvested_savings_cycle_start"),
-                                //stackObject.getString("registered_members_cycle_start"),
-                                //stackObject.getString("group_management_spinner"),
-                                stackObject.getString("status")
+                                stackObject.getString("firstname"),
+                                stackObject.getString("lastname"),
+                                stackObject.getString("email"),
+                                stackObject.getString("nrc"),
+                                stackObject.getString("password"),
+                                stackObject.getString("address"),
+                                stackObject.getString("user_role"),
+                                stackObject.getString("group_id"),
+                                stackObject.getString("avatar"),
+                                stackObject.getString("chairperson_approval"),
+                                stackObject.getString("treasurer_approval"),
+                                stackObject.getString("secretary_approval"),
+                                stackObject.getString("membership_status")
 
                         );
-                        listGroups.add(groups);
+                        listMembers.add(members);
                     }
-//                    if(str_user_role.equals("2") || str_user_role.equals("3") || str_user_role.equals("4")){
-////                        groups_approvals.setVisibility(View.VISIBLE);
-//                    }else{
-////                        groups_approvals.setVisibility(View.GONE);
-//                    }
-                    if (listGroups.size() <= 0) {
-                        groups_recyclerview.setVisibility(View.GONE);
+                    if(str_user_role.equals("2") || str_user_role.equals("3") || str_user_role.equals("4")){
+//                        members_approvals.setVisibility(View.VISIBLE);
+                    }else{
+//                        members_approvals.setVisibility(View.GONE);
+                    }
+                    if (listMembers.size() <= 0) {
+                        members_recyclerview.setVisibility(View.GONE);
 //                        no_transactions_txt.setVisibility(View.VISIBLE);
                         reportsAlert.dismiss();
                     } else {
-                        groups_recyclerview.setHasFixedSize(true);
-                        groups_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                        groups_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        groupsAdapter = new GroupsAdaptor(getBaseContext(), listGroups);
-                        groups_recyclerview.setAdapter(groupsAdapter);
-                        groupsAdapter.setClickListener(new View.OnClickListener() {
+                        members_recyclerview.setHasFixedSize(true);
+                        members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                        members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
+                        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
+                        members_recyclerview.setAdapter(membersAdapter);
+                        membersAdapter.setClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                int position = groups_recyclerview.getChildLayoutPosition(view);
-                                Groups groups = listGroups.get(position);
+                                int position = members_recyclerview.getChildLayoutPosition(view);
+                                Members members = listMembers.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), BookWriterMembersActivity.class);
-                                /*
-                                intent.putExtra("intent_group_id", groups.getId());
-                                intent.putExtra("intent_group_name", groups.getGroup_name());
-                                intent.putExtra("intent_group_date_created", groups.getDate_created());
-                                intent.putExtra("intent_group_annual_interest_rate", groups.getAnnual_interest_rate());
-                                intent.putExtra("intent_group_status", groups.getStatus());
 
-                                 */
+                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
+                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
+                                intent.putExtra("intent_email", members.getEmail());
+                                intent.putExtra("intent_nrc", members.getNrc());
+                                intent.putExtra("intent_address", members.getAddress());
+                                intent.putExtra("intent_group_id", members.getGroup_id());
+                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
+                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
+                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
                                 startActivity(intent);
 
                             }
@@ -227,11 +239,82 @@ public class FacilitatorGroupSavings extends AppCompatActivity {
         request.setShouldCache(false);
         requestQueue.add(request);
     }
+    /*private void msgDialog(String msg,
+                           final String id,
+                           final String d_fullname,
+                           final String d_email,
+                           final String d_nrc,
+                           final String d_address,
+                           final String d_group_id,
+                           final String d_chairperson_approval,
+                           final String d_treasurer_approval,
+                           final String d_secretary_approval) {
+        LinearLayout yes, view, no;
+        TextView message;
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        final View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_response, viewGroup, false);
+        yes = dialogView.findViewById(R.id.yes);
+        view = dialogView.findViewById(R.id.view);
+        no = dialogView.findViewById(R.id.no);
+        message = dialogView.findViewById(R.id.msg);
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-    private void groupshipResponse(
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+        //finally creating the alert dialog and displaying it
+        final AlertDialog reportsAlert = builder.create();
+        // Let's start with animation work. We just need to create a style and use it here as follow.
+        if (reportsAlert.getWindow() != null)
+            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+
+        reportsAlert.show();
+        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        message.setText(msg);
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                membershipResponse("1",id);
+                reportsAlert.dismiss();
+//                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.putString("login_status", "0");
+//                editor.apply();
+//                finish();
+//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                startActivity(intent);
+            }
+        });
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reportsAlert.dismiss();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("intent_full_name", d_fullname);
+                intent.putExtra("intent_email", d_email);
+                intent.putExtra("intent_nrc", d_nrc);
+                intent.putExtra("intent_address", d_address);
+                intent.putExtra("intent_group_id", d_group_id);
+                intent.putExtra("intent_chairperson_approval", d_chairperson_approval);
+                intent.putExtra("intent_treasurer_approval", d_treasurer_approval);
+                intent.putExtra("intent_secretary_approval", d_secretary_approval);
+                startActivity(intent);
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                membershipResponse("2",id);
+                reportsAlert.dismiss();
+            }
+        });
+    }
+*/
+    private void membershipResponse(
             final String response,
             final String requestor_id) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, groupship_response, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, membership_response, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
@@ -319,11 +402,38 @@ public class FacilitatorGroupSavings extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
+
+
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_add) {
+            Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
+            startActivity(intent);
+        }
+        add_member_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
     public void onBackPressed() {
 
         finish();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
-
 }

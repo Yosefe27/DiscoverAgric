@@ -35,9 +35,9 @@
         <activity android:name=".NewLoanRequestActivity" />
         <activity android:name=".NewMemberActivity" />
         <activity android:name=".MyLoanRequestsActivity" />
-        <activity android:name=".FacilitatorMembersActivity" />
+        <activity android:name=".BookWriterMembersActivity" />
         <activity android:name=".FacilitatorGroupTransactionsHistoryActivity" />
-        <activity android:name=".LoanRequestsApprovalsActivity" />
+        <activity android:name=".BookWriterLoansActivity" />
         <activity android:name=".NewPaymentActivity" />
         <activity android:name=".FacilitatorGroupsActivity" />
         <activity android:name=".FacilitatorNewMemberActivity" />
