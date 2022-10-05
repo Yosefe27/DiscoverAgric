@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.GridLayout;
 import android.widget.GridView;
@@ -600,6 +601,36 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_logout:
                 dialogLogout();
+                break;
+            case R.id.action_profile:
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                str_a = preferences.getString("a", "");
+                str_name = preferences.getString("name", "");
+                str_user_role = preferences.getString("user_role", "");
+
+
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.custom_toast,
+                        (ViewGroup) findViewById(R.id.toast_layout_root));
+                TextView toastTextView = (TextView) layout.findViewById(R.id.toastTextView);
+                ImageView toastImageView = (ImageView) layout.findViewById(R.id.toastImageView);
+                if(str_user_role.equals("2")){
+                    toastTextView.setText("You`re logged in as a book writer");
+                }
+                else if(str_user_role.equals("3")){
+                    toastTextView.setText("You`re logged in as a facilitator");
+                }
+                else{
+                    toastTextView.setText("You`re logged in as an ordinary member");
+                }
+                toastImageView.setImageResource(R.drawable.ic_user_profile);
+                Toast toast = new Toast(getApplicationContext());
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
+
+
+
                 break;
             default:
                 break;

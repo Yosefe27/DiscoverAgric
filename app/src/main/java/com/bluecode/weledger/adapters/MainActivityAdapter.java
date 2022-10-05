@@ -8,12 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bluecode.weledger.FacilitatorGroupFines;
+import com.bluecode.weledger.FacilitatorGroupLoans;
+import com.bluecode.weledger.FacilitatorGroupRepayments;
+import com.bluecode.weledger.FacilitatorGroupSavings;
+import com.bluecode.weledger.FacilitatorGroupsActivity;
 import com.bluecode.weledger.FacilitatorMembersActivity;
 import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.MainActivityModel;
@@ -55,7 +61,31 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
                         Intent memberAdmin = new Intent(context, FacilitatorMembersActivity.class);
                            context.startActivity(memberAdmin);
                         break;
-
+                    case 7:
+                        Intent groupAdmin = new Intent(context, FacilitatorGroupsActivity.class);
+                        context.startActivity(groupAdmin);
+                        break;
+                    case 8:
+                        Intent groupSaving = new Intent(context, FacilitatorGroupSavings.class);
+                        context.startActivity(groupSaving);
+                        break;
+                    case 9:
+                        Intent groupLoan = new Intent(context, FacilitatorGroupLoans.class);
+                        context.startActivity(groupLoan);
+                        break;
+                    case 10:
+                        Intent groupRepayments = new Intent(context, FacilitatorGroupRepayments.class);
+                        context.startActivity(groupRepayments);
+                        break;
+                    case 11:
+                        Intent groupFines = new Intent(context, FacilitatorGroupFines.class);
+                        context.startActivity(groupFines);
+                        break;
+                    case 12:
+//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
+//                        context.startActivity(groupLedger);
+                        Toast.makeText(context,"Work in progress",Toast.LENGTH_SHORT).show();
+                        break;
                 }
             }
         });
