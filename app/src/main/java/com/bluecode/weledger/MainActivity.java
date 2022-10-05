@@ -104,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
 
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.nav_group_admins:
+//                    case R.id.nav_group_admins:
 //                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
 //                        startActivity(i);
-                        Toast.makeText(getApplicationContext(),"Admin",Toast.LENGTH_SHORT).show();
-                        break;
+//                        Toast.makeText(getApplicationContext(),"Ad",Toast.LENGTH_SHORT).show();
+//                        break;
 //                    case R.id.nav_group_savings:
 //                        Toast.makeText(getApplicationContext(),"Savings",Toast.LENGTH_SHORT).show();
 //                        break;

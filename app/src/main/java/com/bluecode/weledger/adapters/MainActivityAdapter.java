@@ -15,12 +15,16 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bluecode.weledger.BookwriterFinesActivity;
+import com.bluecode.weledger.BookwriterRepaymentsActivity;
+import com.bluecode.weledger.BookwriterSavingsOptions;
 import com.bluecode.weledger.FacilitatorGroupFines;
 import com.bluecode.weledger.FacilitatorGroupLoans;
 import com.bluecode.weledger.FacilitatorGroupRepayments;
 import com.bluecode.weledger.FacilitatorGroupSavings;
 import com.bluecode.weledger.FacilitatorGroupsActivity;
 import com.bluecode.weledger.FacilitatorMembersActivity;
+import com.bluecode.weledger.LoanRequestsApprovalsActivity;
 import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.MainActivityModel;
 
@@ -58,8 +62,28 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
             public void onClick(View v) {
                 switch (card) {
                     case 1:
-                        Intent memberAdmin = new Intent(context, FacilitatorMembersActivity.class);
-                           context.startActivity(memberAdmin);
+                        Intent bookAdmin = new Intent(context, FacilitatorMembersActivity.class);
+                           context.startActivity(bookAdmin);
+                        break;
+                    case 2:
+                        Intent bookSaving= new Intent(context, BookwriterSavingsOptions.class);
+                        context.startActivity(bookSaving);
+                        break;
+                    case 3:
+                        Intent bookLoan= new Intent(context, LoanRequestsApprovalsActivity.class);
+                        context.startActivity(bookLoan);
+                        break;
+                    case 4:
+                        Intent bookRepayment= new Intent(context, BookwriterRepaymentsActivity.class);
+                        context.startActivity(bookRepayment);
+                        break;
+                    case 5:
+                        Intent bookFines= new Intent(context, BookwriterFinesActivity.class);
+                        context.startActivity(bookFines);
+                        break;
+                    case 6:
+//                        Intent bookSocial= new Intent(context, BookwriterSocialFundsActivity.class);
+//                        context.startActivity(bookSocial);
                         break;
                     case 7:
                         Intent groupAdmin = new Intent(context, FacilitatorGroupsActivity.class);
