@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupTransactionsHistoryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BookwriterSavingsOptions.class);
                 startActivity(intent);
             }
         });
@@ -230,8 +230,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
