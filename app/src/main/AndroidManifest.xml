@@ -53,6 +53,8 @@
         <activity android:name=".BookwriterRepaymentsActivity"/>
         <activity android:name="BookwriterSavingsOptions"/>
         <activity android:name="BookwriterSavingsActivity"/>
+        <activity android:name="BookwriterFinesActivity"/>
+        <activity android:name=".BookwriterLedgerActivity"/>
 
     </application>
 
