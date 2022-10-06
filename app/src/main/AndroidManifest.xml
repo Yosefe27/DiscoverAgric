@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
+            android:name=".AddMemberToGroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GroupAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -43,7 +49,7 @@
         <activity android:name=".FacilitatorNewMemberActivity" />
         <activity
             android:name=".FacilitatorNewGroupActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".GroupDetailsActivity" />
         <activity android:name=".FacilitatorManageGroupsActivity" />
         <activity android:name=".FacilitatorGroupSavings" />
