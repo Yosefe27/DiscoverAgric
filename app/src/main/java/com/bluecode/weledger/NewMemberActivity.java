@@ -49,6 +49,8 @@ public class NewMemberActivity extends AppCompatActivity {
         lastName = findViewById(R.id.last_name);
         userName = findViewById(R.id.user_name);
         passWord = findViewById(R.id.user_password);
+        //firstName.setText();
+        //firstName.setEnabled(false);
         save_member_details = findViewById(R.id.save_member_details);
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
