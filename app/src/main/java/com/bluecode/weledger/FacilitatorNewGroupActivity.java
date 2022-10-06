@@ -162,7 +162,8 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
             final String reinvested_savings_cycle_start,
             final String registered_members_cycle_start,
             final String group_management_spinner,
-            final String status) {
+            final String status)
+    {
 //        signin_progress.setVisibility(View.VISIBLE);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");

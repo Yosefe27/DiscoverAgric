@@ -2,6 +2,7 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -48,12 +50,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NewPaymentActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount;
+    EditText amount,contribution_date;
     TextView select_member,post_member_saving,selected_member;
     String submit_saving_url=BASE_URL+"submit_saving.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
@@ -68,6 +71,7 @@ public class NewPaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_payments);
         toolbar = findViewById(R.id.toolbar);
         amount = findViewById(R.id.amount);
+        contribution_date = findViewById(R.id.date_picker_actions);
         select_member = findViewById(R.id.select_member);
         post_member_saving = findViewById(R.id.save_payment_details);
         setSupportActionBar(toolbar);
@@ -78,8 +82,28 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupTransactionsHistoryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BookwriterSavingsOptions.class);
                 startActivity(intent);
+            }
+        });
+
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        contribution_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = new DatePickerDialog(NewPaymentActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        month = month+1;
+                        String date = year+"/"+month+"/"+dayOfMonth;
+                        contribution_date.setText(date);
+                    }
+                },year, month,day);
+                dialog.show();
             }
         });
 
@@ -103,22 +127,23 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String str_amount = amount.getText().toString();
-                //select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
                 String str_select_member = select_member.getText().toString();
+                String str_contribution_date = contribution_date.getText().toString();
                 if(amount.getText().toString().isEmpty()){
                     errorDialog("Amount should not be empty.");
                 }
-                if(select_member.getText().toString().isEmpty()){
+                else if(select_member.getText().toString().isEmpty()){
                     errorDialog("Member Name should not be empty.");
                 }
                 else{
                     startSubmission(str_amount,
-                            str_select_member);
+                            str_select_member,
+                            str_contribution_date);
                 }
             }
         });
     }
-    private void startSubmission(final String amount,String select_member){
+    private void startSubmission(final String amount,String select_member,String contribution_date){
         //        signin_progress.setVisibility(View.VISIBLE);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");
@@ -145,7 +170,7 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                Log.v("group_url", response);
+                Log.v("savings_url", response);
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
@@ -176,6 +201,7 @@ public class NewPaymentActivity extends AppCompatActivity {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("amount", amount);
                 parms.put("select_member", select_member);
+                parms.put("contribution_date",contribution_date);
                 parms.put("a", str_a);
                 return parms;
             }

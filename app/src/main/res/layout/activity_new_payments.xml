@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Name of Member"
+                    android:text="Member ID"
                     android:textSize="18sp" />
 
                 <TextView
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Date"
+                    android:text="Date/Month Contributed For"
                     android:textSize="18sp" />
 
                 <EditText
@@ -102,7 +102,7 @@
                     android:background="@drawable/ic_edit_bg"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center_vertical"
-                    android:hint=""
+                    android:hint="YYYY/MM/DD"
                     android:imeOptions="actionNext"
                     android:inputType="date"
                     android:maxLines="1"
