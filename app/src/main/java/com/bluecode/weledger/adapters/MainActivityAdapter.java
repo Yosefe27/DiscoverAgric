@@ -25,6 +25,7 @@ import com.bluecode.weledger.FacilitatorGroupSavings;
 import com.bluecode.weledger.FacilitatorGroupsActivity;
 import com.bluecode.weledger.BookWriterMembersActivity;
 import com.bluecode.weledger.BookWriterLoansActivity;
+import com.bluecode.weledger.GroupAdminActivity;
 import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.MainActivityModel;
 
@@ -91,7 +92,9 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
                         Toast.makeText(context,"Work in progress",Toast.LENGTH_SHORT).show();
                         break;
                     case 8:
-                        Intent groupAdmin = new Intent(context, FacilitatorGroupsActivity.class);
+//                        Intent groupAdmin = new Intent(context, FacilitatorGroupsActivity.class);
+//                        context.startActivity(groupAdmin);
+                        Intent groupAdmin = new Intent(context, GroupAdminActivity.class);
                         context.startActivity(groupAdmin);
                         break;
                     case 9:

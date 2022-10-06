@@ -46,7 +46,14 @@
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/drawable/ic_member.xml" value="0.1" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/drawable/ic_social_fund.xml" value="0.1" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/drawable/ic_user_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_add_member_to_group.xml" value="0.1" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_facilitator_new_group.xml" value="0.22" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_group_admin.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_members.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_new_member.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/custom_toast.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/dialog_logout.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/header_layout.xml" value="0.17552083333333332" />
@@ -55,6 +62,7 @@
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/main_layout_cardview.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/menu/main_tool_bar.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/menu/menu_add_stuff.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/menu/menu_home.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/chapo/.gradle/caches/transforms-3/f4cc199f6c8324cb1401d4db44774d12/transformed/appcompat-1.5.1/res/drawable/abc_ic_ab_back_material.xml" value="0.1" />
         <entry key="..\:/Users/chapo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/auto_complete_list.xml" value="0.25" />

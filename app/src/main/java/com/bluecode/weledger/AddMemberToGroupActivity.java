@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -53,7 +51,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FacilitatorGroupsActivity extends AppCompatActivity {
+public class AddMemberToGroupActivity extends AppCompatActivity {
 
     RecyclerView groups_recyclerview;
     RequestQueue mRequestQueue;
@@ -70,7 +68,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_groups);
+        setContentView(R.layout.activity_add_member_to_group);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("GROUPS");
@@ -89,7 +87,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
         groups_recyclerview = findViewById(R.id.groups_recyclerview);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = FacilitatorGroupsActivity.this;
+        context = AddMemberToGroupActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
@@ -179,7 +177,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
                                 int position = groups_recyclerview.getChildLayoutPosition(view);
                                 Groups groups = listGroups.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), GroupDetailsActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
                                 intent.putExtra("intent_group_id", groups.getId());
                                 intent.putExtra("intent_group_name", groups.getGroup_name());
                                 intent.putExtra("intent_group_date_created", groups.getDate_created());
@@ -322,7 +320,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
 
     }
 
-//    @Override
+    //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
 //        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);

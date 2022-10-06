@@ -1,53 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#ECA2E4"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    tools:context=".FacilitatorNewGroupActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:id="@+id/textviewhello"
+        android:layout_width="366dp"
+        android:layout_height="57dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/container_color2"
         android:gravity="center"
-        android:fontFamily="sans-serif-medium"
-        android:background="#eb2fc8"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:fontFamily="sans-serif-medium"
-        android:text="ADD NEW GROUP"
-        android:background="#eb2fc8"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:background="#eb2fc8"
-        android:fontFamily="sans-serif"
-        android:text="Please Fill in the following details below"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:text="Please fill in the following details below"
+        android:textColor="@color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="170dp"
-        android:background="#ffffff"
-        android:scrollbars="vertical">
+        android:id="@+id/scrollview"
+        android:layout_below="@+id/textviewhello"
+        >
+
 
         <LinearLayout
-            android:id="@+id/linlay_inputs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -55,10 +38,9 @@
             android:layout_marginEnd="20dp"
             android:layout_marginRight="30dp"
             android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/icons">
+            android:orientation="vertical">
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -142,6 +124,12 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+<!--            <DatePicker-->
+<!--                android:id="@+id/datePicker1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:datePickerMode="spinner"-->
+<!--                android:calendarViewShown="false"/>-->
 
             <EditText
                 android:id="@+id/first_training_meeting_date"
@@ -163,6 +151,12 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
+<!--            <DatePicker-->
+<!--                android:id="@+id/datePicker"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:datePickerMode="spinner"-->
+<!--                android:calendarViewShown="false"/>-->
 
             <EditText
                 android:id="@+id/date_savings_started"
@@ -251,7 +245,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardBackgroundColor="@color/colorToolBarStart"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="20dp">
 
@@ -265,8 +259,7 @@
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
-
-
-</LinearLayout>
+</RelativeLayout>
