@@ -36,7 +36,7 @@ import java.util.Map;
 public class NewMemberActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    TextView save_member_details;
+    TextView save_member_details,groupName;
     EditText firstName,lastName,userName,passWord;
     String submit_member_url=BASE_URL+"submit_member.php";
     @Override
@@ -49,8 +49,9 @@ public class NewMemberActivity extends AppCompatActivity {
         lastName = findViewById(R.id.last_name);
         userName = findViewById(R.id.user_name);
         passWord = findViewById(R.id.user_password);
-        //firstName.setText();
-        //firstName.setEnabled(false);
+        groupName = findViewById(R.id.group_name);
+        groupName.setText("");
+        groupName.setEnabled(false);
         save_member_details = findViewById(R.id.save_member_details);
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
