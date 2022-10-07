@@ -16,6 +16,16 @@
 <!--        android:layout_marginTop="10dp"-->
 <!--        app:cardCornerRadius="10dp">-->
 <include layout="@layout/toolbar"/>
+    <TextView
+        android:id="@+id/group_member_header"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="#e3badb"
+        android:text="  GROUP MEMBER DETAILS"
+        android:textColor="#0C1C75"
+        android:textSize="16dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,6 +38,15 @@
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Member Name"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
             <TextView
                 android:id="@+id/full_name"
                 android:layout_width="match_parent"
@@ -43,6 +62,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Member email"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
@@ -58,6 +86,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Member Username"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
             <TextView
                 android:id="@+id/nrc"
                 android:layout_width="match_parent"
@@ -73,6 +110,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Member Address"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
             <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
@@ -88,17 +134,177 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Group Name"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
             <TextView
-                android:id="@+id/group_id"
+                android:id="@+id/group_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text=""
-                android:hint="Group Id is missing"
+                android:hint="Group Name is missing"
                 android:textColorHint="@color/grey"
                 app:hintTextColor="@color/colorPrimary"
                 android:gravity="center_vertical"
                 android:paddingStart="10dp"/>
             </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Single Female Caregiver"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/single_fcg"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text=""
+                    android:hint="Information is missing"
+                    android:textColorHint="@color/grey"
+                    app:hintTextColor="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Phone Number"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text=""
+                    android:hint="Phone number is missing"
+                    android:textColorHint="@color/grey"
+                    app:hintTextColor="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="ECAP II/household ID"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/ecao_hh_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text=""
+                    android:hint="Information is missing"
+                    android:textColorHint="@color/grey"
+                    app:hintTextColor="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Gender"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text=""
+                    android:hint="Gender is missing"
+                    android:textColorHint="@color/grey"
+                    app:hintTextColor="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Date Of Admission"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/admission_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text=""
+                    android:hint="Admission Date is missing"
+                    android:textColorHint="@color/grey"
+                    app:hintTextColor="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="2dp"
+                    android:gravity="left"
+                    android:text="Group ID"
+                    android:textAllCaps="true"
+                    android:textColor="#08155A"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/group_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text=""
+                    android:hint="Group Id is missing"
+                    android:textColorHint="@color/grey"
+                    app:hintTextColor="@color/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"/>
+            </androidx.cardview.widget.CardView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
