@@ -17,7 +17,7 @@ public final class Constants {
 //    public static final String BASE_MSSQL_LIVE = "https://portals.zsiclife.co.zm:6094/live_apis/";
 //    public static final String MIXPANEL_TOKEN = "3eaefb51404dd62d783f5da73e4f98ab";
 
-
+    public static final String GROUP_NAME = "group_name";
 
 
 }
