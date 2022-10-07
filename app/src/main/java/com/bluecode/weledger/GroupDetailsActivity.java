@@ -1,7 +1,5 @@
 package com.bluecode.weledger;
 
-import static com.bluecode.weledger.Constants.BASE_URL;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -13,41 +11,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.android.volley.RequestQueue;
-import com.bluecode.weledger.adapters.MembersAdapter;
-import com.bluecode.weledger.models.Members;
-
-import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GroupDetailsActivity extends AppCompatActivity {
 
-    RecyclerView members_recyclerview;
-    RequestQueue mRequestQueue;
-    ArrayList<Members> listMembers = new ArrayList<>();
-    Context context;
-    String str_a, members_list = BASE_URL+"list_of_group_members.php";
-    MembersAdapter membersAdapter;
     TextView group_name_txt,group_id_txt,group_interest_rate_txt,group_date_created_txt;
     TextView cycle_number_txt,first_training_meeting_date_txt,date_savings_started_txt,reinvested_savings_cycle_start_txt;
     TextView registered_members_cycle_start_txt,group_management_spinner_txt;
-    ImageView chairperson_approval_img,treasurer_approval_img,secretary_approval_img,prof_img_big;
-    CircleImageView prof_img_small;
 
-    String intent_chairperson_approval = "0";
-    String intent_treasurer_approval = "0";
-    String intent_secretary_approval = "0",img_name;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +41,6 @@ public class GroupDetailsActivity extends AppCompatActivity {
         registered_members_cycle_start_txt = findViewById(R.id.registered_members_cycle_start);
         group_management_spinner_txt = findViewById(R.id.group_management_spinner);
         setSupportActionBar(toolbar);
-        ;
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +62,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
         String intent_date_savings_started = getIntent().getStringExtra("intent_date_savings_started");
         String intent_reinvested_savings_cycle_start = getIntent().getStringExtra("intent_reinvested_savings_cycle_start");
         String intent_registered_members_cycle_start = getIntent().getStringExtra("intent_registered_members_cycle_start");
-        String intent_group_management_spinner = getIntent().getStringExtra("intent_group_management_spinner");
-        String intent_group_status = getIntent().getStringExtra("intent_group_status");
+        String intent_group_management_spinner = getIntent().getStringExtra("group_management_spinner");
 
 
         group_id_txt.setText(intent_group_id);
@@ -99,9 +73,9 @@ public class GroupDetailsActivity extends AppCompatActivity {
         first_training_meeting_date_txt.setText(intent_first_training_meeting_date);
         date_savings_started_txt.setText(intent_date_savings_started);
         reinvested_savings_cycle_start_txt.setText(intent_reinvested_savings_cycle_start);
-        registered_members_cycle_start_txt.setText(intent_registered_members_cycle_start);
-        group_management_spinner_txt.setText(intent_group_management_spinner);
-        toolbar.setSubtitle(intent_group_name+"'s Details");
+        registered_members_cycle_start_txt.setText(intent_group_id);
+        group_management_spinner_txt.setText("SPONTANEOUS");
+        toolbar.setSubtitle(intent_group_name+" GROUP");
     }
 
     private boolean isNetworkAvailable() {

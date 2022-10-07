@@ -12,12 +12,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,21 +45,24 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FacilitatorNewGroupActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
     EditText group_name,interest_rate,cycle_number,first_training_meeting_date,date_savings_started,reinvested_savings_cycle_start;
-    EditText registered_members_cycle_start;
+    EditText registered_members_cycle_start,group_management;
     Spinner group_management_spinner;
+    List<String> group_mgt_items;
     String submit_group_url=BASE_URL+"submit_group.php";
     TextView save_group_details,select_member;
-    String str_a, members_list = BASE_URL + "list_of_group_members.php";
-    String membership_response = BASE_URL + "membership_response.php";
     MembersAdapter membersAdapter;
     ArrayList<Members> listMembers = new ArrayList<>();
     Context context;
+    String group_mgt_item,testString;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,26 +71,38 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         group_name = findViewById(R.id.group_name);
         interest_rate = findViewById(R.id.interest_rate);
         cycle_number = findViewById(R.id.cycle_number);
+        group_management = findViewById(R.id.group_mgt);
+        //group_management.setVisibility(View.GONE);
         first_training_meeting_date = findViewById(R.id.first_training_meeting_date);
         date_savings_started = findViewById(R.id.date_savings_started);
         reinvested_savings_cycle_start = findViewById(R.id.reinvested_savings_cycle_start);
-        group_management_spinner = (Spinner) findViewById(R.id.group_mgt_spinner);
         registered_members_cycle_start = findViewById(R.id.registered_members_cycle_start);
         select_member = findViewById(R.id.select_member);
         save_group_details = findViewById(R.id.save_group_details);
         setSupportActionBar(toolbar);
-        /*toolbar.setTitle("Group");
-        toolbar.setSubtitle("New Group Details");
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+        group_management_spinner = (Spinner) findViewById(R.id.group_mgt_spinner);
+        group_mgt_items = new ArrayList<>();
+        group_mgt_items.add("");
+        group_mgt_items.add("Supervised");
+        group_mgt_items.add("Self-Managed");
+        group_mgt_items.add("Spontaneous");
+
+        group_management_spinner.setAdapter(new ArrayAdapter<>(this,
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,group_mgt_items));
+        group_management_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
-                startActivity(intent);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                group_mgt_item = group_mgt_items.get(position);
+                group_management.setText(group_mgt_item);
+                Toast.makeText(FacilitatorNewGroupActivity.this,group_mgt_item,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-        */
 
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -132,9 +150,9 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                 String str_date_savings_started = date_savings_started.getText().toString();
                 String str_reinvested_savings_cycle_start = reinvested_savings_cycle_start.getText().toString();
                 String str_registered_members_cycle_start = registered_members_cycle_start.getText().toString();
-                String str_group_management_spinner = group_management_spinner.getSelectedItem().toString();
-                if(group_name.getText().toString().isEmpty()) {
-                    errorDialog("Group Name Cannot Be Empty");
+                String str_group_management_spinner = group_management.getText().toString();
+                if(str_group_name.isEmpty()) {
+                    errorDialog("Group Name Should NOT Be Empty");
                 }
                 else
                 {
@@ -147,7 +165,8 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                             str_registered_members_cycle_start,
                             str_group_management_spinner,
                             "1");
-                    Intent intent = new Intent(getApplicationContext(), FacilitatorGroupsActivity.class);
+                    Toast.makeText(context,"GROUP ADDED SUCCESSFULLY",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), AddMemberToGroupActivity.class);
                     startActivity(intent);
                 }
             }
@@ -161,7 +180,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
             final String date_savings_started,
             final String reinvested_savings_cycle_start,
             final String registered_members_cycle_start,
-            final String group_management_spinner,
+            final String group_mgt,
             final String status)
     {
 //        signin_progress.setVisibility(View.VISIBLE);
@@ -170,7 +189,6 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
-
 
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -189,7 +207,6 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, submit_group_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                 Log.v("group_url", response);
                 try {
                     JSONObject object = new JSONObject(response);
@@ -215,7 +232,6 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
             }
         }) {
 
-            //            first_name, surname, nrc, phone, email, pas, dob
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
@@ -226,7 +242,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                 parms.put("date_savings_started", date_savings_started);
                 parms.put("reinvested_savings_cycle_start", reinvested_savings_cycle_start);
                 parms.put("registered_members_cycle_start",registered_members_cycle_start);
-                parms.put("group_management_spinner", group_management_spinner);
+                parms.put("group_mgt", group_mgt);
                 parms.put("status", status);
                 parms.put("a", str_a);
                 return parms;
@@ -268,23 +284,10 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                 int position = members_recyclerview.getChildLayoutPosition(view);
                 Members members = listMembers.get(position);
                 select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
-
-//                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
-//                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
-//                                intent.putExtra("intent_email", members.getEmail());
-//                                intent.putExtra("intent_nrc", members.getNrc());
-//                                intent.putExtra("intent_address", members.getAddress());
-//                                intent.putExtra("intent_group_id", members.getGroup_id());
-//                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
-//                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
-//                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
-//                                startActivity(intent);
                 reportsAlert.dismiss();
             }
 
-
         });
-//        reportsAlert.dismiss();
     }
 
     public void errorDialog(String error_text) {
@@ -297,7 +300,6 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_error, viewGroup, false);
 
         btn_ok = dialogView.findViewById(R.id.btn_ok);
-//        card_ok = dialogView.findViewById(R.id.card_ok);
         main_text = dialogView.findViewById(R.id.main_text);
         linear_buttons = dialogView.findViewById(R.id.linear_buttons);
 

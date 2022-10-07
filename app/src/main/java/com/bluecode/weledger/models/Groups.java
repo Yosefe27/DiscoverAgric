@@ -9,14 +9,24 @@ public class Groups {
     private String first_training_meeting_date;
     private String date_savings_started;
     private String reinvested_savings_cycle_start;
+    private String registered_members_cycle_start;
+    //private String group_management_spinner;
     private String status;
 
     public Groups() {
     }
 
-    public Groups(String id, String group_name, String date_created,
-                  String annual_interest_rate,String cycle_number,String first_training_meeting_date,
-                  String date_savings_started,String reinvested_savings_cycle_start,String status) {
+    public Groups(String id,
+                  String group_name,
+                  String date_created,
+                  String annual_interest_rate,
+                  String cycle_number,
+                  String first_training_meeting_date,
+                  String date_savings_started,
+                  String reinvested_savings_cycle_start,
+                  String registered_members_cycle_start,
+                  //String group_management_spinner,
+                  String status) {
         this.id = id;
         this.group_name = group_name;
         this.date_created = date_created;
@@ -25,6 +35,8 @@ public class Groups {
         this.first_training_meeting_date = first_training_meeting_date;
         this.date_savings_started = date_savings_started;
         this.reinvested_savings_cycle_start = reinvested_savings_cycle_start;
+        this.registered_members_cycle_start = registered_members_cycle_start;
+        //this.group_management_spinner = group_management_spinner;
         this.status = status;
     }
 
@@ -72,4 +84,20 @@ public class Groups {
         return reinvested_savings_cycle_start;}
     public void setReinvested_savings_cycle_start(String reinvested_savings_cycle_start) {
         this.reinvested_savings_cycle_start = reinvested_savings_cycle_start;}
+
+    public String getRegistered_members_cycle_start() {
+        return registered_members_cycle_start;
+    }
+
+    public void setRegistered_members_cycle_start(String registered_members_cycle_start) {
+        this.registered_members_cycle_start = registered_members_cycle_start;
+    }
+//
+//    public String getGroup_management_spinner() {
+//        return group_management_spinner;
+//    }
+//
+//    public void setGroup_management_spinner(String group_management_spinner) {
+//        this.group_management_spinner = group_management_spinner;
+//    }
 }

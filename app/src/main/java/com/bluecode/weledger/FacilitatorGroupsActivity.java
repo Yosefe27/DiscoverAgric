@@ -82,7 +82,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GroupAdminActivity.class);
                 startActivity(intent);
             }
         });
@@ -151,8 +151,8 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
                                 stackObject.getString("first_training_meeting_date"),
                                 stackObject.getString("date_savings_started"),
                                 stackObject.getString("reinvested_savings_cycle_start"),
-                                //stackObject.getString("registered_members_cycle_start"),
-                                //stackObject.getString("group_management_spinner"),
+                                stackObject.getString("registered_members_cycle_start"),
+                               // stackObject.getString("group_management_spinner"),
                                 stackObject.getString("status")
 
                         );
@@ -188,6 +188,8 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
                                 intent.putExtra("intent_first_training_meeting_date", groups.getFirst_training_meeting_date());
                                 intent.putExtra("intent_date_savings_started", groups.getDate_savings_started());
                                 intent.putExtra("intent_reinvested_savings_cycle_start", groups.getReinvested_savings_cycle_start());
+                                intent.putExtra("registered_members_cycle_start", groups.getRegistered_members_cycle_start());
+                               // intent.putExtra("group_management_spinner", groups.getGroup_management_spinner());
                                 intent.putExtra("intent_group_status", groups.getStatus());
                                 startActivity(intent);
 
@@ -321,31 +323,6 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
 
 
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-//
-//
-//        return true;
-//
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.action_add) {
-//            Intent intent = new Intent(getApplicationContext(), FacilitatorNewGroupActivity.class);
-//
-//            startActivity(intent);
-//        }
-//
-//
-//
-//
-//        return super.onOptionsItemSelected(item);
-//    }
     @Override
     public void onBackPressed() {
 
