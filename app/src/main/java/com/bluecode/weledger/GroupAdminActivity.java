@@ -31,7 +31,7 @@ public class GroupAdminActivity extends AppCompatActivity {
         models.add(new GroupAdminModel("Create Group",R.drawable.ic_create_group,R.color.container_color,"create group"));
         models.add(new GroupAdminModel("Add Members",R.drawable.ic_add_members,R.color.container_color2,"add member"));
         models.add(new GroupAdminModel("View Groups",R.drawable.ic_view_groups,R.color.container_color,"view groups"));
-
+        models.add(new GroupAdminModel("View Members",R.drawable.ic_members,R.color.container_color2,"view groups"));
         return models;
     }
 }

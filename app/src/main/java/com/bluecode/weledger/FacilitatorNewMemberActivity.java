@@ -38,7 +38,7 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
     TextView save_member_details;
-    EditText firstName,lastName,userName,passWord;
+    EditText groupName,firstName,lastName,userName,passWord;
     String submit_member_url=BASE_URL+"submit_member.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +47,17 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firstName = findViewById(R.id.first_name);
+        groupName = findViewById(R.id.group_name);
         lastName = findViewById(R.id.last_name);
         userName = findViewById(R.id.user_name);
         passWord = findViewById(R.id.user_password);
         save_member_details = findViewById(R.id.save_member_details);
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
+
+        Bundle bundle = getIntent().getExtras();
+        String gName = bundle.getString(Constants.GROUP_NAME, "Default");
+        groupName.setText(gName);
+        groupName.setEnabled(false);
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
