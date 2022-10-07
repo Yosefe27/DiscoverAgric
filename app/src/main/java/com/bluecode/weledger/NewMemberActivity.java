@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -37,7 +38,8 @@ public class NewMemberActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
     TextView save_member_details,groupName;
-    EditText firstName,lastName,userName,passWord;
+    EditText firstName,lastName,userName,passWord,admissionDate,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
+    Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,29 +52,64 @@ public class NewMemberActivity extends AppCompatActivity {
         userName = findViewById(R.id.user_name);
         passWord = findViewById(R.id.user_password);
         groupName = findViewById(R.id.group_name);
-        groupName.setText("");
-        groupName.setEnabled(false);
+        admissionDate = findViewById(R.id.admission_date);
+        spinner_gender = findViewById(R.id.gender);
+        ecap_hh_ID = findViewById(R.id.ecap_hh_id);
+        phoneNumber = findViewById(R.id.phone_number);
+        spinner_userRole = findViewById(R.id.user_role);
+        spinner_singleFSW = findViewById(R.id.single_fsw);
+        //groupName.setText("");
+        //groupName.setEnabled(false);
         save_member_details = findViewById(R.id.save_member_details);
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String str_group_name = groupName.getText().toString();
                 String str_firstName = firstName.getText().toString();
                 String str_lastName = lastName.getText().toString();
                 String str_userName = userName.getText().toString();
                 String str_passWord = passWord.getText().toString();
+                String str_admissionDate = admissionDate.getText().toString();
+                String str_gender = "M";
+                String str_ecap_hh_ID = ecap_hh_ID.getText().toString();
+                String str_phoneNumber = phoneNumber.getText().toString();
+                String str_userRole = "1";
+                String str_singleFSW = "Y";
+
+
                 if(userName.getText().toString().isEmpty()) {
                     errorDialog("Username Cannot Be Empty");
                 }
-                else startSubmission(str_firstName,str_lastName,str_userName,str_passWord);
+                else startSubmission(
+                        str_group_name,
+                        str_firstName,
+                        str_lastName,
+                        str_userName,
+                        str_passWord,
+                        str_admissionDate,
+                        str_gender,
+                        str_ecap_hh_ID,
+                        str_phoneNumber,
+                        str_userRole,
+                        str_singleFSW
+                        );
             }
         });
 
     }
-    private void startSubmission(final String firstname,
+    private void startSubmission(final String groupname,
+                                 final String firstname,
                                  final String surname,
                                  final String username,
-                                 final String password)
+                                 final String password,
+                                 final String admissiondate,
+                                 final String gender,
+                                 final String ecaphh_id,
+                                 final String phonenumber,
+                                 final String userrole,
+                                 final String singlefsw
+                                 )
     {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");
@@ -116,10 +153,17 @@ public class NewMemberActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
-                parms.put("first_name", firstname);
-                parms.put("last_name", surname);
-                parms.put("username", username);
+                parms.put("group_name", groupname);
+                parms.put("firstname", firstname);
+                parms.put("lastname", surname);
+                parms.put("nrc", username);
                 parms.put("password", password);
+                parms.put("admission_date", admissiondate);
+                parms.put("ecap_hh_id", ecaphh_id);
+                parms.put("phone_number", phonenumber);
+                parms.put("gender", gender);
+                parms.put("user_role", userrole);
+                parms.put("single_female_caregiver", singlefsw);
                 parms.put("a", str_a);
                 return parms;
             }
