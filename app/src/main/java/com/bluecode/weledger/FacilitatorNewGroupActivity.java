@@ -166,8 +166,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                             str_group_management_spinner,
                             "1");
                     //Toast.makeText(context,"GROUP ADDED SUCCESSFULLY",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), AddMemberToGroupActivity.class);
-                    startActivity(intent);
+                   addNewMemberToGroup(str_group_name);
                 }
             }
         });
@@ -332,5 +331,14 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                 reportsAlert.dismiss();
             }
         });
+    }
+    public void addNewMemberToGroup(String groupName){
+        Intent intent = new Intent(getApplicationContext(), FacilitatorNewMemberActivity.class);
+        Bundle bundle = new Bundle();
+
+        bundle.putString(Constants.GROUP_NAME, groupName);
+
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
