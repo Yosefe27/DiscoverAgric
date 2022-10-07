@@ -165,7 +165,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                             str_registered_members_cycle_start,
                             str_group_management_spinner,
                             "1");
-                    Toast.makeText(context,"GROUP ADDED SUCCESSFULLY",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context,"GROUP ADDED SUCCESSFULLY",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), AddMemberToGroupActivity.class);
                     startActivity(intent);
                 }
