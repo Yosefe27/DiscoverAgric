@@ -58,8 +58,6 @@ public class NewMemberActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.phone_number);
         spinner_userRole = findViewById(R.id.user_role);
         spinner_singleFSW = findViewById(R.id.single_fsw);
-        //groupName.setText("");
-        //groupName.setEnabled(false);
         save_member_details = findViewById(R.id.save_member_details);
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
