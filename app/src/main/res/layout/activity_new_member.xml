@@ -76,6 +76,28 @@
                         android:maxLines="1"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Group ID"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/group_id"
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Group ID"
+                        android:clickable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
 
                     <TextView
                         android:layout_width="match_parent"
