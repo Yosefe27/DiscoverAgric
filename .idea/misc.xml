@@ -47,7 +47,9 @@
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/drawable/ic_social_fund.xml" value="0.1" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/drawable/ic_user_profile.xml" value="0.1" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_add_member_to_group.xml" value="0.1" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_book_writer_admin.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_facilitator_new_group.xml" value="0.22" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_facilitator_view_group_members.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_group_admin.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.17552083333333332" />
@@ -55,8 +57,11 @@
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_members.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/activity_new_member.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/custom_toast.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/dialog_error.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/dialog_logout.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/dialog_open_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/header_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/list_item_groups.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/list_item_payment_options.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/loading_dialog.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Bluecode/Desktop/we_ledger/we_ledger/app/src/main/res/layout/main_activity_holder.xml" value="0.17552083333333332" />
@@ -120,7 +125,6 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_new_member.xml" value="0.264" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_repayments.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_savings.xml" value="0.25" />
-        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_group_admin.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_group_details.xml" value="0.264" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_groups.xml" value="0.16" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_loan_repayment.xml" value="0.20833333333333334" />
