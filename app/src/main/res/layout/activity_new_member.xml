@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="1dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text=""
-        android:background="#eb2fc8"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textSize="17dp" />
+    android:layout_height="match_parent"
+    tools:context=".FacilitatorNewGroupActivity">
 
     <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="56dp"
-        android:scrollbars="vertical">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textviewhello">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="11dp"
-                android:background="#DA9FE4"
+                android:background="#F4F4F4"
                 android:scrollbars="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -310,7 +301,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardBackgroundColor="@color/button"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="20dp">
 
@@ -324,8 +315,7 @@
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
-
-
-</LinearLayout>
+</RelativeLayout>

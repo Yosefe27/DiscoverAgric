@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -82,7 +80,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), GroupAdminActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminActivity.class);
                 startActivity(intent);
             }
         });

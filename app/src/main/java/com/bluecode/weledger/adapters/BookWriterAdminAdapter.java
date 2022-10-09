@@ -19,54 +19,49 @@ import com.bluecode.weledger.FacilitatorGroupsActivity;
 import com.bluecode.weledger.FacilitatorNewGroupActivity;
 import com.bluecode.weledger.NewMemberActivity;
 import com.bluecode.weledger.R;
+import com.bluecode.weledger.models.BookWriterAdminModel;
 import com.bluecode.weledger.models.GroupAdminModel;
 import com.bluecode.weledger.models.MainActivityModel;
 
 import java.util.ArrayList;
 
-public class GroupAdminAdapter extends RecyclerView.Adapter<GroupAdminAdapter.viewHolder> {
-    ArrayList<GroupAdminModel> models;
+public class BookWriterAdminAdapter extends RecyclerView.Adapter<BookWriterAdminAdapter.viewHolder> {
+    ArrayList<BookWriterAdminModel> models;
     Context context;
-    public GroupAdminAdapter( ArrayList<GroupAdminModel> models, Context context){
+    public BookWriterAdminAdapter(ArrayList<BookWriterAdminModel> models, Context context){
         this.models = models;
         this.context = context;
     }
     @NonNull
     @Override
-    public GroupAdminAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BookWriterAdminAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_layout_cardview,parent,false);
-        GroupAdminAdapter.viewHolder viewHolder = new GroupAdminAdapter.viewHolder(view);
+        BookWriterAdminAdapter.viewHolder viewHolder = new BookWriterAdminAdapter.viewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GroupAdminAdapter.viewHolder holder, int position) {
-        final GroupAdminModel groupAdminModel = models.get(position);
+    public void onBindViewHolder(@NonNull BookWriterAdminAdapter.viewHolder holder, int position) {
+        final BookWriterAdminModel bookWriterAdminModel = models.get(position);
         //   holder.imageView.setImageDrawable(mainActivityModel.getImageView());
-        holder.name.setText(groupAdminModel.getNameType());
-        holder.imageView.setBackgroundResource(groupAdminModel.getImage());
-        holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, groupAdminModel.getColor()));
+        holder.name.setText(bookWriterAdminModel.getNameType());
+        holder.imageView.setBackgroundResource(bookWriterAdminModel.getImage());
+        holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, bookWriterAdminModel.getColor()));
 
-        String id = groupAdminModel.getCardID();
+        String id = bookWriterAdminModel.getCardID();
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch(id){
-                    case "create group":
-                        Intent groupAdmin = new Intent(context, FacilitatorNewGroupActivity.class);
-                        context.startActivity(groupAdmin);
+
+                    case "add member":
+                        Intent addMember = new Intent(context, NewMemberActivity.class);
+                        context.startActivity(addMember);
                         break;
-                    case "view groups":
+                    case "View Members":
                         Intent viewGroup = new Intent(context, FacilitatorGroupsActivity.class);
                         context.startActivity(viewGroup);
                         break;
-                    case "add member":
-                        Intent addMember = new Intent(context, AddMemberToGroupActivity.class);
-                        context.startActivity(addMember);
-                        break;
-                    case "view members":
-                        Intent viewMembers = new Intent(context, BookWriterMembersActivity.class);
-                        context.startActivity(viewMembers);
                 }
             }
         });

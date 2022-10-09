@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bluecode.weledger.BookWriterAdminActivity;
 import com.bluecode.weledger.BookwriterFinesActivity;
 import com.bluecode.weledger.BookwriterRepaymentsActivity;
 import com.bluecode.weledger.BookwriterSavingsOptions;
@@ -22,10 +23,8 @@ import com.bluecode.weledger.FacilitatorGroupFines;
 import com.bluecode.weledger.FacilitatorGroupLoans;
 import com.bluecode.weledger.FacilitatorGroupRepayments;
 import com.bluecode.weledger.FacilitatorGroupSavings;
-import com.bluecode.weledger.FacilitatorGroupsActivity;
-import com.bluecode.weledger.BookWriterMembersActivity;
 import com.bluecode.weledger.BookWriterLoansActivity;
-import com.bluecode.weledger.GroupAdminActivity;
+import com.bluecode.weledger.FacilitatorGroupAdminActivity;
 import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.MainActivityModel;
 
@@ -63,7 +62,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
             public void onClick(View v) {
                 switch (card) {
                     case 1:
-                        Intent bookAdmin = new Intent(context, BookWriterMembersActivity.class);
+                        Intent bookAdmin = new Intent(context, BookWriterAdminActivity.class);
                            context.startActivity(bookAdmin);
                         break;
                     case 2:
@@ -94,7 +93,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
                     case 8:
 //                        Intent groupAdmin = new Intent(context, FacilitatorGroupsActivity.class);
 //                        context.startActivity(groupAdmin);
-                        Intent groupAdmin = new Intent(context, GroupAdminActivity.class);
+                        Intent groupAdmin = new Intent(context, FacilitatorGroupAdminActivity.class);
                         context.startActivity(groupAdmin);
                         break;
                     case 9:

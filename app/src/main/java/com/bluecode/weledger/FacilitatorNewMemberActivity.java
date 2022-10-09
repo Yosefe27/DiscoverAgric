@@ -4,6 +4,7 @@ import static com.bluecode.weledger.Constants.BASE_URL;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -14,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +58,7 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
         String gName = bundle.getString(Constants.GROUP_NAME, "Default");
         groupName.setText(gName);
         groupName.setEnabled(false);
+        groupName.setTextColor(Color.BLACK);
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,9 +67,14 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
                 String str_userName = userName.getText().toString();
                 String str_passWord = passWord.getText().toString();
                 if(userName.getText().toString().isEmpty()) {
-                    errorDialog("Username Cannot Be Empty");
+//                    errorDialog("Username Cannot Be Empty");
+//                    put validations here
                 }
-                else startSubmission(str_firstName,str_lastName,str_userName,str_passWord);
+                else {
+                    startSubmission(str_firstName,str_lastName,str_userName,str_passWord);
+
+                }
+
             }
         });
 
@@ -102,10 +108,11 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
                         String received_msg = object.getString("msg");
 
                         reportsAlert.dismiss();
-                        errorDialog(object.getString("msg"));
+                      //  errorDialog(object.getString("msg"));
+                        dialogToContinueAddingMembers();
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
-                        errorDialog(object.getString("msg"));
+//                        errorDialog(object.getString("msg"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -131,48 +138,41 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
         stringRequest.setShouldCache(false);
         mRequestQueue.add(stringRequest);
     }
-    public void errorDialog(String error_text) {
+
+    public void dialogToContinueAddingMembers() {
 
         ViewGroup viewGroup = findViewById(android.R.id.content);
-        final TextView main_text;
-        final Button btn_ok;
-        final LinearLayout linear_buttons;
-        final CardView card_ok;
-        final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_error, viewGroup, false);
+        TextView btn_yes, btn_no;
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_open_activity, viewGroup, false);
+        btn_yes = dialogView.findViewById(R.id.btn_yes);
+        btn_no = dialogView.findViewById(R.id.btn_no);
 
-        btn_ok = dialogView.findViewById(R.id.btn_ok);
-//        card_ok = dialogView.findViewById(R.id.card_ok);
-        main_text = dialogView.findViewById(R.id.main_text);
-        linear_buttons = dialogView.findViewById(R.id.linear_buttons);
-
-
-        //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
-        //finally creating the alert dialog and displaying it
+
         final AlertDialog reportsAlert = builder.create();
-        // Let's start with animation work. We just need to create a style and use it here as follow.
         if (reportsAlert.getWindow() != null)
             reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
 
         reportsAlert.show();
-        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        btn_ok.setVisibility(View.VISIBLE);
-        linear_buttons.setVisibility(View.GONE);
-//        To prevent dialog box from getting dismissed on back key pressed use this
-        reportsAlert.setCancelable(false);
-
-//        And to prevent dialog box from getting dismissed on outside touch use this
-        reportsAlert.setCanceledOnTouchOutside(false);
-        main_text.setText(error_text);
-
-        btn_ok.setOnClickListener(new View.OnClickListener() {
+        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.white);
+        btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 reportsAlert.dismiss();
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FacilitatorNewMemberActivity.this, AddMemberToGroupActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

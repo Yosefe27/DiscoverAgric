@@ -4,6 +4,7 @@ import static com.bluecode.weledger.Constants.BASE_URL;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -59,6 +60,13 @@ public class NewMemberActivity extends AppCompatActivity {
         spinner_userRole = findViewById(R.id.user_role);
         spinner_singleFSW = findViewById(R.id.single_fsw);
         save_member_details = findViewById(R.id.save_member_details);
+
+        Bundle bundle = getIntent().getExtras();
+        String gName = bundle.getString(Constants.GROUP_NAME, "Default");
+        groupName.setText(gName);
+        groupName.setEnabled(false);
+        groupName.setTextColor(Color.BLACK);
+
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -41,7 +41,7 @@
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
 
-    <color name="blue">#44A1EB</color> <!-- blue -->
+    <color name="blue">#E91E63</color> <!-- blue -->
     <color name="teal">#77DDBB</color> <!-- teal -->
     <color name="green">#BBE535</color> <!-- green -->
     <color name="red">#F56545</color> <!-- red -->

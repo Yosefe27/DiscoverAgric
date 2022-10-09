@@ -80,7 +80,7 @@ public class AddMemberToGroupActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), GroupAdminActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminActivity.class);
                 startActivity(intent);
             }
         });
@@ -178,17 +178,23 @@ public class AddMemberToGroupActivity extends AppCompatActivity {
                                 Groups groups = listGroups.get(position);
 
                                 Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
-                                intent.putExtra("intent_group_id", groups.getId());
-                                intent.putExtra("intent_group_name", groups.getGroup_name());
-                                intent.putExtra("intent_group_date_created", groups.getDate_created());
-                                intent.putExtra("intent_group_annual_interest_rate", groups.getAnnual_interest_rate());
-                                intent.putExtra("intent_cycle_number", groups.getCycle_number());
-                                intent.putExtra("intent_first_training_meeting_date", groups.getFirst_training_meeting_date());
-                                intent.putExtra("intent_date_savings_started", groups.getDate_savings_started());
-                                intent.putExtra("intent_reinvested_savings_cycle_start", groups.getReinvested_savings_cycle_start());
-                                intent.putExtra("registered_members_cycle_start", groups.getRegistered_members_cycle_start());
-                               // intent.putExtra("group_management_spinner", groups.getGroup_management_spinner());
-                                intent.putExtra("intent_group_status", groups.getStatus());
+//                                intent.putExtra("intent_group_id", groups.getId());
+//                                intent.putExtra("intent_group_name", groups.getGroup_name());
+//                                intent.putExtra("intent_group_date_created", groups.getDate_created());
+//                                intent.putExtra("intent_group_annual_interest_rate", groups.getAnnual_interest_rate());
+//                                intent.putExtra("intent_cycle_number", groups.getCycle_number());
+//                                intent.putExtra("intent_first_training_meeting_date", groups.getFirst_training_meeting_date());
+//                                intent.putExtra("intent_date_savings_started", groups.getDate_savings_started());
+//                                intent.putExtra("intent_reinvested_savings_cycle_start", groups.getReinvested_savings_cycle_start());
+//                                intent.putExtra("registered_members_cycle_start", groups.getRegistered_members_cycle_start());
+//                               // intent.putExtra("group_management_spinner", groups.getGroup_management_spinner());
+//                                intent.putExtra("intent_group_status", groups.getStatus());
+
+                                Bundle bundle = new Bundle();
+
+                                bundle.putString(Constants.GROUP_NAME, groups.getGroup_name());
+
+                                intent.putExtras(bundle);
                                 startActivity(intent);
 
                             }
