@@ -19,6 +19,7 @@ import com.bluecode.weledger.FacilitatorGroupsActivity;
 import com.bluecode.weledger.FacilitatorNewGroupActivity;
 import com.bluecode.weledger.NewMemberActivity;
 import com.bluecode.weledger.R;
+import com.bluecode.weledger.ViewGroupMembersFacilitatorActivity;
 import com.bluecode.weledger.models.GroupAdminModel;
 import com.bluecode.weledger.models.MainActivityModel;
 
@@ -65,7 +66,7 @@ public class GroupAdminAdapter extends RecyclerView.Adapter<GroupAdminAdapter.vi
                         context.startActivity(addMember);
                         break;
                     case "view members":
-                        Intent viewMembers = new Intent(context, BookWriterMembersActivity.class);
+                        Intent viewMembers = new Intent(context, ViewGroupMembersFacilitatorActivity.class);
                         context.startActivity(viewMembers);
                 }
             }

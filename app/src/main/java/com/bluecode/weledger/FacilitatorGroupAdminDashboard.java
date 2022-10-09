@@ -11,7 +11,7 @@ import com.bluecode.weledger.models.GroupAdminModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacilitatorGroupAdminActivity extends AppCompatActivity {
+public class FacilitatorGroupAdminDashboard extends AppCompatActivity {
     ArrayList<GroupAdminModel> models = new ArrayList<>();
     RecyclerView recyclerView;
     @Override
@@ -20,8 +20,8 @@ public class FacilitatorGroupAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group_admin);
         recyclerView = findViewById(R.id.mainAdminRecycler);
         models = (ArrayList<GroupAdminModel>) getData();
-        GroupAdminAdapter groupAdminAdapter = new GroupAdminAdapter(models, FacilitatorGroupAdminActivity.this);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(FacilitatorGroupAdminActivity.this,3);
+        GroupAdminAdapter groupAdminAdapter = new GroupAdminAdapter(models, FacilitatorGroupAdminDashboard.this);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(FacilitatorGroupAdminDashboard.this,3);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(groupAdminAdapter);
 

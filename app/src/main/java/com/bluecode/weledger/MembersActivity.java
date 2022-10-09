@@ -135,7 +135,7 @@ public class MembersActivity extends AppCompatActivity {
                 try {
                     JSONObject object = new JSONObject(response);
                     str_my_name = object.getString("full_name");
-str_user_role = object.getString("user_role");
+                    str_user_role = object.getString("user_role");
                     str_group_name = object.getString("group_name");
                     JSONArray array = object.getJSONArray("group_members");
                     for (int i = 0; i < array.length(); i++) {

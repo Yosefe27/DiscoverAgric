@@ -19,16 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
-            android:name=".FacilitatorViewGroupMembers"
+            android:name=".ViewGroupMembersFacilitatorActivity"
             android:exported="false" />
         <activity
-            android:name=".BookWriterAdminActivity"
+            android:name=".BookWriterAdminDashboard"
             android:exported="false" />
         <activity
             android:name=".AddMemberToGroupActivity"
             android:exported="false" />
         <activity
-            android:name=".FacilitatorGroupAdminActivity"
+            android:name=".FacilitatorGroupAdminDashboard"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

@@ -11,15 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -160,7 +157,7 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 reportsAlert.dismiss();
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
                 startActivity(intent);
                 finish();
             }

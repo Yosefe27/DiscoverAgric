@@ -80,7 +80,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
                 startActivity(intent);
             }
         });
