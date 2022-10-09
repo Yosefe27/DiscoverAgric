@@ -151,7 +151,7 @@ public class ViewGroupMembersFacilitatorActivity extends AppCompatActivity {
                                 int position = recyclerview.getChildLayoutPosition(view);
                                 FacilitatorViewMembersModel groups = listGroups.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), NewMemberActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), ViewActualMembersFacilitator.class);
 //                                intent.putExtra("intent_group_id", groups.getId());
 //                                intent.putExtra("intent_group_name", groups.getGroup_name());
 //                                intent.putExtra("intent_group_date_created", groups.getDate_created());
@@ -166,7 +166,7 @@ public class ViewGroupMembersFacilitatorActivity extends AppCompatActivity {
 
                                 Bundle bundle = new Bundle();
 
-                                bundle.putString(Constants.GROUP_NAME, groups.getGroup_name());
+                                bundle.putString(Constants.GROUP_ID, groups.getId());
 
                                 intent.putExtras(bundle);
                                 startActivity(intent);

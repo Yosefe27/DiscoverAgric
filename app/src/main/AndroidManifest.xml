@@ -19,14 +19,19 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
-            android:name=".ViewGroupMembersFacilitatorActivity"
+            android:name=".ViewActualMembersFacilitator"
             android:exported="false" />
+        <activity
+            android:name=".ViewGroupMembersFacilitatorActivity"
+            android:exported="false"
+            android:parentActivityName=".FacilitatorGroupAdminDashboard"/>
         <activity
             android:name=".BookWriterAdminDashboard"
             android:exported="false" />
         <activity
             android:name=".AddMemberToGroupActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".FacilitatorGroupAdminDashboard"/>
         <activity
             android:name=".FacilitatorGroupAdminDashboard"
             android:exported="false" />
@@ -51,7 +56,8 @@
         <activity android:name=".FacilitatorGroupTransactionsHistoryActivity" />
         <activity android:name=".BookWriterLoansActivity" />
         <activity android:name=".NewPaymentActivity" />
-        <activity android:name=".FacilitatorGroupsActivity" />
+        <activity android:name=".FacilitatorGroupsActivity"
+            android:parentActivityName=".FacilitatorGroupAdminDashboard"/>
         <activity android:name=".FacilitatorNewMemberActivity" />
         <activity
             android:name=".FacilitatorNewGroupActivity"
