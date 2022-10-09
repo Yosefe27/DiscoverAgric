@@ -57,7 +57,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
     RequestQueue mRequestQueue;
     ArrayList<Members> listMembers = new ArrayList<>();
     Context context;
-    String str_a, members_list = BASE_URL + "list_of_group_members.php";
+    String str_a, members_list = BASE_URL + "list_of_group_members_facilitator.php";
     String membership_response = BASE_URL + "membership_response.php";
     String str_user_role,str_my_name,str_group_name;
     MembersAdapter membersAdapter;
@@ -72,7 +72,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Group Members");
-        toolbar.setSubtitle("My Group Members");
+        toolbar.setSubtitle("All Group Members");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -340,8 +340,6 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
 
             }
         }) {
-
-            //            first_name, surname, nrc, phone, email, pas, dob
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
@@ -408,7 +406,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
     public void onBackPressed() {
 
         finish();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
         startActivity(intent);
     }
 }

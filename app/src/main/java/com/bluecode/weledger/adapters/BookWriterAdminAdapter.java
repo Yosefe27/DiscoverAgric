@@ -23,6 +23,7 @@ import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.BookWriterAdminModel;
 import com.bluecode.weledger.models.GroupAdminModel;
 import com.bluecode.weledger.models.MainActivityModel;
+import com.bluecode.weledger.utils.BookwriterNewMemberActivity;
 
 import java.util.ArrayList;
 
@@ -56,7 +57,7 @@ public class BookWriterAdminAdapter extends RecyclerView.Adapter<BookWriterAdmin
                 switch(id){
 
                     case "add member":
-                        Intent addMember = new Intent(context, NewMemberActivity.class);
+                        Intent addMember = new Intent(context, BookwriterNewMemberActivity.class);
                         context.startActivity(addMember);
                         break;
                     case "view members":

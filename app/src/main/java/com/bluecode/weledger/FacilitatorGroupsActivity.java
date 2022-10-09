@@ -325,7 +325,7 @@ public class FacilitatorGroupsActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         finish();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
         startActivity(intent);
     }
 }

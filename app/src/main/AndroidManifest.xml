@@ -76,6 +76,7 @@
         <activity android:name=".BookwriterSavingsActivity" />
         <activity android:name=".BookwriterFinesActivity" />
         <activity android:name=".BookwriterSocialFundActivity" />
+        <activity android:name=".utils.BookwriterNewMemberActivity" />
     </application>
 
 </manifest>

@@ -3,6 +3,8 @@ package com.bluecode.weledger;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.bluecode.weledger.adapters.BookWriterAdminAdapter;
@@ -32,5 +34,12 @@ public class BookWriterAdminDashboard extends AppCompatActivity {
         models.add(new BookWriterAdminModel("Add Members",R.drawable.ic_add_members,R.color.container_color,"add member"));
         models.add(new BookWriterAdminModel("View Members",R.drawable.ic_members,R.color.container_color2,"view members"));
         return models;
+    }
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 }
