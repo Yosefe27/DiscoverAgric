@@ -1,5 +1,7 @@
 package com.bluecode.weledger.adapters;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bluecode.weledger.FacilitatorGroupsActivity;
 import com.bluecode.weledger.R;
+import com.bluecode.weledger.ViewActualMembersFacilitator;
 import com.bluecode.weledger.models.FacilitatorViewMembersModel;
 import com.bluecode.weledger.models.Groups;
 
@@ -42,7 +46,23 @@ public class FacilitatorViewGroupMembersAdapter extends RecyclerView.Adapter<Fac
     public void onBindViewHolder(@NonNull FacilitatorViewGroupMembersAdapter.viewHolder holder, int position) {
         final FacilitatorViewMembersModel currentGroups = listGroups.get(position);
         holder.group_name.setSelected(true);
-        holder.group_name.setText(String.valueOf(currentGroups.getGroup_name()));
+        String name = String.valueOf(currentGroups.getGroup_name());
+        String id = String.valueOf(currentGroups.getId());
+        holder.group_name.setText(name);
+        holder.group_id.setText("ID:  "+id);
+
+
+
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clickListener.onClick(view);
+            }
+        });
+
 
     }
 
@@ -61,10 +81,15 @@ public class FacilitatorViewGroupMembersAdapter extends RecyclerView.Adapter<Fac
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-        TextView group_name;
+        TextView group_name,group_id;
+
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             group_name = itemView.findViewById(R.id.group_name);
+            group_id = itemView.findViewById(R.id.group_IDD);
+
+
+
         }
     }
 }
