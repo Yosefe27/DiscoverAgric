@@ -48,7 +48,7 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MyGroupTransactionsHistoryActivity.class);
                 startActivity(intent);
             }
         });
