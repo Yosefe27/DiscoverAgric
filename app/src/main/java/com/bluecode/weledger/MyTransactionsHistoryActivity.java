@@ -87,7 +87,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BookwriterSavingsOptions.class);
                 startActivity(intent);
             }
         });
@@ -308,7 +308,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), BookwriterSavingsOptions.class);
         startActivity(intent);
     }
 
