@@ -64,7 +64,6 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
             }
         });
 
-
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<BookWriterSavingModel>) getData();
         bookWriterSavingAdapter = new BookWriterSavingAdapter(models,getBaseContext());
@@ -84,8 +83,8 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
                         break;
                     case "Group Savings":
                         finish();
-//                Intent groupSavings = new Intent(getApplicationContext(), MyGroupTransactionsHistoryActivity.class);
-//                startActivity(groupSavings);
+               Intent groupSavings = new Intent(getApplicationContext(), MyGroupTransactionsHistoryActivity.class);
+               startActivity(groupSavings);
                         break;
                     case "Add Savings":
                         finish();
@@ -94,7 +93,6 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
                         break;
                     case "Edit Savings":
                         Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-//            }
                         break;
 
                 }
@@ -104,39 +102,6 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(bookWriterSavingAdapter);
-
-//        my_savings_option.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        group_savings_option.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        add_savings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        edit_savings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
     }
 
     @Override

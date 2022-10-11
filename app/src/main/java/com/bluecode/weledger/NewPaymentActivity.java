@@ -200,8 +200,8 @@ public class NewPaymentActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("amount", amount);
-                parms.put("select_member", select_member);
-                parms.put("contribution_date",contribution_date);
+                parms.put("full_name", select_member);
+                parms.put("month_contributed_for",contribution_date);
                 parms.put("a", str_a);
                 return parms;
             }
