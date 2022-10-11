@@ -64,6 +64,9 @@ public class MembersActivity extends AppCompatActivity {
     ImageView members_approvals;
     Toolbar toolbar;
 
+    String group_name;
+    String group_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +75,20 @@ public class MembersActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("Group Members");
         toolbar.setSubtitle("My Group Members");
+
+        Bundle bundle = getIntent().getExtras();
+        try {
+
+            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
+            group_id = bundle.getString(Constants.GROUP_ID,"Default");
+
+        }catch (Exception e){
+
+            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
+
+
+        }
+
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -403,6 +420,10 @@ public class MembersActivity extends AppCompatActivity {
 
         finish();
         Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.GROUP_NAME, group_name);
+        bundle.putString(Constants.GROUP_ID,group_id);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

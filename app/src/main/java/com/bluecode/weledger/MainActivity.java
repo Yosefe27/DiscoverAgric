@@ -46,6 +46,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.MainActivityAdapter;
 import com.bluecode.weledger.models.MainActivityModel;
+import com.bluecode.weledger.models.Members;
 import com.bluecode.weledger.models.MyContributions;
 import com.google.android.material.navigation.NavigationView;
 
@@ -75,14 +76,25 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     NavigationView navigationView;
 
-
+    String group_name;
+    String group_id;
     ArrayList<MainActivityModel> models = new ArrayList<>();
     RecyclerView recyclerView;
+    MainActivityAdapter mainActivityAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle bundle = getIntent().getExtras();
+        try {
+            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
+            group_id = bundle.getString(Constants.GROUP_ID,"Default");
+        }catch (Exception e){
+
+            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
+        }
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -93,10 +105,133 @@ public class MainActivity extends AppCompatActivity {
 
       recyclerView = findViewById(R.id.mainRecycler);
        models = (ArrayList<MainActivityModel>) getData();
-        MainActivityAdapter mainActivityAdapter = new MainActivityAdapter(models,MainActivity.this);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,3);
+        mainActivityAdapter = new MainActivityAdapter(models,getBaseContext());
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,2);
+       mainActivityAdapter.setClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               int position = recyclerView.getChildLayoutPosition(v);
+               MainActivityModel mainActivityModel = models.get(position);
+               int card = mainActivityModel.getCardNumber();
+               Bundle bundle = new Bundle();
+               switch (card) {
+                   case 1:
+                       Intent bookAdmin = new Intent(getBaseContext(), BookWriterAdminDashboard.class);
+                       bundle.putString(Constants.GROUP_NAME, group_name);
+                       bundle.putString(Constants.GROUP_ID,group_id);
+                       bookAdmin.putExtras(bundle);
+                       startActivity(bookAdmin);
+                       finish();
+                       break;
+                   case 2:
+                       Intent bookSaving= new Intent(getBaseContext(), BookwriterSavingsOptions.class);
+                       startActivity(bookSaving);
+                       bundle.putString(Constants.GROUP_NAME, group_name);
+                       bundle.putString(Constants.GROUP_ID,group_id);
+                       bookSaving.putExtras(bundle);
+                       startActivity(bookSaving);
+                       finish();
+                       break;
+                   case 3:
+                       Intent bookLoan= new Intent(getBaseContext(), BookWriterLoansActivity.class);
+                       startActivity(bookLoan);
+                       finish();
+                       break;
+                   case 4:
+                       Intent bookRepayment= new Intent(getBaseContext(), BookwriterRepaymentsActivity.class);
+                       startActivity(bookRepayment);
+                       finish();
+                       break;
+                   case 5:
+                       Intent bookFines= new Intent(getBaseContext(), BookwriterFinesActivity.class);
+                       startActivity(bookFines);
+                       finish();
+                       break;
+                   case 6:
+                       Intent bookSocial= new Intent(getBaseContext(), BookwriterSocialFundActivity.class);
+                       startActivity(bookSocial);
+                       finish();
+                       break;
+                   case 7:
+//                        Intent bookRegister= new Intent(context, BookwriterRegisterActivity.class);
+//                        context.startActivity(bookRegister);
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 8:
+//                        Intent groupAdmin = new Intent(context, FacilitatorGroupsActivity.class);
+//                        context.startActivity(groupAdmin);
+                       Intent groupAdmin = new Intent(getBaseContext(), FacilitatorGroupAdminDashboard.class);
+                       startActivity(groupAdmin);
+                       finish();
+                       break;
+                   case 9:
+                       Intent groupSaving = new Intent(getBaseContext(), FacilitatorGroupSavings.class);
+                       startActivity(groupSaving);
+                       finish();
+                       break;
+                   case 10:
+                       Intent groupLoan = new Intent(getBaseContext(), FacilitatorGroupLoans.class);
+                       startActivity(groupLoan);
+                       finish();
+                       break;
+                   case 11:
+                       Intent groupRepayments = new Intent(getBaseContext(), FacilitatorGroupRepayments.class);
+                       startActivity(groupRepayments);
+                       finish();
+                       break;
+                   case 12:
+                       Intent groupFines = new Intent(getBaseContext(), FacilitatorGroupFines.class);
+                       startActivity(groupFines);
+                       finish();
+                       break;
+                   case 13:
+//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
+//                        context.startActivity(groupLedger);
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 14:
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 15:
+//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
+//                        context.startActivity(groupLedger);
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 16:
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 17:
+//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
+//                        context.startActivity(groupLedger);
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 18:
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 19:
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 20:
+//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
+//                        context.startActivity(groupLedger);
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 21:
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+                   case 22:
+                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       break;
+
+
+               }
+
+           }
+       });
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mainActivityAdapter);
+
 
         drawer = findViewById(R.id.DrawerLayout);
         navigationView = findViewById(R.id.navigation);
@@ -469,38 +604,39 @@ public class MainActivity extends AppCompatActivity {
         str_user_role = preferences.getString("user_role", "");
         if(str_user_role.equals("2")){ //2 is for book writer
             mainModel.add(new MainActivityModel("Member Admin",R.drawable.ic_admin,R.color.container_color,1));
-            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color2,2));
+            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color,2));
             mainModel.add(new MainActivityModel("Loan Requests",R.drawable.ic_loan,R.color.container_color,3));
-            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color2,4));
+            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color,4));
             mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,5));
-            mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color2,6));
+            mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color,6));
             mainModel.add(new MainActivityModel("Member Register",R.drawable.ic_register,R.color.container_color,7));
 
 
         }
         else if(str_user_role.equals("3")){//3 is for facilitator
             mainModel.add(new MainActivityModel("Group Admin",R.drawable.ic_admin,R.color.container_color,8));
-            mainModel.add(new MainActivityModel("Group Savings",R.drawable.ic_saving,R.color.container_color2,9));
+            mainModel.add(new MainActivityModel("Group Savings",R.drawable.ic_saving,R.color.container_color,9));
             mainModel.add(new MainActivityModel("Group Loans",R.drawable.ic_loan,R.color.container_color,10));
-            mainModel.add(new MainActivityModel("Repayment",R.drawable.ic_payments,R.color.container_color2,11));
+            mainModel.add(new MainActivityModel("Repayment",R.drawable.ic_payments,R.color.container_color,11));
             mainModel.add(new MainActivityModel("Group Fines",R.drawable.ic_fine,R.color.container_color,12));
-            mainModel.add(new MainActivityModel("Member Register",R.drawable.ic_register,R.color.container_color2,13));
+            mainModel.add(new MainActivityModel("Member Register",R.drawable.ic_register,R.color.container_color,13));
             mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color,14));
 
         }
         else {
 
             mainModel.add(new MainActivityModel("Members",R.drawable.ic_member,R.color.container_color,15));
-            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color2,16));
+            mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color,16));
             mainModel.add(new MainActivityModel("Loans Request",R.drawable.ic_loan,R.color.container_color,17));
-            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color2,18));
+            mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color,18));
             mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,19));
-            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color2,20));
+            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color,20));
             mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color,21));
-            mainModel.add(new MainActivityModel("Attendance Register",R.drawable.ic_register,R.color.container_color2,22));
+            mainModel.add(new MainActivityModel("Attendance Register",R.drawable.ic_register,R.color.container_color,22));
 
 
         }
              return mainModel;
     }
+
 }

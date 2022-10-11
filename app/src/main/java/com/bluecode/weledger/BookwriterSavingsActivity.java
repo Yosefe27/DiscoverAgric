@@ -306,7 +306,7 @@ public class BookwriterSavingsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
         startActivity(intent);
     }
 

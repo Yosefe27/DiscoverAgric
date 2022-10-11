@@ -30,9 +30,14 @@ import java.util.ArrayList;
 public class BookWriterAdminAdapter extends RecyclerView.Adapter<BookWriterAdminAdapter.viewHolder> {
     ArrayList<BookWriterAdminModel> models;
     Context context;
+    View.OnClickListener clickListener;
     public BookWriterAdminAdapter(ArrayList<BookWriterAdminModel> models, Context context){
         this.models = models;
         this.context = context;
+    }
+
+    public void setClickListener(View.OnClickListener callback) {
+        clickListener = callback;
     }
     @NonNull
     @Override
@@ -51,20 +56,10 @@ public class BookWriterAdminAdapter extends RecyclerView.Adapter<BookWriterAdmin
         holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, bookWriterAdminModel.getColor()));
 
         String id = bookWriterAdminModel.getCardID();
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                switch(id){
-
-                    case "add member":
-                        Intent addMember = new Intent(context, BookwriterNewMemberActivity.class);
-                        context.startActivity(addMember);
-                        break;
-                    case "view members":
-                        Intent viewGroup = new Intent(context, MembersActivity.class);
-                        context.startActivity(viewGroup);
-                        break;
-                }
+            public void onClick(View view) {
+                clickListener.onClick(view);
             }
         });
     }

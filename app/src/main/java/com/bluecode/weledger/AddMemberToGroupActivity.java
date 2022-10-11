@@ -354,9 +354,9 @@ public class AddMemberToGroupActivity extends AppCompatActivity {
 //    }
     @Override
     public void onBackPressed() {
-
         finish();
         Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
         startActivity(intent);
+
     }
 }

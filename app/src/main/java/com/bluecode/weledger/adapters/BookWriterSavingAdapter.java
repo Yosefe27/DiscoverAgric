@@ -26,16 +26,17 @@ import com.bluecode.weledger.FacilitatorGroupSavings;
 import com.bluecode.weledger.BookWriterLoansActivity;
 import com.bluecode.weledger.FacilitatorGroupAdminDashboard;
 import com.bluecode.weledger.R;
+import com.bluecode.weledger.models.BookWriterSavingModel;
 import com.bluecode.weledger.models.MainActivityModel;
 
 import java.util.ArrayList;
 
-public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.viewHolder> {
-    ArrayList<MainActivityModel> model;
+public class BookWriterSavingAdapter extends RecyclerView.Adapter<BookWriterSavingAdapter.viewHolder> {
+    ArrayList<BookWriterSavingModel> model;
     Context context;
     View.OnClickListener clickListener;
 
-    public MainActivityAdapter(ArrayList<MainActivityModel> model, Context context) {
+    public BookWriterSavingAdapter(ArrayList<BookWriterSavingModel> model, Context context) {
         this.model = model;
         this.context = context;
     }
@@ -45,22 +46,18 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     @NonNull
     @Override
-    public MainActivityAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BookWriterSavingAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_layout_cardview, parent, false);
-        MainActivityAdapter.viewHolder mainActivityAdapter = new MainActivityAdapter.viewHolder(view);
+        BookWriterSavingAdapter.viewHolder mainActivityAdapter = new BookWriterSavingAdapter.viewHolder(view);
         return mainActivityAdapter;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainActivityAdapter.viewHolder holder, int position) {
-        final MainActivityModel mainActivityModel = model.get(position);
+    public void onBindViewHolder(@NonNull BookWriterSavingAdapter.viewHolder holder, int position) {
+        final BookWriterSavingModel mainActivityModel = model.get(position);
         //   holder.imageView.setImageDrawable(mainActivityModel.getImageView());
         holder.name.setText(mainActivityModel.getNameType());
-        holder.imageView.setBackgroundResource(mainActivityModel.getImageView());
-//        holder.cardView.setBackgroundColor(mainActivityModel.getCardNumber());
-        holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, mainActivityModel.getColor()));
-
-        int card = mainActivityModel.getCardNumber();
+        holder.imageView.setBackgroundResource(mainActivityModel.getImage());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
