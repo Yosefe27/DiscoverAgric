@@ -2,6 +2,7 @@ package com.bluecode.weledger.utils;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -29,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bluecode.weledger.BookWriterAdminDashboard;
 import com.bluecode.weledger.Constants;
+import com.bluecode.weledger.MainActivity;
 import com.bluecode.weledger.R;
 
 import org.json.JSONException;
@@ -44,6 +46,15 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     EditText firstName,lastName,userName,passWord,admissionDate,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
+    String group_name;
+    String group_id;
+
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String d_value= "Default";
+    public static final String d_value2= "Default";
+
+
+    SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +75,30 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         spinner_singleFSW = findViewById(R.id.single_fsw);
         save_member_details = findViewById(R.id.save_member_details);
 
-        groupName.setText("BLUECODE");
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(d_value, group_name);
+        editor.putString(d_value2, group_id);
+        editor.commit();
+
+        Bundle bundle = getIntent().getExtras();
+        try {
+
+            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
+            group_id = bundle.getString(Constants.GROUP_ID,"Default");
+
+        }catch (Exception e){
+
+            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
+
+
+        }
+
+
+        groupName.setText(group_name);
         groupName.setEnabled(false);
         groupName.setTextColor(Color.BLACK);
-        groupID.setText("1");
+        groupID.setText(group_id);
         groupID.setEnabled(false);
         groupID.setTextColor(Color.BLACK);
 
@@ -231,5 +262,15 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
                 reportsAlert.dismiss();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.GROUP_NAME, group_name);
+        bundle.putString(Constants.GROUP_ID,group_id);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
     }
 }

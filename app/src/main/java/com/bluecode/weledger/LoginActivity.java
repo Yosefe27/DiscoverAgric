@@ -155,22 +155,34 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
-
-                        String received_msg = object.getString("msg");
-                        String received_a = object.getString("a");
-                        String user_role = object.getString("user_role");
                         String name = object.getString("name");
+                        String group_id = object.getString("group_id");
+                        String id = object.getString("id");
+                        String user_role = object.getString("user_role");
+                        String group_name = object.getString("group_name");
+                        String received_a = object.getString("a");
+
                         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("login_status", login_status);
-                        editor.putString("user_role", user_role);
-                        editor.putString("name", name);
-                        editor.putString("a", received_a);
+
                         editor.putString("pref_login_status",login_status);
+                        editor.putString("login_status", login_status);
+                        editor.putString("name", name);
+                        editor.putString(Constants.GROUP_ID, group_id);
+                        editor.putString("id", id);
+                        editor.putString("user_role", user_role);
+                        editor.putString(Constants.GROUP_NAME, group_name);
+                        editor.putString("a", received_a);
+
+
                         editor.apply();
                         reportsAlert.dismiss();
                         finish();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString(Constants.GROUP_NAME,group_name);
+                        bundle.putString(Constants.GROUP_ID,group_id);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();

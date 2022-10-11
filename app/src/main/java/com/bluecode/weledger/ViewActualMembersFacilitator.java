@@ -398,15 +398,14 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
             }
         });
 
-
     }
 
 
     @Override
     public void onBackPressed() {
-
         finish();
         Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
         startActivity(intent);
+
     }
 }
