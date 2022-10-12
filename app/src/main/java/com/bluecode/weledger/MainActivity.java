@@ -65,9 +65,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        name = findViewById(R.id.welcomeName);
-        g_name = findViewById(R.id.welcomeGroup);
-        u_role = findViewById(R.id.welcomeRole);
+
+
 //        Bundle bundle = getIntent().getExtras();
 //        try {
 //            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
@@ -78,23 +77,6 @@ public class MainActivity extends AppCompatActivity {
 //            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
 //        }
 
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-          str_user_role = preferences.getString("user_role", "");
-          user_name = preferences.getString("name", "");
-          group_name = preferences.getString("group_name", "");
-
-
-          g_name.setText("User Group Name : "+group_name);
-          name.setText("User Name: "+user_name);
-
-          if (str_user_role.equals("1")){
-              u_role.setText("User Role: "+"Ordinary Member");
-          } else if(str_user_role.equals("2")){
-              u_role.setText("User Role: "+"Book Writer");
-          }else {
-              u_role.setText("User Role: "+"Facilitator");
-          }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -565,34 +547,9 @@ public class MainActivity extends AppCompatActivity {
                 dialogLogout();
                 break;
             case R.id.action_profile:
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                str_a = preferences.getString("a", "");
-                str_name = preferences.getString("name", "");
-                str_user_role = preferences.getString("user_role", "");
-
-
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.custom_toast,
-                        (ViewGroup) findViewById(R.id.toast_layout_root));
-                TextView toastTextView = (TextView) layout.findViewById(R.id.toastTextView);
-                ImageView toastImageView = (ImageView) layout.findViewById(R.id.toastImageView);
-                if(str_user_role.equals("2")){
-                    toastTextView.setText("You`re logged in as a book writer");
-                }
-                else if(str_user_role.equals("3")){
-                    toastTextView.setText("You`re logged in as a facilitator");
-                }
-                else{
-                    toastTextView.setText("You`re logged in as an ordinary member");
-                }
-                toastImageView.setImageResource(R.drawable.ic_user_profile);
-                Toast toast = new Toast(getApplicationContext());
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setView(layout);
-                toast.show();
-
-
-
+              Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+              startActivity(intent);
+              finish();
                 break;
             default:
                 break;
