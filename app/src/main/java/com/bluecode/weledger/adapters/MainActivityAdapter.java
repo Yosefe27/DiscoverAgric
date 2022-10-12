@@ -1,30 +1,17 @@
 package com.bluecode.weledger.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bluecode.weledger.BookWriterAdminDashboard;
-import com.bluecode.weledger.BookwriterFinesActivity;
-import com.bluecode.weledger.BookwriterRepaymentsActivity;
-import com.bluecode.weledger.BookwriterSavingsOptions;
-import com.bluecode.weledger.BookwriterSocialFundActivity;
-import com.bluecode.weledger.FacilitatorGroupFines;
-import com.bluecode.weledger.FacilitatorGroupLoans;
-import com.bluecode.weledger.FacilitatorGroupRepayments;
-import com.bluecode.weledger.FacilitatorGroupSavings;
-import com.bluecode.weledger.BookWriterLoansActivity;
-import com.bluecode.weledger.FacilitatorGroupAdminDashboard;
 import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.MainActivityModel;
 

@@ -13,15 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -44,20 +40,16 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.models.MyContributions;
 import com.bluecode.weledger.adapters.MyContributionsAdapter;
-import com.bluecode.weledger.models.MyContributions;
 import com.bluecode.weledger.models.Transactions;
-import com.bluecode.weledger.utils.RecyclerTouchListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.bluecode.weledger.Constants.BASE_URL;
 import static com.bluecode.weledger.Constants.BASE_URL;
 
 public class MyTransactionsHistoryActivity extends AppCompatActivity {
@@ -87,7 +79,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), BookwriterSavingsOptions.class);
+                Intent intent = new Intent(getApplicationContext(), BookWriterSavingsOptionsDashboard.class);
                 startActivity(intent);
             }
         });
@@ -308,7 +300,7 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
-        Intent intent = new Intent(getApplicationContext(), BookwriterSavingsOptions.class);
+        Intent intent = new Intent(getApplicationContext(), BookWriterSavingsOptionsDashboard.class);
         startActivity(intent);
     }
 

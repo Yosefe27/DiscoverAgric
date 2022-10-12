@@ -1,9 +1,13 @@
 package com.bluecode.weledger;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,35 +15,25 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.bluecode.weledger.adapters.BookWriterSavingAdapter;
-import com.bluecode.weledger.adapters.MainActivityAdapter;
-import com.bluecode.weledger.models.BookWriterAdminModel;
-import com.bluecode.weledger.models.BookWriterSavingModel;
-import com.bluecode.weledger.models.MainActivityModel;
+import com.bluecode.weledger.adapters.DefaultDashboardAdapter;
+import com.bluecode.weledger.models.DefaultDashboardModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookwriterSavingsOptions extends AppCompatActivity {
+public class BookWriterSocialDashboard extends AppCompatActivity {
     Toolbar toolbar;
     LinearLayout my_savings_option,group_savings_option,add_savings,edit_savings;
     String group_name;
     String group_id;
-    ArrayList<BookWriterSavingModel> models = new ArrayList<>();
+    ArrayList<DefaultDashboardModel> models = new ArrayList<>();
     RecyclerView recyclerView;
-    BookWriterSavingAdapter bookWriterSavingAdapter;
-
+    DefaultDashboardAdapter defaultDashboardAdapter;
+    @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate (Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bookwriter_savings_options);
-
+        setContentView(R.layout.activity_book_writer_social_dashboard);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Savings");
@@ -65,33 +59,30 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.mainRecycler);
-        models = (ArrayList<BookWriterSavingModel>) getData();
-        bookWriterSavingAdapter = new BookWriterSavingAdapter(models,getBaseContext());
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(BookwriterSavingsOptions.this,2);
-        bookWriterSavingAdapter.setClickListener(new View.OnClickListener() {
+        models = (ArrayList<DefaultDashboardModel>) getData();
+        defaultDashboardAdapter = new DefaultDashboardAdapter(models,getBaseContext());
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(BookWriterSocialDashboard.this,2);
+        defaultDashboardAdapter.setClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = recyclerView.getChildLayoutPosition(v);
-                BookWriterSavingModel bookWriterSavingModel = models.get(position);
-                String card = bookWriterSavingModel.getCardNumber();
+                DefaultDashboardModel defaultDashboardModel = models.get(position);
+                String card = defaultDashboardModel.getCardNumber();
 
                 switch (card) {
-                    case "My Savings":
-                        finish();
-                Intent mySavings = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-                startActivity(mySavings );
+                    case "View Social Funds":
+//                        finish();
+//                        Intent mySavings = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
+//                        startActivity(mySavings );
+                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
                         break;
-                    case "Group Savings":
-                        finish();
-               Intent groupSavings = new Intent(getApplicationContext(), MyGroupTransactionsHistoryActivity.class);
-               startActivity(groupSavings);
+                    case "Add Social Funds":
+//                        finish();
+//                        Intent addSavings = new Intent(getApplicationContext(), NewPaymentActivity.class);
+//                        startActivity(addSavings);
+                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
                         break;
-                    case "Add Savings":
-                        finish();
-                Intent addSavings = new Intent(getApplicationContext(), NewPaymentActivity.class);
-                startActivity(addSavings);
-                        break;
-                    case "Edit Savings":
+                    case "Edit Social Funds":
                         Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
                         break;
 
@@ -101,7 +92,7 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
         });
 
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(bookWriterSavingAdapter);
+        recyclerView.setAdapter(defaultDashboardAdapter);
     }
 
     @Override
@@ -123,12 +114,11 @@ public class BookwriterSavingsOptions extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private List<BookWriterSavingModel> getData(){
-        ArrayList<BookWriterSavingModel> mainModel = new ArrayList<>();
-            mainModel.add(new BookWriterSavingModel("My Savings",R.drawable.ic_saving,"My Savings"));
-            mainModel.add(new BookWriterSavingModel("Group Savings",R.drawable.ic_group_saving,"Group Savings"));
-            mainModel.add(new BookWriterSavingModel("Add Savings",R.drawable.ic_money,"Add Savings"));
-            mainModel.add(new BookWriterSavingModel("Edit Savings",R.drawable.ic_add_pay,"Edit Savings"));
+    private List<DefaultDashboardModel> getData(){
+        ArrayList<DefaultDashboardModel> mainModel = new ArrayList<>();
+        mainModel.add(new DefaultDashboardModel("View Social Funds",R.drawable.ic_view_groups,"View Social Funds"));
+        mainModel.add(new DefaultDashboardModel("Add Social Funds",R.drawable.ic_money,"Add Social Funds"));
+        mainModel.add(new DefaultDashboardModel("Edit Social Funds",R.drawable.ic_add_pay,"Edit Social Funds"));
         return mainModel;
     }
     @Override
