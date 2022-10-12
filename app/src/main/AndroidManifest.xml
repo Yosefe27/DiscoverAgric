@@ -149,6 +149,9 @@
         <activity android:name=".BookwriterSocialFundActivity" />
         <activity android:name=".utils.BookwriterNewMemberActivity" />
         <activity android:name=".MyGroupTransactionsHistoryActivity" />
+        <activity android:name=".NewLoanRepaymentActivity" />
+        <activity android:name=".NewFinesActivity" />
+        <activity android:name=".NewSocialFundActivity" />
     </application>
 
 </manifest>

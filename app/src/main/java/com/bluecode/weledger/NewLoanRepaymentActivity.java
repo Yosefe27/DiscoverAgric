@@ -2,7 +2,6 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,15 +48,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewLoanRequestActivity extends AppCompatActivity {
+public class NewLoanRepaymentActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText amount;
-    TextView select_member,post_loan_requests,selected_member;
-    String submit_saving_url=BASE_URL+"submit_loan.php";
+    TextView select_member,post_loan_repayments,selected_member;
+    String submit_saving_url=BASE_URL+"submit_loan_repayment.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
     MembersAdapter membersAdapter;
     RequestQueue mRequestQueue;
@@ -67,25 +64,25 @@ public class NewLoanRequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_loan_request);
+        setContentView(R.layout.activity_new_loan_repayment);
         amount = findViewById(R.id.amount);
-        post_loan_requests = findViewById(R.id.post_loan_request);
+        post_loan_repayments = findViewById(R.id.post_loan_repayment);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Loans Details");
-        toolbar.setSubtitle("Post Member Loans");
+        toolbar.setTitle("Savings Details");
+        toolbar.setSubtitle("Post Member Saving");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), BookWriterLoanRequestDashboard.class);
+                Intent intent = new Intent(getApplicationContext(), BookWriterRepaymentDashboard.class);
                 startActivity(intent);
             }
         });
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = NewLoanRequestActivity.this;
+        context = NewLoanRepaymentActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
@@ -94,7 +91,7 @@ public class NewLoanRequestActivity extends AppCompatActivity {
             errorDialog("Please Check Your Internet Connection");
 
         }
-        post_loan_requests.setOnClickListener(new View.OnClickListener() {
+        post_loan_repayments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str_amount = amount.getText().toString();

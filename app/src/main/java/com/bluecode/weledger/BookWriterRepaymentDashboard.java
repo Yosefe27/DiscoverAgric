@@ -83,9 +83,9 @@ public class BookWriterRepaymentDashboard extends AppCompatActivity {
 //                        startActivity(groupSavings);
                         break;
                     case "Add Repayments":
-//                        finish();
-//                        Intent addSavings = new Intent(getApplicationContext(), NewRepaymentActivity.class);
-//                        startActivity(addSavings);
+                        finish();
+                        Intent addSavings = new Intent(getApplicationContext(), NewLoanRepaymentActivity.class);
+                        startActivity(addSavings);
                         break;
                     case "Edit Repayments":
                         Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
