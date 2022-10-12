@@ -90,11 +90,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Date"
+                    android:text="Loan Date"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/date_picker_actions"
+                    android:id="@+id/loan_date"
                     style="@style/modifiedEditText"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_edit_bg"
@@ -126,7 +126,7 @@
                 app:cardElevation="20dp">
 
                 <TextView
-                    android:id="@+id/save_payment_details"
+                    android:id="@+id/post_loan_request"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
