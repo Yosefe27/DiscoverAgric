@@ -12,11 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,39 +23,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.MainActivityAdapter;
 import com.bluecode.weledger.models.MainActivityModel;
-import com.bluecode.weledger.models.Members;
-import com.bluecode.weledger.models.MyContributions;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     GridLayout linear_bookkeeper_menu;
@@ -124,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                        finish();
                        break;
                    case 2:
-                       Intent bookSaving= new Intent(getBaseContext(), BookwriterSavingsOptions.class);
+                       Intent bookSaving= new Intent(getBaseContext(), BookWriterSavingsOptionsDashboard.class);
                        startActivity(bookSaving);
                        bundle.putString(Constants.GROUP_NAME, group_name);
                        bundle.putString(Constants.GROUP_ID,group_id);
@@ -133,29 +109,29 @@ public class MainActivity extends AppCompatActivity {
                        finish();
                        break;
                    case 3:
-                       Intent bookLoan= new Intent(getBaseContext(), BookWriterLoansActivity.class);
+                       Intent bookLoan= new Intent(getBaseContext(), BookWriterLoanRequestDashboard.class);
                        startActivity(bookLoan);
                        finish();
                        break;
                    case 4:
-                       Intent bookRepayment= new Intent(getBaseContext(), BookwriterRepaymentsActivity.class);
+                       Intent bookRepayment= new Intent(getBaseContext(), BookWriterRepaymentDashboard.class);
                        startActivity(bookRepayment);
                        finish();
                        break;
                    case 5:
-                       Intent bookFines= new Intent(getBaseContext(), BookwriterFinesActivity.class);
+                       Intent bookFines= new Intent(getBaseContext(), BookWriterFinesDashboard.class);
                        startActivity(bookFines);
                        finish();
                        break;
                    case 6:
-                       Intent bookSocial= new Intent(getBaseContext(), BookwriterSocialFundActivity.class);
+                       Intent bookSocial= new Intent(getBaseContext(), BookWriterSocialDashboard.class);
                        startActivity(bookSocial);
                        finish();
                        break;
                    case 7:
-//                        Intent bookRegister= new Intent(context, BookwriterRegisterActivity.class);
-//                        context.startActivity(bookRegister);
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                        Intent bookRegister= new Intent(getBaseContext(), BookWriterMemberRegisterDashboard.class);
+                        startActivity(bookRegister);
+
                        break;
                    case 8:
 //                        Intent groupAdmin = new Intent(context, FacilitatorGroupsActivity.class);

@@ -1,11 +1,11 @@
 package com.bluecode.weledger.models;
 
-public class BookWriterSavingModel {
+public class DefaultDashboardModel {
     String nameType;
     int image;
     String cardNumber;
 
-    public BookWriterSavingModel(String nameType, int image, String cardNumber) {
+    public DefaultDashboardModel(String nameType, int image, String cardNumber) {
         this.nameType = nameType;
         this.image = image;
         this.cardNumber = cardNumber;

@@ -82,7 +82,7 @@ public class NewPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), BookwriterSavingsOptions.class);
+                Intent intent = new Intent(getApplicationContext(), BookWriterSavingsOptionsDashboard.class);
                 startActivity(intent);
             }
         });
