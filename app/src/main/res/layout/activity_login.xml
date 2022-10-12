@@ -118,8 +118,8 @@
 
     <ImageView
         android:id="@+id/coat_of_arms_of_zambia"
-        android:layout_width="160dp"
-        android:layout_height="120dp"
+        android:layout_width="408dp"
+        android:layout_height="138dp"
         android:layout_marginTop="576dp"
         android:scaleType="centerInside"
         android:src="@drawable/coat_of_arms_of_zambia_ecap"

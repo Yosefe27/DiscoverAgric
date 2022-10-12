@@ -37,7 +37,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     GridLayout linear_bookkeeper_menu;
-    TextView name, group_balance,top_name;
+    TextView name,g_name,u_role;
     TextView save_payment,logout;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
     String group_name;
     String group_id;
+    String user_name;
+    String role;
+
     ArrayList<MainActivityModel> models = new ArrayList<>();
     RecyclerView recyclerView;
     MainActivityAdapter mainActivityAdapter;
@@ -62,16 +65,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        name = findViewById(R.id.welcomeName);
+        g_name = findViewById(R.id.welcomeGroup);
+        u_role = findViewById(R.id.welcomeRole);
+//        Bundle bundle = getIntent().getExtras();
+//        try {
+//            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
+//            group_id = bundle.getString(Constants.GROUP_ID,"Default");
+//            user_name = bundle.getString(Constants.USER_NAME,"Default");
+//        }catch (Exception e){
+//
+//            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
+//        }
 
-        Bundle bundle = getIntent().getExtras();
-        try {
-            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-        }catch (Exception e){
 
-            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-        }
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+          str_user_role = preferences.getString("user_role", "");
+          user_name = preferences.getString("name", "");
+          group_name = preferences.getString("group_name", "");
 
+
+          g_name.setText("User Group Name : "+group_name);
+          name.setText("User Name: "+user_name);
+
+          if (str_user_role.equals("1")){
+              u_role.setText("User Role: "+"Ordinary Member");
+          } else if(str_user_role.equals("2")){
+              u_role.setText("User Role: "+"Book Writer");
+          }else {
+              u_role.setText("User Role: "+"Facilitator");
+          }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                        Intent bookAdmin = new Intent(getBaseContext(), BookWriterAdminDashboard.class);
                        bundle.putString(Constants.GROUP_NAME, group_name);
                        bundle.putString(Constants.GROUP_ID,group_id);
+                       bundle.putString(Constants.USER_NAME,user_name);
                        bookAdmin.putExtras(bundle);
                        startActivity(bookAdmin);
                        finish();
@@ -104,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                        startActivity(bookSaving);
                        bundle.putString(Constants.GROUP_NAME, group_name);
                        bundle.putString(Constants.GROUP_ID,group_id);
+                       bundle.putString(Constants.USER_NAME,user_name);
                        bookSaving.putExtras(bundle);
                        startActivity(bookSaving);
                        finish();
@@ -179,21 +204,24 @@ public class MainActivity extends AppCompatActivity {
                        startActivity(ordinarySavingDashboard);
                        break;
                    case 17:
-//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
-//                        context.startActivity(groupLedger);
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+
+                       Intent ordinaryLoanDashboard = new Intent(getBaseContext(), OrdinaryMemberLoanRequestDashboard.class);
+                       startActivity(ordinaryLoanDashboard);
+                       finish();
                        break;
                    case 18:
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       Intent ordinaryRepaymentDashboard = new Intent(getBaseContext(), OrdinaryMemberRepaymentDashboard.class);
+                       startActivity(ordinaryRepaymentDashboard);
+                       finish();
                        break;
                    case 19:
                        Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
                        break;
-                   case 20:
-//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
-//                        context.startActivity(groupLedger);
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
-                       break;
+//                   case 20:
+////                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
+////                        context.startActivity(groupLedger);
+//                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+//                       break;
                    case 21:
                        Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
                        break;
@@ -608,7 +636,7 @@ public class MainActivity extends AppCompatActivity {
             mainModel.add(new MainActivityModel("Loans Request",R.drawable.ic_loan,R.color.container_color,17));
             mainModel.add(new MainActivityModel("Repayments",R.drawable.ic_payments,R.color.container_color,18));
             mainModel.add(new MainActivityModel("Fines",R.drawable.ic_fine,R.color.container_color,19));
-            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color,20));
+//            mainModel.add(new MainActivityModel("Ledger",R.drawable.ic_ledger,R.color.container_color,20));
             mainModel.add(new MainActivityModel("Social Funds",R.drawable.ic_social_fund,R.color.container_color,21));
             mainModel.add(new MainActivityModel("Attendance Register",R.drawable.ic_register,R.color.container_color,22));
 

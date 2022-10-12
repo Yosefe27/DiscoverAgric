@@ -11,7 +11,9 @@ public final class Constants {
     public static final String GROUP_NAME = "group_name";
     public static final String GROUP_ID = "group_id";
     public static final String USER_NAME = "name";
+    public static final String USER_ROLE = "role";
     public static final String USER_ID = "id";
+
 
 
 
