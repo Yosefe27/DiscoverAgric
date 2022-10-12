@@ -182,6 +182,8 @@ public class LoginActivity extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putString(Constants.GROUP_NAME,group_name);
                         bundle.putString(Constants.GROUP_ID,group_id);
+                        bundle.putString(Constants.USER_NAME,name);
+                        bundle.putString(Constants.USER_ROLE,user_role);
                         intent.putExtras(bundle);
                         startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {

@@ -2,6 +2,7 @@ package com.bluecode.weledger.utils;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,6 +56,7 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
 
 
     SharedPreferences sharedpreferences;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,23 +83,27 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         editor.putString(d_value2, group_id);
         editor.commit();
 
-        Bundle bundle = getIntent().getExtras();
-        try {
+//        Bundle bundle = getIntent().getExtras();
+//        try {
+//
+//            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
+//            group_id = bundle.getString(Constants.GROUP_ID,"Default");
+//
+//        }catch (Exception e){
+//
+//            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
+//
+//
+//        }
 
-            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-
-        }catch (Exception e){
-
-            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-
-
-        }
-
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        group_name = preferences.getString("group_name", "");
+        group_id = preferences.getString("group_id", "");
 
         groupName.setText(group_name);
         groupName.setEnabled(false);
         groupName.setTextColor(Color.BLACK);
+
         groupID.setText(group_id);
         groupID.setEnabled(false);
         groupID.setTextColor(Color.BLACK);

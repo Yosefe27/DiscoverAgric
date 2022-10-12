@@ -39,6 +39,32 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+        <TextView
+            android:id="@+id/welcomeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/welcomeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/welcomeRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"/>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
