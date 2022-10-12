@@ -169,12 +169,14 @@ public class MainActivity extends AppCompatActivity {
                        Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
                        break;
                    case 15:
-//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
-//                        context.startActivity(groupLedger);
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       finish();
+                        Intent ordinaryMembers = new Intent(getBaseContext(), OrdinaryMembersActivity.class);
+                        startActivity(ordinaryMembers);
                        break;
                    case 16:
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       finish();
+                       Intent ordinarySavingDashboard = new Intent(getBaseContext(), OrdinaryMemberSavingsDashboard.class);
+                       startActivity(ordinarySavingDashboard);
                        break;
                    case 17:
 //                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
