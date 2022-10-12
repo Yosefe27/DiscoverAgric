@@ -2,6 +2,7 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -48,15 +50,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NewLoanRequestActivity extends AppCompatActivity {
-Toolbar toolbar;
-EditText amount;
-TextView select_member;
+    Toolbar toolbar;
+    EditText amount,loan_date;
+    TextView select_member,post_loan_request;
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
-    String membership_response = BASE_URL + "membership_response.php";
+    String submit_loan_request_url=BASE_URL+"submit_loan_request.php";
     MembersAdapter membersAdapter;
     RequestQueue mRequestQueue;
     ArrayList<Members> listMembers = new ArrayList<>();
@@ -65,12 +68,16 @@ TextView select_member;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_loan_request);
+        loan_date = findViewById(R.id.loan_date);
+        select_member = findViewById(R.id.select_member);
+        post_loan_request = findViewById(R.id.post_loan_request);
+        amount = findViewById(R.id.amount);
         toolbar = findViewById(R.id.toolbar);
         amount = findViewById(R.id.amount);
         select_member = findViewById(R.id.select_member);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Loan Request");
-        toolbar.setSubtitle("New Loan Request Details");
+        toolbar.setSubtitle("Post Loan Request");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +87,27 @@ TextView select_member;
                 startActivity(intent);
             }
         });
+
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        loan_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = new DatePickerDialog(NewLoanRequestActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        month = month+1;
+                        String date = year+"/"+month+"/"+dayOfMonth;
+                        loan_date.setText(date);
+                    }
+                },year, month,day);
+                dialog.show();
+            }
+        });
+
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         context = NewLoanRequestActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -94,11 +122,97 @@ TextView select_member;
             @Override
             public void onClick(View view) {
                     membersDisplayDialog();
+            }
+        });
 
+        post_loan_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str_amount = amount.getText().toString();
+                String str_select_member = select_member.getText().toString();
+                //String str_contribution_date = loan_date.getText().toString();
+                if(amount.getText().toString().isEmpty()){
+                    errorDialog("Amount should not be empty.");
+                }
+                else if(select_member.getText().toString().isEmpty()){
+                    errorDialog("Member Name should not be empty.");
+                }
+                else{
+                    startSubmission(str_amount,
+                            str_select_member);
+                }
             }
         });
 
     }
+
+    private void startSubmission(final String amount,String select_member){
+        //        signin_progress.setVisibility(View.VISIBLE);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String str_a = preferences.getString("a", "");
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
+
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+        //finally creating the alert dialog and displaying it
+        final AlertDialog reportsAlert = builder.create();
+        // Let's start with animation work. We just need to create a style and use it here as follow.
+        if (reportsAlert.getWindow() != null)
+            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+        reportsAlert.setCancelable(true);
+        reportsAlert.setCanceledOnTouchOutside(true);
+        reportsAlert.show();
+        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, submit_loan_request_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                Log.v("savings_url", response);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
+
+                        String received_msg = object.getString("msg");
+
+                        reportsAlert.dismiss();
+                        errorDialog(object.getString("msg"));
+                    } else if (object.getString("status").equals("failed")) {
+                        reportsAlert.dismiss();
+//                        signin_progress.setVisibility(View.GONE);
+                        errorDialog(object.getString("msg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+
+            //amount
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> parms = new HashMap<String, String>();
+                parms.put("amount", amount);
+                parms.put("full_name", select_member);
+                //parms.put("start_date",contribution_date);
+                parms.put("a", str_a);
+                return parms;
+            }
+        };
+        stringRequest.setShouldCache(false);
+        mRequestQueue.add(stringRequest);
+    }
+
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
