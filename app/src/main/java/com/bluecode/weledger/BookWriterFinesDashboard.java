@@ -75,10 +75,9 @@ public class BookWriterFinesDashboard extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
                         break;
                     case "Add Fines":
-//                        finish();
-//                        Intent groupSavings = new Intent(getApplicationContext(), MyGroupTransactionsHistoryActivity.class);
-//                        startActivity(groupSavings);
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent groupSavings = new Intent(getApplicationContext(), NewFinesActivity.class);
+                        startActivity(groupSavings);
                         break;
                     case "Edit Fines":
 //                        finish();

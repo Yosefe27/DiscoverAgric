@@ -4,6 +4,7 @@ public class LoanRequests {
 
     private String id;
     private String amount;
+   // private String full_name;
     private String duration;
     private String contributor_id;
     private String loan_reason;
@@ -27,7 +28,7 @@ public class LoanRequests {
     public LoanRequests() {
     }
 
-    public LoanRequests(String id, String amount, String duration, String contributor_id, String loan_reason, String group_id, String start_date, String end_date, String secretary_approval, String treasurer_approval, String chairperson_approval, String secretary_id, String treasurer_id, String chairperson_id, String secretary_approval_date, String treasurer_approval_date, String chairperson_approval_date, String secretary_approval_comment, String treasurer_approval_comment, String chairperson_approval_comment, String date_created) {
+    public LoanRequests(String id, String amount,String duration, String contributor_id, String loan_reason, String group_id, String start_date, String end_date, String secretary_approval, String treasurer_approval, String chairperson_approval, String secretary_id, String treasurer_id, String chairperson_id, String secretary_approval_date, String treasurer_approval_date, String chairperson_approval_date, String secretary_approval_comment, String treasurer_approval_comment, String chairperson_approval_comment, String date_created) {
         this.id = id;
         this.amount = amount;
         this.duration = duration;
@@ -218,4 +219,12 @@ public class LoanRequests {
     public void setDate_created(String date_created) {
         this.date_created = date_created;
     }
+
+//    public String getFull_name() {
+//        return full_name;
+//    }
+//
+//    public void setFull_name(String full_name) {
+//        this.full_name = full_name;
+//    }
 }

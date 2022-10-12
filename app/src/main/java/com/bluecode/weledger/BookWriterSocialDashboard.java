@@ -77,10 +77,9 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
                         break;
                     case "Add Social Funds":
-//                        finish();
-//                        Intent addSavings = new Intent(getApplicationContext(), NewPaymentActivity.class);
-//                        startActivity(addSavings);
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent addSavings = new Intent(getApplicationContext(), NewSocialFundActivity.class);
+                        startActivity(addSavings);
                         break;
                     case "Edit Social Funds":
                         Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();

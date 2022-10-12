@@ -53,12 +53,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-
-public class NewLoanRequestActivity extends AppCompatActivity {
+public class NewFinesActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText amount;
     TextView select_member,post_loan_requests,selected_member;
-    String submit_saving_url=BASE_URL+"submit_loan.php";
+    String submit_saving_url=BASE_URL+"submit_fine.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
     MembersAdapter membersAdapter;
     RequestQueue mRequestQueue;
@@ -67,25 +66,25 @@ public class NewLoanRequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_loan_request);
+        setContentView(R.layout.activity_new_fines);
         amount = findViewById(R.id.amount);
         post_loan_requests = findViewById(R.id.post_loan_request);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Loans Details");
-        toolbar.setSubtitle("Post Member Loans");
+        toolbar.setTitle("Fines Details");
+        toolbar.setSubtitle("Post Member Fine");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), BookWriterLoanRequestDashboard.class);
+                Intent intent = new Intent(getApplicationContext(), BookWriterFinesDashboard.class);
                 startActivity(intent);
             }
         });
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = NewLoanRequestActivity.this;
+        context = NewFinesActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {

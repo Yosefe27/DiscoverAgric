@@ -69,11 +69,12 @@ public class NewPaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_payments);
-        toolbar = findViewById(R.id.toolbar);
+
         amount = findViewById(R.id.amount);
         contribution_date = findViewById(R.id.date_picker_actions);
         select_member = findViewById(R.id.select_member);
         post_member_saving = findViewById(R.id.save_payment_details);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Savings Details");
         toolbar.setSubtitle("Post Member Saving");
