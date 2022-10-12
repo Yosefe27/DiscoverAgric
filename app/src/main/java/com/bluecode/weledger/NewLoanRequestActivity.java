@@ -68,13 +68,11 @@ public class NewLoanRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_loan_request);
-        loan_date = findViewById(R.id.loan_date);
+        //loan_date = findViewById(R.id.loan_date);
         select_member = findViewById(R.id.select_member);
         post_loan_request = findViewById(R.id.post_loan_request);
-        amount = findViewById(R.id.amount);
         toolbar = findViewById(R.id.toolbar);
         amount = findViewById(R.id.amount);
-        select_member = findViewById(R.id.select_member);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Loan Request");
         toolbar.setSubtitle("Post Loan Request");
