@@ -98,25 +98,6 @@ public class BookWriterSavingsOptionsDashboard extends AppCompatActivity {
         recyclerView.setAdapter(defaultDashboardAdapter);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-
-
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_add) {
-            Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
     private List<DefaultDashboardModel> getData(){
         ArrayList<DefaultDashboardModel> mainModel = new ArrayList<>();
             mainModel.add(new DefaultDashboardModel("My Savings",R.drawable.ic_saving,"My Savings"));

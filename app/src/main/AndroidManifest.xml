@@ -180,6 +180,7 @@
         <activity android:name=".NewLoanRepaymentActivity" />
         <activity android:name=".NewFinesActivity" />
         <activity android:name=".NewSocialFundActivity" />
+        <activity android:name=".BookwriterGroupLoansActivity" />
     </application>
 
 </manifest>

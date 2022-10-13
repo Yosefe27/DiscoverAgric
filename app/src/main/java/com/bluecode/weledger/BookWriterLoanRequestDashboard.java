@@ -75,9 +75,9 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
                         startActivity(myLoan );
                         break;
                     case "Group Loan":
-//                        finish();
-//                        Intent groupSavings = new Intent(getApplicationContext(), BookWriterGroupLoansActivity.class);
-//                        startActivity(groupSavings);
+                        finish();
+                        Intent groupSavings = new Intent(getApplicationContext(), BookwriterGroupLoansActivity.class);
+                        startActivity(groupSavings);
                         break;
                     case "Add Loan":
                         finish();
