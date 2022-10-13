@@ -91,6 +91,7 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
             errorDialog("Please Check Your Internet Connection");
 
         }
+
         post_loan_repayments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

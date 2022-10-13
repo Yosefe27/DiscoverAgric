@@ -179,7 +179,7 @@ public class FacilitatorGroupLoans extends AppCompatActivity {
                                 int position = groups_recyclerview.getChildLayoutPosition(view);
                                 Groups groups = listGroups.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), FacilitatorMembersLoans.class);
+                                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupLoansActivity.class);
                                 intent.putExtra("intent_group_id", groups.getId());
                                 intent.putExtra("intent_group_name", groups.getGroup_name());
                                 intent.putExtra("intent_group_date_created", groups.getDate_created());

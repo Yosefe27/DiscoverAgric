@@ -176,7 +176,7 @@ public class FacilitatorGroupSavings extends AppCompatActivity {
                                 int position = groups_recyclerview.getChildLayoutPosition(view);
                                 Groups groups = listGroups.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), BookWriterMembersActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupTransactionsHistoryActivity.class);
                                 intent.putExtra("intent_group_id", groups.getId());
                                 intent.putExtra("intent_group_name", groups.getGroup_name());
                                 intent.putExtra("intent_group_date_created", groups.getDate_created());
