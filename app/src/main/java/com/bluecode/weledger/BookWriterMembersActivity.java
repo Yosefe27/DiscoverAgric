@@ -83,7 +83,7 @@ public class BookWriterMembersActivity extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupSavings.class);
                 startActivity(intent);
             }
         });

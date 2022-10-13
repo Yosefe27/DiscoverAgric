@@ -64,7 +64,7 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
     ArrayList<MyContributions> listMytransactions = new ArrayList<>();
     RequestQueue mRequestQueue;
     String submit_contribution = BASE_URL + "submit_contributions.php",fullname_str;
-    String my_contributions = BASE_URL + "my_contributions.php",str_a,str_user_name;
+    String my_contributions = BASE_URL + "my_group_contributions.php",str_a,str_user_name;
     ImageView group_contributions;
     Toolbar toolbar;
     @Override
@@ -81,7 +81,7 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FacilitatorGroupSavings.class);
                 startActivity(intent);
             }
         });
@@ -294,28 +294,11 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
 
 
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_add) {
-            Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onBackPressed() {
         finish();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupSavings.class);
         startActivity(intent);
     }
 

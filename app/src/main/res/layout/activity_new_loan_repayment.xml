@@ -35,13 +35,17 @@
                     android:text="Name of Member"
                     android:textSize="18sp" />
 
-                <TextView
+
+                <EditText
                     android:id="@+id/select_member"
                     style="@style/modifiedEditText"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_edit_bg"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center_vertical"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
@@ -90,7 +94,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Loan Date"
+                    android:text="Repayment Date"
+                    android:hint="YYYY-MM-DD"
                     android:textSize="18sp" />
 
                 <EditText
