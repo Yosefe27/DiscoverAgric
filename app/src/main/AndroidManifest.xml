@@ -181,6 +181,7 @@
         <activity android:name=".NewFinesActivity" />
         <activity android:name=".NewSocialFundActivity" />
         <activity android:name=".BookwriterGroupLoansActivity" />
+        <activity android:name=".FacilitatorGroupLoansActivity" />
     </application>
 
 </manifest>

@@ -25,7 +25,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="0dp"
             android:background="#eb2fc8"
-            android:text="ADD MEMBER  "
+            android:text=" "
             android:textAlignment="textEnd"
             android:textColor="#ffffff"
             android:textSize="14dp" />
