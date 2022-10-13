@@ -148,21 +148,19 @@ public class BookWriterMembersActivity extends AppCompatActivity {
 
                         // textView.setText(object1.toString());
                         Members members = new Members(
-                                stackObject.getString("id"),
-                                stackObject.getString("firstname"),
-                                stackObject.getString("lastname"),
-                                stackObject.getString("email"),
-                                stackObject.getString("nrc"),
-                                stackObject.getString("password"),
-                                stackObject.getString("address"),
-                                stackObject.getString("user_role"),
-                                stackObject.getString("group_id"),
-                                stackObject.getString("avatar"),
-                                stackObject.getString("chairperson_approval"),
-                                stackObject.getString("treasurer_approval"),
-                                stackObject.getString("secretary_approval"),
-                                stackObject.getString("membership_status")
-
+                                stackObject.getString(Constants.GROUP_NAME),
+                                stackObject.getString(Constants.GROUP_ID),
+                                stackObject.getString(Constants.USER_FIRST_NAME),
+                                stackObject.getString(Constants.USER_LAST_NAME),
+                                stackObject.getString(Constants.USER_NAME),
+                                stackObject.getString(Constants.USER_PASSWORD),
+                                stackObject.getString(Constants.USER_ADMISSION_DATE),
+                                stackObject.getString(Constants.USER_GENDER),
+                                stackObject.getString(Constants.ECAP_ID),
+                                stackObject.getString(Constants.USER_PHONE),
+                                stackObject.getString(Constants.USER_ROLE),
+                                stackObject.getString(Constants.CAREGIVER_STATUS),
+                                stackObject.getString(Constants.USER_ID)
                         );
                         listMembers.add(members);
                     }
@@ -190,13 +188,11 @@ public class BookWriterMembersActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
                                 intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
-                                intent.putExtra("intent_email", members.getEmail());
+//                                intent.putExtra("intent_email", members.getEmail());
                                 intent.putExtra("intent_nrc", members.getNrc());
-                                intent.putExtra("intent_address", members.getAddress());
+//                                intent.putExtra("intent_address", members.getAddress());
                                 intent.putExtra("intent_group_id", members.getGroup_id());
-                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
-                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
-                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
+
                                 startActivity(intent);
 
                             }

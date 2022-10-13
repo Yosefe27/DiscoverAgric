@@ -1,47 +1,55 @@
 package com.bluecode.weledger.models;
 
 public class Members {
-    private String id;
+
+    private String group_name;
+    private String group_id;
     private String firstname;
     private String lastname;
-    private String email;
     private String nrc;
     private String password;
-    private String address;
+    private String admission_date;
+    private String gender;
+    private String ecap_hh_id;
+    private String phone_number;
     private String user_role;
-    private String group_id;
-    private String avatar;
-    private String chairperson_approval;
-    private String treasurer_approval;
-    private String secretary_approval;
-    private String membership_status;
+    private String single_female_caregiver;
+    private String id;
+
 
     public Members() {
     }
 
-    public Members(String id, String firstname, String lastname, String email, String nrc, String password, String address, String user_role, String group_id, String avatar, String chairperson_approval, String treasurer_approval, String secretary_approval, String membership_status) {
-        this.id = id;
+    public Members(String group_name, String group_id, String firstname, String lastname, String nrc, String password, String admission_date, String gender, String ecap_hh_id, String phone_number, String user_role, String single_female_caregiver, String id) {
+        this.group_name = group_name;
+        this.group_id = group_id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.email = email;
         this.nrc = nrc;
         this.password = password;
-        this.address = address;
+        this.admission_date = admission_date;
+        this.gender = gender;
+        this.ecap_hh_id = ecap_hh_id;
+        this.phone_number = phone_number;
         this.user_role = user_role;
-        this.group_id = group_id;
-        this.avatar = avatar;
-        this.chairperson_approval = chairperson_approval;
-        this.treasurer_approval = treasurer_approval;
-        this.secretary_approval = secretary_approval;
-        this.membership_status = membership_status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
+        this.single_female_caregiver = single_female_caregiver;
         this.id = id;
+    }
+
+    public String getGroup_name() {
+        return group_name;
+    }
+
+    public void setGroup_name(String group_name) {
+        this.group_name = group_name;
+    }
+
+    public String getGroup_id() {
+        return group_id;
+    }
+
+    public void setGroup_id(String group_id) {
+        this.group_id = group_id;
     }
 
     public String getFirstname() {
@@ -60,14 +68,6 @@ public class Members {
         this.lastname = lastname;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getNrc() {
         return nrc;
     }
@@ -84,12 +84,36 @@ public class Members {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdmission_date() {
+        return admission_date;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdmission_date(String admission_date) {
+        this.admission_date = admission_date;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEcap_hh_id() {
+        return ecap_hh_id;
+    }
+
+    public void setEcap_hh_id(String ecap_hh_id) {
+        this.ecap_hh_id = ecap_hh_id;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getUser_role() {
@@ -100,51 +124,19 @@ public class Members {
         this.user_role = user_role;
     }
 
-    public String getGroup_id() {
-        return group_id;
+    public String getSingle_female_caregiver() {
+        return single_female_caregiver;
     }
 
-    public void setGroup_id(String group_id) {
-        this.group_id = group_id;
+    public void setSingle_female_caregiver(String single_female_caregiver) {
+        this.single_female_caregiver = single_female_caregiver;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getId() {
+        return id;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getChairperson_approval() {
-        return chairperson_approval;
-    }
-
-    public void setChairperson_approval(String chairperson_approval) {
-        this.chairperson_approval = chairperson_approval;
-    }
-
-    public String getTreasurer_approval() {
-        return treasurer_approval;
-    }
-
-    public void setTreasurer_approval(String treasurer_approval) {
-        this.treasurer_approval = treasurer_approval;
-    }
-
-    public String getSecretary_approval() {
-        return secretary_approval;
-    }
-
-    public void setSecretary_approval(String secretary_approval) {
-        this.secretary_approval = secretary_approval;
-    }
-
-    public String getMembership_status() {
-        return membership_status;
-    }
-
-    public void setMembership_status(String membership_status) {
-        this.membership_status = membership_status;
+    public void setId(String id) {
+        this.id = id;
     }
 }
