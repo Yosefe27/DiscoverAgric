@@ -55,7 +55,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class BookWriterLoansActivity extends AppCompatActivity {
+public class BookwriterGroupLoansActivity extends AppCompatActivity {
     RecyclerView loan_requests_recylerview;
     ArrayList<LoanRequests> listLoanRequests = new ArrayList<>();
     MyLoanRequestsAdapter myLoanRequestAdapter;
@@ -65,7 +65,7 @@ public class BookWriterLoansActivity extends AppCompatActivity {
     RequestQueue mRequestQueue;
     ImageView loan_approvals;
     String str_a, str_user_role, str_my_name, str_group_name;
-    String my_loan_requests = BASE_URL + "my_loan_requests.php";
+    String my_loan_requests = BASE_URL + "my_group_loan_requests.php";
     String loan_response = BASE_URL + "loan_response.php";
 
 
@@ -74,7 +74,7 @@ public class BookWriterLoansActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_requests);
         loan_requests_recylerview = findViewById(R.id.loan_requests_recylerview);
-       toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Loan Requests");
         toolbar.setSubtitle("My Loan Requests");
@@ -91,7 +91,7 @@ public class BookWriterLoansActivity extends AppCompatActivity {
         });
 //        loan_approvals.setVisibility(View.GONE);
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = BookWriterLoansActivity.this;
+        context = BookwriterGroupLoansActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {

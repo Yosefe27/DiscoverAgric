@@ -58,7 +58,7 @@ public class FacilitatorMembersLoans extends AppCompatActivity {
     RequestQueue mRequestQueue;
     ArrayList<Members> listMembers = new ArrayList<>();
     Context context;
-    String str_a, members_list = BASE_URL + "list_of_group_members.php";
+    String str_a, members_list = BASE_URL + "list_of_group_members_facilitator.php";
     String membership_response = BASE_URL + "membership_response.php";
     String str_user_role,str_my_name,str_group_name;
     MembersAdapter membersAdapter;
