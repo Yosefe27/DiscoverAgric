@@ -37,6 +37,7 @@ public class OrdinaryMembersDetailsActivity extends AppCompatActivity {
     Context context;
     String str_a, members_list = BASE_URL+"list_of_group_members.php";
     MembersAdapter membersAdapter;
+    TextView user_name,group_name,group_id,user_role, user_id, user_gender,user_phone,ecap_id,admission_date;
     TextView full_name_txt,nrc_txt,email_txt,address_txt,group_id_txt;
     ImageView chairperson_approval_img,treasurer_approval_img,secretary_approval_img,prof_img_big;
     CircleImageView prof_img_small;
@@ -44,6 +45,8 @@ public class OrdinaryMembersDetailsActivity extends AppCompatActivity {
     String intent_chairperson_approval = "0";
     String intent_treasurer_approval = "0";
     String intent_secretary_approval = "0",img_name;
+
+
     Toolbar toolbar;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,41 +54,56 @@ public class OrdinaryMembersDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordinary_members_details);
         toolbar = findViewById(R.id.toolbar);
-        full_name_txt = findViewById(R.id.full_name);
-        nrc_txt = findViewById(R.id.nrc);
-        email_txt = findViewById(R.id.email);
-        address_txt = findViewById(R.id.address);
         group_id_txt = findViewById(R.id.group_id);
 
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        user_name = findViewById(R.id.profile_name);
+        group_name = findViewById(R.id.profile_group_name);
+        user_gender = findViewById(R.id.user_gender);
+        user_phone = findViewById(R.id.user_phone);
+        group_id = findViewById(R.id.profile_group_id);
+        user_role = findViewById(R.id.profile_user_role);
+        user_id = findViewById(R.id.profile_user_id);
+        ecap_id = findViewById(R.id.ecap_hh_id);
+        admission_date = findViewById(R.id.admission_date);
 
-                finish();
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), OrdinaryMembersActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        String intent_full_name = getIntent().getStringExtra("intent_full_name");
-        String intent_email = getIntent().getStringExtra("intent_email");
-        String intent_nrc = getIntent().getStringExtra("intent_nrc");
-        String intent_address = getIntent().getStringExtra("intent_address");
-        String intent_group_id = getIntent().getStringExtra("intent_group_id");
-        intent_chairperson_approval = getIntent().getStringExtra("intent_chairperson_approval");
-        intent_treasurer_approval = getIntent().getStringExtra("intent_treasurer_approval");
-        intent_secretary_approval = getIntent().getStringExtra("intent_secretary_approval");
-        assert intent_nrc != null;
-        img_name = intent_nrc.replace("/", "");
 
-        full_name_txt.setText(intent_full_name);
-        nrc_txt.setText(intent_nrc);
-        email_txt.setText(intent_email);
-        address_txt.setText(intent_address);
-        group_id_txt.setText(intent_group_id);
-        toolbar.setSubtitle(intent_full_name+"'s Details");
+//        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                finish();
+//                overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+//                Intent intent = new Intent(getApplicationContext(), OrdinaryMembersActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        String intent_group_name = getIntent().getStringExtra(Constants.GROUP_NAME);
+        String intent_group_id = getIntent().getStringExtra(Constants.GROUP_ID);
+        String intent_first_name = getIntent().getStringExtra(Constants.USER_FIRST_NAME);
+        String intent_last_name = getIntent().getStringExtra(Constants.USER_LAST_NAME);
+        String intent_admission_date = getIntent().getStringExtra(Constants.USER_ADMISSION_DATE);
+        String intent_gender = getIntent().getStringExtra(Constants.USER_GENDER);
+        String intent_ecap_id = getIntent().getStringExtra(Constants.ECAP_ID);
+        String intent_phone = getIntent().getStringExtra(Constants.USER_PHONE);
+        String intent_user_role = getIntent().getStringExtra(Constants.USER_ROLE);
+        String intent_caregiver_status = getIntent().getStringExtra(Constants.CAREGIVER_STATUS);
+        String intent_user_ID = getIntent().getStringExtra(Constants.USER_ID);
+
+        user_name.setText(intent_first_name+" "+intent_last_name);
+        group_name.setText(intent_group_name);
+        group_id.setText(intent_group_id);
+        user_id.setText(intent_user_ID);
+        user_phone.setText(intent_phone);
+        user_role.setText(intent_user_role);
+        ecap_id.setText(intent_ecap_id);
+        user_gender.setText(intent_gender);
+        admission_date.setText(intent_admission_date);
+
+
+
 
 
     }
@@ -152,6 +170,7 @@ public class OrdinaryMembersDetailsActivity extends AppCompatActivity {
 
         finish();
         Intent intent = new Intent(getApplicationContext(),OrdinaryMembersActivity.class);
+
         startActivity(intent);
     }
 }
