@@ -268,7 +268,8 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="Group Member Role"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:id="@+id/txt_user_role"/>
                     <Spinner
                         android:id="@+id/user_role"
                         android:layout_width="150dp"

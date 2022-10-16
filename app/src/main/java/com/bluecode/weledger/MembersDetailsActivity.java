@@ -44,9 +44,9 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
 
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    TextView save_member_details, groupName, groupID;
+    TextView save_member_details, groupName, groupID,txt_user_role;
     EditText firstName, lastName, userName, passWord, admissionDate, user_ID, ecap_hh_ID, phoneNumber, userRole, singleFSW;
-    Spinner spinner_singleFSW, spinner_gender, spinner_userRole;
+    Spinner spinner_singleFSW, spinner_gender, spinner_user_role;
     String submit_member_url = BASE_URL + "update_member.php";
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -66,7 +66,8 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
         spinner_gender = findViewById(R.id.gender);
         ecap_hh_ID = findViewById(R.id.ecap_hh_id);
         phoneNumber = findViewById(R.id.phone_number);
-        spinner_userRole = findViewById(R.id.user_role);
+        txt_user_role = findViewById(R.id.txt_user_role);
+        spinner_user_role = findViewById(R.id.user_role);
         spinner_singleFSW = findViewById(R.id.single_fsw);
         save_member_details = findViewById(R.id.save_member_details);
         user_ID = findViewById(R.id.user_id);
@@ -82,6 +83,8 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
         String intent_ecap_id = getIntent().getStringExtra(Constants.ECAP_ID);
         String intent_phone = getIntent().getStringExtra(Constants.USER_PHONE);
         String intent_user_role = getIntent().getStringExtra(Constants.USER_ROLE);
+
+
         String intent_caregiver_status = getIntent().getStringExtra(Constants.CAREGIVER_STATUS);
         String intent_user_ID = getIntent().getStringExtra(Constants.USER_ID);
 
@@ -108,14 +111,17 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
         int spinnerPosition = adapter.getPosition(selection);
         spinner_gender.setSelection(spinnerPosition);
 
-        String[] spinnerRole = {intent_user_role, "Facilitator", "Book Writer", "Ordinary Member"};
+        String[] spinnerRole = {intent_user_role,"Ordinary Member"};
         ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerRole);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_userRole.setAdapter(adapter2);
-        spinner_userRole.setOnItemSelectedListener(this);
-        String selection2 = intent_user_role;
-        int spinnerPosition2 = adapter2.getPosition(selection2);
-        spinner_userRole.setSelection(spinnerPosition2);
+        spinner_user_role.setAdapter(adapter2);
+        spinner_user_role.setOnItemSelectedListener(this);
+        String selection2;
+             selection2 = intent_user_role;
+            int spinnerPosition2 = adapter2.getPosition(selection2);
+            spinner_user_role.setSelection(spinnerPosition2);
+        txt_user_role.setVisibility(View.GONE);
+        spinner_user_role.setVisibility(View.GONE);
 
         String[] spinnerCaregiver = {intent_caregiver_status, "Yes", "No"};
         ArrayAdapter<CharSequence> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerCaregiver);
@@ -140,8 +146,9 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                 String str_gender = spinner_gender.getSelectedItem().toString();
                 String str_ecap_hh_ID = ecap_hh_ID.getText().toString();
                 String str_phoneNumber = phoneNumber.getText().toString();
-                String str_userRole = spinner_userRole.getSelectedItem().toString();
+                String str_userRole = spinner_user_role.getSelectedItem().toString();
                 String str_singleFSW = spinner_singleFSW.getSelectedItem().toString();
+                String str_user_id = user_ID.getText().toString();
 
                 if(userName.getText().toString().isEmpty()) {
                     errorDialog("Username Cannot Be Empty");
@@ -158,7 +165,8 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                         str_ecap_hh_ID,
                         str_phoneNumber,
                         str_userRole,
-                        str_singleFSW
+                        str_singleFSW,
+                        str_user_id
                 );
             }
         });
@@ -175,7 +183,8 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                                  final String ecaphh_id,
                                  final String phonenumber,
                                  final String userrole,
-                                 final String singlefsw
+                                 final String singlefsw,
+                                 final String id
     )
     {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -236,6 +245,7 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                 parms.put("user_role", userrole);
                 parms.put("single_female_caregiver", singlefsw);
                 parms.put("a", str_a);
+                parms.put("id",id);
                 return parms;
             }
         };
