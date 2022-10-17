@@ -1,15 +1,5 @@
 package com.bluecode.weledger;
 
-import static com.bluecode.weledger.Constants.BASE_URL;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +16,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -51,28 +49,46 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.bluecode.weledger.Constants.BASE_URL;
+
 public class ViewActualMembersFacilitator extends AppCompatActivity {
 
     RecyclerView members_recyclerview;
     RequestQueue mRequestQueue;
     ArrayList<Members> listMembers = new ArrayList<>();
     Context context;
-    String str_a, members_list = BASE_URL + "list_of_group_members_facilitator.php";
+    String str_a, members_list = BASE_URL + "list_all_members.php";
     String membership_response = BASE_URL + "membership_response.php";
     String str_user_role,str_my_name,str_group_name;
     MembersAdapter membersAdapter;
     ImageView members_approvals;
     Toolbar toolbar;
 
+    String group_name;
+    String group_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_actual_members_facilitator);
+        setContentView(R.layout.activity_members);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Group Members");
-        toolbar.setSubtitle("All Group Members");
+        toolbar.setSubtitle("My Group Members");
+
+        Bundle bundle = getIntent().getExtras();
+        try {
+
+            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
+            group_id = bundle.getString(Constants.GROUP_ID,"Default");
+
+        }catch (Exception e){
+
+            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
+
+
+        }
+
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,14 +96,14 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
-        members_recyclerview = findViewById(R.id.actual_group_members);
+        members_recyclerview = findViewById(R.id.members_recyclerview);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = ViewActualMembersFacilitator.this;
+        context = ViewActualMembersFacilitator .this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
@@ -109,8 +125,6 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
     }
 
     public void membersList() {
-        Bundle bundle = getIntent().getExtras();
-        String ID = bundle.getString(Constants.GROUP_ID, "Default");
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
@@ -136,11 +150,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
 //                textView.setText(response.toString());
                 Log.v("transactions_response", response);
                 try {
-                    Bundle bundle = getIntent().getExtras();
-                    String ID = bundle.getString(Constants.GROUP_ID, "Default");
-
                     JSONObject object = new JSONObject(response);
-
                     str_my_name = object.getString("full_name");
                     str_user_role = object.getString("user_role");
                     str_group_name = object.getString("group_name");
@@ -189,15 +199,23 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
                                 int position = members_recyclerview.getChildLayoutPosition(view);
                                 Members members = listMembers.get(position);
 
-                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
-                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
-                              //  intent.putExtra("intent_email", members.getEmail());
-                                intent.putExtra("intent_nrc", members.getNrc());
-                           //     intent.putExtra("intent_address", members.getAddress());
-                                intent.putExtra("intent_group_id", members.getGroup_id());
-//                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
-//                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
-//                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
+
+                                Intent intent = new Intent(getApplicationContext(), FacilitatorMemberDetailsActivity.class);
+                                intent.putExtra(Constants.GROUP_ID, members.getGroup_id());
+                                intent.putExtra(Constants.GROUP_NAME, members.getGroup_name());
+                                intent.putExtra(Constants.USER_FIRST_NAME, members.getFirstname());
+                                intent.putExtra(Constants.USER_LAST_NAME, members.getLastname());
+                                intent.putExtra(Constants.USER_NAME, members.getNrc());
+                                intent.putExtra(Constants.USER_PASSWORD, members.getPassword());
+                                intent.putExtra(Constants.USER_ADMISSION_DATE, members.getAdmission_date());
+                                intent.putExtra(Constants.USER_GENDER, members.getGender());
+                                intent.putExtra(Constants.ECAP_ID, members.getEcap_hh_id());
+                                intent.putExtra(Constants.USER_PHONE, members.getPhone_number());
+                                intent.putExtra(Constants.USER_ROLE, members.getUser_role());
+                                intent.putExtra(Constants.CAREGIVER_STATUS, members.getSingle_female_caregiver());
+                                intent.putExtra(Constants.USER_ID, members.getId());
+
+
                                 startActivity(intent);
 
                             }
@@ -240,78 +258,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
         request.setShouldCache(false);
         requestQueue.add(request);
     }
-    /*private void msgDialog(String msg,
-                           final String id,
-                           final String d_fullname,
-                           final String d_email,
-                           final String d_nrc,
-                           final String d_address,
-                           final String d_group_id,
-                           final String d_chairperson_approval,
-                           final String d_treasurer_approval,
-                           final String d_secretary_approval) {
-        LinearLayout yes, view, no;
-        TextView message;
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        final View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_response, viewGroup, false);
-        yes = dialogView.findViewById(R.id.yes);
-        view = dialogView.findViewById(R.id.view);
-        no = dialogView.findViewById(R.id.no);
-        message = dialogView.findViewById(R.id.msg);
-        //Now we need an AlertDialog.Builder object
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        //setting the view of the builder to our custom view that we already inflated
-        builder.setView(dialogView);
-        //finally creating the alert dialog and displaying it
-        final AlertDialog reportsAlert = builder.create();
-        // Let's start with animation work. We just need to create a style and use it here as follow.
-        if (reportsAlert.getWindow() != null)
-            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
-
-        reportsAlert.show();
-        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        message.setText(msg);
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                membershipResponse("1",id);
-                reportsAlert.dismiss();
-//                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//                SharedPreferences.Editor editor = preferences.edit();
-//                editor.putString("login_status", "0");
-//                editor.apply();
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//                startActivity(intent);
-            }
-        });
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reportsAlert.dismiss();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("intent_full_name", d_fullname);
-                intent.putExtra("intent_email", d_email);
-                intent.putExtra("intent_nrc", d_nrc);
-                intent.putExtra("intent_address", d_address);
-                intent.putExtra("intent_group_id", d_group_id);
-                intent.putExtra("intent_chairperson_approval", d_chairperson_approval);
-                intent.putExtra("intent_treasurer_approval", d_treasurer_approval);
-                intent.putExtra("intent_secretary_approval", d_secretary_approval);
-                startActivity(intent);
-            }
-        });
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                membershipResponse("2",id);
-                reportsAlert.dismiss();
-            }
-        });
-    }
-*/
     private void membershipResponse(
             final String response,
             final String requestor_id) {
@@ -339,6 +286,8 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
 
             }
         }) {
+
+            //            first_name, surname, nrc, phone, email, pas, dob
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
@@ -397,14 +346,19 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
             }
         });
 
+
     }
 
 
     @Override
     public void onBackPressed() {
-        finish();
-        Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
-        startActivity(intent);
 
+        finish();
+        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.GROUP_NAME, group_name);
+        bundle.putString(Constants.GROUP_ID,group_id);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
