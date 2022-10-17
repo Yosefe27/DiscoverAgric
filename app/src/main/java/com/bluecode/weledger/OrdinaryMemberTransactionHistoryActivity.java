@@ -187,8 +187,7 @@ public class OrdinaryMemberTransactionHistoryActivity extends AppCompatActivity 
                                 stackObject.getString("amount"),
                                 stackObject.getString("payment_mode"),
                                 stackObject.getString("month_contributed_for"),
-                                stackObject.getString("payment_ref_number"),
-                                stackObject.getString("entry_id")
+                                stackObject.getString("payment_ref_number"), stackObject.getString("entry_id")
 
                         );
                         listMytransactions.add(myTransactions);

@@ -1,146 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/canvasSV"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:isScrollContainer="true">
+    tools:context=".LoginActivity">
 
-    <RelativeLayout
-        android:id="@+id/login_layout"
+
+    <ImageView
+        android:id="@+id/we_logo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/login_we_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/we_logo1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.0"
-        android:background="#F6F6F6"
-        android:paddingBottom="15dp"
-        android:layout_marginTop="160dp">
+        android:layout_height="130dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/coat_of_arms_of_zambia_ecap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/icons"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerInside"
+        android:translationX="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/lightGrey" />
 
-        <!-- Top section -->
-        <LinearLayout
-            android:id="@+id/top_section"
+    <LinearLayout
+        android:id="@+id/linlay_inputs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/we_logo1">
+
+        <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="110dp"
-            android:orientation="vertical"
-            android:paddingTop="0dp">
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittext_bg"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="16dp"
+            android:hint="Username"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/login_logo"
-                android:layout_width="match_parent"
-                android:layout_height="266dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:contentDescription="lOGO"
-                android:scaleType="fitCenter"
-                android:src="@drawable/coat_of_arms_of_zambia_ecap" />
-
-
-        </LinearLayout>
-
-        <!-- Middle section -->
-        <LinearLayout
-            android:id="@+id/middle_section"
+        <EditText
+            android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/top_section"
-            android:layout_marginTop="25dp"
-            android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_bg"
+            android:drawableStart="@drawable/ic_baseline_lock_open_24"
+            android:drawableLeft="@drawable/ic_baseline_lock_open_24"
+            android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawablePadding="16dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="8"
-                android:background="@drawable/rounded_edit_text"
-                android:cursorVisible="true"
-                android:ems="10"
-                android:hint="User Name"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:lines="1"
-                android:paddingLeft="10dp"
-                android:textColor="#090909"
-                android:textColorHint="#bfbfbf"
-                android:textCursorDrawable="@null"
-                android:textSize="16sp"
-                android:typeface="sans" />
-
-            <EditText
-                android:id="@+id/login_password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:layout_weight="8"
-                android:background="@drawable/rounded_edit_text"
-                android:cursorVisible="true"
-                android:ems="10"
-                android:hint="Password"
-                android:imeActionId="100"
-                android:inputType="textPassword"
-                android:lines="1"
-                android:paddingLeft="10dp"
-                android:textColor="#090909"
-                android:textColorHint="#bfbfbf"
-                android:textCursorDrawable="@null"
-                android:textSize="16sp"
-                android:typeface="sans" />
-            <CheckBox
-                android:id="@+id/stay_logged_in"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:text="Stay Logged In"
-                android:textStyle="bold"
-                android:textColor="#F49507"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_weight="8"
-                android:gravity="center"
-                android:background="@drawable/login"
-                android:ems="10"
-                android:shadowColor="#ffffff"
-                android:shadowDx="0"
-                android:shadowDy="1"
-                android:shadowRadius="0.5"
-                android:text="Log In"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:textColor="#FFFCFC"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-        <!-- Bottom section -->
-
-
-        <LinearLayout
-            android:id="@+id/bottom_section"
+        <CheckBox
+            android:id="@+id/stay_logged_in"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/middle_section"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="Stay Logged In"
+            android:textColor="#11248E"
+            android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/opensrp_logo_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="122dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="false"
-                android:cropToPadding="false"
-                android:scaleType="centerInside"
-                android:src="@drawable/we_logo" />
-        </LinearLayout>
-    </RelativeLayout>
-</ScrollView>
+        <TextView
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_bg"
+            android:gravity="center"
+            android:text="LOGIN"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/linlay_inputs"
+        android:text="Forgot Password"/>
+
+
+    <ImageView
+        android:id="@+id/coat_of_arms_of_zambia"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="630dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/coat_of_arms"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
