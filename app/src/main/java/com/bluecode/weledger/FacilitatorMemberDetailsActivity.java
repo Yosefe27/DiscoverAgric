@@ -40,7 +40,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MembersDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class FacilitatorMemberDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Toolbar toolbar;
     RequestQueue mRequestQueue;
@@ -117,9 +117,9 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
         spinner_user_role.setAdapter(adapter2);
         spinner_user_role.setOnItemSelectedListener(this);
         String selection2;
-             selection2 = intent_user_role;
-            int spinnerPosition2 = adapter2.getPosition(selection2);
-            spinner_user_role.setSelection(spinnerPosition2);
+        selection2 = intent_user_role;
+        int spinnerPosition2 = adapter2.getPosition(selection2);
+        spinner_user_role.setSelection(spinnerPosition2);
         txt_user_role.setVisibility(View.GONE);
         spinner_user_role.setVisibility(View.GONE);
 
@@ -301,7 +301,7 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
     public void onBackPressed() {
 
         finish();
-        Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ViewActualMembersFacilitator.class);
         startActivity(intent);
     }
 

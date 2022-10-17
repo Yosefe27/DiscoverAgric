@@ -201,14 +201,19 @@ public class OrdinaryMembersActivity extends AppCompatActivity {
 
 
                                 Intent intent = new Intent(getApplicationContext(), OrdinaryMembersDetailsActivity.class);
-                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
-//                                intent.putExtra("intent_email", members.getEmail());
-                                intent.putExtra("intent_nrc", members.getNrc());
-//                                intent.putExtra("intent_address", members.getAddress());
-                                intent.putExtra("intent_group_id", members.getGroup_id());
-//                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
-//                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
-//                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
+                                intent.putExtra(Constants.GROUP_ID, members.getGroup_id());
+                                intent.putExtra(Constants.GROUP_NAME, members.getGroup_name());
+                                intent.putExtra(Constants.USER_FIRST_NAME, members.getFirstname());
+                                intent.putExtra(Constants.USER_LAST_NAME, members.getLastname());
+                                intent.putExtra(Constants.USER_NAME, members.getNrc());
+                                intent.putExtra(Constants.USER_PASSWORD, members.getPassword());
+                                intent.putExtra(Constants.USER_ADMISSION_DATE, members.getAdmission_date());
+                                intent.putExtra(Constants.USER_GENDER, members.getGender());
+                                intent.putExtra(Constants.ECAP_ID, members.getEcap_hh_id());
+                                intent.putExtra(Constants.USER_PHONE, members.getPhone_number());
+                                intent.putExtra(Constants.USER_ROLE, members.getUser_role());
+                                intent.putExtra(Constants.CAREGIVER_STATUS, members.getSingle_female_caregiver());
+                                intent.putExtra(Constants.USER_ID, members.getId());
                                 startActivity(intent);
 
                             }

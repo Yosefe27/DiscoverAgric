@@ -50,12 +50,6 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     String group_name;
     String group_id;
 
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String d_value= "Default";
-    public static final String d_value2= "Default";
-
-
-    SharedPreferences sharedpreferences;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,24 +71,7 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         spinner_singleFSW = findViewById(R.id.single_fsw);
         save_member_details = findViewById(R.id.save_member_details);
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString(d_value, group_name);
-        editor.putString(d_value2, group_id);
-        editor.commit();
 
-//        Bundle bundle = getIntent().getExtras();
-//        try {
-//
-//            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-//            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-//
-//        }catch (Exception e){
-//
-//            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-//
-//
-//        }
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         group_name = preferences.getString("group_name", "");
@@ -119,11 +96,11 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
                 String str_userName = userName.getText().toString();
                 String str_passWord = passWord.getText().toString();
                 String str_admissionDate = admissionDate.getText().toString();
-                String str_gender = "M";
+                String str_gender = spinner_gender.getSelectedItem().toString();
                 String str_ecap_hh_ID = ecap_hh_ID.getText().toString();
                 String str_phoneNumber = phoneNumber.getText().toString();
-                String str_userRole = "1";
-                String str_singleFSW = "Y";
+                String str_userRole = spinner_userRole.getSelectedItem().toString();
+                String str_singleFSW = spinner_singleFSW.getSelectedItem().toString();
 
 
                 if(userName.getText().toString().isEmpty()) {

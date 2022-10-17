@@ -25,6 +25,6 @@
 
     <array name="role_member">
         <item></item>
-        <item>Ordinary Member</item>
+        <item>OrdinaryMember</item>
     </array>
 </resources>

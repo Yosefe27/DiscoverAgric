@@ -213,7 +213,8 @@ public class MembersActivity extends AppCompatActivity {
                                         intent.putExtra(Constants.USER_PHONE, members.getPhone_number());
                                         intent.putExtra(Constants.USER_ROLE, members.getUser_role());
                                         intent.putExtra(Constants.CAREGIVER_STATUS, members.getSingle_female_caregiver());
-//
+                                        intent.putExtra(Constants.USER_ID, members.getId());
+
 
                                         startActivity(intent);
 
@@ -257,78 +258,7 @@ public class MembersActivity extends AppCompatActivity {
         request.setShouldCache(false);
         requestQueue.add(request);
     }
-    /*private void msgDialog(String msg,
-                           final String id,
-                           final String d_fullname,
-                           final String d_email,
-                           final String d_nrc,
-                           final String d_address,
-                           final String d_group_id,
-                           final String d_chairperson_approval,
-                           final String d_treasurer_approval,
-                           final String d_secretary_approval) {
-        LinearLayout yes, view, no;
-        TextView message;
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        final View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_response, viewGroup, false);
-        yes = dialogView.findViewById(R.id.yes);
-        view = dialogView.findViewById(R.id.view);
-        no = dialogView.findViewById(R.id.no);
-        message = dialogView.findViewById(R.id.msg);
-        //Now we need an AlertDialog.Builder object
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        //setting the view of the builder to our custom view that we already inflated
-        builder.setView(dialogView);
-        //finally creating the alert dialog and displaying it
-        final AlertDialog reportsAlert = builder.create();
-        // Let's start with animation work. We just need to create a style and use it here as follow.
-        if (reportsAlert.getWindow() != null)
-            reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
-
-        reportsAlert.show();
-        reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        message.setText(msg);
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                membershipResponse("1",id);
-                reportsAlert.dismiss();
-//                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//                SharedPreferences.Editor editor = preferences.edit();
-//                editor.putString("login_status", "0");
-//                editor.apply();
-//                finish();
-//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//                startActivity(intent);
-            }
-        });
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reportsAlert.dismiss();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("intent_full_name", d_fullname);
-                intent.putExtra("intent_email", d_email);
-                intent.putExtra("intent_nrc", d_nrc);
-                intent.putExtra("intent_address", d_address);
-                intent.putExtra("intent_group_id", d_group_id);
-                intent.putExtra("intent_chairperson_approval", d_chairperson_approval);
-                intent.putExtra("intent_treasurer_approval", d_treasurer_approval);
-                intent.putExtra("intent_secretary_approval", d_secretary_approval);
-                startActivity(intent);
-            }
-        });
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                membershipResponse("2",id);
-                reportsAlert.dismiss();
-            }
-        });
-    }
-*/
     private void membershipResponse(
             final String response,
             final String requestor_id) {

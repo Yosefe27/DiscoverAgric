@@ -38,7 +38,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     GridLayout linear_bookkeeper_menu;
     TextView name,g_name,u_role;
-    TextView save_payment,logout;
+    TextView save_payment,logout,txt_user_role;
     String str_a, str_name, str_user_role;
     Toolbar toolbar;
     LinearLayout linear_members, linear_loans, member_payments,linear_manage_payments,bookwriter_social_fund;
@@ -66,16 +66,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-//        Bundle bundle = getIntent().getExtras();
-//        try {
-//            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-//            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-//            user_name = bundle.getString(Constants.USER_NAME,"Default");
-//        }catch (Exception e){
-//
-//            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-//        }
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
