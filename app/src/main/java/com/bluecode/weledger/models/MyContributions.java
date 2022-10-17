@@ -1,46 +1,28 @@
 package com.bluecode.weledger.models;
 
 public class MyContributions {
-    private int id;
-    private String name;
+    private String id;
     private String transaction_type;
     private String transaction_amount;
     private String transaction_month;
     private String transaction_ref_number;
     private String full_name;
-    public MyContributions() {
-    }
-    public MyContributions(int id, String name, String transaction_type, String transaction_amount, String transaction_month, String transaction_ref_number, String full_name) {
+
+    public MyContributions(String id, String transaction_type, String transaction_amount, String transaction_month, String transaction_ref_number, String full_name) {
         this.id = id;
-        this.name = name;
         this.transaction_type = transaction_type;
         this.transaction_amount = transaction_amount;
         this.transaction_month = transaction_month;
         this.transaction_ref_number = transaction_ref_number;
         this.full_name = full_name;
     }
-    public MyContributions(String transaction_type, String transaction_amount, String transaction_month, String transaction_ref_number) {
 
-        this.transaction_type = transaction_type;
-        this.transaction_amount = transaction_amount;
-        this.transaction_month = transaction_month;
-        this.transaction_ref_number = transaction_ref_number;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getTransaction_type() {
@@ -82,6 +64,4 @@ public class MyContributions {
     public void setFull_name(String full_name) {
         this.full_name = full_name;
     }
-
-
 }

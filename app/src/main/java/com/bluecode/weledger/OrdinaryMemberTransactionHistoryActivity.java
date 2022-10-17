@@ -183,10 +183,12 @@ public class OrdinaryMemberTransactionHistoryActivity extends AppCompatActivity 
 
                         // textView.setText(object1.toString());
                         MyContributions myTransactions = new MyContributions(
-                                stackObject.getString("payment_mode"),
+                                stackObject.getString("full_name"),
                                 stackObject.getString("amount"),
+                                stackObject.getString("payment_mode"),
                                 stackObject.getString("month_contributed_for"),
-                                stackObject.getString("payment_ref_number")
+                                stackObject.getString("payment_ref_number"),
+                                stackObject.getString("entry_id")
 
                         );
                         listMytransactions.add(myTransactions);

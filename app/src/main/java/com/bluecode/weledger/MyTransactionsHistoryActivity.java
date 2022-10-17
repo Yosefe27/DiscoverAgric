@@ -184,8 +184,9 @@ public class MyTransactionsHistoryActivity extends AppCompatActivity {
                                 stackObject.getString("payment_mode"),
                                 stackObject.getString("amount"),
                                 stackObject.getString("month_contributed_for"),
-                                stackObject.getString("payment_ref_number")
-
+                                stackObject.getString("payment_ref_number"),
+                                stackObject.getString("entry_id"),
+                                stackObject.getString("full_name")
                         );
                         listMytransactions.add(myTransactions);
                     }

@@ -184,7 +184,9 @@ public class MyGroupTransactionsHistoryActivity extends AppCompatActivity {
                                 stackObject.getString("payment_mode"),
                                 stackObject.getString("amount"),
                                 stackObject.getString("month_contributed_for"),
-                                stackObject.getString("payment_ref_number")
+                                stackObject.getString("payment_ref_number"),
+                                stackObject.getString("entry_id"),
+                                stackObject.getString("full_name")
 
                         );
                         listMytransactions.add(myTransactions);
@@ -206,7 +208,20 @@ public class MyGroupTransactionsHistoryActivity extends AppCompatActivity {
                                 MyContributions myContributions = listMytransactions.get(position);
                                 fullname_str = myContributions.getTransaction_type();
 
-                                msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" for the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
+                                Intent intent = new Intent(getApplicationContext(), BookWriterSavingEdit.class);
+                                intent.putExtra("tran_type",  myContributions.getTransaction_type());
+                                intent.putExtra("tran_amount",myContributions.getTransaction_amount());
+                                intent.putExtra("tran_month", myContributions.getTransaction_month());
+                                intent.putExtra("tran_ref", myContributions.getTransaction_ref_number());
+                                intent.putExtra("entry_id", myContributions.getId());
+
+                                startActivity(intent);
+
+
+
+
+
+                            //    msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" for the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
                             }
 
 
