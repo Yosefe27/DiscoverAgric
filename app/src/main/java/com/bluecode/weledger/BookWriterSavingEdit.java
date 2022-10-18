@@ -41,9 +41,9 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
     Toolbar toolbar;
     RequestQueue mRequestQueue;
     TextView save_member_details, groupName, groupID,txt_user_role;
-    EditText tran_type,tran_amount,tran_month,tran_ref,entry_id;
+    EditText tran_type,tran_amount,tran_month,tran_ref,entry_id,contributor_id,full_name;
     Spinner spinner_singleFSW, spinner_gender, spinner_user_role;
-    String submit_member_url = BASE_URL + "update_member.php";
+    String submit_member_url = BASE_URL + "update_savings.php";
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,8 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
         tran_month = findViewById(R.id.tran_month);
         tran_ref = findViewById(R.id.tran_ref);
         entry_id = findViewById(R.id.entry_id);
+        contributor_id = findViewById(R.id.contributor_id);
+        full_name =  findViewById(R.id.full_name);
         save_member_details = findViewById(R.id.save_member_details);
 
         String intent_tran_type = getIntent().getStringExtra("tran_type");
@@ -64,44 +66,63 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
         String intent_tran_month = getIntent().getStringExtra("tran_month");
         String intent_tran_ref = getIntent().getStringExtra("tran_ref");
         String intent_entry_id = getIntent().getStringExtra("entry_id");
+        String intent_contributor_id = getIntent().getStringExtra("contributor_id");
+        String intent_full_name = getIntent().getStringExtra("full_name");
 
         tran_type.setText(intent_tran_type);
         tran_amount.setText(intent_tran_amount);
+
         tran_month.setText(intent_tran_month);
+        tran_month.setEnabled(false);
+
         tran_ref.setText(intent_tran_ref);
         entry_id.setText(intent_entry_id);
+
+        contributor_id.setText(intent_contributor_id);
+        contributor_id.setEnabled(false);
+
+        full_name.setText(intent_full_name);
 
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str_tran_type = tran_type.getText().toString();
-                String str_tran_amount = tran_amount.getText().toString();
-                String str_tran_month = tran_month.getText().toString();
-                String str_tran_ref = tran_ref.getText().toString();
+
                 String str_entry_id = entry_id.getText().toString();
+                String str_tran_amount = tran_amount.getText().toString();
+                String str_full_name = full_name.getText().toString();
+                String str_contributor_id = contributor_id.getText().toString();
+                String str_tran_month = tran_month.getText().toString();
+                String str_tran_type = tran_type.getText().toString();
+                String str_tran_ref = tran_ref.getText().toString();
 
                 if(tran_amount.getText().toString().isEmpty()) {
                     errorDialog("Username Cannot Be Empty");
                 }
                 else startSubmission(
-                        str_tran_type,
+                        str_entry_id,
                         str_tran_amount,
+                        str_full_name,
+                        str_contributor_id,
                         str_tran_month,
-                        str_tran_ref,
-                        str_entry_id
+                        str_tran_type,
+                        str_tran_ref
+
                 );
             }
         });
 
     }
     private void startSubmission(
-                                 final String tran_type,
-                                 final String tran_amount,
-                                 final String tran_month,
-                                 final String tran_ref,
-                                 final String entry_id
+
+                                final String entry_id,
+                                final String tran_amount,
+                                final String full_name,
+                                final String contributor_id,
+                                final String tran_month,
+                                final String tran_type,
+                                final String tran_ref
 
     )
     {
@@ -150,11 +171,13 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
-                parms.put("amount", tran_type);
-                parms.put("month_contributed_for",tran_amount);
-                parms.put("full_name", tran_month);
-                parms.put("contributor_id",tran_ref);
                 parms.put("entry_id", entry_id);
+                parms.put("amount", tran_amount);
+                parms.put("full_name", full_name);
+                parms.put("contributor_id",contributor_id);
+                parms.put("month_contributed_for",tran_month);
+                parms.put("payment_mode", tran_type);
+                parms.put("payment_ref_number", tran_ref);
                 return parms;
             }
         };

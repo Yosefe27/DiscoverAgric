@@ -182,11 +182,13 @@ public class MyGroupTransactionsHistoryActivity extends AppCompatActivity {
                         // textView.setText(object1.toString());
                         MyContributions myTransactions = new MyContributions(
                                 stackObject.getString("entry_id"),
-                                stackObject.getString("payment_mode"),
                                 stackObject.getString("amount"),
+                                stackObject.getString("full_name"),
+                                stackObject.getString("contributor_id"),
                                 stackObject.getString("month_contributed_for"),
-                                stackObject.getString("payment_ref_number"),
-                                stackObject.getString("full_name")
+                                stackObject.getString("payment_mode"),
+                                stackObject.getString("payment_ref_number")
+
 
                         );
                         listMytransactions.add(myTransactions);
@@ -214,6 +216,9 @@ public class MyGroupTransactionsHistoryActivity extends AppCompatActivity {
                                 intent.putExtra("tran_month", myContributions.getTransaction_month());
                                 intent.putExtra("tran_ref", myContributions.getTransaction_ref_number());
                                 intent.putExtra("entry_id", myContributions.getId());
+                                intent.putExtra("contributor_id",myContributions.getContributor_id());
+                                intent.putExtra("full_name",myContributions.getFull_name());
+
 
                                 startActivity(intent);
 
