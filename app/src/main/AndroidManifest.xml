@@ -19,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
+            android:name=".BookWriterConductRegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".BookWriterViewMemberRegisterActivity"
             android:exported="false">
             <meta-data

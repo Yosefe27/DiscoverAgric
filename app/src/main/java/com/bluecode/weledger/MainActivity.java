@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                    case 7:
                         Intent bookRegister= new Intent(getBaseContext(), BookWriterMemberRegisterDashboard.class);
                         startActivity(bookRegister);
+                        finish();
 
                        break;
                    case 8:
