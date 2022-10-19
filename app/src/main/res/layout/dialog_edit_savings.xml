@@ -107,7 +107,7 @@
                     android:elevation="7dp"
                     android:gravity="center_horizontal"
                     android:textAlignment="center"
-                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardBackgroundColor="@color/primaryTextColor"
                     app:cardCornerRadius="10dp">
 
                     <Button
@@ -134,7 +134,7 @@
                     android:layout_weight="1"
                     android:elevation="7dp"
                     android:gravity="center_horizontal"
-                    app:cardBackgroundColor="#225102"
+                    app:cardBackgroundColor="@color/primaryTextColor"
                     app:cardCornerRadius="10dp">
 
                     <Button

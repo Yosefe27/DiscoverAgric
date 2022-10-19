@@ -19,6 +19,20 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
+            android:name=".BookWriterConductRegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".BookWriterViewMemberRegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".FacilitatorMemberDetailsActivity"
             android:exported="false">
             <meta-data
@@ -182,13 +196,14 @@
         <activity android:name=".BookwriterSavingsActivity" />
         <activity android:name=".BookwriterFinesActivity" />
         <activity android:name=".BookwriterSocialFundActivity" />
-        <activity android:name=".utils.BookwriterNewMemberActivity" />
+        <activity android:name=".BookwriterNewMemberActivity" />
         <activity android:name=".MyGroupTransactionsHistoryActivity" />
         <activity android:name=".NewLoanRepaymentActivity" />
         <activity android:name=".NewFinesActivity" />
         <activity android:name=".NewSocialFundActivity" />
         <activity android:name=".BookwriterGroupLoansActivity" />
         <activity android:name=".FacilitatorGroupLoansActivity" />
+        <activity android:name=".BookWriterSavingEdit" />
     </application>
 
 </manifest>

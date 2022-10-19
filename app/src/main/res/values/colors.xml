@@ -54,8 +54,8 @@
 
     <color name="grey">#E9EAEE</color>
     <color name="goodgrey">#535353</color>
-    <color name="lightgrey">#EEEEEE</color>
-    <color name="container_color">#5F093D</color>
+    <color name="lightgrey">#E8ECF3</color>
+    <color name="container_color">#FFFFFF</color>
     <color name="container_color2"> #B21368</color>
 
 

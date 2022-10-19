@@ -6,17 +6,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -32,6 +30,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bluecode.weledger.BookWriterAdminDashboard;
+import com.bluecode.weledger.Constants;
+import com.bluecode.weledger.MainActivity;
+import com.bluecode.weledger.R;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONException;
@@ -40,21 +42,23 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MembersDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+public class BookwriterNewMemberActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    TextView save_member_details, groupName, groupID,txt_user_role;
-    EditText firstName, lastName, userName, passWord, admissionDate, user_ID, ecap_hh_ID, phoneNumber, userRole, singleFSW;
-    Spinner spinner_singleFSW, spinner_gender, spinner_user_role;
-    String submit_member_url = BASE_URL + "update_member.php";
+    TextView save_member_details,groupName,groupID;
+    EditText firstName,lastName,userName,passWord,admissionDate,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
+    Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
+    String submit_member_url=BASE_URL+"submit_member.php";
+    String group_name;
+    String group_id;
+    DatePicker admission_date;
 
-    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member_details);
-
+        setContentView(R.layout.activity_new_member);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firstName = findViewById(R.id.first_name);
         lastName = findViewById(R.id.last_name);
@@ -66,71 +70,23 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
         spinner_gender = findViewById(R.id.gender);
         ecap_hh_ID = findViewById(R.id.ecap_hh_id);
         phoneNumber = findViewById(R.id.phone_number);
-        txt_user_role = findViewById(R.id.txt_user_role);
-        spinner_user_role = findViewById(R.id.user_role);
+        spinner_userRole = findViewById(R.id.user_role);
         spinner_singleFSW = findViewById(R.id.single_fsw);
         save_member_details = findViewById(R.id.save_member_details);
-        user_ID = findViewById(R.id.user_id);
-
-        String intent_group_name = getIntent().getStringExtra(Constants.GROUP_NAME);
-        String intent_group_id = getIntent().getStringExtra(Constants.GROUP_ID);
-        String intent_first_name = getIntent().getStringExtra(Constants.USER_FIRST_NAME);
-        String intent_last_name = getIntent().getStringExtra(Constants.USER_LAST_NAME);
-        String intent_user_name = getIntent().getStringExtra(Constants.USER_NAME);
-        String intent_password = getIntent().getStringExtra(Constants.USER_PASSWORD);
-        String intent_admission_date = getIntent().getStringExtra(Constants.USER_ADMISSION_DATE);
-        String intent_gender = getIntent().getStringExtra(Constants.USER_GENDER);
-        String intent_ecap_id = getIntent().getStringExtra(Constants.ECAP_ID);
-        String intent_phone = getIntent().getStringExtra(Constants.USER_PHONE);
-        String intent_user_role = getIntent().getStringExtra(Constants.USER_ROLE);
 
 
-        String intent_caregiver_status = getIntent().getStringExtra(Constants.CAREGIVER_STATUS);
-        String intent_user_ID = getIntent().getStringExtra(Constants.USER_ID);
 
-        groupName.setText(intent_group_name);
-        groupID.setText(intent_group_id);
-        firstName.setText(intent_first_name);
-        lastName.setText(intent_last_name);
-        userName.setText(intent_user_name);
-        passWord.setText(intent_password);
-        admissionDate.setText(intent_admission_date);
-        ecap_hh_ID.setText(intent_ecap_id);
-        phoneNumber.setText(intent_phone);
-        userName.setText(intent_user_name);
-        user_ID.setText(intent_user_ID);
-        user_ID.setEnabled(false);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        group_name = preferences.getString("group_name", "");
+        group_id = preferences.getString("group_id", "");
 
+        groupName.setText(group_name);
+        groupName.setEnabled(false);
+        groupName.setTextColor(Color.BLACK);
 
-        String[] spinnerGender = {intent_gender, "Male", "Female"};
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerGender);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_gender.setAdapter(adapter);
-        spinner_gender.setOnItemSelectedListener(this);
-        String selection = intent_gender;
-        int spinnerPosition = adapter.getPosition(selection);
-        spinner_gender.setSelection(spinnerPosition);
-
-        String[] spinnerRole = {intent_user_role,"Ordinary Member"};
-        ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerRole);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_user_role.setAdapter(adapter2);
-        spinner_user_role.setOnItemSelectedListener(this);
-        String selection2;
-             selection2 = intent_user_role;
-            int spinnerPosition2 = adapter2.getPosition(selection2);
-            spinner_user_role.setSelection(spinnerPosition2);
-        txt_user_role.setVisibility(View.GONE);
-        spinner_user_role.setVisibility(View.GONE);
-
-        String[] spinnerCaregiver = {intent_caregiver_status, "Yes", "No"};
-        ArrayAdapter<CharSequence> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerCaregiver);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_singleFSW.setAdapter(adapter3);
-        spinner_singleFSW.setOnItemSelectedListener(this);
-        String selection3 = intent_caregiver_status;
-        int spinnerPosition3 = adapter3.getPosition(selection3);
-        spinner_singleFSW.setSelection(spinnerPosition3);
+        groupID.setText(group_id);
+        groupID.setEnabled(false);
+        groupID.setTextColor(Color.BLACK);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
@@ -146,9 +102,9 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                 String str_gender = spinner_gender.getSelectedItem().toString();
                 String str_ecap_hh_ID = ecap_hh_ID.getText().toString();
                 String str_phoneNumber = phoneNumber.getText().toString();
-                String str_userRole = spinner_user_role.getSelectedItem().toString();
+                String str_userRole = spinner_userRole.getSelectedItem().toString();
                 String str_singleFSW = spinner_singleFSW.getSelectedItem().toString();
-                String str_user_id = user_ID.getText().toString();
+
 
                 if(userName.getText().toString().isEmpty()) {
                     errorDialog("Username Cannot Be Empty");
@@ -165,8 +121,7 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                         str_ecap_hh_ID,
                         str_phoneNumber,
                         str_userRole,
-                        str_singleFSW,
-                        str_user_id
+                        str_singleFSW
                 );
             }
         });
@@ -183,8 +138,7 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                                  final String ecaphh_id,
                                  final String phonenumber,
                                  final String userrole,
-                                 final String singlefsw,
-                                 final String id
+                                 final String singlefsw
     )
     {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -245,7 +199,6 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
                 parms.put("user_role", userrole);
                 parms.put("single_female_caregiver", singlefsw);
                 parms.put("a", str_a);
-                parms.put("id",id);
                 return parms;
             }
         };
@@ -296,21 +249,14 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
             }
         });
     }
-
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
+        Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.GROUP_NAME, group_name);
+        bundle.putString(Constants.GROUP_ID,group_id);
+        intent.putExtras(bundle);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

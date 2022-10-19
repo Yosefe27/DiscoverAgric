@@ -77,10 +77,9 @@ public class BookWriterMemberRegisterDashboard extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
                         break;
                     case "Conduct Register":
-//                        finish();
-//                        Intent groupSavings = new Intent(getApplicationContext(), MyGroupTransactionsHistoryActivity.class);
-//                        startActivity(groupSavings);
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        Intent groupSavings = new Intent(getApplicationContext(), BookWriterViewMemberRegisterActivity.class);
+                        startActivity(groupSavings);
+                        finish();
                         break;
                 }
 
