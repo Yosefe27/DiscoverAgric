@@ -1,4 +1,4 @@
-package com.bluecode.weledger.utils;
+package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -33,6 +34,7 @@ import com.bluecode.weledger.BookWriterAdminDashboard;
 import com.bluecode.weledger.Constants;
 import com.bluecode.weledger.MainActivity;
 import com.bluecode.weledger.R;
+import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +51,7 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     String submit_member_url=BASE_URL+"submit_member.php";
     String group_name;
     String group_id;
+    DatePicker admission_date;
 
     @SuppressLint("MissingInflatedId")
     @Override

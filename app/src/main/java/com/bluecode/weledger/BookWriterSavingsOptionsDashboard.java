@@ -71,9 +71,9 @@ public class BookWriterSavingsOptionsDashboard extends AppCompatActivity {
 
                 switch (card) {
                     case "My Savings":
-                        finish();
                 Intent mySavings = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
                 startActivity(mySavings );
+                finish();
                         break;
                     case "Group Savings":
                         finish();
@@ -85,9 +85,7 @@ public class BookWriterSavingsOptionsDashboard extends AppCompatActivity {
                 Intent addSavings = new Intent(getApplicationContext(), NewPaymentActivity.class);
                 startActivity(addSavings);
                         break;
-                    case "Edit Savings":
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-                        break;
+
 
                 }
 
@@ -103,7 +101,7 @@ public class BookWriterSavingsOptionsDashboard extends AppCompatActivity {
             mainModel.add(new DefaultDashboardModel("My Savings",R.drawable.ic_saving,"My Savings"));
             mainModel.add(new DefaultDashboardModel("Group Savings",R.drawable.ic_group_saving,"Group Savings"));
             mainModel.add(new DefaultDashboardModel("Add Savings",R.drawable.ic_money,"Add Savings"));
-            mainModel.add(new DefaultDashboardModel("Edit Savings",R.drawable.ic_add_pay,"Edit Savings"));
+      //      mainModel.add(new DefaultDashboardModel("Edit Savings",R.drawable.ic_add_pay,"Edit Savings"));
         return mainModel;
     }
     @Override

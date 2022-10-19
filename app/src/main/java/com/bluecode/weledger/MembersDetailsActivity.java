@@ -299,10 +299,9 @@ public class MembersDetailsActivity extends AppCompatActivity implements Adapter
 
     @Override
     public void onBackPressed() {
-
-        finish();
         Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

@@ -214,9 +214,8 @@ public class MembersActivity extends AppCompatActivity {
                                         intent.putExtra(Constants.USER_ROLE, members.getUser_role());
                                         intent.putExtra(Constants.CAREGIVER_STATUS, members.getSingle_female_caregiver());
                                         intent.putExtra(Constants.USER_ID, members.getId());
-
-
                                         startActivity(intent);
+                                        finish();
 
                             }
 
@@ -352,13 +351,12 @@ public class MembersActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-        finish();
         Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
         Bundle bundle = new Bundle();
         bundle.putString(Constants.GROUP_NAME, group_name);
         bundle.putString(Constants.GROUP_ID,group_id);
         intent.putExtras(bundle);
         startActivity(intent);
+        finish();
     }
 }
