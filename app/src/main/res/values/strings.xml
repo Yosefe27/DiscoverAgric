@@ -26,5 +26,14 @@
     <array name="role_member">
         <item></item>
         <item>OrdinaryMember</item>
+
+
+    </array>
+
+    <array name="Register">
+        <item>Present</item>
+        <item>Absent</item>
+
+
     </array>
 </resources>

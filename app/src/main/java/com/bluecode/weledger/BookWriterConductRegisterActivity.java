@@ -93,7 +93,7 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
         String intent_user_ID = getIntent().getStringExtra(Constants.USER_ID);
 
         groupName.setText(intent_group_name);
-      //  groupName.setVisibility(View.INVISIBLE);
+        groupName.setVisibility(View.INVISIBLE);
         groupID.setText(intent_group_id);
         groupID.setVisibility(View.INVISIBLE);
 
@@ -138,7 +138,6 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
         selection2 = intent_user_role;
         int spinnerPosition2 = adapter2.getPosition(selection2);
         spinner_user_role.setSelection(spinnerPosition2);
-//        txt_user_role.setVisibility(View.GONE);
         spinner_user_role.setVisibility(View.GONE);
         spinner_user_role.setVisibility(View.INVISIBLE);
 
@@ -152,16 +151,6 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
         spinner_singleFSW.setSelection(spinnerPosition3);
         spinner_singleFSW.setVisibility(View.INVISIBLE);
 
-        String reg = "Present";
-        String[] spinnerRegister = {reg, "Absent"};
-        ArrayAdapter<CharSequence> adapter4 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerRegister);
-        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_register.setAdapter(adapter4);
-        spinner_register.setOnItemSelectedListener(this);
-        String selection4 = reg;
-        int spinnerPosition4 = adapter4.getPosition(selection4);
-        spinner_register.setSelection(spinnerPosition4);
-
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,14 +159,9 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
                 String str_group_id = groupID.getText().toString();
                 String str_firstName = firstName.getText().toString();
                 String str_lastName = lastName.getText().toString();
-                String str_userName = userName.getText().toString();
                 String str_passWord = passWord.getText().toString();
-                String str_admissionDate = admissionDate.getText().toString();
-                String str_gender = spinner_gender.getSelectedItem().toString();
-                String str_ecap_hh_ID = ecap_hh_ID.getText().toString();
                 String str_phoneNumber = phoneNumber.getText().toString();
                 String str_userRole = spinner_user_role.getSelectedItem().toString();
-                String str_singleFSW = spinner_singleFSW.getSelectedItem().toString();
                 String str_user_id = user_ID.getText().toString();
                 String str_auto_date = dateFill.getText().toString();
                 String str_register = spinner_register.getSelectedItem().toString();
@@ -189,16 +173,11 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
                 else startSubmission(
                         str_group_name,
                         str_group_id,
-                        str_firstName,
+                       str_firstName,
                         str_lastName,
-                        str_userName,
                         str_passWord,
-                        str_admissionDate,
-                        str_gender,
-                        str_ecap_hh_ID,
                         str_phoneNumber,
                         str_userRole,
-                        str_singleFSW,
                         str_user_id,
                         str_auto_date,
                         str_register
@@ -207,18 +186,14 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
         });
 
     }
-    private void startSubmission(final String groupname,
+    private void startSubmission(
+                                 final String groupname,
                                  final String groupid,
                                  final String firstname,
                                  final String surname,
-                                 final String username,
                                  final String password,
-                                 final String admissiondate,
-                                 final String gender,
-                                 final String ecaphh_id,
                                  final String phonenumber,
                                  final String userrole,
-                                 final String singlefsw,
                                  final String id,
                                  final String date,
                                  final String register
@@ -251,7 +226,7 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
+                        Intent intent = new Intent(getApplicationContext(), BookWriterViewMemberRegisterActivity.class);
                         startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
@@ -274,15 +249,9 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
                 parms.put("group_id",groupid);
                 parms.put("firstname", firstname);
                 parms.put("lastname", surname);
-                parms.put("nrc", username);
                 parms.put("password", password);
-                parms.put("admission_date", admissiondate);
-                parms.put("ecap_hh_id", ecaphh_id);
                 parms.put("phone_number", phonenumber);
-                parms.put("gender", gender);
                 parms.put("user_role", userrole);
-                parms.put("single_female_caregiver", singlefsw);
-                parms.put("a", str_a);
                 parms.put("id",id);
                 parms.put("date", date);
                 parms.put("register",register);
@@ -303,19 +272,14 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_error, viewGroup, false);
 
         btn_ok = dialogView.findViewById(R.id.btn_ok);
-//        card_ok = dialogView.findViewById(R.id.card_ok);
         main_text = dialogView.findViewById(R.id.main_text);
         linear_buttons = dialogView.findViewById(R.id.linear_buttons);
 
 
-        //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
-        //finally creating the alert dialog and displaying it
+
         final AlertDialog reportsAlert = builder.create();
-        // Let's start with animation work. We just need to create a style and use it here as follow.
         if (reportsAlert.getWindow() != null)
             reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
 
@@ -323,10 +287,8 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         btn_ok.setVisibility(View.VISIBLE);
         linear_buttons.setVisibility(View.GONE);
-//        To prevent dialog box from getting dismissed on back key pressed use this
         reportsAlert.setCancelable(false);
 
-//        And to prevent dialog box from getting dismissed on outside touch use this
         reportsAlert.setCanceledOnTouchOutside(false);
         main_text.setText(error_text);
 

@@ -134,7 +134,7 @@
                         android:background="@drawable/ic_edit_bg_box"
                         android:dropDownWidth="wrap_content"
                         android:dropDownSelector="@color/colorBottomCardEnd"
-                        android:entries="@array/binary" />
+                        android:entries="@array/Register" />
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
