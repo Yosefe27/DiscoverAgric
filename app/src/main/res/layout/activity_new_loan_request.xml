@@ -75,6 +75,27 @@
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Interest Rate (Percentage %)"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/interest_rate"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
             </LinearLayout>
 
@@ -94,7 +115,51 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/loan_date"
+                    android:id="@+id/date_picker_actions"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint="YYYY/MM/DD"
+                    android:imeOptions="actionNext"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Loan Installments"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/installments"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Monthly Installments"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/monthly_installments"
                     style="@style/modifiedEditText"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_edit_bg"
