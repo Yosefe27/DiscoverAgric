@@ -12,7 +12,7 @@
         android:id="@+id/we_logo"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="55dp"
         android:scaleType="centerInside"
         android:src="@drawable/login_we_logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,14 +23,13 @@
         android:id="@+id/we_logo1"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_marginTop="160dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:scaleType="fitCenter"
         android:src="@drawable/coat_of_arms_of_zambia_ecap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/we_logo" />
 
     <ImageView
         android:id="@+id/icons"
@@ -126,7 +125,7 @@
         android:id="@+id/coat_of_arms_of_zambia"
         android:layout_width="match_parent"
         android:layout_height="170dp"
-        android:layout_marginTop="630dp"
+        android:layout_marginTop="660dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:scaleType="centerInside"
