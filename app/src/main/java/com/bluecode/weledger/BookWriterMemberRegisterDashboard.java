@@ -71,14 +71,13 @@ public class BookWriterMemberRegisterDashboard extends AppCompatActivity {
 
                 switch (card) {
                     case "View Register":
-//                        finish();
-//                        Intent mySavings = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-//                        startActivity(mySavings );
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent viewRegister = new Intent(getApplicationContext(), BookWriterViewRegister.class);
+                        startActivity(viewRegister);
                         break;
                     case "Conduct Register":
-                        Intent groupSavings = new Intent(getApplicationContext(), BookWriterViewMemberRegisterActivity.class);
-                        startActivity(groupSavings);
+                        Intent conductRegister  = new Intent(getApplicationContext(), BookWriterViewMemberRegisterActivity.class);
+                        startActivity(conductRegister);
                         finish();
                         break;
                 }
