@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="#FFFCFC"
     android:id="@+id/DrawerLayout">
     <include
         layout="@layout/main_activity_holder"/>

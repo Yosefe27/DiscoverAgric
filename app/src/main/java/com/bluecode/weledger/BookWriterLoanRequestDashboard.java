@@ -33,10 +33,10 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_request_dashboard);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Savings");
-        toolbar.setSubtitle("Savings Options");
+//        toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        toolbar.setTitle("Savings");
+//        toolbar.setSubtitle("Savings Options");
         Bundle bundle = getIntent().getExtras();
 
         try {
@@ -47,15 +47,15 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
             Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
         }
 
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<DefaultDashboardModel>) getData();
@@ -84,9 +84,7 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
                         Intent addSavings = new Intent(getApplicationContext(), NewLoanRequestActivity.class);
                         startActivity(addSavings);
                         break;
-                    case "Edit Loan":
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-                        break;
+
 
                 }
 
@@ -110,10 +108,10 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_add) {
-            Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
-            startActivity(intent);
-        }
+//        if (id == R.id.action_add) {
+//            Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
+//            startActivity(intent);
+//        }
         return super.onOptionsItemSelected(item);
     }
     private List<DefaultDashboardModel> getData(){
@@ -121,7 +119,7 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
         mainModel.add(new DefaultDashboardModel("My Loan",R.drawable.ic_saving,"My Loan"));
         mainModel.add(new DefaultDashboardModel("Group Loan",R.drawable.ic_group_saving,"Group Loan"));
         mainModel.add(new DefaultDashboardModel("Add Loan",R.drawable.ic_money,"Add Loan"));
-        mainModel.add(new DefaultDashboardModel("Edit Loan",R.drawable.ic_add_pay,"Edit Loan"));
+       // mainModel.add(new DefaultDashboardModel("Edit Loan",R.drawable.ic_add_pay,"Edit Loan"));
         return mainModel;
     }
     @Override

@@ -182,11 +182,13 @@ public class FacilitatorGroupTransactionsHistoryActivity extends AppCompatActivi
 
                         // textView.setText(object1.toString());
                         MyContributions myTransactions = new MyContributions(
-                                stackObject.getString("payment_mode"),
+                                stackObject.getString("entry_id"),
                                 stackObject.getString("amount"),
+                                stackObject.getString("full_name"),
+                                stackObject.getString("contributor_id"),
                                 stackObject.getString("month_contributed_for"),
+                                stackObject.getString("payment_mode"),
                                 stackObject.getString("payment_ref_number")
-
                         );
                         listMytransactions.add(myTransactions);
                     }

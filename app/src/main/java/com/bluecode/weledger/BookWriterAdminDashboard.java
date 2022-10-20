@@ -8,15 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.bluecode.weledger.adapters.BookWriterAdminAdapter;
 import com.bluecode.weledger.models.BookWriterAdminModel;
-import com.bluecode.weledger.models.MainActivityModel;
-import com.bluecode.weledger.utils.BookwriterNewMemberActivity;
 
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 

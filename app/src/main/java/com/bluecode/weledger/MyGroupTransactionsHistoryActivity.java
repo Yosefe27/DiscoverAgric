@@ -181,10 +181,14 @@ public class MyGroupTransactionsHistoryActivity extends AppCompatActivity {
 
                         // textView.setText(object1.toString());
                         MyContributions myTransactions = new MyContributions(
-                                stackObject.getString("payment_mode"),
+                                stackObject.getString("entry_id"),
                                 stackObject.getString("amount"),
+                                stackObject.getString("full_name"),
+                                stackObject.getString("contributor_id"),
                                 stackObject.getString("month_contributed_for"),
+                                stackObject.getString("payment_mode"),
                                 stackObject.getString("payment_ref_number")
+
 
                         );
                         listMytransactions.add(myTransactions);
@@ -206,7 +210,23 @@ public class MyGroupTransactionsHistoryActivity extends AppCompatActivity {
                                 MyContributions myContributions = listMytransactions.get(position);
                                 fullname_str = myContributions.getTransaction_type();
 
-                                msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" for the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
+                                Intent intent = new Intent(getApplicationContext(), BookWriterSavingEdit.class);
+                                intent.putExtra("tran_type",  myContributions.getTransaction_type());
+                                intent.putExtra("tran_amount",myContributions.getTransaction_amount());
+                                intent.putExtra("tran_month", myContributions.getTransaction_month());
+                                intent.putExtra("tran_ref", myContributions.getTransaction_ref_number());
+                                intent.putExtra("entry_id", myContributions.getId());
+                                intent.putExtra("contributor_id",myContributions.getContributor_id());
+                                intent.putExtra("full_name",myContributions.getFull_name());
+
+
+                                startActivity(intent);
+
+
+
+
+
+                            //    msgDialog("Dear "+str_user_name+", You Made a Contribution of K "+myContributions.getTransaction_amount()+" for the month of "+myContributions.getTransaction_month()+ " via "+fullname_str+" payment with Ref#: "+myContributions.getTransaction_ref_number());
                             }
 
 

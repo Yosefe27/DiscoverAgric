@@ -1,7 +1,6 @@
 package com.bluecode.weledger.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +12,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bluecode.weledger.AddMemberToGroupActivity;
-import com.bluecode.weledger.BookWriterMembersActivity;
-import com.bluecode.weledger.FacilitatorGroupsActivity;
-import com.bluecode.weledger.FacilitatorNewGroupActivity;
-import com.bluecode.weledger.MembersActivity;
-import com.bluecode.weledger.NewMemberActivity;
 import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.BookWriterAdminModel;
-import com.bluecode.weledger.models.GroupAdminModel;
-import com.bluecode.weledger.models.MainActivityModel;
-import com.bluecode.weledger.utils.BookwriterNewMemberActivity;
 
 import java.util.ArrayList;
 
