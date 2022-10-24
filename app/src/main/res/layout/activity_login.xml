@@ -1,139 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/canvasSV"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:fillViewport="true"
+    android:isScrollContainer="true">
 
-
-    <ImageView
-        android:id="@+id/we_logo"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="25dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/login_we_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/we_logo1"
+    <RelativeLayout
+        android:id="@+id/login_layout"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/coat_of_arms_of_zambia_ecap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:background="#ffffff"
+        android:paddingBottom="@dimen/login_bottom_margin">
 
-    <ImageView
-        android:id="@+id/icons"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="16dp"
-        android:scaleType="centerInside"
-        android:translationX="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/lightGrey" />
 
-    <LinearLayout
-        android:id="@+id/linlay_inputs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/we_logo1">
-
-        <EditText
-            android:id="@+id/email"
+        <!-- Top section -->
+        <LinearLayout
+            android:id="@+id/top_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:drawablePadding="16dp"
-            android:hint="Username"
-            android:inputType="text"
-            android:padding="16dp"
-            android:textSize="20sp" />
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/login_logo_top_padding">
 
-        <EditText
-            android:id="@+id/login_password"
+            <ImageView
+                android:id="@+id/login_logo"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="70dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/we_logo" />
+
+            <ImageView
+                android:id="@+id/login_log"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coat_of_arms_of_zambia_ecap" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/login_title_text_view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="5dp"-->
+            <!--                android:gravity="center_horizontal"-->
+            <!--                android:text="@string/login_title"-->
+            <!--                android:textColor="#272727"-->
+            <!--                android:textSize="25sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                android:typeface="sans" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/login_build_text_view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="5dp"-->
+            <!--                android:gravity="center_horizontal"-->
+            <!--                android:text="@string/app_version"-->
+            <!--                android:textColor="#999999"-->
+            <!--                android:textSize="@dimen/login_build_text_view_textSize" />-->
+
+        </LinearLayout>
+
+        <!-- Middle section -->
+        <LinearLayout
+            android:id="@+id/middle_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_lock_open_24"
-            android:drawableLeft="@drawable/ic_baseline_lock_open_24"
-            android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24"
-            android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
-            android:drawablePadding="16dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="16dp"
-            android:textSize="20sp" />
+            android:layout_below="@+id/top_section"
+            android:layout_marginTop="@dimen/login_middle_section_padding_top"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/login_horizontal_margin"
+            android:paddingRight="@dimen/login_horizontal_margin">
 
-        <CheckBox
-            android:id="@+id/stay_logged_in"
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_view_component_height"
+                android:layout_weight="8"
+                android:background="@drawable/rounded_corner_edit_text_bg"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:hint="User Name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:lines="1"
+                android:paddingLeft="10dp"
+                android:textColor="#666666"
+                android:textColorHint="#bfbfbf"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/login_edit_text_textSize"
+                android:typeface="sans" />
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_view_component_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_weight="8"
+                android:background="@drawable/rounded_corner_edit_text_bg"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:hint="Password"
+                android:imeActionId="100"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:paddingLeft="10dp"
+                android:textColor="#666666"
+                android:textColorHint="#bfbfbf"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/login_edit_text_textSize"
+                android:typeface="sans" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/checkbox_margin_top">
+
+                <CheckBox
+                    android:id="@+id/stay_logged_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:text="Stay Logged In"
+                    android:textColor="#FF6D00"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/btn_login"
+                android:onClick="onClick"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_weight="8"
+                android:background="@drawable/login_button_bg"
+                android:gravity="center"
+                android:ems="10"
+                android:shadowColor="#ffffff"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="0.5"
+                android:text="LOGIN"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+        <!-- Bottom section -->
+
+        <LinearLayout
+            android:id="@+id/bottom_section"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:text="Stay Logged In"
-            android:textColor="#11248E"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="@drawable/button_bg"
-            android:gravity="center"
-            android:text="LOGIN"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/linlay_inputs"
-        android:text="Forgot Password"/>
-
-
-    <ImageView
-        android:id="@+id/coat_of_arms_of_zambia"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_marginTop="630dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/coat_of_arms"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/middle_section"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+            <ImageView
+                android:id="@+id/opensrp_logo_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/coat_of_arms"/>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

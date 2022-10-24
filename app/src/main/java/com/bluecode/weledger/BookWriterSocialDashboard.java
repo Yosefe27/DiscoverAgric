@@ -71,10 +71,9 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
 
                 switch (card) {
                     case "View Social Funds":
-//                        finish();
-//                        Intent mySavings = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-//                        startActivity(mySavings );
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent my_social_funds = new Intent(getApplicationContext(), ViewSocialFundsForMembersActivity.class);
+                        startActivity(my_social_funds);
                         break;
                     case "Add Social Funds":
                         finish();
@@ -82,7 +81,9 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
                         startActivity(addSavings);
                         break;
                     case "Edit Social Funds":
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent manageSavings = new Intent(getApplicationContext(), SocialDepositsAndDisbursmentsActivity.class);
+                        startActivity(manageSavings);
                         break;
 
                 }
@@ -115,9 +116,9 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
     }
     private List<DefaultDashboardModel> getData(){
         ArrayList<DefaultDashboardModel> mainModel = new ArrayList<>();
-        mainModel.add(new DefaultDashboardModel("View Social Funds",R.drawable.ic_view_groups,"View Social Funds"));
         mainModel.add(new DefaultDashboardModel("Add Social Funds",R.drawable.ic_money,"Add Social Funds"));
-        mainModel.add(new DefaultDashboardModel("Edit Social Funds",R.drawable.ic_add_pay,"Edit Social Funds"));
+        mainModel.add(new DefaultDashboardModel("View Social Funds",R.drawable.ic_view_groups,"View Social Funds"));
+        mainModel.add(new DefaultDashboardModel("Social Deposits / Disbursement",R.drawable.ic_add_pay,"Edit Social Funds"));
         return mainModel;
     }
     @Override

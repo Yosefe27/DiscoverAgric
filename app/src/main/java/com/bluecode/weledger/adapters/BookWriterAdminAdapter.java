@@ -27,11 +27,14 @@ public class BookWriterAdminAdapter extends RecyclerView.Adapter<BookWriterAdmin
     }
 
     public void setClickListener(View.OnClickListener callback) {
+
         clickListener = callback;
     }
+
     @NonNull
     @Override
     public BookWriterAdminAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //TODO rename layout for the bookwriteradmin
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_layout_cardview,parent,false);
         BookWriterAdminAdapter.viewHolder viewHolder = new BookWriterAdminAdapter.viewHolder(view);
         return viewHolder;
@@ -40,18 +43,12 @@ public class BookWriterAdminAdapter extends RecyclerView.Adapter<BookWriterAdmin
     @Override
     public void onBindViewHolder(@NonNull BookWriterAdminAdapter.viewHolder holder, int position) {
         final BookWriterAdminModel bookWriterAdminModel = models.get(position);
-        //   holder.imageView.setImageDrawable(mainActivityModel.getImageView());
+
         holder.name.setText(bookWriterAdminModel.getNameType());
         holder.imageView.setBackgroundResource(bookWriterAdminModel.getImage());
         holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, bookWriterAdminModel.getColor()));
 
-        String id = bookWriterAdminModel.getCardID();
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickListener.onClick(view);
-            }
-        });
+        holder.itemView.setOnClickListener(view -> clickListener.onClick(view));
     }
 
     @Override
@@ -65,6 +62,7 @@ public class BookWriterAdminAdapter extends RecyclerView.Adapter<BookWriterAdmin
         CardView cardView;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+//TODO name and imageView need to be descriptive e.g cardLabel
             name = itemView.findViewById(R.id.name);
             imageView = itemView.findViewById(R.id.imageView);
             cardView = itemView.findViewById(R.id.cardView);

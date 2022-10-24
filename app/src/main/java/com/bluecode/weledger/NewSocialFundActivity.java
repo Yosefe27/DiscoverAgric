@@ -55,10 +55,11 @@ import java.util.HashMap;
 import java.util.Map;
 public class NewSocialFundActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount;
-    TextView select_member,post_loan_requests,selected_member;
+    EditText amount,contribution_date;
+    TextView select_member,post_member_saving,select_ID;
     String submit_saving_url=BASE_URL+"submit_social_fund.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
+    String membership_response = BASE_URL + "membership_response.php";
     MembersAdapter membersAdapter;
     RequestQueue mRequestQueue;
     ArrayList<Members> listMembers = new ArrayList<>();
@@ -67,19 +68,43 @@ public class NewSocialFundActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_social_fund);
+
         amount = findViewById(R.id.amount);
-        post_loan_requests = findViewById(R.id.post_loan_request);
+        contribution_date = findViewById(R.id.date_picker_actions);
+        select_member = findViewById(R.id.select_member);
+        select_ID = findViewById(R.id.select_ID);
+        post_member_saving = findViewById(R.id.save_payment_details);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Social Fund Details");
-        toolbar.setSubtitle("Post Member Social Fund");
+        toolbar.setTitle("Savings Details");
+        toolbar.setSubtitle("Post Member Saving");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(getApplicationContext(), BookWriterSocialDashboard.class);
+                Intent intent = new Intent(getApplicationContext(), BookWriterSavingsOptionsDashboard.class);
                 startActivity(intent);
+            }
+        });
+
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        contribution_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = new DatePickerDialog(NewSocialFundActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        month = month+1;
+                        String date = year+"/"+month+"/"+dayOfMonth;
+                        contribution_date.setText(date);
+                    }
+                },year, month,day);
+                dialog.show();
             }
         });
 
@@ -87,34 +112,54 @@ public class NewSocialFundActivity extends AppCompatActivity {
         context = NewSocialFundActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
+       String str_group_id = preferences.getString("group_id", "");
         if (isNetworkAvailable()) {
             membersList();
         } else {
             errorDialog("Please Check Your Internet Connection");
 
         }
-        post_loan_requests.setOnClickListener(new View.OnClickListener() {
+        select_member.setOnClickListener(view -> membersDisplayDialog());
+        select_ID.setOnClickListener(view -> membersDisplayDialog());
+        post_member_saving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str_amount = amount.getText().toString();
+                String str_select_member = select_member.getText().toString();
+                String str_contribution_date = contribution_date.getText().toString();
+                String str_id = select_ID.getText().toString();
                 if(amount.getText().toString().isEmpty()){
                     errorDialog("Amount should not be empty.");
                 }
+                else if(select_member.getText().toString().isEmpty()){
+                    errorDialog("Member Name should not be empty.");
+                }
                 else{
-                    startSubmission(str_amount);
+                    startSubmission(
+                            str_amount,
+                            str_select_member,
+                            str_contribution_date,
+                            str_id,
+                            str_group_id
+                    );
                 }
             }
         });
     }
-    private void startSubmission(final String amount){
+    private void startSubmission(
+            final String amount,String select_member,String contribution_date,String id,String group_id){
+        //        signin_progress.setVisibility(View.VISIBLE);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
 
+
+        //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
         //finally creating the alert dialog and displaying it
         final AlertDialog reportsAlert = builder.create();
@@ -129,7 +174,7 @@ public class NewSocialFundActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                Log.v("savings_url", response);
+                Log.v("transactions_response", response);
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
@@ -138,6 +183,9 @@ public class NewSocialFundActivity extends AppCompatActivity {
 
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
+                        finish();
+                        Intent intent = new Intent(getApplicationContext(), ViewSocialFundsForMembersActivity.class);
+                        startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
 //                        signin_progress.setVisibility(View.GONE);
@@ -159,6 +207,10 @@ public class NewSocialFundActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("amount", amount);
+                parms.put("full_name", select_member);
+                parms.put("month_contributed_for",contribution_date);
+                parms.put("member_id",id);
+                parms.put("group_id",group_id);
                 parms.put("a", str_a);
                 return parms;
             }
@@ -195,13 +247,20 @@ public class NewSocialFundActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, members_list, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.v("transactions_response", response);
+//                Toast.makeText(getApplicationContext(),"Response : "+response,Toast.LENGTH_SHORT).show();
+//                textView.setText(response.toString());
+                Log.v("Submit social fund", response);
                 try {
                     JSONObject object = new JSONObject(response);
+//                    str_my_name = object.getString("full_name");
+//                    str_user_role = object.getString("user_role");
+//                    str_group_name = object.getString("group_name");
                     JSONArray array = object.getJSONArray("group_members");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
+//                        JSONObject stackObject2 = array2.getJSONObject(i);
 
+                        // textView.setText(object1.toString());
                         Members members = new Members(
                                 stackObject.getString(Constants.GROUP_NAME),
                                 stackObject.getString(Constants.GROUP_ID),
@@ -290,12 +349,23 @@ public class NewSocialFundActivity extends AppCompatActivity {
                 int position = members_recyclerview.getChildLayoutPosition(view);
                 Members members = listMembers.get(position);
                 select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
-
+                select_ID.setText(members.getId());
+//                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
+//                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
+//                                intent.putExtra("intent_email", members.getEmail());
+//                                intent.putExtra("intent_nrc", members.getNrc());
+//                                intent.putExtra("intent_address", members.getAddress());
+//                                intent.putExtra("intent_group_id", members.getGroup_id());
+//                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
+//                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
+//                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
+//                                startActivity(intent);
                 reportsAlert.dismiss();
             }
 
 
         });
+//                        reportsAlert.dismiss();
 
 
 

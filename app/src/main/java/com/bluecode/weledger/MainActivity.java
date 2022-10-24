@@ -208,29 +208,7 @@ public class MainActivity extends AppCompatActivity {
 //                    case R.id.nav_group_admins:
 //                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
 //                        startActivity(i);
-//                        Toast.makeText(getApplicationContext(),"Ad",Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.nav_group_savings:
-//                        Toast.makeText(getApplicationContext(),"Savings",Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.nav_group_loans:
 //
-////                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
-////                        startActivity(i);
-//                        Toast.makeText(getApplicationContext(),"Loans",Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.nav_repayments:
-//                        Toast.makeText(getApplicationContext(),"Repayment",Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.nav_group_fines:
-//
-////                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
-////                        startActivity(i);
-//                        Toast.makeText(getApplicationContext(),"Group Fines",Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.nav_ledger:
-//                        Toast.makeText(getApplicationContext(),"Ledger",Toast.LENGTH_SHORT).show();
-//                        break;
                     default:
                         break;
                 }
