@@ -12,33 +12,6 @@
     <!--        app:cardElevation="5dp"-->
     <!--        app:cardBackgroundColor="@color/dark_white"-->
     <!--        app:cardCornerRadius="10dp">-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#e3badb"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/btn_add_member"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginTop="0dp"
-            android:background="@color/container_color2"
-            android:text=" "
-            android:textAlignment="textEnd"
-            android:textColor="#ffffff"
-            android:textSize="14dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="#e3badb"
-            android:layout_marginTop="10dp"
-            android:text=" TOTAL SOCIAL FUND FOR GROUP MEMBERS"
-            android:textColor="#FCFDFF"
-            android:textSize="15dp"
-            android:gravity="center"
-            android:textStyle="bold"/>
-    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/total_social"
         android:layout_width="match_parent"

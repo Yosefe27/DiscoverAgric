@@ -39,10 +39,8 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bluecode.weledger.adapters.TotalSocialFundAdapter;
-import com.bluecode.weledger.adapters.ViewSocialFundAdapter;
-import com.bluecode.weledger.models.TotalSocialFundModel;
-import com.bluecode.weledger.models.ViewSocialFundModel;
+import com.bluecode.weledger.adapters.MemberRegisterListAdapter;
+import com.bluecode.weledger.models.MemberRegisterListModel;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -53,21 +51,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TotalSocialFundsCollectedActivity extends AppCompatActivity {
+public class OrdinaryMemberViewRegister extends AppCompatActivity {
     RecyclerView members_recyclerview;
     RequestQueue mRequestQueue;
-    ArrayList<TotalSocialFundModel> listMembers = new ArrayList<>();
+    ArrayList<MemberRegisterListModel> listMembers = new ArrayList<>();
     Context context;
-    String str_a, members_list = BASE_URL + "total_social_fund_collected.php";
-    TotalSocialFundAdapter totalSocialFundAdapter;
+    String str_a, members_list = BASE_URL + "view_member_register.php";
+    MemberRegisterListAdapter membersAdapter;
     Toolbar toolbar;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_total_social_funds_collected);
+        setContentView(R.layout.activity_ordinary_member_view_register);
 
-        members_recyclerview = findViewById(R.id.total_social);
+
+        members_recyclerview = findViewById(R.id.members_recyclerview);
+
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         context = getApplicationContext();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -76,7 +76,10 @@ public class TotalSocialFundsCollectedActivity extends AppCompatActivity {
             membersList();
         } else {
             errorDialog("Please Check Your Internet Connection");
+
         }
+
+
 
     }
 
@@ -114,7 +117,7 @@ public class TotalSocialFundsCollectedActivity extends AppCompatActivity {
                 Log.v("transactions_response", response);
                 try {
                     JSONObject object = new JSONObject(response);
-//                    String str_first_name = object.getString("firstname");
+                    String str_first_name = object.getString("firstname");
 //                    String str_last_name = object.getString("lastname");
 //                    String str_date = object.getString("date");
 //                    String str_register = object.getString("register");
@@ -123,14 +126,12 @@ public class TotalSocialFundsCollectedActivity extends AppCompatActivity {
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
 
-                        TotalSocialFundModel members = new TotalSocialFundModel(
-                                stackObject.getString("amount"),
-                                stackObject.getString("group_name"),
-                                stackObject.getString("disbursed_amount"),
-                                stackObject.getString("balance"),
-                                stackObject.getString("group_id")
-
-
+                        MemberRegisterListModel members = new MemberRegisterListModel(
+                                stackObject.getString(Constants.USER_FIRST_NAME),
+                                stackObject.getString(Constants.USER_LAST_NAME),
+                                stackObject.getString("register"),
+                                stackObject.getString("date"),
+                                stackObject.getString(Constants.USER_ID)
 
                         );
                         listMembers.add(members);
@@ -144,9 +145,9 @@ public class TotalSocialFundsCollectedActivity extends AppCompatActivity {
                         members_recyclerview.setHasFixedSize(true);
                         members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                         members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        totalSocialFundAdapter = new TotalSocialFundAdapter(getBaseContext(), listMembers);
-                        members_recyclerview.setAdapter( totalSocialFundAdapter );
-                        totalSocialFundAdapter.setClickListener(new View.OnClickListener() {
+                        membersAdapter = new MemberRegisterListAdapter(getBaseContext(), listMembers);
+                        members_recyclerview.setAdapter(membersAdapter);
+                        membersAdapter.setClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 //                                int position = members_recyclerview.getChildLayoutPosition(view);
@@ -231,20 +232,14 @@ public class TotalSocialFundsCollectedActivity extends AppCompatActivity {
         reportsAlert.setCanceledOnTouchOutside(false);
         main_text.setText(error_text);
 
-        btn_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reportsAlert.dismiss();
-            }
-        });
-
+        btn_ok.setOnClickListener(view -> reportsAlert.dismiss());
 
     }
 
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), BookWriterSocialDashboard.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
     }

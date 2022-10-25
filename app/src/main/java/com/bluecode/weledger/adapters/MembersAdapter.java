@@ -30,8 +30,6 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.SingleVi
     private Context mContext;
     private List<Members> listFullMembers;
     View.OnClickListener clickListener;
-    // if checkedPosition = -1, there is no default selection
-    // if checkedPosition = 0, 1st item is selected by default
     private int checkedPosition = -1;
 
     //constructor

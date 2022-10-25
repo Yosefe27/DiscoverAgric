@@ -36,7 +36,11 @@ public class TotalSocialFundAdapter extends RecyclerView.Adapter<TotalSocialFund
     @Override
     public void onBindViewHolder(@NonNull TotalSocialFundAdapter.ViewHolder holder, int position) {
     final TotalSocialFundModel model = totalSocialFundModel.get(position);
-    holder.total_amount_social.setText(model.getAmount());
+        holder.total_amount_social.setText("K "+model.getAmount());
+        holder.current_balance.setText("Current Balance: "+"K"+model.getCurrent_balance());
+        holder.group_id.setText("Group ID: "+model.getGroup_id());
+        holder.group_name.setText("Group Name: "+model.getGroup_name());
+        holder.total_disbursed.setText("K "+model.getTotal_disbursed());
     }
 
     @Override
@@ -48,10 +52,14 @@ public class TotalSocialFundAdapter extends RecyclerView.Adapter<TotalSocialFund
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView total_amount_social;
+        TextView total_amount_social,group_name,total_disbursed,current_balance,group_id;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            group_name = itemView.findViewById(R.id.group_name);
+            group_id = itemView.findViewById(R.id.group_id);
             total_amount_social = itemView.findViewById(R.id.total_amount_social);
+            total_disbursed = itemView.findViewById(R.id.total_disbursed);
+            current_balance = itemView.findViewById(R.id.current_balance);
         }
     }
 }
