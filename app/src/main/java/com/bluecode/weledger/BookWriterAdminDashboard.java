@@ -27,12 +27,11 @@ public class BookWriterAdminDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_writer_admin);
+        //TODO change recyclerView name
         recyclerView = findViewById(R.id.mainAdminRecycler);
 
-
-
         models = (ArrayList<BookWriterAdminModel>) getData();
-        BookWriterAdminAdapter bookWriterAdminAdapter = new   BookWriterAdminAdapter(models, BookWriterAdminDashboard.this);
+        BookWriterAdminAdapter bookWriterAdminAdapter = new   BookWriterAdminAdapter(models, getBaseContext());
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(BookWriterAdminDashboard.this,2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(bookWriterAdminAdapter);
@@ -49,43 +48,33 @@ public class BookWriterAdminDashboard extends AppCompatActivity {
 
 
 
-        bookWriterAdminAdapter.setClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = recyclerView.getChildLayoutPosition(v);
-                BookWriterAdminModel bookWriterAdminModel = models.get(position);
-                String id = bookWriterAdminModel.getCardID();
-                Bundle bundle = new Bundle();
-                switch(id){
+        bookWriterAdminAdapter.setClickListener(v -> {
+            int position = recyclerView.getChildLayoutPosition(v);
+            BookWriterAdminModel bookWriterAdminModel = models.get(position);
+            String id = bookWriterAdminModel.getCardID();
+            switch(id){
 
-                    case "add member":
-
-                        Intent addMember = new Intent(getBaseContext(),BookwriterNewMemberActivity.class);
-
-                        bundle.putString(Constants.GROUP_NAME, group_name);
-                        bundle.putString(Constants.GROUP_ID, group_id);
-                        addMember.putExtras(bundle);
-                        startActivity(addMember);
-                        finish();
-                        break;
-                    case "view members":
-                        Intent viewGroup = new Intent(getBaseContext(), MembersActivity.class);
-                        bundle.putString(Constants.GROUP_NAME, group_name);
-                        bundle.putString(Constants.GROUP_ID, group_id);
-                        viewGroup.putExtras(bundle);
-                        startActivity(viewGroup);
-                        finish();
-                        break;
-                }
-
+                case "addMember":
+                    Intent addMember = new Intent(getBaseContext(),BookwriterNewMemberActivity.class);
+                    startActivity(addMember);
+                    finish();
+                    break;
+                case "viewMembers":
+                    Intent viewGroup = new Intent(getBaseContext(), MembersActivity.class);
+                    startActivity(viewGroup);
+                    finish();
+                    break;
             }
+
         });
 
     }
     public List<BookWriterAdminModel> getData(){
         ArrayList<BookWriterAdminModel> models = new ArrayList<>();
-        models.add(new BookWriterAdminModel("Add Members",R.drawable.ic_add_members,R.color.container_color,"add member"));
-        models.add(new BookWriterAdminModel("View Members",R.drawable.ic_members,R.color.container_color,"view members"));
+        //TODO C
+        models.add(new BookWriterAdminModel("Add Members",R.drawable.ic_add_members,R.color.container_color,"addMember"));
+        models.add(new BookWriterAdminModel("View Members",R.drawable.ic_members,R.color.container_color,"viewMembers"));
+
         return models;
     }
     @Override

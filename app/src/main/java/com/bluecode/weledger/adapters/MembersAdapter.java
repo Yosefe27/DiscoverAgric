@@ -30,8 +30,6 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.SingleVi
     private Context mContext;
     private List<Members> listFullMembers;
     View.OnClickListener clickListener;
-    // if checkedPosition = -1, there is no default selection
-    // if checkedPosition = 0, 1st item is selected by default
     private int checkedPosition = -1;
 
     //constructor
@@ -59,7 +57,7 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.SingleVi
 
     public class SingleViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView member_name, member_role;
+        public TextView member_name, member_role, member_id;
         CircleImageView member_img;
         ImageView member_status;
 
@@ -67,6 +65,7 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.SingleVi
         public SingleViewHolder(View itemView) {
             super(itemView);
 
+            member_id = itemView.findViewById(R.id.member_ID);
             member_img = itemView.findViewById(R.id.member_img);
             member_name = itemView.findViewById(R.id.member_name);
             member_role = itemView.findViewById(R.id.member_role);
@@ -103,6 +102,7 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.SingleVi
         for (String s : full_name.split(" ")) {
             initials.append(s.charAt(0));
         }
+        holder.member_id.setText("ID: "+currentMembers.getId());
         holder.member_name.setSelected(true);
         holder.member_name.setText(String.valueOf(full_name));//initials.toString()));
 

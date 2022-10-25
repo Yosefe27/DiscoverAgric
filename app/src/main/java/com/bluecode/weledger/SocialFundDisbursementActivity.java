@@ -2,6 +2,15 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -20,14 +29,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -53,7 +54,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-public class NewSocialFundActivity extends AppCompatActivity {
+
+public class SocialFundDisbursementActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText amount,contribution_date;
     TextView select_member,post_member_saving,select_ID;
@@ -64,29 +66,16 @@ public class NewSocialFundActivity extends AppCompatActivity {
     RequestQueue mRequestQueue;
     ArrayList<Members> listMembers = new ArrayList<>();
     Context context;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_social_fund);
+        setContentView(R.layout.activity_social_fund_disbursement);
 
         amount = findViewById(R.id.amount);
         contribution_date = findViewById(R.id.date_picker_actions);
-        select_member = findViewById(R.id.select_member);
-        select_ID = findViewById(R.id.select_ID);
+
         post_member_saving = findViewById(R.id.save_payment_details);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Savings Details");
-        toolbar.setSubtitle("Post Member Saving");
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), BookWriterSavingsOptionsDashboard.class);
-                startActivity(intent);
-            }
-        });
 
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -95,7 +84,7 @@ public class NewSocialFundActivity extends AppCompatActivity {
         contribution_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePickerDialog dialog = new DatePickerDialog(NewSocialFundActivity.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog dialog = new DatePickerDialog(SocialFundDisbursementActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
@@ -109,7 +98,7 @@ public class NewSocialFundActivity extends AppCompatActivity {
         });
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = NewSocialFundActivity.this;
+        context = SocialFundDisbursementActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
@@ -118,39 +107,35 @@ public class NewSocialFundActivity extends AppCompatActivity {
             errorDialog("Please Check Your Internet Connection");
 
         }
-        select_member.setOnClickListener(view -> membersDisplayDialog());
-        select_ID.setOnClickListener(view -> membersDisplayDialog());
+
+
         post_member_saving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str_amount = amount.getText().toString();
-                String str_select_member = select_member.getText().toString();
+              //  String str_select_member = select_member.getText().toString();
                 String str_contribution_date = contribution_date.getText().toString();
-                String str_id = select_ID.getText().toString();
+              //  String str_id = select_ID.getText().toString();
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String str_group_id = preferences.getString("group_id", "");
-                String str_default_disbursed = "0";
+                String  str_default_amount = "0";
                 if(amount.getText().toString().isEmpty()){
                     errorDialog("Amount should not be empty.");
                 }
-                else if(select_member.getText().toString().isEmpty()){
-                    errorDialog("Member Name should not be empty.");
-                }
+
                 else{
                     startSubmission(
                             str_amount,
-                            str_select_member,
-                            str_id,
+                            str_default_amount,
                             str_contribution_date,
-                            str_group_id,
-                            str_default_disbursed
+                            str_group_id
                     );
                 }
             }
         });
     }
     private void startSubmission(
-            final String amount,String select_member,String id,String contribution_date,String group_id,String default_disbursed ){
+            final String amount,String default_amount, String contribution_date,String group_id){
         //        signin_progress.setVisibility(View.VISIBLE);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");
@@ -209,12 +194,11 @@ public class NewSocialFundActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
-                parms.put("amount", amount);
-                parms.put("full_name", select_member);
+                parms.put("disbursed_amount", amount);
+                parms.put("amount", default_amount);
                 parms.put("month_contributed_for",contribution_date);
-                parms.put("id",id);
+             //   parms.put("id",id);
                 parms.put("group_id",group_id);
-                parms.put("disbursed_amount",default_disbursed);
                 parms.put("a", str_a);
                 return parms;
             }

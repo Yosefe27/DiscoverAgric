@@ -34,29 +34,6 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_writer_social_dashboard);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Savings");
-        toolbar.setSubtitle("Savings Options");
-        Bundle bundle = getIntent().getExtras();
-
-        try {
-            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-        }catch (Exception e){
-
-            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-        }
-
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<DefaultDashboardModel>) getData();
@@ -71,10 +48,9 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
 
                 switch (card) {
                     case "View Social Funds":
-//                        finish();
-//                        Intent mySavings = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-//                        startActivity(mySavings );
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent my_social_funds = new Intent(getApplicationContext(), ViewSocialFundsForMembersActivity.class);
+                        startActivity(my_social_funds);
                         break;
                     case "Add Social Funds":
                         finish();
@@ -82,7 +58,14 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
                         startActivity(addSavings);
                         break;
                     case "Edit Social Funds":
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                        finish();
+                        Intent manageSavings = new Intent(getApplicationContext(), TotalSocialFundsCollectedActivity.class);
+                        startActivity(manageSavings);
+                        break;
+                    case "Perform Disbursement":
+                        finish();
+                        Intent disbursement = new Intent(getApplicationContext(), SocialFundDisbursementActivity.class);
+                        startActivity(disbursement );
                         break;
 
                 }
@@ -115,9 +98,10 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
     }
     private List<DefaultDashboardModel> getData(){
         ArrayList<DefaultDashboardModel> mainModel = new ArrayList<>();
-        mainModel.add(new DefaultDashboardModel("View Social Funds",R.drawable.ic_view_groups,"View Social Funds"));
         mainModel.add(new DefaultDashboardModel("Add Social Funds",R.drawable.ic_money,"Add Social Funds"));
-        mainModel.add(new DefaultDashboardModel("Edit Social Funds",R.drawable.ic_add_pay,"Edit Social Funds"));
+        mainModel.add(new DefaultDashboardModel("View Social Funds",R.drawable.ic_view_groups,"View Social Funds"));
+        mainModel.add(new DefaultDashboardModel("Add Disbursement",R.drawable.ic_disbursement,"Perform Disbursement"));
+        mainModel.add(new DefaultDashboardModel("Social Totals",R.drawable.ic__summarize,"Edit Social Funds"));
         return mainModel;
     }
     @Override

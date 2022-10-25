@@ -6,7 +6,7 @@
     app:cardBackgroundColor="@color/white">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="100dp"
     android:background="@color/white">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -59,6 +59,20 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:text="Chairperson" />
 
+        <TextView
+            android:id="@+id/member_ID"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="sans-serif-condensed"
+            android:ellipsize="marquee"
+            android:gravity="center_vertical"
+            android:background="@color/white"
+            android:textSize="16sp"
+            android:paddingStart="5dp"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="ID" />
+
     </LinearLayout>
 
     <ImageView
@@ -71,8 +85,4 @@
         android:scaleType="centerInside"
         android:src="@drawable/ic_user" />
 </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grey"/>
 </androidx.cardview.widget.CardView>

@@ -54,7 +54,7 @@
                 android:ellipsize="marquee"
                 android:gravity="center_vertical"
                 android:background="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:paddingStart="5dp"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:text="Status" />
@@ -67,7 +67,7 @@
                 android:ellipsize="marquee"
                 android:gravity="center_vertical"
                 android:background="@color/white"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:paddingStart="5dp"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:text="ID" />
