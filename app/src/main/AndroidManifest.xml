@@ -19,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
+            android:name=".ViewTotalFineBookWriterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".OrdinaryTotalSocialFundsCollectedActivity"
             android:exported="false">
             <meta-data
@@ -255,11 +262,12 @@
         <activity android:name=".BookwriterNewMemberActivity" />
         <activity android:name=".MyGroupTransactionsHistoryActivity" />
         <activity android:name=".NewLoanRepaymentActivity" />
-        <activity android:name=".NewFinesActivity" />
+        <activity android:name=".ChargeFineActivity" />
         <activity android:name=".NewSocialFundActivity" />
         <activity android:name=".BookwriterGroupLoansActivity" />
         <activity android:name=".FacilitatorGroupLoansActivity" />
         <activity android:name=".BookWriterSavingEdit" />
+        <activity android:name=".PostFineActivity" />
     </application>
 
 </manifest>

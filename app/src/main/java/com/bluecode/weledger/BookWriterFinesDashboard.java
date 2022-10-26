@@ -69,21 +69,19 @@ public class BookWriterFinesDashboard extends AppCompatActivity {
 
                 switch (card) {
                     case "View Fines":
-//                        finish();
-//                        Intent mySavings = new Intent(getApplicationContext(), MyTransactionsHistoryActivity.class);
-//                        startActivity(mySavings );
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-                        break;
-                    case "Add Fines":
                         finish();
-                        Intent groupSavings = new Intent(getApplicationContext(), NewFinesActivity.class);
+                        Intent viewFines = new Intent(getApplicationContext(), ViewTotalFineBookWriterActivity.class);
+                        startActivity(viewFines);
+                        break;
+                    case "Charge Fine":
+                        finish();
+                        Intent groupSavings = new Intent(getApplicationContext(), ChargeFineActivity.class);
                         startActivity(groupSavings);
                         break;
-                    case "Edit Fines":
-//                        finish();
-//                        Intent addSavings = new Intent(getApplicationContext(), NewPaymentActivity.class);
-//                        startActivity(addSavings);
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
+                    case "Post Fine":
+                        finish();
+                        Intent postFine = new Intent(getApplicationContext(), PostFineActivity.class);
+                        startActivity(postFine);
                         break;
                 }
 
@@ -116,8 +114,8 @@ public class BookWriterFinesDashboard extends AppCompatActivity {
     private List<DefaultDashboardModel> getData(){
         ArrayList<DefaultDashboardModel> mainModel = new ArrayList<>();
         mainModel.add(new DefaultDashboardModel("View Fines",R.drawable.ic_view_groups,"View Fines"));
-        mainModel.add(new DefaultDashboardModel("Add Fines",R.drawable.ic_money,"Add Fines"));
-        mainModel.add(new DefaultDashboardModel("Edit Fines",R.drawable.ic_add_pay,"Edit Fines"));
+        mainModel.add(new DefaultDashboardModel("Charge Fine",R.drawable.ic_money,"Charge Fine"));
+        mainModel.add(new DefaultDashboardModel("Post Fine",R.drawable.ic_add_pay,"Post Fine"));
         return mainModel;
     }
     @Override
