@@ -19,6 +19,27 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
+            android:name=".OrdinaryTotalSocialFundsCollectedActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".OrdinaryViewSocialFundsForMembersActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".OrdinaryMemberSocialFundDashboard"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SocialFundDisbursementActivity"
             android:exported="false">
             <meta-data

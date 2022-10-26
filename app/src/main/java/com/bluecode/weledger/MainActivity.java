@@ -183,7 +183,9 @@ public class MainActivity extends AppCompatActivity {
 //                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
 //                       break;
                    case 21:
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       Intent ordinarySocialDashboard = new Intent(getBaseContext(), OrdinaryMemberSocialFundDashboard.class);
+                       startActivity(ordinarySocialDashboard);
+                       finish();
                        break;
                    case 22:
                        Intent attendance_register = new Intent(getBaseContext(), OrdinaryMemberViewRegister.class);
