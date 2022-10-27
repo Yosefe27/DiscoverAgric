@@ -178,7 +178,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.apply();
                         reportsAlert.dismiss();
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putString(Constants.GROUP_NAME,group_name);
                         bundle.putString(Constants.GROUP_ID,group_id);
