@@ -1,20 +1,14 @@
 package com.bluecode.weledger;
 
-import static com.bluecode.weledger.Constants.BASE_URL;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -175,7 +169,9 @@ public class MainActivity extends AppCompatActivity {
                        finish();
                        break;
                    case 19:
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       Intent ordinaryFines = new Intent(getBaseContext(), ViewTotalFineOrdinaryMemberActivity.class);
+                       startActivity(ordinaryFines);
+                       finish();
                        break;
 //                   case 20:
 ////                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
