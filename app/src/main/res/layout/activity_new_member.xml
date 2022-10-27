@@ -221,17 +221,26 @@
                         android:text="Gender"
                         android:textSize="12sp" />
 
-                    <Spinner
-                        android:id="@+id/gender"
-                        android:layout_width="150dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="left"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/ic_edit_bg_box"
-                        android:dropDownWidth="wrap_content"
-                        android:dropDownSelector="@color/colorBottomCardEnd"
-                        android:entries="@array/gender" />
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:id="@+id/radio_gender">
+
+                        <RadioButton
+                            android:id="@+id/radio_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Male"
+                            android:checked="true"/>
+
+                        <RadioButton
+                            android:id="@+id/radio_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female" />
+                    </RadioGroup>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -283,17 +292,20 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Group Member Role"
                         android:textSize="12sp" />
-                    <Spinner
-                        android:id="@+id/user_role"
-                        android:layout_width="150dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="left"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/ic_edit_bg_box"
-                        android:dropDownWidth="wrap_content"
-                        android:dropDownSelector="@color/colorBottomCardEnd"
-                        android:entries="@array/role_member" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:id="@+id/radio_member_role">
+
+                    <RadioButton
+                        android:id="@+id/radio_member"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ordinary Member"
+                        android:checked="true"/>
+                    </RadioGroup>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -302,18 +314,26 @@
                         android:fontFamily="@font/poppins_regular"
                         android:text="Single Female Caregiver (Y/N)"
                         android:textSize="12sp" />
-                    <Spinner
-                        android:id="@+id/single_fsw"
-                        android:layout_width="150dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="left"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/ic_edit_bg_box"
-                        android:dropDownWidth="wrap_content"
-                        android:dropDownSelector="@color/colorBottomCardEnd"
-                        android:entries="@array/binary" />
 
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:id="@+id/radio_single_fcg">
+
+                    <RadioButton
+                        android:id="@+id/radio_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes" />
+                    </RadioGroup>
 
                 </LinearLayout>
             </ScrollView>
