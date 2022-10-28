@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -43,8 +45,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BookwriterNewMemberActivity extends AppCompatActivity {
+    RadioGroup radio_single_fcg,radio_member_role,radio_gender;
+    RadioButton radio_male,radio_female,radio_ordinary,radio_no,radio_yes;
     Toolbar toolbar;
     RequestQueue mRequestQueue;
+
+    //radio_gender = findViewById(R.id.radio_gender);
     TextView save_member_details,groupName,groupID;
     EditText firstName,lastName,userName,passWord,admissionDate,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
