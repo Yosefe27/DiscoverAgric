@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic__menu);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setHomeAsUpIndicator(R.drawable.ic__menu);
 
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<MainActivityModel>) getData();
@@ -198,24 +198,24 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mainActivityAdapter);
 
 
-        drawer = findViewById(R.id.DrawerLayout);
-        navigationView = findViewById(R.id.navigation);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-//                    case R.id.nav_group_admins:
-//                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
-//                        startActivity(i);
-//
-                    default:
-                        break;
-                }
-                item.setChecked(true);
-                drawer.closeDrawers();
-                return true;
-            }
-        });
+//        drawer = findViewById(R.id.DrawerLayout);
+//        navigationView = findViewById(R.id.navigation);
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+////                    case R.id.nav_group_admins:
+////                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
+////                        startActivity(i);
+////
+//                    default:
+//                        break;
+//                }
+//                item.setChecked(true);
+//                drawer.closeDrawers();
+//                return true;
+//            }
+//        });
 
     }
 
@@ -281,10 +281,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_logout:
                 dialogLogout();
                 break;
-            case R.id.action_profile:
-              Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-              startActivity(intent);
-              finish();
+//            case R.id.action_profile:
+//              Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+//              startActivity(intent);
+//              finish();
+//                break;
+            case R.id.action_member_profile:
+                Intent member_profile = new Intent(MainActivity.this, MemberProfileActivity.class);
+                startActivity(member_profile);
+                finish();
                 break;
             default:
                 break;

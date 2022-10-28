@@ -11,14 +11,14 @@ android:id="@+id/DrawerLayout">
     layout="@layout/member_profile_holder"/>
 
 <com.google.android.material.navigation.NavigationView
-    android:layout_width="400dp"
+    android:layout_width="350dp"
     android:layout_height="match_parent"
     android:id="@+id/navigation"
     android:layout_gravity="start"
     android:fitsSystemWindows="false"
     android:maxWidth="42dp"
     app:headerLayout="@layout/header_layout"
-    app:menu="@menu/activity_main_drawer"/>
+    app:menu="@menu/member_profile_drawer"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

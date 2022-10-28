@@ -78,7 +78,6 @@ public class MemberProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_member_profile);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
