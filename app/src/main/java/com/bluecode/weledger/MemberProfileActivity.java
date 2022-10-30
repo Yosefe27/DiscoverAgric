@@ -50,6 +50,7 @@ import com.bluecode.weledger.adapters.ViewSocialFundAdapter;
 import com.bluecode.weledger.models.MemberProfileModel;
 import com.bluecode.weledger.models.ViewSocialFundModel;
 import com.bluecode.weledger.utils.Connectivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -65,6 +66,7 @@ public class MemberProfileActivity extends AppCompatActivity {
     NavigationView navigationView;
     RecyclerView members_recyclerview;
     RequestQueue mRequestQueue;
+    BottomNavigationView bottomNavigationView;
 
     ArrayList<MemberProfileModel> listMembers = new ArrayList<>();
     Context context;
@@ -111,6 +113,23 @@ public class MemberProfileActivity extends AppCompatActivity {
                 item.setChecked(true);
                 drawer.closeDrawers();
                 return true;
+            }
+        });
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_services:
+                        Intent intent = new Intent(MemberProfileActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                        return true;
+
+                }
+                return false;
+
             }
         });
 

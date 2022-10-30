@@ -24,16 +24,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bluecode.weledger.adapters.MainActivityAdapter;
 import com.bluecode.weledger.models.MainActivityModel;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity {
 
     String str_a, str_name, str_user_role;
     DrawerLayout drawer;
     NavigationView navigationView;
+    BottomNavigationView bottomNavigationView;
 
     String group_name;
     String group_id;
@@ -51,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(true);
-//        actionBar.setHomeAsUpIndicator(R.drawable.ic__menu);
+
 
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<MainActivityModel>) getData();
@@ -197,25 +200,30 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mainActivityAdapter);
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_profile:
+                        Intent intent = new Intent(MainActivity.this,MemberProfileActivity.class);
+                        startActivity(intent);
+                        finish();
+                        return true;
 
-//        drawer = findViewById(R.id.DrawerLayout);
-//        navigationView = findViewById(R.id.navigation);
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-////                    case R.id.nav_group_admins:
-////                        Intent i = new Intent(MainActivity.this, RegistrationActivity.class);
-////                        startActivity(i);
-////
-//                    default:
-//                        break;
-//                }
-//                item.setChecked(true);
-//                drawer.closeDrawers();
-//                return true;
-//            }
-//        });
+
+//                    case R.id.home:
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.container, secondFragment).commit();
+//                        return true;
+//
+//                    case R.id.settings:
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.container, thirdFragment).commit();
+//                        return true;
+                }
+                return false;
+
+            }
+        });
 
     }
 
