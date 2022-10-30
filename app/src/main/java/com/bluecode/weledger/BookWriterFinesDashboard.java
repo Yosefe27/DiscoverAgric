@@ -22,9 +22,6 @@ import java.util.List;
 
 public class BookWriterFinesDashboard extends AppCompatActivity {
     Toolbar toolbar;
-    LinearLayout my_savings_option,group_savings_option,add_savings,edit_savings;
-    String group_name;
-    String group_id;
     ArrayList<DefaultDashboardModel> models = new ArrayList<>();
     RecyclerView recyclerView;
     DefaultDashboardAdapter defaultDashboardAdapter;
@@ -38,54 +35,33 @@ public class BookWriterFinesDashboard extends AppCompatActivity {
         toolbar.setSubtitle("Savings Options");
         Bundle bundle = getIntent().getExtras();
 
-        try {
-            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-        }catch (Exception e){
-
-            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-        }
-
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<DefaultDashboardModel>) getData();
         defaultDashboardAdapter = new DefaultDashboardAdapter(models,getBaseContext());
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(BookWriterFinesDashboard.this,2);
-        defaultDashboardAdapter.setClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = recyclerView.getChildLayoutPosition(v);
-                DefaultDashboardModel defaultDashboardModel = models.get(position);
-                String card = defaultDashboardModel.getCardNumber();
+        defaultDashboardAdapter.setClickListener(v -> {
+            int position = recyclerView.getChildLayoutPosition(v);
+            DefaultDashboardModel defaultDashboardModel = models.get(position);
+            String card = defaultDashboardModel.getCardNumber();
 
-                switch (card) {
-                    case "View Fines":
-                        finish();
-                        Intent viewFines = new Intent(getApplicationContext(), ViewTotalFineBookWriterActivity.class);
-                        startActivity(viewFines);
-                        break;
-                    case "Charge Fine":
-                        finish();
-                        Intent groupSavings = new Intent(getApplicationContext(), ChargeFineActivity.class);
-                        startActivity(groupSavings);
-                        break;
-                    case "Post Fine":
-                        finish();
-                        Intent postFine = new Intent(getApplicationContext(), PostFineActivity.class);
-                        startActivity(postFine);
-                        break;
-                }
-
+            switch (card) {
+                case "View Fines":
+                    finish();
+                    Intent viewFines = new Intent(getApplicationContext(), ViewTotalFineBookWriterActivity.class);
+                    startActivity(viewFines);
+                    break;
+                case "Charge Fine":
+                    finish();
+                    Intent groupSavings = new Intent(getApplicationContext(), ChargeFineActivity.class);
+                    startActivity(groupSavings);
+                    break;
+                case "Post Fine":
+                    finish();
+                    Intent postFine = new Intent(getApplicationContext(), PostFineActivity.class);
+                    startActivity(postFine);
+                    break;
             }
+
         });
 
         recyclerView.setLayoutManager(layoutManager);
@@ -106,8 +82,8 @@ public class BookWriterFinesDashboard extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add) {
-            Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), NewPaymentActivity.class);
+//            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -120,13 +96,7 @@ public class BookWriterFinesDashboard extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-
-
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.GROUP_NAME, group_name);
-        bundle.putString(Constants.GROUP_ID,group_id);
-        intent.putExtras(bundle);
         startActivity(intent);
         finish();
     }

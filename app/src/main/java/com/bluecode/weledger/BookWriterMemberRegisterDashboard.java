@@ -34,7 +34,11 @@ public class BookWriterMemberRegisterDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_writer_member_register_dashboard);
-
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Savings");
+        toolbar.setSubtitle("Savings Options");
+        Bundle bundle = getIntent().getExtras();
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<DefaultDashboardModel>) getData();
         defaultDashboardAdapter = new DefaultDashboardAdapter(models,getBaseContext());

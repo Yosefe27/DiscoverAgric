@@ -72,19 +72,6 @@ public class OrdinaryMemberTransactionHistoryActivity extends AppCompatActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordinary_member_transaction_history);
         transactions_recylerview = findViewById(R.id.transactions_recyclerview);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Contributions");
-        toolbar.setSubtitle("My Contributions");
-        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent = new Intent(getApplicationContext(), BookWriterSavingsOptionsDashboard.class);
-                startActivity(intent);
-            }
-        });
 
         context = OrdinaryMemberTransactionHistoryActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
