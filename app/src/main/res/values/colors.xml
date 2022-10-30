@@ -10,9 +10,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#C51162</color>
+    <color name="colorPrimary">#C30052</color>
     <color name="loginBackground">#FFEECFFF</color>
-    <color name="colorPrimaryDark">#C30052</color>
+    <color name="colorPrimaryDark">#C51162</color>
     <color name="colorAccent">#D1D6D8</color>
     <color name="colorBottomCardStart">#008FFC</color>
     <color name="colorBottomCardEnd">#D5A9E8</color>
@@ -56,7 +56,7 @@
     <color name="goodgrey">#535353</color>
     <color name="lightgrey">#E8ECF3</color>
     <color name="container_color">#FFFFFF</color>
-    <color name="container_color2"> #C51162</color>
+    <color name="container_color2">#C30052</color>
 
 
 </resources>
