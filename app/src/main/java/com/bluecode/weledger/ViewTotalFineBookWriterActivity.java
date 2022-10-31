@@ -41,6 +41,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.ViewSocialFundAdapter;
 import com.bluecode.weledger.adapters.ViewTotalFinesAdapter;
+import com.bluecode.weledger.models.DefaultDashboardModel;
+import com.bluecode.weledger.models.Members;
 import com.bluecode.weledger.models.ViewSocialFundModel;
 import com.bluecode.weledger.models.ViewTotalFinesModel;
 import com.bluecode.weledger.utils.Connectivity;
@@ -145,6 +147,36 @@ public class ViewTotalFineBookWriterActivity extends AppCompatActivity {
                         members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
                         viewTotalFinesAdapter = new ViewTotalFinesAdapter(listMembers, getBaseContext());
                         members_recyclerview.setAdapter(viewTotalFinesAdapter);
+
+                        viewTotalFinesAdapter.setClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int position = members_recyclerview.getChildLayoutPosition(view);
+                                ViewTotalFinesModel viewTotalFinesModel = listMembers.get(position);
+
+
+                                Intent intent = new Intent(getApplicationContext(), PostFineActivity.class);
+                                intent.putExtra(Constants.USER_ID, viewTotalFinesModel.getMember_id());
+//                                intent.putExtra(Constants.GROUP_NAME, members.getGroup_name());
+//                                intent.putExtra(Constants.USER_FIRST_NAME, members.getFirstname());
+//                                intent.putExtra(Constants.USER_LAST_NAME, members.getLastname());
+//                                intent.putExtra(Constants.USER_NAME, members.getNrc());
+//                                intent.putExtra(Constants.USER_PASSWORD, members.getPassword());
+//                                intent.putExtra(Constants.USER_ADMISSION_DATE, members.getAdmission_date());
+//                                intent.putExtra(Constants.USER_GENDER, members.getGender());
+//                                intent.putExtra(Constants.ECAP_ID, members.getEcap_hh_id());
+//                                intent.putExtra(Constants.USER_PHONE, members.getPhone_number());
+//                                intent.putExtra(Constants.USER_ROLE, members.getUser_role());
+//                                intent.putExtra(Constants.CAREGIVER_STATUS, members.getSingle_female_caregiver());
+//                                intent.putExtra(Constants.USER_ID, members.getId());
+                                startActivity(intent);
+                                finish();
+
+                            }
+
+
+                        });
+
 
                         reportsAlert.dismiss();
 
