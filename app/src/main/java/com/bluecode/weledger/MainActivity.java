@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
 
 
         recyclerView = findViewById(R.id.mainRecycler);
@@ -284,7 +286,9 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case android.R.id.home:
-                drawer.openDrawer(GravityCompat.START);
+                Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
+                startActivity(intent);
+                finish();
                 return true;
             case R.id.action_logout:
                 dialogLogout();
@@ -349,5 +353,10 @@ public class MainActivity extends AppCompatActivity {
         }
              return mainModel;
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
