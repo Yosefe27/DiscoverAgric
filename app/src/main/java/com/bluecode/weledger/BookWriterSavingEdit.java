@@ -90,24 +90,24 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
             public void onClick(View v) {
 
                 String str_entry_id = entry_id.getText().toString();
-//                String str_tran_amount = tran_amount.getText().toString();
+                String str_tran_amount = tran_amount.getText().toString();
                 String str_full_name = full_name.getText().toString();
-//                String str_contributor_id = contributor_id.getText().toString();
-//                String str_tran_month = tran_month.getText().toString();
-//                String str_tran_type = tran_type.getText().toString();
-//                String str_tran_ref = tran_ref.getText().toString();
+                String str_contributor_id = contributor_id.getText().toString();
+                String str_tran_month = tran_month.getText().toString();
+                String str_tran_type = tran_type.getText().toString();
+                String str_tran_ref = tran_ref.getText().toString();
 
                 if(tran_amount.getText().toString().isEmpty()) {
                     errorDialog("Username Cannot Be Empty");
                 }
                 else startSubmission(
                         str_entry_id,
-//                        str_tran_amount,
-                        str_full_name
-//                        str_contributor_id,
-//                        str_tran_month,
-//                        str_tran_type,
-//                        str_tran_ref
+                        str_tran_amount,
+                        str_full_name,
+                        str_contributor_id,
+                        str_tran_month,
+                        str_tran_type,
+                        str_tran_ref
 
                 );
             }
@@ -117,12 +117,12 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
     private void startSubmission(
 
                                 final String entry_id,
-//                                final String tran_amount,
-                                final String full_name
-//                                final String contributor_id,
-//                                final String tran_month,
-//                                final String tran_type,
-//                                final String tran_ref
+                                final String tran_amount,
+                                final String full_name,
+                                final String contributor_id,
+                                final String tran_month,
+                                final String tran_type,
+                                final String tran_ref
 
     )
     {
@@ -152,7 +152,7 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
+                        Intent intent = new Intent(getApplicationContext(), BookWriterSavingsOptionsDashboard.class);
                         startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
@@ -172,12 +172,12 @@ public class BookWriterSavingEdit extends AppCompatActivity implements AdapterVi
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("entry_id", entry_id);
-//                parms.put("amount", tran_amount);
+                parms.put("amount", tran_amount);
                 parms.put("full_name", full_name);
-//                parms.put("contributor_id",contributor_id);
-//                parms.put("month_contributed_for",tran_month);
-//                parms.put("payment_mode", tran_type);
-//                parms.put("payment_ref_number", tran_ref);
+                parms.put("contributor_id",contributor_id);
+                parms.put("month_contributed_for",tran_month);
+                parms.put("payment_mode", tran_type);
+                parms.put("payment_ref_number", tran_ref);
                 return parms;
             }
         };

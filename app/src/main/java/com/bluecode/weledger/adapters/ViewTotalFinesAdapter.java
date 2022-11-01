@@ -17,11 +17,15 @@ import java.util.ArrayList;
 public class ViewTotalFinesAdapter extends RecyclerView.Adapter<ViewTotalFinesAdapter.ViewHolder> {
     ArrayList<ViewTotalFinesModel> viewTotalFinesModels;
     Context context;
+    View.OnClickListener clickListener;
 
    public ViewTotalFinesAdapter(ArrayList<ViewTotalFinesModel> viewTotalFinesModels, Context context){
        this.viewTotalFinesModels = viewTotalFinesModels;
        this.context = context;
    }
+    public void setClickListener(View.OnClickListener callback) {
+        clickListener = callback;
+    }
 
     @NonNull
     @Override
