@@ -75,7 +75,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
         reinvested_savings_cycle_start_txt.setText(intent_reinvested_savings_cycle_start);
         registered_members_cycle_start_txt.setText(intent_group_id);
         group_management_spinner_txt.setText("SPONTANEOUS");
-        toolbar.setSubtitle(intent_group_name+" GROUP");
+        toolbar.setSubtitle(intent_group_name+" GROUP DETAILS");
     }
 
     private boolean isNetworkAvailable() {

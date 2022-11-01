@@ -193,6 +193,7 @@ public class AddMemberToGroupActivity extends AppCompatActivity {
                                 Bundle bundle = new Bundle();
 
                                 bundle.putString(Constants.GROUP_NAME, groups.getGroup_name());
+                                bundle.putString(Constants.GROUP_ID, groups.getId());
 
                                 intent.putExtras(bundle);
                                 startActivity(intent);

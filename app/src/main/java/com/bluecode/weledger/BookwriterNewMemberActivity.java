@@ -3,7 +3,6 @@ package com.bluecode.weledger;
 import static com.bluecode.weledger.Constants.BASE_URL;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -32,10 +31,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.bluecode.weledger.BookWriterAdminDashboard;
-import com.bluecode.weledger.Constants;
-import com.bluecode.weledger.MainActivity;
-import com.bluecode.weledger.R;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONException;
@@ -63,7 +58,7 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_member);
+        setContentView(R.layout.activity_bookwriter_new_member);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firstName = findViewById(R.id.first_name);
