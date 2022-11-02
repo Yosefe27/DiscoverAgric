@@ -96,7 +96,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
                 startActivity(intent);
             }
         });
@@ -354,7 +354,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
     public void onBackPressed() {
 
         finish();
-        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
+        Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(Constants.GROUP_NAME, group_name);
         bundle.putString(Constants.GROUP_ID,group_id);

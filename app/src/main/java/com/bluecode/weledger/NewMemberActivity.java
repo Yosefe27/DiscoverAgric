@@ -2,7 +2,7 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -39,13 +39,14 @@ public class NewMemberActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
     TextView save_member_details,groupName;
-    EditText firstName,lastName,userName,passWord,admissionDate,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
+    EditText firstName,lastName,userName,passWord,admissionDate,group_id,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_member);
+        setContentView(R.layout.activity_facilitator_add_new_member);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firstName = findViewById(R.id.first_name);
@@ -53,6 +54,7 @@ public class NewMemberActivity extends AppCompatActivity {
         userName = findViewById(R.id.user_name);
         passWord = findViewById(R.id.user_password);
         groupName = findViewById(R.id.group_name);
+        group_id = findViewById(R.id.group_id);
         admissionDate = findViewById(R.id.admission_date);
         spinner_gender = findViewById(R.id.gender);
         ecap_hh_ID = findViewById(R.id.ecap_hh_id);
@@ -62,10 +64,14 @@ public class NewMemberActivity extends AppCompatActivity {
         save_member_details = findViewById(R.id.save_member_details);
 
         Bundle bundle = getIntent().getExtras();
-        String gName = bundle.getString(Constants.GROUP_NAME, "Default");
-        groupName.setText(gName);
+        String str_group_name = bundle.getString(Constants.GROUP_NAME, "Default");
+        String str_group_id = bundle.getString(Constants.GROUP_ID, "Default");
+        groupName.setText(str_group_name);
+        group_id.setText(str_group_id);
         groupName.setEnabled(false);
+        group_id.setEnabled(false);
         groupName.setTextColor(Color.BLACK);
+
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
