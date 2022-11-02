@@ -96,9 +96,8 @@ public class GroupsAdaptor extends RecyclerView.Adapter<GroupsAdaptor.SingleView
         //holder.bind(listGroups.get(position));
 
         holder.group_name.setSelected(true);
-        holder.group_id.setText(String.valueOf(currentGroups.getId()));
+        holder.group_id.setText(String.valueOf("ID: "+currentGroups.getId()));
         holder.group_name.setText(String.valueOf(currentGroups.getGroup_name()));//initials.toString()));
-
 
 
 

@@ -1,5 +1,15 @@
 package com.bluecode.weledger;
 
+import static com.bluecode.weledger.Constants.BASE_URL;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,14 +27,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
@@ -37,8 +39,8 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bluecode.weledger.adapters.MembersAdapter;
-import com.bluecode.weledger.models.Members;
+import com.bluecode.weledger.adapters.ViewGroupSavingFacilitatorAdapter;
+import com.bluecode.weledger.models.ViewGroupSavingFacilitatorModel;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -49,45 +51,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.bluecode.weledger.Constants.BASE_URL;
-
-public class ViewActualMembersFacilitator extends AppCompatActivity {
+public class ViewGroupSavingsFacilitatorActivity extends AppCompatActivity {
 
     RecyclerView members_recyclerview;
     RequestQueue mRequestQueue;
-    ArrayList<Members> listMembers = new ArrayList<>();
+    ArrayList<ViewGroupSavingFacilitatorModel> listMembers = new ArrayList<ViewGroupSavingFacilitatorModel>();
     Context context;
-    String str_a, members_list = BASE_URL + "list_all_members.php";
-    String membership_response = BASE_URL + "membership_response.php";
+    String str_a, members_list = BASE_URL + "view_group_total_contributions_facilitator.php";
     String str_user_role,str_my_name,str_group_name;
-    MembersAdapter membersAdapter;
-    ImageView members_approvals;
+    ViewGroupSavingFacilitatorAdapter viewGroupSavingFacilitatorAdapter;
     Toolbar toolbar;
 
-    String group_name;
-    String group_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_members);
+        setContentView(R.layout.activity_view_group_savings_facilitator);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Group Members");
-        toolbar.setSubtitle("My Group Members");
+        toolbar.setTitle("Group Saving Contribution");
+        toolbar.setSubtitle("Group Saving Contribution");
 
-        Bundle bundle = getIntent().getExtras();
-        try {
-
-            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-
-        }catch (Exception e){
-
-            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-
-
-        }
 
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -96,14 +80,14 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
 
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
         members_recyclerview = findViewById(R.id.members_recyclerview);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
-        context = ViewActualMembersFacilitator .this;
+        context = ViewGroupSavingsFacilitatorActivity.this;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         str_a = preferences.getString("a", "");
         if (isNetworkAvailable()) {
@@ -148,41 +132,28 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
             public void onResponse(String response) {
 //                Toast.makeText(getApplicationContext(),"Response : "+response,Toast.LENGTH_SHORT).show();
 //                textView.setText(response.toString());
-                Log.v("transactions_response", response);
+                Log.v("members_list", response);
                 try {
                     JSONObject object = new JSONObject(response);
-                    str_my_name = object.getString("full_name");
-                    str_user_role = object.getString("user_role");
-                    str_group_name = object.getString("group_name");
-                    JSONArray array = object.getJSONArray("group_members");
+//                    str_my_name = object.getString("full_name");
+//                    str_user_role = object.getString("user_role");
+//                    str_group_name = object.getString("group_name");
+                    JSONArray array = object.getJSONArray("members_list");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
 //                        JSONObject stackObject2 = array2.getJSONObject(i);
 
                         // textView.setText(object1.toString());
-                        Members members = new Members(
+                        ViewGroupSavingFacilitatorModel savings = new  ViewGroupSavingFacilitatorModel(
                                 stackObject.getString(Constants.GROUP_NAME),
                                 stackObject.getString(Constants.GROUP_ID),
-                                stackObject.getString(Constants.USER_FIRST_NAME),
-                                stackObject.getString(Constants.USER_LAST_NAME),
-                                stackObject.getString(Constants.USER_NAME),
-                                stackObject.getString(Constants.USER_PASSWORD),
-                                stackObject.getString(Constants.USER_ADMISSION_DATE),
-                                stackObject.getString(Constants.USER_GENDER),
-                                stackObject.getString(Constants.ECAP_ID),
-                                stackObject.getString(Constants.USER_PHONE),
-                                stackObject.getString(Constants.USER_ROLE),
-                                stackObject.getString(Constants.CAREGIVER_STATUS),
-                                stackObject.getString(Constants.USER_ID)
+                                stackObject.getString("total_contribution")
+
 
                         );
-                        listMembers.add(members);
+                        listMembers.add(savings);
                     }
-                    if(str_user_role.equals("2") || str_user_role.equals("3") || str_user_role.equals("4")){
-//                        members_approvals.setVisibility(View.VISIBLE);
-                    }else{
-//                        members_approvals.setVisibility(View.GONE);
-                    }
+
                     if (listMembers.size() <= 0) {
                         members_recyclerview.setVisibility(View.GONE);
 //                        no_transactions_txt.setVisibility(View.VISIBLE);
@@ -191,32 +162,32 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
                         members_recyclerview.setHasFixedSize(true);
                         members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                         members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
-                        members_recyclerview.setAdapter(membersAdapter);
-                        membersAdapter.setClickListener(new View.OnClickListener() {
+                        viewGroupSavingFacilitatorAdapter = new ViewGroupSavingFacilitatorAdapter(listMembers,getBaseContext());
+                        members_recyclerview.setAdapter(viewGroupSavingFacilitatorAdapter);
+                        viewGroupSavingFacilitatorAdapter.setClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                int position = members_recyclerview.getChildLayoutPosition(view);
-                                Members members = listMembers.get(position);
-
-
-                                Intent intent = new Intent(getApplicationContext(), FacilitatorMemberDetailsActivity.class);
-                                intent.putExtra(Constants.GROUP_ID, members.getGroup_id());
-                                intent.putExtra(Constants.GROUP_NAME, members.getGroup_name());
-                                intent.putExtra(Constants.USER_FIRST_NAME, members.getFirstname());
-                                intent.putExtra(Constants.USER_LAST_NAME, members.getLastname());
-                                intent.putExtra(Constants.USER_NAME, members.getNrc());
-                                intent.putExtra(Constants.USER_PASSWORD, members.getPassword());
-                                intent.putExtra(Constants.USER_ADMISSION_DATE, members.getAdmission_date());
-                                intent.putExtra(Constants.USER_GENDER, members.getGender());
-                                intent.putExtra(Constants.ECAP_ID, members.getEcap_hh_id());
-                                intent.putExtra(Constants.USER_PHONE, members.getPhone_number());
-                                intent.putExtra(Constants.USER_ROLE, members.getUser_role());
-                                intent.putExtra(Constants.CAREGIVER_STATUS, members.getSingle_female_caregiver());
-                                intent.putExtra(Constants.USER_ID, members.getId());
-
-
-                                startActivity(intent);
+//                                int position = members_recyclerview.getChildLayoutPosition(view);
+//                                Members members = listMembers.get(position);
+//
+//
+//                                Intent intent = new Intent(getApplicationContext(), FacilitatorMemberDetailsActivity.class);
+//                                intent.putExtra(Constants.GROUP_ID, members.getGroup_id());
+//                                intent.putExtra(Constants.GROUP_NAME, members.getGroup_name());
+//                                intent.putExtra(Constants.USER_FIRST_NAME, members.getFirstname());
+//                                intent.putExtra(Constants.USER_LAST_NAME, members.getLastname());
+//                                intent.putExtra(Constants.USER_NAME, members.getNrc());
+//                                intent.putExtra(Constants.USER_PASSWORD, members.getPassword());
+//                                intent.putExtra(Constants.USER_ADMISSION_DATE, members.getAdmission_date());
+//                                intent.putExtra(Constants.USER_GENDER, members.getGender());
+//                                intent.putExtra(Constants.ECAP_ID, members.getEcap_hh_id());
+//                                intent.putExtra(Constants.USER_PHONE, members.getPhone_number());
+//                                intent.putExtra(Constants.USER_ROLE, members.getUser_role());
+//                                intent.putExtra(Constants.CAREGIVER_STATUS, members.getSingle_female_caregiver());
+//                                intent.putExtra(Constants.USER_ID, members.getId());
+//
+//
+//                                startActivity(intent);
 
                             }
 
@@ -259,48 +230,6 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    private void membershipResponse(
-            final String response,
-            final String requestor_id) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, membership_response, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                //Log.v("login_url",response);
-                try {
-                    JSONObject object = new JSONObject(response);
-                    if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
-
-                        errorDialog(object.getString("msg"));
-                    } else if (object.getString("status").equals("failed")) {
-
-                        errorDialog(object.getString("msg"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }) {
-
-            //            first_name, surname, nrc, phone, email, pas, dob
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> parms = new HashMap<String, String>();
-                parms.put("requestor_id", requestor_id);
-                parms.put("response", response);
-                parms.put("a", str_a);
-
-                return parms;
-            }
-        };
-        stringRequest.setShouldCache(false);
-        mRequestQueue.add(stringRequest);
-    }
     public void errorDialog(String error_text) {
 
         ViewGroup viewGroup = findViewById(android.R.id.content);
@@ -354,11 +283,7 @@ public class ViewActualMembersFacilitator extends AppCompatActivity {
     public void onBackPressed() {
 
         finish();
-        Intent intent = new Intent(getApplicationContext(), ViewGroupMembersFacilitatorActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.GROUP_NAME, group_name);
-        bundle.putString(Constants.GROUP_ID,group_id);
-        intent.putExtras(bundle);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
 }
