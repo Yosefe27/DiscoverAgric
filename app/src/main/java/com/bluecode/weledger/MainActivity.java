@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                        finish();
                        break;
                    case 9:
-                       Intent groupSaving = new Intent(getBaseContext(), FacilitatorGroupSavings.class);
+                       Intent groupSaving = new Intent(getBaseContext(), ViewGroupSavingsFacilitatorActivity.class);
                        startActivity(groupSaving);
                        finish();
                        break;

@@ -19,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
+            android:name=".ViewGroupSavingsFacilitatorActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MemberProfileActivity"
             android:exported="false">
             <meta-data
@@ -241,7 +248,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" android:parentActivityName=".MemberProfileActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:parentActivityName=".MemberProfileActivity" />
         <activity android:name=".MyTransactionsHistoryActivity" />
         <activity android:name=".MembersActivity" />
         <activity android:name=".MembersDetailsActivity" />
