@@ -193,28 +193,70 @@
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
 
-            <Spinner
-                android:id="@+id/group_mgt_spinner"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_gravity="left"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/edittext_bg"
-                android:dropDownWidth="wrap_content"
-                android:dropDownSelector="@color/colorBottomCardEnd" />
-            <EditText
-                android:id="@+id/group_mgt"
+<!--            <Spinner-->
+<!--                android:id="@+id/group_mgt_spinner"-->
+<!--                android:layout_width="200dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_gravity="left"-->
+<!--                android:layout_marginTop="0dp"-->
+<!--                android:layout_marginBottom="15dp"-->
+<!--                android:background="@drawable/edittext_bg"-->
+<!--                android:dropDownWidth="wrap_content"-->
+<!--                android:dropDownSelector="@color/colorBottomCardEnd" />-->
+            <!--            <EditText-->
+<!--                android:id="@+id/group_mgt"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="0dp"-->
+<!--                android:layout_marginBottom="15dp"-->
+<!--                android:background="@drawable/edittext_bg"-->
+<!--                android:drawablePadding="16dp"-->
+<!--                android:hint="Group Management"-->
+<!--                android:inputType="text"-->
+<!--                android:padding="16dp"-->
+<!--                android:textSize="13sp" />-->
+
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/edittext_bg"
-                android:drawablePadding="16dp"
-                android:hint="Group Management"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textSize="13sp" />
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/supervised"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:checked="true"
+                    android:text="Supervised"
+                    android:textColor="#154"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/self_managed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
+                    android:text="Self-Managed"
+                    android:textColor="#154"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/spontaneous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
+                    android:text="Spontaneous"
+                    android:textColor="#154"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"

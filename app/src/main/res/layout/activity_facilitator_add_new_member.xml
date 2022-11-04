@@ -179,7 +179,19 @@
                         android:background="@drawable/ic_edit_bg"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center_vertical"
-                        android:hint="Password"
+                        android:hint="Create Password"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+                    <EditText
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Confirm Password"
                         android:imeOptions="actionNext"
                         android:inputType="textPassword"
                         android:maxLines="1"
@@ -223,22 +235,32 @@
 
                     <RadioGroup
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:id="@+id/radio_gender">
+                        android:layout_height="wrap_content">
 
                         <RadioButton
-                            android:id="@+id/radio_male"
+                            android:id="@+id/male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:checked="true"
                             android:text="Male"
-                            android:checked="true"/>
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <RadioButton
-                            android:id="@+id/radio_female"
+                            android:id="@+id/female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Female" />
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:checked="false"
+                            android:text="Female"
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
                     </RadioGroup>
 
                     <TextView
@@ -295,21 +317,33 @@
 
                     <RadioGroup
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:id="@+id/radio_member_role">
+                        android:layout_height="wrap_content">
+
                         <RadioButton
-                            android:id="@+id/radio_bookwriter"
+                            android:id="@+id/book_writer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:checked="true"
                             android:text="Book Writer"
-                            android:checked="true"/>
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
                         <RadioButton
-                            android:id="@+id/radio_member"
+                            android:id="@+id/ordinary_member"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:checked="false"
                             android:text="Ordinary Member"
-                            android:checked="false"/>
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+
 
                     </RadioGroup>
 
@@ -323,22 +357,32 @@
 
                     <RadioGroup
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:id="@+id/radio_single_fcg">
+                        android:layout_height="wrap_content">
 
                         <RadioButton
-                            android:id="@+id/radio_no"
+                            android:id="@+id/option_yes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:checked="true"
+                            android:text="Yes"
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <RadioButton
+                            android:id="@+id/option_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:checked="false"
                             android:text="No"
-                            android:checked="true"/>
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
-                        <RadioButton
-                            android:id="@+id/radio_yes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes" />
                     </RadioGroup>
 
                 </LinearLayout>
