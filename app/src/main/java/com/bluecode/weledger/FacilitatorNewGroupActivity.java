@@ -2,6 +2,7 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,11 +49,12 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class FacilitatorNewGroupActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    EditText group_name,interest_rate,cycle_number,first_training_meeting_date,date_savings_started,reinvested_savings_cycle_start;
+    EditText group_name,group_id,interest_rate,cycle_number,first_training_meeting_date,date_savings_started,reinvested_savings_cycle_start;
     EditText registered_members_cycle_start,group_management;
     Spinner group_management_spinner;
     List<String> group_mgt_items;
@@ -61,8 +64,10 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
     ArrayList<Members> listMembers = new ArrayList<>();
     Context context;
     String group_mgt_item,testString;
+    RadioButton supervised, self_managed,spontaneous;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +76,11 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         group_name = findViewById(R.id.group_name);
         interest_rate = findViewById(R.id.interest_rate);
         cycle_number = findViewById(R.id.cycle_number);
-        group_management = findViewById(R.id.group_mgt);
+        group_id = findViewById(R.id.group_id);
+        final Random generate_ID = new Random();
+        group_id.setText("WE"+String.valueOf(generate_ID.nextInt(10000)));
+        group_id.setEnabled(true);
+
         //group_management.setVisibility(View.GONE);
         first_training_meeting_date = findViewById(R.id.first_training_meeting_date);
         date_savings_started = findViewById(R.id.date_savings_started);
@@ -81,28 +90,12 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         save_group_details = findViewById(R.id.save_group_details);
         setSupportActionBar(toolbar);
 
-        group_management_spinner = (Spinner) findViewById(R.id.group_mgt_spinner);
-        group_mgt_items = new ArrayList<>();
-        group_mgt_items.add("");
-        group_mgt_items.add("Supervised");
-        group_mgt_items.add("Self-Managed");
-        group_mgt_items.add("Spontaneous");
+        supervised = (RadioButton) findViewById(R.id.supervised);
+        self_managed = (RadioButton) findViewById(R.id.self_managed);
+        spontaneous = (RadioButton) findViewById(R.id.spontaneous);
 
-        group_management_spinner.setAdapter(new ArrayAdapter<>(this,
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,group_mgt_items));
-        group_management_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                group_mgt_item = group_mgt_items.get(position);
-                group_management.setText(group_mgt_item);
-                Toast.makeText(FacilitatorNewGroupActivity.this,group_mgt_item,Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
 
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -144,19 +137,30 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String str_group_name = group_name.getText().toString();
+                String str_group_ID = group_id.getText().toString();
                 String str_cycle_number = cycle_number.getText().toString();
                 String str_interest_rate = interest_rate.getText().toString();
                 String str_first_training_meeting_date = first_training_meeting_date.getText().toString();
                 String str_date_savings_started = date_savings_started.getText().toString();
                 String str_reinvested_savings_cycle_start = reinvested_savings_cycle_start.getText().toString();
                 String str_registered_members_cycle_start = registered_members_cycle_start.getText().toString();
-                String str_group_management_spinner = group_management.getText().toString();
+                String str_group_management_spinner = null;
+                if (supervised.isChecked()) {
+                    str_group_management_spinner = supervised.getText().toString();
+                } else if (self_managed.isChecked()) {
+                    str_group_management_spinner = self_managed.getText().toString();
+                } else if (spontaneous.isChecked()) {
+                    str_group_management_spinner = spontaneous.getText().toString();
+                }
+
                 if(str_group_name.isEmpty()) {
                     errorDialog("Group Name Should NOT Be Empty");
                 }
                 else
                 {
-                    startSubmission(str_group_name,
+                    startSubmission(
+                            str_group_name,
+                            str_group_ID,
                             str_interest_rate,
                             str_cycle_number,
                             str_first_training_meeting_date,
@@ -166,13 +170,14 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                             str_group_management_spinner,
                             "1");
                     //Toast.makeText(context,"GROUP ADDED SUCCESSFULLY",Toast.LENGTH_LONG).show();
-                   addNewMemberToGroup(str_group_name);
+                   addNewMemberToGroup(str_group_name,str_group_ID);
                 }
             }
         });
     }
     private void startSubmission(
             final String group_name,
+            final String group_id,
             final String annual_interest_rate,
             final String cycle_number,
             final String first_training_meeting_date,
@@ -235,6 +240,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("group_name", group_name);
+                parms.put("id",group_id);
                 parms.put("annual_interest_rate", annual_interest_rate);
                 parms.put("cycle_number", cycle_number);
                 parms.put("first_training_meeting_date", first_training_meeting_date);
@@ -332,14 +338,14 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
             }
         });
     }
-    public void addNewMemberToGroup(String groupName){
+    public void addNewMemberToGroup(String group_name,String group_ID){
         Intent intent = new Intent(getApplicationContext(), FacilitatorNewMemberActivity.class);
         Bundle bundle = new Bundle();
-
-        bundle.putString(Constants.GROUP_NAME, groupName);
-
+        bundle.putString(Constants.GROUP_NAME, group_name);
+        bundle.putString(Constants.GROUP_ID,group_ID);
         intent.putExtras(bundle);
         startActivity(intent);
+        finish();
     }
     @Override
     public void onBackPressed() {
@@ -348,4 +354,5 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 }
