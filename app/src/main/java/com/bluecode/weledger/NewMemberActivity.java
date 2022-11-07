@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -42,6 +43,9 @@ public class NewMemberActivity extends AppCompatActivity {
     EditText firstName,lastName,userName,passWord,admissionDate,group_id,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
+
+    RadioButton male, female,option_yes,option_no,book_writer,ordinary_member;
+    String selectedSuperStar;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,12 @@ public class NewMemberActivity extends AppCompatActivity {
         spinner_userRole = findViewById(R.id.user_role);
         spinner_singleFSW = findViewById(R.id.single_fsw);
         save_member_details = findViewById(R.id.save_member_details);
+        male = (RadioButton) findViewById(R.id.male);
+        female = (RadioButton) findViewById(R.id.female);
+        option_yes = (RadioButton) findViewById(R.id.option_yes);
+        option_no = (RadioButton) findViewById(R.id.option_no);
+        book_writer = (RadioButton) findViewById(R.id.book_writer);
+        ordinary_member = (RadioButton) findViewById(R.id.ordinary_member);
 
         Bundle bundle = getIntent().getExtras();
         String str_group_name = bundle.getString(Constants.GROUP_NAME, "Default");
@@ -83,12 +93,30 @@ public class NewMemberActivity extends AppCompatActivity {
                 String str_userName = userName.getText().toString();
                 String str_passWord = passWord.getText().toString();
                 String str_admissionDate = admissionDate.getText().toString();
-                String str_gender = "M";
+
+                String str_gender = null;
+                if (male.isChecked()) {
+                    str_gender = male.getText().toString();
+                } else if (female.isChecked()) {
+                    str_gender = female.getText().toString();
+                }
+
                 String str_ecap_hh_ID = ecap_hh_ID.getText().toString();
                 String str_phoneNumber = phoneNumber.getText().toString();
-                String str_userRole = "1";
-                String str_singleFSW = "Y";
 
+                String str_userRole = null;
+                if (book_writer.isChecked()) {
+                    str_userRole = book_writer.getText().toString();
+                } else if (ordinary_member.isChecked()) {
+                    str_userRole = ordinary_member.getText().toString();
+                }
+
+                String str_singleFSW = null;
+                if (option_yes.isChecked()) {
+                    str_singleFSW  = option_yes.getText().toString();
+                } else if (option_no.isChecked()) {
+                    str_singleFSW  = option_no.getText().toString();
+                }
 
                 if(userName.getText().toString().isEmpty()) {
                     errorDialog("Username Cannot Be Empty");
@@ -110,6 +138,14 @@ public class NewMemberActivity extends AppCompatActivity {
         });
 
     }
+//    public  void getRadioButtonTextToString(RadioButton button,RadioButton button2,String text){
+//        if (button.isChecked()) {
+//            text  = button.getText().toString();
+//        } else if (button2.isChecked()) {
+//            text  = button2.getText().toString();
+//        }
+//    }
+
     private void startSubmission(final String groupname,
                                  final String firstname,
                                  final String surname,

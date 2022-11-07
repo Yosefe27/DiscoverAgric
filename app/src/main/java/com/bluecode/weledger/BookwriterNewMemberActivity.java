@@ -40,12 +40,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BookwriterNewMemberActivity extends AppCompatActivity {
-    RadioGroup radio_single_fcg,radio_member_role,radio_gender;
-    RadioButton radio_male,radio_female,radio_ordinary,radio_no,radio_yes;
+
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-
-    //radio_gender = findViewById(R.id.radio_gender);
     TextView save_member_details,groupName,groupID;
     EditText firstName,lastName,userName,passWord,admissionDate,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
@@ -53,6 +50,7 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     String group_name;
     String group_id;
     DatePicker admission_date;
+    RadioButton male, female,option_yes,option_no,ordinary_member;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -74,12 +72,11 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         spinner_userRole = findViewById(R.id.user_role);
         spinner_singleFSW = findViewById(R.id.single_fsw);
         save_member_details = findViewById(R.id.save_member_details);
-
-
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        group_name = preferences.getString("group_name", "");
-        group_id = preferences.getString("group_id", "");
+        male = (RadioButton) findViewById(R.id.male);
+        female = (RadioButton) findViewById(R.id.female);
+        option_yes = (RadioButton) findViewById(R.id.option_yes);
+        option_no = (RadioButton) findViewById(R.id.option_no);
+        ordinary_member = (RadioButton) findViewById(R.id.ordinary_member);
 
         groupName.setText(group_name);
         groupName.setEnabled(false);
@@ -100,11 +97,29 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
                 String str_userName = userName.getText().toString();
                 String str_passWord = passWord.getText().toString();
                 String str_admissionDate = admissionDate.getText().toString();
-                String str_gender = spinner_gender.getSelectedItem().toString();
                 String str_ecap_hh_ID = ecap_hh_ID.getText().toString();
                 String str_phoneNumber = phoneNumber.getText().toString();
-                String str_userRole = spinner_userRole.getSelectedItem().toString();
-                String str_singleFSW = spinner_singleFSW.getSelectedItem().toString();
+
+                String str_gender = null;
+                if (male.isChecked()) {
+                    str_gender = male.getText().toString();
+                } else if (female.isChecked()) {
+                    str_gender = female.getText().toString();
+                }
+
+
+                String str_userRole = null;
+                if (ordinary_member.isChecked()) {
+                    str_userRole = ordinary_member.getText().toString();
+                }
+
+                String str_singleFSW = null;
+                if (option_yes.isChecked()) {
+                    str_singleFSW  = option_yes.getText().toString();
+                } else if (option_no.isChecked()) {
+                    str_singleFSW  = option_no.getText().toString();
+                }
+
 
 
                 if(userName.getText().toString().isEmpty()) {
@@ -253,10 +268,6 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.GROUP_NAME, group_name);
-        bundle.putString(Constants.GROUP_ID,group_id);
-        intent.putExtras(bundle);
         startActivity(intent);
         finish();
     }
