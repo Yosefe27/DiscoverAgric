@@ -347,12 +347,12 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    @Override
-    public void onBackPressed() {
-        finish();
-        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
-        startActivity(intent);
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        finish();
+//        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
+//        startActivity(intent);
+//
+//    }
 
 }
