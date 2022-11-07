@@ -69,6 +69,27 @@
                 android:inputType="text"
                 android:padding="16dp"
                 android:textSize="13sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Group ID"
+                android:textAlignment="textStart"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/group_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:hint="Group ID"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -228,9 +249,7 @@
                     android:layout_marginTop="10dp"
                     android:checked="true"
                     android:text="Supervised"
-                    android:textColor="#154"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp" />
 
                 <RadioButton
                     android:id="@+id/self_managed"
@@ -240,9 +259,8 @@
                     android:layout_marginTop="10dp"
                     android:checked="false"
                     android:text="Self-Managed"
-                    android:textColor="#154"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    />
 
                 <RadioButton
                     android:id="@+id/spontaneous"
@@ -252,9 +270,8 @@
                     android:layout_marginTop="10dp"
                     android:checked="false"
                     android:text="Spontaneous"
-                    android:textColor="#154"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    />
 
             </RadioGroup>
 
@@ -300,7 +317,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Save Group"
+                    android:text="Create Group"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>

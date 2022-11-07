@@ -245,9 +245,8 @@
                             android:layout_marginTop="10dp"
                             android:checked="true"
                             android:text="Male"
-                            android:textColor="#154"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                           />
 
                         <RadioButton
                             android:id="@+id/female"
@@ -257,9 +256,8 @@
                             android:layout_marginTop="10dp"
                             android:checked="false"
                             android:text="Female"
-                            android:textColor="#154"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                             />
 
                     </RadioGroup>
 
@@ -327,9 +325,8 @@
                             android:layout_marginTop="10dp"
                             android:checked="true"
                             android:text="Book Writer"
-                            android:textColor="#154"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                           />
 
                         <RadioButton
                             android:id="@+id/ordinary_member"
@@ -339,9 +336,7 @@
                             android:layout_marginTop="10dp"
                             android:checked="false"
                             android:text="Ordinary Member"
-                            android:textColor="#154"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textSize="20sp" />
 
 
 
@@ -367,9 +362,7 @@
                             android:layout_marginTop="10dp"
                             android:checked="true"
                             android:text="Yes"
-                            android:textColor="#154"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textSize="20sp" />
 
                         <RadioButton
                             android:id="@+id/option_no"
@@ -379,9 +372,7 @@
                             android:layout_marginTop="10dp"
                             android:checked="false"
                             android:text="No"
-                            android:textColor="#154"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textSize="20sp" />
 
                     </RadioGroup>
 
