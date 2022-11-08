@@ -3,6 +3,7 @@ package com.bluecode.weledger;
 import static com.bluecode.weledger.Constants.BASE_URL;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -184,6 +185,9 @@ public class NewMemberActivity extends AppCompatActivity {
 
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
+                        Intent intent = new Intent(NewMemberActivity.this, FacilitatorViewGroupsActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
