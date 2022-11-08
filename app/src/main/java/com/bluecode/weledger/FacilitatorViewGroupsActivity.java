@@ -38,9 +38,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.FacilitatorViewGroupMembersAdapter;
-import com.bluecode.weledger.adapters.GroupsAdaptor;
+import com.bluecode.weledger.adapters.FacilitatorViewGroupsAdapter;
+import com.bluecode.weledger.models.FacilitatorViewGroupsModel;
 import com.bluecode.weledger.models.FacilitatorViewMembersModel;
-import com.bluecode.weledger.models.Groups;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -51,12 +51,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewGroupMembersFacilitatorActivity extends AppCompatActivity {
+public class FacilitatorViewGroupsActivity extends AppCompatActivity {
     RequestQueue mRequestQueue;
-    String str_a, groups_list = BASE_URL + "list_of_groups.php";
-    String groupship_response = BASE_URL + "groupship_response.php";
+    String str_a, groups_list = BASE_URL + "view_members_per_group.php";
     RecyclerView recyclerview;
-    ArrayList<FacilitatorViewMembersModel> listGroups = new ArrayList<>();
+    ArrayList<FacilitatorViewGroupsModel> listGroups = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,77 +103,66 @@ public class ViewGroupMembersFacilitatorActivity extends AppCompatActivity {
             public void onResponse(String response) {
 //                Toast.makeText(getApplicationContext(),"Response : "+response,Toast.LENGTH_SHORT).show();
 //                textView.setText(response.toString());
-                Log.v("groups_response", response);
+                Log.v("members_list", response);
                 try {
                     JSONObject object = new JSONObject(response);
 
-                    JSONArray array = object.getJSONArray("groups");
+                    JSONArray array = object.getJSONArray("members_list");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
 //                        JSONObject stackObject2 = array2.getJSONObject(i);
 
                         // textView.setText(object1.toString());
-                        FacilitatorViewMembersModel groups = new FacilitatorViewMembersModel(
-                                stackObject.getString("id"),
+                        FacilitatorViewGroupsModel groups = new FacilitatorViewGroupsModel (
                                 stackObject.getString("group_name"),
-                                stackObject.getString("date_created"),
-                                stackObject.getString("annual_interest_rate"),
-                                stackObject.getString("cycle_number"),
-                                stackObject.getString("first_training_meeting_date"),
-                                stackObject.getString("date_savings_started"),
-                                stackObject.getString("reinvested_savings_cycle_start"),
-                                stackObject.getString("registered_members_cycle_start"),
-                                //stackObject.getString("group_management_spinner"),
-                                stackObject.getString("status")
+                                stackObject.getString("group_id"),
+                                stackObject.getString("full_name"),
+                                stackObject.getString("user_id"),
+                                stackObject.getString("total_contribution")
 
                         );
                         listGroups.add(groups);
                     }
-//                    if(str_user_role.equals("2") || str_user_role.equals("3") || str_user_role.equals("4")){
-////                        groups_approvals.setVisibility(View.VISIBLE);
-//                    }else{
-////                        groups_approvals.setVisibility(View.GONE);
-//                    }
+
                     if (listGroups.size() <= 0) {
                         recyclerview.setVisibility(View.GONE);
-//                        no_transactions_txt.setVisibility(View.VISIBLE);
                         reportsAlert.dismiss();
                     } else {
                         recyclerview.setHasFixedSize(true);
                         recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                         recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        FacilitatorViewGroupMembersAdapter facilitatorViewGroupMembersAdapter = new FacilitatorViewGroupMembersAdapter(getBaseContext(), listGroups);
-                        recyclerview.setAdapter(facilitatorViewGroupMembersAdapter);
-                        facilitatorViewGroupMembersAdapter.setClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                int position = recyclerview.getChildLayoutPosition(view);
-                                FacilitatorViewMembersModel groups = listGroups.get(position);
-
-                                Intent intent = new Intent(getApplicationContext(), ViewActualMembersFacilitator.class);
-//                                intent.putExtra("intent_group_id", groups.getId());
-//                                intent.putExtra("intent_group_name", groups.getGroup_name());
-//                                intent.putExtra("intent_group_date_created", groups.getDate_created());
-//                                intent.putExtra("intent_group_annual_interest_rate", groups.getAnnual_interest_rate());
-//                                intent.putExtra("intent_cycle_number", groups.getCycle_number());
-//                                intent.putExtra("intent_first_training_meeting_date", groups.getFirst_training_meeting_date());
-//                                intent.putExtra("intent_date_savings_started", groups.getDate_savings_started());
-//                                intent.putExtra("intent_reinvested_savings_cycle_start", groups.getReinvested_savings_cycle_start());
-//                                intent.putExtra("registered_members_cycle_start", groups.getRegistered_members_cycle_start());
-//                               // intent.putExtra("group_management_spinner", groups.getGroup_management_spinner());
-//                                intent.putExtra("intent_group_status", groups.getStatus());
-
-                                Bundle bundle = new Bundle();
-
-                                bundle.putString(Constants.GROUP_ID, groups.getId());
-
-                                intent.putExtras(bundle);
-                                startActivity(intent);
-
-                            }
-
-
-                        });
+                        FacilitatorViewGroupsAdapter facilitatorViewGroupsAdapter = new  FacilitatorViewGroupsAdapter(getBaseContext(), listGroups);
+                        recyclerview.setAdapter(facilitatorViewGroupsAdapter);
+//                        facilitatorViewGroupMembersAdapter.setClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                int position = recyclerview.getChildLayoutPosition(view);
+//                                FacilitatorViewMembersModel groups = listGroups.get(position);
+//
+//                                Intent intent = new Intent(getApplicationContext(), ViewActualMembersFacilitator.class);
+////                                intent.putExtra("intent_group_id", groups.getId());
+////                                intent.putExtra("intent_group_name", groups.getGroup_name());
+////                                intent.putExtra("intent_group_date_created", groups.getDate_created());
+////                                intent.putExtra("intent_group_annual_interest_rate", groups.getAnnual_interest_rate());
+////                                intent.putExtra("intent_cycle_number", groups.getCycle_number());
+////                                intent.putExtra("intent_first_training_meeting_date", groups.getFirst_training_meeting_date());
+////                                intent.putExtra("intent_date_savings_started", groups.getDate_savings_started());
+////                                intent.putExtra("intent_reinvested_savings_cycle_start", groups.getReinvested_savings_cycle_start());
+////                                intent.putExtra("registered_members_cycle_start", groups.getRegistered_members_cycle_start());
+////                               // intent.putExtra("group_management_spinner", groups.getGroup_management_spinner());
+////                                intent.putExtra("intent_group_status", groups.getStatus());
+//
+//                                Bundle bundle = new Bundle();
+//
+//                                bundle.putString(Constants.GROUP_ID, groups.getId());
+//
+//                                intent.putExtras(bundle);
+//                                startActivity(intent);
+//
+//                            }
+//
+//
+//                        });
                         reportsAlert.dismiss();
 
                     }

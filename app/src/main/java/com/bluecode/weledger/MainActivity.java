@@ -208,9 +208,18 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_profile:
-                        Intent intent = new Intent(MainActivity.this,MemberProfileActivity.class);
-                        startActivity(intent);
-                        finish();
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        str_user_role = preferences.getString("user_role", "");
+                       if(str_user_role.equals("3")) {
+                           Intent intent = new Intent(MainActivity.this,FacilitatorProfileActivity.class);
+                           startActivity(intent);
+                           finish();
+                       } else{
+                           Intent intent = new Intent(MainActivity.this,MemberProfileActivity.class);
+                           startActivity(intent);
+                           finish();
+                       }
+
                         return true;
 
 
@@ -286,9 +295,17 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case android.R.id.home:
-                Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
-                startActivity(intent);
-                finish();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                str_user_role = preferences.getString("user_role", "");
+                if(str_user_role.equals("3")) {
+                    Intent intent = new Intent(MainActivity.this,FacilitatorProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else{
+                    Intent intent = new Intent(MainActivity.this,MemberProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
                 return true;
             case R.id.action_logout:
                 dialogLogout();
@@ -299,9 +316,15 @@ public class MainActivity extends AppCompatActivity {
 //              finish();
 //                break;
             case R.id.action_member_profile:
-                Intent member_profile = new Intent(MainActivity.this, MemberProfileActivity.class);
-                startActivity(member_profile);
-                finish();
+                if(str_user_role.equals("3")) {
+                    Intent intent = new Intent(MainActivity.this,FacilitatorProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else{
+                    Intent intent = new Intent(MainActivity.this,MemberProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
                 break;
             default:
                 break;

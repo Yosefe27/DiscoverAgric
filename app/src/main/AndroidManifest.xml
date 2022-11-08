@@ -19,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
+            android:name=".FacilitatorProfileActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ViewGroupSavingsFacilitatorActivity"
             android:exported="false">
             <meta-data
@@ -225,7 +232,7 @@
             android:name=".ViewActualMembersFacilitator"
             android:exported="false" />
         <activity
-            android:name=".ViewGroupMembersFacilitatorActivity"
+            android:name=".FacilitatorViewGroupsActivity"
             android:exported="false"
             android:parentActivityName=".FacilitatorGroupAdminDashboard" />
         <activity
