@@ -1,9 +1,12 @@
 package com.bluecode.weledger.adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,6 +56,15 @@ public class MemberProfileAdapter extends RecyclerView.Adapter<MemberProfileAdap
 
     holder.member_dues.setText("Fines Due K "+model.getFine_due()+"\n"+"Loans due K "+model.getLoan_due());
 
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        String str_user_role = preferences.getString("user_role", "");
+        if (str_user_role.equals("3")){
+
+            holder.linearLayout.setVisibility(View.GONE);
+        }
+
+
     }
 
     @Override
@@ -61,6 +73,7 @@ public class MemberProfileAdapter extends RecyclerView.Adapter<MemberProfileAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout linearLayout;
         TextView member_name,member_id,gender,admission_date,group_name,total_savings,total_social_fund,member_dues;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +85,8 @@ public class MemberProfileAdapter extends RecyclerView.Adapter<MemberProfileAdap
             total_savings = itemView.findViewById(R.id.total_savings);
             total_social_fund = itemView.findViewById(R.id.total_social_fund);
             member_dues = itemView.findViewById(R.id.member_dues);
+            linearLayout =  itemView.findViewById(R.id.member_content);
+
 
         }
     }
