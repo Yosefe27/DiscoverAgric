@@ -177,15 +177,16 @@ public class LoginActivity extends AppCompatActivity {
 
                         editor.apply();
                         reportsAlert.dismiss();
-                        finish();
-                        Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString(Constants.GROUP_NAME,group_name);
-                        bundle.putString(Constants.GROUP_ID,group_id);
-                        bundle.putString(Constants.USER_NAME,name);
-                        bundle.putString(Constants.USER_ROLE,user_role);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+                        String str_user_role = preferences.getString("user_role", "");
+                        if(str_user_role.equals("Book Writer")||str_user_role.equals("Ordinary Member")){
+                            finish();
+                            Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
+                            startActivity(intent);
+                        } else  {
+                            finish();
+                            Intent intent = new Intent(getApplicationContext(), FacilitatorProfileActivity.class);
+                            startActivity(intent);
+                        }
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
 //                        signin_progress.setVisibility(View.GONE);

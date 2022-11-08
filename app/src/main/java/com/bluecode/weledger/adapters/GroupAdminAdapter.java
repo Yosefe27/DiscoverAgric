@@ -14,14 +14,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bluecode.weledger.AddMemberToGroupActivity;
-import com.bluecode.weledger.BookWriterMembersActivity;
 import com.bluecode.weledger.FacilitatorGroupsActivity;
 import com.bluecode.weledger.FacilitatorNewGroupActivity;
-import com.bluecode.weledger.NewMemberActivity;
 import com.bluecode.weledger.R;
-import com.bluecode.weledger.ViewGroupMembersFacilitatorActivity;
+import com.bluecode.weledger.FacilitatorViewGroupsActivity;
 import com.bluecode.weledger.models.GroupAdminModel;
-import com.bluecode.weledger.models.MainActivityModel;
 
 import java.util.ArrayList;
 
@@ -66,7 +63,7 @@ public class GroupAdminAdapter extends RecyclerView.Adapter<GroupAdminAdapter.vi
                         context.startActivity(addMember);
                         break;
                     case "view members":
-                        Intent viewMembers = new Intent(context, ViewGroupMembersFacilitatorActivity.class);
+                        Intent viewMembers = new Intent(context, FacilitatorViewGroupsActivity.class);
                         context.startActivity(viewMembers);
                 }
             }
