@@ -150,7 +150,7 @@ public class AddMemberToGroupActivity extends AppCompatActivity {
                                 stackObject.getString("date_savings_started"),
                                 stackObject.getString("reinvested_savings_cycle_start"),
                                 stackObject.getString("registered_members_cycle_start"),
-                                //stackObject.getString("group_management_spinner"),
+                                stackObject.getString("group_mgt"),
                                 stackObject.getString("status")
 
                         );

@@ -61,7 +61,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
         String intent_first_training_meeting_date = getIntent().getStringExtra("intent_first_training_meeting_date");
         String intent_date_savings_started = getIntent().getStringExtra("intent_date_savings_started");
         String intent_reinvested_savings_cycle_start = getIntent().getStringExtra("intent_reinvested_savings_cycle_start");
-        String intent_registered_members_cycle_start = getIntent().getStringExtra("intent_registered_members_cycle_start");
+        String intent_registered_members_cycle_start = getIntent().getStringExtra("registered_members_cycle_start");
         String intent_group_management_spinner = getIntent().getStringExtra("group_management_spinner");
 
 
@@ -73,8 +73,8 @@ public class GroupDetailsActivity extends AppCompatActivity {
         first_training_meeting_date_txt.setText(intent_first_training_meeting_date);
         date_savings_started_txt.setText(intent_date_savings_started);
         reinvested_savings_cycle_start_txt.setText(intent_reinvested_savings_cycle_start);
-        registered_members_cycle_start_txt.setText(intent_group_id);
-        group_management_spinner_txt.setText("SPONTANEOUS");
+        registered_members_cycle_start_txt.setText(intent_registered_members_cycle_start);
+        group_management_spinner_txt.setText(intent_group_management_spinner);
         toolbar.setSubtitle(intent_group_name+" GROUP DETAILS");
     }
 
