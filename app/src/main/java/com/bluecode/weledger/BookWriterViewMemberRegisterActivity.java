@@ -180,7 +180,7 @@ public class BookWriterViewMemberRegisterActivity extends AppCompatActivity {
                         );
                         listMembers.add(members);
                     }
-                    if(str_user_role.equals("2") || str_user_role.equals("3") || str_user_role.equals("4")){
+                    if(str_user_role.equals("Book Writer") || str_user_role.equals("Facilitator")){
 //                        members_approvals.setVisibility(View.VISIBLE);
                     }else{
 //                        members_approvals.setVisibility(View.GONE);

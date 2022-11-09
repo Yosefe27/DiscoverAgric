@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_profile:
                         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         str_user_role = preferences.getString("user_role", "");
-                       if(str_user_role.equals("3")) {
+                       if(str_user_role.equals("Facilitator")) {
                            Intent intent = new Intent(MainActivity.this,FacilitatorProfileActivity.class);
                            startActivity(intent);
                            finish();
@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 str_user_role = preferences.getString("user_role", "");
-                if(str_user_role.equals("3")) {
+                if(str_user_role.equals("Facilitator")) {
                     Intent intent = new Intent(MainActivity.this,FacilitatorProfileActivity.class);
                     startActivity(intent);
                     finish();
@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
 //              finish();
 //                break;
             case R.id.action_member_profile:
-                if(str_user_role.equals("3")) {
+                if(str_user_role.equals("Facilitator")) {
                     Intent intent = new Intent(MainActivity.this,FacilitatorProfileActivity.class);
                     startActivity(intent);
                     finish();
@@ -340,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
         str_a = preferences.getString("a", "");
         str_name = preferences.getString("name", "");
         str_user_role = preferences.getString("user_role", "");
-        if(str_user_role.equals("2")){ //2 is for book writer
+        if(str_user_role.equals("Book Writer")){ //2 is for book writer
             mainModel.add(new MainActivityModel("Member Admin",R.drawable.ic_admin,R.color.container_color,1));
             mainModel.add(new MainActivityModel("Savings",R.drawable.ic_saving,R.color.container_color,2));
             mainModel.add(new MainActivityModel("Loan Requests",R.drawable.ic_loan,R.color.container_color,3));
@@ -351,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        else if(str_user_role.equals("3")){//3 is for facilitator
+        else if(str_user_role.equals("Facilitator")){//3 is for facilitator
             mainModel.add(new MainActivityModel("Group Admin",R.drawable.ic_admin,R.color.container_color,8));
             mainModel.add(new MainActivityModel("Group Savings",R.drawable.ic_saving,R.color.container_color,9));
             mainModel.add(new MainActivityModel("Group Loans",R.drawable.ic_loan,R.color.container_color,10));
@@ -378,8 +378,16 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
-        startActivity(intent);
-        finish();
+        if(str_user_role.equals("Facilitator")){
+            Intent intent = new Intent(getApplicationContext(), FacilitatorProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 }

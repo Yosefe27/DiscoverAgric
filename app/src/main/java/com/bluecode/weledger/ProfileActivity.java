@@ -36,9 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
         group_id.setText(str_group_id);
         user_id.setText(str_user_id);
 
-        if (str_user_role.equals("1")){
+        if (str_user_role.equals("Ordinary Member")){
             user_role.setText("Ordinary Member");
-        } else if(str_user_role.equals("2")){
+        } else if(str_user_role.equals("Book Writer")){
             user_role.setText("Book Writer");
         }else {
             user_role.setText("Facilitator");
