@@ -40,8 +40,8 @@ public class FacilitatorViewGroupsAdapter extends RecyclerView.Adapter<Facilitat
         final FacilitatorViewGroupsModel model = memberProfileModels.get(position);
         holder.group_name_id.setText(model.getGroup_name()+" ID: "+model.getGroup_id());
         holder.member_name.setText(model.getMember_name());
-        holder.member_id.setText("ID: "+model.getMember_id());
-        holder.member_contribution.setText("Member Contribution K"+model.getMember_contribution());
+//        holder.member_id.setText("ID: "+model.getMember_id());
+//        holder.member_contribution.setText("Member Contribution K"+model.getMember_contribution());
 
         holder.arrow.setOnClickListener(view -> {
             if (holder.hiddenView.getVisibility() == View.VISIBLE) {
@@ -74,8 +74,8 @@ public class FacilitatorViewGroupsAdapter extends RecyclerView.Adapter<Facilitat
             super(itemView);
             group_name_id = itemView.findViewById(R.id.group_name_id);
             member_name = itemView.findViewById(R.id.member_name);
-            member_id = itemView.findViewById(R.id.member_id);
-            member_contribution = itemView.findViewById(R.id.member_contribution);
+//            member_id = itemView.findViewById(R.id.member_id);
+//            member_contribution = itemView.findViewById(R.id.member_contribution);
             cardView = itemView.findViewById(R.id.base_cardview);
             arrow = itemView.findViewById(R.id.arrow_button);
             hiddenView = itemView.findViewById(R.id.hidden_view);

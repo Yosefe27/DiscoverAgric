@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -119,8 +120,41 @@ public class NewMemberActivity extends AppCompatActivity {
                     str_singleFSW  = option_no.getText().toString();
                 }
 
-                if(userName.getText().toString().isEmpty()) {
-                    errorDialog("Username Cannot Be Empty");
+
+                if(TextUtils.isEmpty(str_group_name )){
+                    groupName.setError("Group name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_firstName)){
+                    firstName.setError("First name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_lastName)){
+                    lastName.setError("Last name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_userName)){
+                    userName.setError("User name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_passWord)){
+                    passWord.setError("Set user password");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_admissionDate)){
+                    admissionDate.setError("Admission date is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_gender)){
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_ecap_hh_ID)){
+                    ecap_hh_ID.setError("ECAP HH ID is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_phoneNumber)){
+                    phoneNumber.setError("Phone number");
+                    return;
                 }
                 else startSubmission(
                         str_group_name,
