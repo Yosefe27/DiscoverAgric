@@ -346,7 +346,7 @@
                 android:paddingTop="@dimen/contact_small_padding"
                 android:paddingBottom="@dimen/contact_small_padding"
                 android:paddingLeft="@dimen/contact_drawable_padding"
-                android:text="Registered Members at Start of Cycle" />
+                android:text="Interest Rate" />
             <TextView
                 android:textStyle="bold"
                 android:textSize="20sp"
