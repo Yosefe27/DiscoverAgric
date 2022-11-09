@@ -116,9 +116,9 @@ public class FacilitatorViewGroupsActivity extends AppCompatActivity {
                         FacilitatorViewGroupsModel groups = new FacilitatorViewGroupsModel (
                                 stackObject.getString("group_name"),
                                 stackObject.getString("group_id"),
-                                stackObject.getString("full_name"),
-                                stackObject.getString("user_id"),
-                                stackObject.getString("total_contribution")
+                                stackObject.getString("full_name")
+//                                stackObject.getString("user_id"),
+//                                stackObject.getString("total_contribution")
 
                         );
                         listGroups.add(groups);
