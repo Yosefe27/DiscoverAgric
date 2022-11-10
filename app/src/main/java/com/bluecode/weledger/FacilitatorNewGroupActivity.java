@@ -221,9 +221,9 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
                     } else if (object.getString("status").equals("failed")) {
-                        reportsAlert.dismiss();
+      //                  reportsAlert.dismiss();
 //                        signin_progress.setVisibility(View.GONE);
-                        errorDialog(object.getString("msg"));
+//                        errorDialog(object.getString("msg"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -320,7 +320,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         if (reportsAlert.getWindow() != null)
             reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
 
-        reportsAlert.show();
+//        reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         btn_ok.setVisibility(View.VISIBLE);
         linear_buttons.setVisibility(View.GONE);
@@ -347,12 +347,12 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-//    @Override
-//    public void onBackPressed() {
-//        finish();
-//        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
-//        startActivity(intent);
-//
-//    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
+        startActivity(intent);
+        finish();
+
+    }
 
 }
