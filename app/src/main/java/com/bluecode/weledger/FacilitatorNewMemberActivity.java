@@ -84,7 +84,6 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
         groupName.setTextColor(Color.BLACK);
         group_id.setTextColor(Color.BLACK);
 
-
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,17 +135,11 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
                         str_userRole,
                         str_singleFSW
                 );
+                returnToFacilitatorAdminGroups();
             }
         });
 
     }
-//    public  void getRadioButtonTextToString(RadioButton button,RadioButton button2,String text){
-//        if (button.isChecked()) {
-//            text  = button.getText().toString();
-//        } else if (button2.isChecked()) {
-//            text  = button2.getText().toString();
-//        }
-//    }
 
     private void startSubmission(final String groupname,
                                  final String firstname,
@@ -184,11 +177,11 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
 
                         String received_msg = object.getString("msg");
 
-                        reportsAlert.dismiss();
-                        errorDialog(object.getString("msg"));
+//                        reportsAlert.dismiss();
+//                        errorDialog(object.getString("msg"));
                     } else if (object.getString("status").equals("failed")) {
-                        reportsAlert.dismiss();
-                        errorDialog(object.getString("msg"));
+//                        reportsAlert.dismiss();
+//                        errorDialog(object.getString("msg"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -271,5 +264,10 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), FacilitatorGroupAdminDashboard.class);
         startActivity(intent);
 
+    }
+    public void returnToFacilitatorAdminGroups(){
+        Intent intent = new Intent(getApplicationContext(), FacilitatorViewGroupsActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
