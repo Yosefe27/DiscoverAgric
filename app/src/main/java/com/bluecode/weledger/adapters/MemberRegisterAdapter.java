@@ -92,7 +92,7 @@ public class MemberRegisterAdapter extends RecyclerView.Adapter<MemberRegisterAd
         String full_name = currentMembers.getFirstname() + " " + currentMembers.getLastname();
         StringBuilder initials = new StringBuilder();
         for (String s : full_name.split(" ")) {
-            initials.append(s.charAt(0));
+       //     initials.append(s.charAt(0));
         }
         holder.member_name.setSelected(true);
         holder.member_name.setText(currentMembers.getFirstname()+" "+currentMembers.getLastname());

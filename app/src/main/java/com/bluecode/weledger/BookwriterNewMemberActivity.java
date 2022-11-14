@@ -47,10 +47,11 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     EditText firstName,lastName,userName,passWord,admissionDate,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
-    String group_name;
-    String group_id;
+    String str_group_name;
+    String str_group_id;
     DatePicker admission_date;
     RadioButton male, female,option_yes,option_no,ordinary_member;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -77,12 +78,13 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         option_yes = (RadioButton) findViewById(R.id.option_yes);
         option_no = (RadioButton) findViewById(R.id.option_no);
         ordinary_member = (RadioButton) findViewById(R.id.ordinary_member);
-
-        groupName.setText(group_name);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        str_group_name = preferences.getString("group_name", "");
+        groupName.setText(str_group_name);
         groupName.setEnabled(false);
         groupName.setTextColor(Color.BLACK);
-
-        groupID.setText(group_id);
+        str_group_id = preferences.getString("group_id", "");
+        groupID.setText(str_group_id);
         groupID.setEnabled(false);
         groupID.setTextColor(Color.BLACK);
 

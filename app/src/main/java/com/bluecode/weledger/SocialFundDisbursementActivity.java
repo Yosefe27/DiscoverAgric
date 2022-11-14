@@ -167,10 +167,6 @@ public class SocialFundDisbursementActivity extends AppCompatActivity {
                     JSONObject object = new JSONObject(response);
                     if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
 
-                        String received_msg = object.getString("msg");
-
-                        reportsAlert.dismiss();
-                        errorDialog(object.getString("msg"));
                         finish();
                         Intent intent = new Intent(getApplicationContext(), ViewSocialFundsForMembersActivity.class);
                         startActivity(intent);

@@ -100,7 +100,7 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.SingleVi
         String full_name = currentMembers.getFirstname() + " " + currentMembers.getLastname();
         StringBuilder initials = new StringBuilder();
         for (String s : full_name.split(" ")) {
-            initials.append(s.charAt(0));
+        //    initials.append(s.charAt(0));
         }
         holder.member_id.setText("ID: "+currentMembers.getId());
         holder.member_name.setSelected(true);
