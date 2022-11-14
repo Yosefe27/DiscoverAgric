@@ -80,9 +80,17 @@ public class PostFineActivity extends AppCompatActivity {
         post_member_saving = findViewById(R.id.save_payment_details);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Savings Details");
-        toolbar.setSubtitle("Post Member Saving");
+        toolbar.setTitle("Fines Details");
+        toolbar.setSubtitle("Post Member Fine");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), BookWriterFinesDashboard.class);
+                startActivity(intent);
+            }
+        });
 
 
         final Calendar calendar = Calendar.getInstance();

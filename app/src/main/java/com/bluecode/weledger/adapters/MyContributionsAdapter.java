@@ -106,27 +106,8 @@ public class MyContributionsAdapter extends RecyclerView.Adapter<MyContributions
         holder.initials.setText(initials.toString());
         holder.fullname.setSelected(true);
         holder.amount.setSelected(true);
-
-        switch (currentMyContributions.getTransaction_type()) {
-
-            case "1":
-                holder.fullname.setText("MTN");
-                break;
-            case "2":
-                holder.fullname.setText("Airtel");
-                break;
-            case "3":
-                holder.fullname.setText("Zamtel");
-                break;
-            case "4":
-                holder.fullname.setText("Visa");
-                break;
-            default:
-                holder.fullname.setText("Cash Payment");
-                break;
-        }
-
-        holder.transaction_type_date.setText(currentMyContributions.getTransaction_type() + " - " + currentMyContributions.getTransaction_month());
+        holder.fullname.setText(currentMyContributions.getFull_name());
+        holder.transaction_type_date.setText("Cash Payment" + " - " + currentMyContributions.getTransaction_month());
         holder.amount.setText("K " + currentMyContributions.getTransaction_amount());
         //String pay_mode =currentMyContributions.getTransaction_type();
 

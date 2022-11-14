@@ -31,8 +31,17 @@ public class BookWriterFinesDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_book_writer_fines_dashboard);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Savings");
-        toolbar.setSubtitle("Savings Options");
+        toolbar.setTitle("Fines");
+        toolbar.setSubtitle("Fines Options");
+        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         Bundle bundle = getIntent().getExtras();
 
         recyclerView = findViewById(R.id.mainRecycler);

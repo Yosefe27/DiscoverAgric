@@ -3,6 +3,7 @@ package com.bluecode.weledger;
 import static com.bluecode.weledger.Constants.BASE_URL;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -36,6 +37,7 @@ import com.bluecode.weledger.utils.Connectivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -87,6 +89,26 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         groupID.setText(str_group_id);
         groupID.setEnabled(false);
         groupID.setTextColor(Color.BLACK);
+
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        admissionDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = new DatePickerDialog(BookwriterNewMemberActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        month = month+1;
+                        String date = year+"/"+month+"/"+dayOfMonth;
+                        admissionDate.setText(date);
+                    }
+                },year, month,day);
+                dialog.show();
+            }
+        });
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
