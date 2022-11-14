@@ -109,8 +109,10 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_adds_repayment_details.xml" value="0.23007246376811594" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_fines.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_ledger.xml" value="0.20833333333333334" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_new_member.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_repayments.xml" value="0.2391304347826087" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_bookwriter_savings_options.xml" value="0.14270833333333333" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_add_new_member.xml" value="0.20425724637681159" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_adds_new_group.xml" value="0.24864130434782608" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_fines.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_facilitator_ledger.xml" value="0.24895833333333334" />
@@ -138,6 +140,7 @@
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_new_member.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_new_payments.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_new_social_fund.xml" value="0.10416666666666667" />
+        <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_post_fine.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activity_splash.xml" value="0.1671195652173913" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/activityfacilitator_group_transactions_history.xml" value="0.25" />
         <entry key="..\:/projectsBlueCode/we_ledger/app/src/main/res/layout/custom_toast.xml" value="0.25" />

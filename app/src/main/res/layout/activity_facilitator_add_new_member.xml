@@ -219,11 +219,6 @@
                         android:maxLines="1"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp" />
-                    <!--                    <DatePicker-->
-                    <!--                        android:id="@+id/admission_date"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:datePickerMode="spinner"/>-->
 
                     <TextView
                         android:layout_width="match_parent"

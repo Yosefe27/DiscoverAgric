@@ -57,7 +57,7 @@ import java.util.Map;
 public class NewPaymentActivity extends AppCompatActivity {
     Toolbar toolbar;
     EditText amount,contribution_date;
-    TextView select_member,post_member_saving,selected_member;
+    TextView select_member,post_member_saving,selected_member,select_id;
     String submit_saving_url=BASE_URL+"submit_saving.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
     String membership_response = BASE_URL + "membership_response.php";
@@ -73,6 +73,7 @@ public class NewPaymentActivity extends AppCompatActivity {
         amount = findViewById(R.id.amount);
         contribution_date = findViewById(R.id.date_picker_actions);
         select_member = findViewById(R.id.select_member);
+        select_id = findViewById(R.id.select_ID);
         post_member_saving = findViewById(R.id.save_payment_details);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -130,6 +131,8 @@ public class NewPaymentActivity extends AppCompatActivity {
                 String str_amount = amount.getText().toString();
                 String str_select_member = select_member.getText().toString();
                 String str_contribution_date = contribution_date.getText().toString();
+                String str_contributor_id = select_id.getText().toString();
+                String str_group_id = preferences.getString("group_id", "");
                 if(amount.getText().toString().isEmpty()){
                     errorDialog("Amount should not be empty.");
                 }
@@ -139,12 +142,14 @@ public class NewPaymentActivity extends AppCompatActivity {
                 else{
                     startSubmission(str_amount,
                             str_select_member,
-                            str_contribution_date);
+                            str_contribution_date,
+                            str_contributor_id,
+                            str_group_id);
                 }
             }
         });
     }
-    private void startSubmission(final String amount,String select_member,String contribution_date){
+    private void startSubmission(final String amount,String select_member,String contribution_date,String contributor_id,String group_id){
         //        signin_progress.setVisibility(View.VISIBLE);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");
@@ -203,6 +208,8 @@ public class NewPaymentActivity extends AppCompatActivity {
                 parms.put("amount", amount);
                 parms.put("full_name", select_member);
                 parms.put("month_contributed_for",contribution_date);
+                parms.put("contributor_id",contributor_id);
+                parms.put("group_id",group_id);
                 parms.put("a", str_a);
                 return parms;
             }
@@ -341,7 +348,7 @@ public class NewPaymentActivity extends AppCompatActivity {
                                 int position = members_recyclerview.getChildLayoutPosition(view);
                                 Members members = listMembers.get(position);
                                 select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
-
+                                select_id.setText(members.getId());
 //                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
 //                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
 //                                intent.putExtra("intent_email", members.getEmail());
