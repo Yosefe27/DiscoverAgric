@@ -187,7 +187,7 @@ public class MyGroupTransactionsHistoryActivity extends AppCompatActivity {
                                 stackObject.getString("contributor_id"),
                                 stackObject.getString("month_contributed_for"),
                                 stackObject.getString("payment_mode"),
-                                stackObject.getString("payment_ref_number")
+                                stackObject.getString("group_id")
 
 
                         );
