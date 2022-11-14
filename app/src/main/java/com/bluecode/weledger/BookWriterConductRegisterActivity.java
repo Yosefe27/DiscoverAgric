@@ -221,10 +221,6 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
                     JSONObject object = new JSONObject(response);
                     if (object.getString("status").equals("success")) {
 
-                        String received_msg = object.getString("msg");
-
-                        reportsAlert.dismiss();
-                        errorDialog(object.getString("msg"));
                         finish();
                         Intent intent = new Intent(getApplicationContext(), BookWriterViewMemberRegisterActivity.class);
                         startActivity(intent);
@@ -283,7 +279,7 @@ public class BookWriterConductRegisterActivity extends AppCompatActivity impleme
         if (reportsAlert.getWindow() != null)
             reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
 
-        reportsAlert.show();
+//        reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         btn_ok.setVisibility(View.VISIBLE);
         linear_buttons.setVisibility(View.GONE);

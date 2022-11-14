@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,6 +87,29 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         first_training_meeting_date = findViewById(R.id.first_training_meeting_date);
         date_savings_started = findViewById(R.id.date_savings_started);
         reinvested_savings_cycle_start = findViewById(R.id.reinvested_savings_cycle_start);
+
+
+           cycle_number.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   int i = Integer.parseInt(cycle_number.getText().toString());
+                   if(i > 1){
+                       reinvested_savings_cycle_start.setVisibility(View.VISIBLE);
+                   } else {
+                       reinvested_savings_cycle_start.setVisibility(View.INVISIBLE);
+                   }
+               }
+
+               @Override
+               public void afterTextChanged(Editable s) {
+
+               }
+           });
         registered_members_cycle_start = findViewById(R.id.registered_members_cycle_start);
         select_member = findViewById(R.id.select_member);
         save_group_details = findViewById(R.id.save_group_details);
