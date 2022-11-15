@@ -150,7 +150,7 @@
             <!--                android:datePickerMode="spinner"-->
             <!--                android:calendarViewShown="false"/>-->
 
-            <EditText
+            <TextView
                 android:id="@+id/first_training_meeting_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -160,7 +160,8 @@
                 android:drawablePadding="16dp"
                 android:hint="Date of first training meeting (YYYY-MM-DD)"
                 android:padding="16dp"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textColor="#000"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -171,7 +172,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:textSize="17dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/date_savings_started"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -181,6 +182,7 @@
                 android:drawablePadding="16dp"
                 android:hint="Date savings started (YYYY-MM-DD)"
                 android:padding="16dp"
+                android:textColor="#000"
                 android:textSize="13sp" />
 
             <TextView
