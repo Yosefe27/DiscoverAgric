@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Current Balance"
+                    android:text="Total Member Contribution"
                     android:textSize="18sp" />
 
                 <EditText
@@ -117,7 +117,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Amount"
+                    android:text="Interest Rate"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/interest_rate"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint=""
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Loan Amount"
                     android:textSize="18sp" />
 
                 <EditText
@@ -133,36 +153,6 @@
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:text="Interest Rate (Percentage %)"-->
-<!--                    android:textSize="18sp" />-->
-
-<!--                <EditText-->
-<!--                    android:id="@+id/interest_rate"-->
-<!--                    style="@style/modifiedEditText"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:background="@drawable/ic_edit_bg"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:hint=""-->
-<!--                    android:imeOptions="actionNext"-->
-<!--                    android:inputType="phone"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:paddingStart="5dp"-->
-<!--                    android:paddingEnd="5dp" />-->
-
-<!--            </LinearLayout>-->
-
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
-
 
                 <TextView
                     android:layout_width="match_parent"
@@ -186,53 +176,7 @@
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:text="Loan Installments"-->
-<!--                    android:textSize="18sp" />-->
-
-<!--                <EditText-->
-<!--                    android:id="@+id/installments"-->
-<!--                    style="@style/modifiedEditText"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:background="@drawable/ic_edit_bg"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:hint=""-->
-<!--                    android:imeOptions="actionNext"-->
-<!--                    android:inputType="phone"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:paddingStart="5dp"-->
-<!--                    android:paddingEnd="5dp" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:text="Monthly Installments"-->
-<!--                    android:textSize="18sp" />-->
-
-<!--                <EditText-->
-<!--                    android:id="@+id/monthly_installments"-->
-<!--                    style="@style/modifiedEditText"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:background="@drawable/ic_edit_bg"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:hint=""-->
-<!--                    android:imeOptions="actionNext"-->
-<!--                    android:inputType="phone"-->
-<!--                    android:maxLines="1"-->
-<!--                    android:paddingStart="5dp"-->
-<!--                    android:paddingEnd="5dp" />-->
-
             </LinearLayout>
-
-
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

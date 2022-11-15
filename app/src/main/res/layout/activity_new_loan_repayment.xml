@@ -35,17 +35,33 @@
                     android:text="Name of Member"
                     android:textSize="18sp" />
 
-
-                <EditText
+                <TextView
                     android:id="@+id/select_member"
                     style="@style/modifiedEditText"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_edit_bg"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Member ID"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/member_id"
+                    style="@style/modifiedEditText"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/ic_edit_bg"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
                     android:hint=""
                     android:imeOptions="actionNext"
-                    android:inputType="text"
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
@@ -63,11 +79,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Amount"
+                    android:text="Loan Balance"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/amount"
+                    android:id="@+id/current_loan"
                     style="@style/modifiedEditText"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_edit_bg"
@@ -75,13 +91,54 @@
                     android:gravity="center_vertical"
                     android:hint=""
                     android:imeOptions="actionNext"
-                    android:inputType="phone"
                     android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp" />
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Loan Payment Amount"
+                android:textSize="18sp" />
 
+            <EditText
+                android:id="@+id/amount"
+                style="@style/modifiedEditText"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ic_edit_bg"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:hint=""
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Loan Repayment Date"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/date_picker_actions"
+                style="@style/modifiedEditText"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ic_edit_bg"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:hint="YYYY/MM/DD"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:maxLines="1"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,32 +146,7 @@
                 android:orientation="vertical">
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Repayment Date"
-                    android:hint="YYYY-MM-DD"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/loan_date"
-                    style="@style/modifiedEditText"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/ic_edit_bg"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center_vertical"
-                    android:hint=""
-                    android:imeOptions="actionNext"
-                    android:inputType="phone"
-                    android:maxLines="1"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp" />
-
             </LinearLayout>
-
-
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

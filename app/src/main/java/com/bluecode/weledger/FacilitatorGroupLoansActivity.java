@@ -195,25 +195,14 @@ public class FacilitatorGroupLoansActivity extends AppCompatActivity {
                         LoanRequests loanRequests = new LoanRequests(
                                 stackObject.getString("id"),
                                 stackObject.getString("amount"),
-                                stackObject.getString("duration"),
+                                stackObject.getString("interest_rate"),
+                                stackObject.getString("interest_amount"),
+                                stackObject.getString("total_amount_due"),
                                 stackObject.getString("contributor_id"),
-                                stackObject.getString("loan_reason"),
+                                stackObject.getString("full_name"),
                                 stackObject.getString("group_id"),
-                                stackObject.getString("start_date"),
-                                stackObject.getString("end_date"),
-                                stackObject.getString("secretary_approval"),
-                                stackObject.getString("treasurer_approval"),
-                                stackObject.getString("chairperson_approval"),
-                                stackObject.getString("secretary_id"),
-                                stackObject.getString("treasurer_id"),
-                                stackObject.getString("chairperson_id"),
-                                stackObject.getString("secretary_approval_date"),
-                                stackObject.getString("treasurer_approval_date"),
-                                stackObject.getString("chairperson_approval_date"),
-                                stackObject.getString("secretary_approval_comment"),
-                                stackObject.getString("treasurer_approval_comment"),
-                                stackObject.getString("chairperson_approval_comment"),
-                                stackObject.getString("date_created")
+                                stackObject.getString("date_created"),
+                                stackObject.getString("loan_date")
 
                         );
                         listLoanRequests.add(loanRequests);

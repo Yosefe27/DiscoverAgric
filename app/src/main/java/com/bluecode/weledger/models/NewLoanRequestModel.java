@@ -9,9 +9,10 @@ public class NewLoanRequestModel {
             total_savings,
             total_social_fund,
             fine_due,
-            loan_due;
+            loan_due,
+            interest_rate;
 
-    public NewLoanRequestModel(String member_name, String member_id, String gender, String admission_date, String group_name, String total_savings, String total_social_fund, String fine_due, String loan_due) {
+    public NewLoanRequestModel(String member_name, String member_id, String gender, String admission_date, String group_name, String total_savings, String total_social_fund, String fine_due, String loan_due,String interest_rate) {
         this.member_name = member_name;
         this.member_id = member_id;
         this.gender = gender;
@@ -21,6 +22,7 @@ public class NewLoanRequestModel {
         this.total_social_fund = total_social_fund;
         this.fine_due = fine_due;
         this.loan_due = loan_due;
+        this.interest_rate = interest_rate;
     }
 
     public String getMember_name() {
@@ -93,5 +95,13 @@ public class NewLoanRequestModel {
 
     public void setLoan_due(String loan_due) {
         this.loan_due = loan_due;
+    }
+
+    public String getInterest_rate() {
+        return interest_rate;
+    }
+
+    public void setInterest_rate(String interest_rate) {
+        this.interest_rate = interest_rate;
     }
 }

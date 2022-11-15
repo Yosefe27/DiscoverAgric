@@ -99,8 +99,6 @@ public class MyLoanRequestsAdapter extends RecyclerView.Adapter<MyLoanRequestsAd
 
         holder.amount.setText(String.valueOf("K "+currentLoanRequests.getAmount()));
         holder.period.setSelected(true);
-        holder.period.setText(String.valueOf(currentLoanRequests.getDuration()+"mths ("+ currentLoanRequests.getStart_date() +" - "+currentLoanRequests.getEnd_date()+")"));
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
