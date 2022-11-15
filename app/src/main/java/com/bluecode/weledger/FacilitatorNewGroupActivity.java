@@ -207,7 +207,7 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
             reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
         reportsAlert.setCancelable(true);
         reportsAlert.setCanceledOnTouchOutside(true);
-        reportsAlert.show();
+//        reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, submit_group_url, new Response.Listener<String>() {
             @Override
