@@ -3,6 +3,7 @@ package com.bluecode.weledger;
 import static com.bluecode.weledger.Constants.BASE_URL;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -34,14 +36,15 @@ import com.bluecode.weledger.utils.Connectivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class FacilitatorNewMemberActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    TextView save_member_details,groupName;
-    EditText firstName,lastName,userName,passWord,admissionDate,group_id,ecap_hh_ID,phoneNumber,userRole,singleFSW;
+    TextView save_member_details,groupName,admissionDate;
+    EditText firstName,lastName,userName,passWord,group_id,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
 
@@ -85,6 +88,25 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
         group_id.setTextColor(Color.BLACK);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        admissionDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = new DatePickerDialog(FacilitatorNewMemberActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        month = month+1;
+                        String date = year+"/"+month+"/"+dayOfMonth;
+                        admissionDate.setText(date);
+                    }
+                },year, month,day);
+                dialog.show();
+            }
+        });
         save_member_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,7 +187,7 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
             reportsAlert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
         reportsAlert.setCancelable(true);
         reportsAlert.setCanceledOnTouchOutside(true);
-        reportsAlert.show();
+     //   reportsAlert.show();
         reportsAlert.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, submit_member_url, new Response.Listener<String>() {
             @Override
@@ -228,8 +250,6 @@ public class FacilitatorNewMemberActivity extends AppCompatActivity {
         main_text = dialogView.findViewById(R.id.main_text);
         linear_buttons = dialogView.findViewById(R.id.linear_buttons);
 
-
-        //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         //setting the view of the builder to our custom view that we already inflated
