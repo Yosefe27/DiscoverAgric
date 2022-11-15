@@ -80,36 +80,13 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         cycle_number = findViewById(R.id.cycle_number);
         group_id = findViewById(R.id.group_id);
         final Random generate_ID = new Random();
-        group_id.setText("WE"+String.valueOf(generate_ID.nextInt(10000)));
+        group_id.setText("WE"+String.valueOf(generate_ID.nextInt(1000000)));
         group_id.setEnabled(true);
 
         //group_management.setVisibility(View.GONE);
         first_training_meeting_date = findViewById(R.id.first_training_meeting_date);
         date_savings_started = findViewById(R.id.date_savings_started);
         reinvested_savings_cycle_start = findViewById(R.id.reinvested_savings_cycle_start);
-
-
-           cycle_number.addTextChangedListener(new TextWatcher() {
-               @Override
-               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-               }
-
-               @Override
-               public void onTextChanged(CharSequence s, int start, int before, int count) {
-                   int i = Integer.parseInt(cycle_number.getText().toString());
-                   if(i > 1){
-                       reinvested_savings_cycle_start.setVisibility(View.VISIBLE);
-                   } else {
-                       reinvested_savings_cycle_start.setVisibility(View.INVISIBLE);
-                   }
-               }
-
-               @Override
-               public void afterTextChanged(Editable s) {
-
-               }
-           });
         registered_members_cycle_start = findViewById(R.id.registered_members_cycle_start);
         select_member = findViewById(R.id.select_member);
         save_group_details = findViewById(R.id.save_group_details);
@@ -241,10 +218,6 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
                     JSONObject object = new JSONObject(response);
                     if (object.getString("status").equals("success")) {// same as if (object.getBoolean("success") == true) {
 
-                        String received_msg = object.getString("msg");
-
-                        reportsAlert.dismiss();
-                        errorDialog(object.getString("msg"));
                     } else if (object.getString("status").equals("failed")) {
       //                  reportsAlert.dismiss();
 //                        signin_progress.setVisibility(View.GONE);
