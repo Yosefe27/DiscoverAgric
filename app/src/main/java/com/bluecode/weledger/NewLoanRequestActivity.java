@@ -42,7 +42,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.MembersAdapter;
-import com.bluecode.weledger.models.Members;
+import com.bluecode.weledger.adapters.NewLoanRequestAdapter;
+import com.bluecode.weledger.models.NewLoanRequestModel;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -56,14 +57,13 @@ import java.util.Map;
 
 public class NewLoanRequestActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount,loan_date;
-    TextView select_member,post_loan_request,selected_member;
+    EditText amount,loan_date,member_id,current_balance,loan_balance;
+    TextView select_member,post_loan_request;
     String submit_saving_url=BASE_URL+"submit_loan.php";
-    String str_a, members_list = BASE_URL + "list_of_group_members.php";
-    String membership_response = BASE_URL + "membership_response.php";
-    MembersAdapter membersAdapter;
+    String str_a, members_list = BASE_URL + "loan_member_request_dialog.php";
+    NewLoanRequestAdapter membersAdapter;
     RequestQueue mRequestQueue;
-    ArrayList<Members> listMembers = new ArrayList<>();
+    ArrayList<NewLoanRequestModel> listMembers = new ArrayList<NewLoanRequestModel>();
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +73,17 @@ public class NewLoanRequestActivity extends AppCompatActivity {
         amount = findViewById(R.id.amount);
         loan_date = findViewById(R.id.date_picker_actions);
         select_member = findViewById(R.id.select_member);
+        member_id = findViewById(R.id.member_id);
+        member_id.setEnabled(false);
+        current_balance = findViewById(R.id.current_balance);
+        current_balance.setEnabled(false);
+        loan_balance = findViewById(R.id.current_loan);
+        loan_balance.setEnabled(false);
         post_loan_request = findViewById(R.id.post_loan_request);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Savings Details");
-        toolbar.setSubtitle("Post Member Saving");
+        toolbar.setSubtitle("Loan Request");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,26 +253,23 @@ public class NewLoanRequestActivity extends AppCompatActivity {
 //                    str_my_name = object.getString("full_name");
 //                    str_user_role = object.getString("user_role");
 //                    str_group_name = object.getString("group_name");
-                    JSONArray array = object.getJSONArray("group_members");
+                    JSONArray array = object.getJSONArray("members_list");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
 //                        JSONObject stackObject2 = array2.getJSONObject(i);
 
                         // textView.setText(object1.toString());
-                        Members members = new Members(
-                                stackObject.getString(Constants.GROUP_NAME),
-                                stackObject.getString(Constants.GROUP_ID),
-                                stackObject.getString(Constants.USER_FIRST_NAME),
-                                stackObject.getString(Constants.USER_LAST_NAME),
-                                stackObject.getString(Constants.USER_NAME),
-                                stackObject.getString(Constants.USER_PASSWORD),
-                                stackObject.getString(Constants.USER_ADMISSION_DATE),
-                                stackObject.getString(Constants.USER_GENDER),
-                                stackObject.getString(Constants.ECAP_ID),
-                                stackObject.getString(Constants.USER_PHONE),
-                                stackObject.getString(Constants.USER_ROLE),
-                                stackObject.getString(Constants.CAREGIVER_STATUS),
-                                stackObject.getString(Constants.USER_ID)
+                        NewLoanRequestModel members = new NewLoanRequestModel(
+                                stackObject.getString("full_name"),
+                                stackObject.getString("id"),
+                                stackObject.getString("gender"),
+                                stackObject.getString("admission_date"),
+                                stackObject.getString("group_name"),
+                                stackObject.getString("total_contribution"),
+                                stackObject.getString("social_fund"),
+                                stackObject.getString("fines_due"),
+                                stackObject.getString("loan_balance")
+
                         );
                         listMembers.add(members);
                     }
@@ -333,14 +336,17 @@ public class NewLoanRequestActivity extends AppCompatActivity {
         members_recyclerview.setHasFixedSize(true);
         members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
+        membersAdapter = new NewLoanRequestAdapter(getBaseContext(), listMembers);
         members_recyclerview.setAdapter(membersAdapter);
         membersAdapter.setClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int position = members_recyclerview.getChildLayoutPosition(view);
-                Members members = listMembers.get(position);
-                select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
+                NewLoanRequestModel members = listMembers.get(position);
+                select_member.setText(String.valueOf(members.getMember_name()));
+                member_id.setText(String.valueOf(members.getMember_id()));
+                current_balance.setText(String.valueOf(members.getTotal_savings()));
+                loan_balance.setText(String.valueOf(members.getLoan_due()));
 
 //                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
 //                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
