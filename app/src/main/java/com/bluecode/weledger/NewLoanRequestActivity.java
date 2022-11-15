@@ -57,7 +57,7 @@ import java.util.Map;
 
 public class NewLoanRequestActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount,member_id,current_balance,loan_balance;
+    EditText amount,member_id,current_balance,loan_balance,interest_rate;
     TextView select_member,post_loan_request,loan_date;
     String submit_saving_url=BASE_URL+"submit_loan.php";
     String str_a, members_list = BASE_URL + "loan_member_request_dialog.php";
@@ -76,13 +76,15 @@ public class NewLoanRequestActivity extends AppCompatActivity {
         member_id = findViewById(R.id.member_id);
         member_id.setEnabled(false);
         current_balance = findViewById(R.id.current_balance);
+        interest_rate = findViewById(R.id.interest_rate);
         current_balance.setEnabled(false);
+        interest_rate.setEnabled(false);
         loan_balance = findViewById(R.id.current_loan);
         loan_balance.setEnabled(false);
         post_loan_request = findViewById(R.id.post_loan_request);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Savings Details");
+        toolbar.setTitle("Loan Request Details");
         toolbar.setSubtitle("Loan Request");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -136,6 +138,9 @@ public class NewLoanRequestActivity extends AppCompatActivity {
                 String str_amount = amount.getText().toString();
                 String str_select_member = select_member.getText().toString();
                 String str_contribution_date = loan_date.getText().toString();
+                String str_interest_rate = interest_rate.getText().toString();
+                String str_member_id = member_id.getText().toString();
+                String str_group = preferences.getString("group_id", "");
                 if(amount.getText().toString().isEmpty()){
                     errorDialog("Amount should not be empty.");
                 }
@@ -145,12 +150,15 @@ public class NewLoanRequestActivity extends AppCompatActivity {
                 else{
                     startSubmission(str_amount,
                             str_select_member,
-                            str_contribution_date);
+                            str_member_id,
+                            str_contribution_date,
+                            str_interest_rate,
+                            str_group);
                 }
             }
         });
     }
-    private void startSubmission(final String amount,String select_member,String contribution_date){
+    private void startSubmission(final String amount,String select_member,String member_id,String contribution_date,String interest_rate,String group_id){
         //        signin_progress.setVisibility(View.VISIBLE);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");
@@ -207,8 +215,11 @@ public class NewLoanRequestActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("amount", amount);
+                parms.put("contributor_id", member_id);
                 parms.put("full_name", select_member);
                 parms.put("loan_date",contribution_date);
+                parms.put("interest_rate",interest_rate);
+                parms.put("group_id", group_id);
                 parms.put("a", str_a);
                 return parms;
             }
@@ -268,7 +279,8 @@ public class NewLoanRequestActivity extends AppCompatActivity {
                                 stackObject.getString("total_contribution"),
                                 stackObject.getString("social_fund"),
                                 stackObject.getString("fines_due"),
-                                stackObject.getString("loan_balance")
+                                stackObject.getString("loan_balance"),
+                                stackObject.getString("interest_rate")
 
                         );
                         listMembers.add(members);
@@ -347,6 +359,7 @@ public class NewLoanRequestActivity extends AppCompatActivity {
                 member_id.setText(String.valueOf(members.getMember_id()));
                 current_balance.setText(String.valueOf(members.getTotal_savings()));
                 loan_balance.setText(String.valueOf(members.getLoan_due()));
+                interest_rate.setText(String.valueOf(members.getInterest_rate()));
 
 //                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
 //                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());

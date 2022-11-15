@@ -69,8 +69,8 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
         post_loan_repayments = findViewById(R.id.post_loan_repayment);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Savings Details");
-        toolbar.setSubtitle("Post Member Saving");
+        toolbar.setTitle("Loan Repayment Details");
+        toolbar.setSubtitle("Post Member Loan Repayment");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
