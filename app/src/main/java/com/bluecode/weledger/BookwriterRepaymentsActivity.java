@@ -64,7 +64,7 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
     RequestQueue mRequestQueue;
     ImageView loan_approvals;
     String str_a, str_user_role, str_my_name, str_group_name;
-    String my_loan_requests = BASE_URL + "my_loan_requests.php";
+    String my_loan_requests = BASE_URL + "my_loan_repayments.php";
     String loan_response = BASE_URL + "loan_response.php";
 
     @Override
@@ -82,7 +82,7 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BookWriterRepaymentDashboard.class);
                 startActivity(intent);
             }
         });
@@ -330,7 +330,7 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         finish();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), BookWriterRepaymentDashboard.class);
         startActivity(intent);
     }
 

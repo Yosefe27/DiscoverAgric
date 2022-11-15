@@ -2,6 +2,7 @@ package com.bluecode.weledger;
 
 import static com.bluecode.weledger.Constants.BASE_URL;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,7 +42,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.MembersAdapter;
+import com.bluecode.weledger.adapters.NewLoanRequestAdapter;
 import com.bluecode.weledger.models.Members;
+import com.bluecode.weledger.models.NewLoanRequestModel;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -48,29 +52,37 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NewLoanRepaymentActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount;
-    TextView select_member,post_loan_repayments,selected_member;
+    EditText amount,member_id,loan_balance;
+    TextView select_member,post_loan_repayment,loan_date;
     String submit_saving_url=BASE_URL+"submit_loan_repayment.php";
-    String str_a, members_list = BASE_URL + "list_of_group_members.php";
-    MembersAdapter membersAdapter;
+    String str_a, members_list = BASE_URL + "loan_member_request_dialog.php";
+    NewLoanRequestAdapter membersAdapter;
     RequestQueue mRequestQueue;
-    ArrayList<Members> listMembers = new ArrayList<>();
+    ArrayList<NewLoanRequestModel> listMembers = new ArrayList<NewLoanRequestModel>();
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_loan_repayment);
+
         amount = findViewById(R.id.amount);
-        post_loan_repayments = findViewById(R.id.post_loan_repayment);
+        loan_date = findViewById(R.id.date_picker_actions);
+        select_member = findViewById(R.id.select_member);
+        member_id = findViewById(R.id.member_id);
+        member_id.setEnabled(false);
+        loan_balance = findViewById(R.id.current_loan);
+        loan_balance.setEnabled(false);
+        post_loan_repayment = findViewById(R.id.post_loan_repayment);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Loan Repayment Details");
-        toolbar.setSubtitle("Post Member Loan Repayment");
+        toolbar.setSubtitle("Loan Repayment");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +90,26 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
                 finish();
                 Intent intent = new Intent(getApplicationContext(), BookWriterRepaymentDashboard.class);
                 startActivity(intent);
+            }
+        });
+
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        loan_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = new DatePickerDialog(NewLoanRepaymentActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        month = month+1;
+                        String date = year+"/"+month+"/"+dayOfMonth;
+                        loan_date.setText(date);
+                    }
+                },year, month,day);
+                dialog.show();
             }
         });
 
@@ -91,29 +123,49 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
             errorDialog("Please Check Your Internet Connection");
 
         }
-
-        post_loan_repayments.setOnClickListener(new View.OnClickListener() {
+        select_member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                membersDisplayDialog();
+            }
+        });
+        post_loan_repayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str_amount = amount.getText().toString();
+                String str_select_member = select_member.getText().toString();
+                String str_contribution_date = loan_date.getText().toString();
+                String str_member_id = member_id.getText().toString();
+                String str_group = preferences.getString("group_id", "");
                 if(amount.getText().toString().isEmpty()){
                     errorDialog("Amount should not be empty.");
                 }
+                else if(select_member.getText().toString().isEmpty()){
+                    errorDialog("Member Name should not be empty.");
+                }
                 else{
-                    startSubmission(str_amount);
+                    startSubmission(str_amount,
+                            str_select_member,
+                            str_member_id,
+                            str_contribution_date,
+                            str_group);
                 }
             }
         });
     }
-    private void startSubmission(final String amount){
+    private void startSubmission(final String amount,String select_member,String member_id,String contribution_date,String group_id){
+        //        signin_progress.setVisibility(View.VISIBLE);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String str_a = preferences.getString("a", "");
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog, viewGroup, false);
 
+
+        //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
         //finally creating the alert dialog and displaying it
         final AlertDialog reportsAlert = builder.create();
@@ -158,6 +210,10 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("amount", amount);
+                parms.put("contributor_id", member_id);
+                parms.put("full_name", select_member);
+                parms.put("loan_date",contribution_date);
+                parms.put("group_id", group_id);
                 parms.put("a", str_a);
                 return parms;
             }
@@ -194,27 +250,32 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, members_list, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+//                Toast.makeText(getApplicationContext(),"Response : "+response,Toast.LENGTH_SHORT).show();
+//                textView.setText(response.toString());
                 Log.v("transactions_response", response);
                 try {
                     JSONObject object = new JSONObject(response);
-                    JSONArray array = object.getJSONArray("group_members");
+//                    str_my_name = object.getString("full_name");
+//                    str_user_role = object.getString("user_role");
+//                    str_group_name = object.getString("group_name");
+                    JSONArray array = object.getJSONArray("members_list");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject stackObject = array.getJSONObject(i);
+//                        JSONObject stackObject2 = array2.getJSONObject(i);
 
-                        Members members = new Members(
-                                stackObject.getString(Constants.GROUP_NAME),
-                                stackObject.getString(Constants.GROUP_ID),
-                                stackObject.getString(Constants.USER_FIRST_NAME),
-                                stackObject.getString(Constants.USER_LAST_NAME),
-                                stackObject.getString(Constants.USER_NAME),
-                                stackObject.getString(Constants.USER_PASSWORD),
-                                stackObject.getString(Constants.USER_ADMISSION_DATE),
-                                stackObject.getString(Constants.USER_GENDER),
-                                stackObject.getString(Constants.ECAP_ID),
-                                stackObject.getString(Constants.USER_PHONE),
-                                stackObject.getString(Constants.USER_ROLE),
-                                stackObject.getString(Constants.CAREGIVER_STATUS),
-                                stackObject.getString(Constants.USER_ID)
+                        // textView.setText(object1.toString());
+                        NewLoanRequestModel members = new NewLoanRequestModel(
+                                stackObject.getString("full_name"),
+                                stackObject.getString("id"),
+                                stackObject.getString("gender"),
+                                stackObject.getString("admission_date"),
+                                stackObject.getString("group_name"),
+                                stackObject.getString("total_contribution"),
+                                stackObject.getString("social_fund"),
+                                stackObject.getString("fines_due"),
+                                stackObject.getString("loan_balance"),
+                                stackObject.getString("interest_rate")
+
                         );
                         listMembers.add(members);
                     }
@@ -281,25 +342,22 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
         members_recyclerview.setHasFixedSize(true);
         members_recyclerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         members_recyclerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-        membersAdapter = new MembersAdapter(getBaseContext(), listMembers);
+        membersAdapter = new NewLoanRequestAdapter(getBaseContext(), listMembers);
         members_recyclerview.setAdapter(membersAdapter);
         membersAdapter.setClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int position = members_recyclerview.getChildLayoutPosition(view);
-                Members members = listMembers.get(position);
-                select_member.setText(String.valueOf(members.getFirstname()+" "+members.getLastname()));
+                NewLoanRequestModel members = listMembers.get(position);
+                select_member.setText(String.valueOf(members.getMember_name()));
+                member_id.setText(String.valueOf(members.getMember_id()));;
+                loan_balance.setText(String.valueOf(members.getLoan_due()));
 
                 reportsAlert.dismiss();
             }
 
 
         });
-
-
-
-
-
     }
     public void errorDialog(String error_text) {
 
@@ -346,7 +404,12 @@ public class NewLoanRepaymentActivity extends AppCompatActivity {
             }
         });
 
-
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        Intent intent = new Intent(getApplicationContext(), BookWriterRepaymentDashboard.class);
+        startActivity(intent);
     }
 
 }

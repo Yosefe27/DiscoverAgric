@@ -361,27 +361,11 @@ public class NewLoanRequestActivity extends AppCompatActivity {
                 loan_balance.setText(String.valueOf(members.getLoan_due()));
                 interest_rate.setText(String.valueOf(members.getInterest_rate()));
 
-//                                Intent intent = new Intent(getApplicationContext(), MembersDetailsActivity.class);
-//                                intent.putExtra("intent_full_name", members.getFirstname() + " " + members.getLastname());
-//                                intent.putExtra("intent_email", members.getEmail());
-//                                intent.putExtra("intent_nrc", members.getNrc());
-//                                intent.putExtra("intent_address", members.getAddress());
-//                                intent.putExtra("intent_group_id", members.getGroup_id());
-//                                intent.putExtra("intent_chairperson_approval", members.getChairperson_approval());
-//                                intent.putExtra("intent_treasurer_approval", members.getTreasurer_approval());
-//                                intent.putExtra("intent_secretary_approval", members.getSecretary_approval());
-//                                startActivity(intent);
                 reportsAlert.dismiss();
             }
 
 
         });
-//                        reportsAlert.dismiss();
-
-
-
-
-
     }
     public void errorDialog(String error_text) {
 
