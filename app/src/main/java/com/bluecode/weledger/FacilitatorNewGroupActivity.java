@@ -56,7 +56,8 @@ import java.util.Random;
 public class FacilitatorNewGroupActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    EditText group_name,group_id,interest_rate,cycle_number,first_training_meeting_date,date_savings_started,reinvested_savings_cycle_start;
+    EditText group_name,group_id,interest_rate,cycle_number,reinvested_savings_cycle_start;
+    TextView first_training_meeting_date,date_savings_started;
     EditText registered_members_cycle_start,group_management;
     Spinner group_management_spinner;
     List<String> group_mgt_items;
@@ -95,8 +96,6 @@ public class FacilitatorNewGroupActivity extends AppCompatActivity {
         supervised = (RadioButton) findViewById(R.id.supervised);
         self_managed = (RadioButton) findViewById(R.id.self_managed);
         spontaneous = (RadioButton) findViewById(R.id.spontaneous);
-
-
 
 
         final Calendar calendar = Calendar.getInstance();

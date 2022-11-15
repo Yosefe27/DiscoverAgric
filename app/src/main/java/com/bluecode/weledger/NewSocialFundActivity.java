@@ -55,8 +55,8 @@ import java.util.HashMap;
 import java.util.Map;
 public class NewSocialFundActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount,contribution_date;
-    TextView select_member,post_member_saving,select_ID;
+    EditText amount;
+    TextView select_member,post_member_saving,select_ID,contribution_date;
     String submit_saving_url=BASE_URL+"submit_social_fund.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
     String membership_response = BASE_URL + "membership_response.php";
@@ -423,5 +423,10 @@ public class NewSocialFundActivity extends AppCompatActivity {
 
 
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), BookWriterSocialDashboard.class);
+        startActivity(intent);
+        finish();
+    }
 }
