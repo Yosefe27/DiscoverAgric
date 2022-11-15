@@ -44,8 +44,8 @@ import java.util.Map;
 public class NewMemberActivity extends AppCompatActivity {
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    TextView save_member_details,groupName;
-    EditText firstName,lastName,userName,passWord,admissionDate,group_id,ecap_hh_ID,phoneNumber,userRole,singleFSW;
+    TextView save_member_details,groupName,admissionDate;
+    EditText firstName,lastName,userName,passWord,group_id,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
 

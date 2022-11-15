@@ -57,8 +57,8 @@ import java.util.Map;
 
 public class PostFineActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount,contribution_date;
-    TextView select_member,post_member_saving,select_ID,fine_reason;
+    EditText amount;
+    TextView select_member,post_member_saving,select_ID,fine_reason,contribution_date;
     String submit_saving_url=BASE_URL+"post_fine.php";
     String str_a, members_list = BASE_URL + "list_of_group_members.php";
     String membership_response = BASE_URL + "membership_response.php";

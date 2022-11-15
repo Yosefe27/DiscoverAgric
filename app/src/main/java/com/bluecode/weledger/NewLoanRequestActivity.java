@@ -57,8 +57,8 @@ import java.util.Map;
 
 public class NewLoanRequestActivity extends AppCompatActivity {
     Toolbar toolbar;
-    EditText amount,loan_date,member_id,current_balance,loan_balance;
-    TextView select_member,post_loan_request;
+    EditText amount,member_id,current_balance,loan_balance;
+    TextView select_member,post_loan_request,loan_date;
     String submit_saving_url=BASE_URL+"submit_loan.php";
     String str_a, members_list = BASE_URL + "loan_member_request_dialog.php";
     NewLoanRequestAdapter membersAdapter;
