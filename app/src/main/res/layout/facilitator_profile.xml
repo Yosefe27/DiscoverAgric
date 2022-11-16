@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -26,13 +26,6 @@
 
     </LinearLayout>
 
-    <include
-        android:layout_gravity="center"
-        layout="@layout/item_facilitator_image"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_width="match_parent" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,6 +35,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <include layout="@layout/item_facilitator_image"/>
             <include layout="@layout/item_group_details"/>
             <include layout="@layout/item_total_members"/>
             <include layout="@layout/item_total_contribution"/>
@@ -51,4 +45,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>
