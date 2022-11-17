@@ -207,7 +207,7 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
+                        Intent intent = new Intent(getApplicationContext(), MembersActivity.class);
                         startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();

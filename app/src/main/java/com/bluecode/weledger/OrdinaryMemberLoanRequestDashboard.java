@@ -23,9 +23,6 @@ import java.util.List;
 
 public class OrdinaryMemberLoanRequestDashboard extends AppCompatActivity {
     Toolbar toolbar;
-    LinearLayout my_savings_option,group_savings_option,add_savings,edit_savings;
-    String group_name;
-    String group_id;
     ArrayList<DefaultDashboardModel> models = new ArrayList<>();
     RecyclerView recyclerView;
     DefaultDashboardAdapter defaultDashboardAdapter;
@@ -38,15 +35,6 @@ public class OrdinaryMemberLoanRequestDashboard extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("Savings");
         toolbar.setSubtitle("Savings Options");
-        Bundle bundle = getIntent().getExtras();
-
-        try {
-            group_name = bundle.getString(Constants.GROUP_NAME,"Default");
-            group_id = bundle.getString(Constants.GROUP_ID,"Default");
-        }catch (Exception e){
-
-            Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
-        }
 
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -71,14 +59,14 @@ public class OrdinaryMemberLoanRequestDashboard extends AppCompatActivity {
 
                 switch (card) {
                     case "My Loan":
-//                        finish();
-//                        Intent myLoan = new Intent(getApplicationContext(), OrdinaryMemberLoanRequestDashboard.class);
-//                        startActivity(myLoan );
+                        Intent myLoan = new Intent(getApplicationContext(), OrdinaryMemberMyLoanActivity.class);
+                        startActivity(myLoan );
+                        finish();
                         break;
                     case "Group Loan":
-//                        finish();
-//                        Intent groupSavings = new Intent(getApplicationContext(), BookWriterGroupLoansActivity.class);
-//                        startActivity(groupSavings);
+                        Intent groupSavings = new Intent(getApplicationContext(), OrdinaryMemberMyGroupLoanActivity.class);
+                        startActivity(groupSavings);
+                        finish();
                         break;
                     default:
                         break;
@@ -119,10 +107,6 @@ public class OrdinaryMemberLoanRequestDashboard extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.GROUP_NAME, group_name);
-        bundle.putString(Constants.GROUP_ID,group_id);
-        intent.putExtras(bundle);
         startActivity(intent);
         finish();
     }
