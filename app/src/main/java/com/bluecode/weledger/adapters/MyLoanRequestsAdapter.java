@@ -71,16 +71,7 @@ public class MyLoanRequestsAdapter extends RecyclerView.Adapter<MyLoanRequestsAd
             secretary_approval_img = itemView.findViewById(R.id.secretary_approval_img);
             loan_details = itemView.findViewById(R.id.loan_details);
 
-        }//ends public viewholder
-
-       /* void bind(final LoanRequests transactions) {
-            initials.setText(transactions.getInitials());
-            fullname.setText(transactions.getFullname());
-            transaction_type_date.setText(transactions.getTransaction_type());
-            amount.setText(transactions.getTransaction_amount());
-//
-//
-        }*/
+        }
     }
 
     @Override

@@ -55,9 +55,9 @@ public class BookWriterRepaymentDashboard extends AppCompatActivity {
                         startActivity(mySavings );
                         break;
                     case "Group Repayments":
-//                        finish();
-//                        Intent groupSavings = new Intent(getApplicationContext(), BookwriterGroupRepaymentsActivity.class);
-//                        startActivity(groupSavings);
+                        finish();
+                        Intent groupSavings = new Intent(getApplicationContext(), BookWriterGroupLoanRepaymentActivity.class);
+                        startActivity(groupSavings);
                         break;
                     case "Add Repayments":
                         finish();

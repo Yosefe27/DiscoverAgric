@@ -42,7 +42,9 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bluecode.weledger.adapters.LoanRepaymentAdapter;
 import com.bluecode.weledger.adapters.MyLoanRequestsAdapter;
+import com.bluecode.weledger.models.LoanRepaymentModel;
 import com.bluecode.weledger.models.LoanRequests;
 import com.bluecode.weledger.utils.Connectivity;
 
@@ -56,16 +58,17 @@ import java.util.Map;
 
 public class BookwriterRepaymentsActivity extends AppCompatActivity {
     RecyclerView loan_requests_recylerview;
-    ArrayList<LoanRequests> listLoanRequests = new ArrayList<>();
-    MyLoanRequestsAdapter myLoanRequestAdapter;
+    ArrayList<LoanRepaymentModel> listLoanRequests = new ArrayList<>();
+    LoanRepaymentAdapter myLoanRequestAdapter;
     DatePickerDialog picker;
     Context context;
     Toolbar toolbar;
     RequestQueue mRequestQueue;
     ImageView loan_approvals;
     String str_a, str_user_role, str_my_name, str_group_name;
-    String my_loan_requests = BASE_URL + "my_loan_repayments.php";
+    String my_loan_requests = BASE_URL + "loan_repayment.php";
     String loan_response = BASE_URL + "loan_response.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +77,13 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
         loan_requests_recylerview = findViewById(R.id.loan_requests_recylerview);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Loan Repayments");
-        toolbar.setSubtitle("Loan Repayments");
+        toolbar.setTitle("Loan Requests");
+        toolbar.setSubtitle("My Loan Requests");
         toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                 Intent intent = new Intent(getApplicationContext(), BookWriterRepaymentDashboard.class);
@@ -192,17 +196,14 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
 //                        JSONObject stackObject2 = array2.getJSONObject(i);
 
                         // textView.setText(object1.toString());
-                        LoanRequests loanRequests = new LoanRequests(
+                        LoanRepaymentModel loanRequests = new LoanRepaymentModel(
                                 stackObject.getString("id"),
+                                stackObject.getString("loan_id"),
                                 stackObject.getString("amount"),
-                                stackObject.getString("interest_rate"),
-                                stackObject.getString("interest_amount"),
-                                stackObject.getString("total_amount_due"),
                                 stackObject.getString("contributor_id"),
-                                stackObject.getString("full_name"),
                                 stackObject.getString("group_id"),
                                 stackObject.getString("date_created"),
-                                stackObject.getString("loan_date")
+                                stackObject.getString("full_name")
 
                         );
                         listLoanRequests.add(loanRequests);
@@ -216,13 +217,13 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
                         loan_requests_recylerview.setHasFixedSize(true);
                         loan_requests_recylerview.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                         loan_requests_recylerview.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.HORIZONTAL));
-                        myLoanRequestAdapter = new MyLoanRequestsAdapter(getBaseContext(), listLoanRequests);
+                        myLoanRequestAdapter = new LoanRepaymentAdapter(getBaseContext(), listLoanRequests);
                         loan_requests_recylerview.setAdapter(myLoanRequestAdapter);
                         myLoanRequestAdapter.setClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 int position = loan_requests_recylerview.getChildLayoutPosition(view);
-                                LoanRequests currentLoanRequests = listLoanRequests.get(position);
+                           //     LoanRequests currentLoanRequests = listLoanRequests.get(position);
 
 
                             }
@@ -306,24 +307,6 @@ public class BookwriterRepaymentsActivity extends AppCompatActivity {
         };
         stringRequest.setShouldCache(false);
         mRequestQueue.add(stringRequest);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_stuff, menu);
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_add) {
-
-            Intent intent = new Intent(getApplicationContext(), LoanRepaymentActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
