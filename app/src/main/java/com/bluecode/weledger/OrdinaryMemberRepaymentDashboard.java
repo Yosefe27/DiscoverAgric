@@ -23,7 +23,6 @@ import java.util.List;
 
 public class OrdinaryMemberRepaymentDashboard extends AppCompatActivity {
     Toolbar toolbar;
-    LinearLayout my_savings_option,group_savings_option,add_savings,edit_savings;
     String group_name;
     String group_id;
     ArrayList<DefaultDashboardModel> models = new ArrayList<>();
@@ -72,14 +71,14 @@ public class OrdinaryMemberRepaymentDashboard extends AppCompatActivity {
 
                 switch (card) {
                     case "My Repayments":
-//                        finish();
-//                        Intent mySavings = new Intent(getApplicationContext(), BookwriterRepaymentsActivity.class);
-//                        startActivity(mySavings );
+                        finish();
+                        Intent mySavings = new Intent(getApplicationContext(), OrdinaryMemberLoanRepaymentsActivity.class);
+                        startActivity(mySavings );
                         break;
                     case "Group Repayments":
-//                        finish();
-//                        Intent groupSavings = new Intent(getApplicationContext(), BookwriterGroupRepaymentsActivity.class);
-//                        startActivity(groupSavings);
+                        finish();
+                        Intent groupSavings = new Intent(getApplicationContext(), OrdinaryMemberGroupLoanRepaymentsActivity.class);
+                        startActivity(groupSavings);
                         break;
                     default:
                         break;

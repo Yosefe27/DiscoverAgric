@@ -27,6 +27,7 @@ import com.bluecode.weledger.adapters.MainActivityAdapter;
 import com.bluecode.weledger.models.MainActivityModel;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     NavigationView navigationView;
     BottomNavigationView bottomNavigationView;
-    Button btn_profile;
+    FloatingActionButton btn_profile;
     String group_name;
     String group_id;
     String user_name;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        btn_profile = findViewById(R.id.btn_profile);
+        btn_profile = findViewById(R.id.btn_profile);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -65,18 +66,18 @@ public class MainActivity extends AppCompatActivity {
         models = (ArrayList<MainActivityModel>) getData();
         mainActivityAdapter = new MainActivityAdapter(models,getBaseContext());
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this,2);
-//        btn_profile.setOnClickListener(V ->{
-//            if(str_user_role.equals("Facilitator")){
-//                Intent intent = new Intent(getApplicationContext(), FacilitatorProfileActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//            else {
-//                Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        btn_profile.setOnClickListener(V ->{
+            if(str_user_role.equals("Facilitator")){
+                Intent intent = new Intent(getApplicationContext(), FacilitatorProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         mainActivityAdapter.setClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
