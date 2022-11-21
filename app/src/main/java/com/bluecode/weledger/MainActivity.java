@@ -144,12 +144,12 @@ public class MainActivity extends AppCompatActivity {
                        finish();
                        break;
                    case 10:
-                       Intent groupLoan = new Intent(getBaseContext(), FacilitatorGroupLoans.class);
+                       Intent groupLoan = new Intent(getBaseContext(), ViewLoanFacilitatorActivity.class);
                        startActivity(groupLoan);
                        finish();
                        break;
                    case 11:
-                       Intent groupRepayments = new Intent(getBaseContext(), FacilitatorGroupRepayments.class);
+                       Intent groupRepayments = new Intent(getBaseContext(), ViewRepaymentFacilitatorActivity.class);
                        startActivity(groupRepayments);
                        finish();
                        break;
