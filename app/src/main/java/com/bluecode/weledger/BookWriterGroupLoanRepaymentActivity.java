@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bluecode.weledger.adapters.LoanRepaymentAdapter;
 import com.bluecode.weledger.models.LoanRepaymentModel;
+import com.bluecode.weledger.models.MainActivityModel;
 import com.bluecode.weledger.utils.Connectivity;
 
 import org.json.JSONArray;
@@ -57,11 +59,9 @@ public class BookWriterGroupLoanRepaymentActivity extends AppCompatActivity {
     RecyclerView loan_requests_recylerview;
     ArrayList<LoanRepaymentModel> listLoanRequests = new ArrayList<>();
     LoanRepaymentAdapter myLoanRequestAdapter;
-    DatePickerDialog picker;
     Context context;
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    ImageView loan_approvals;
     String str_a, str_user_role, str_my_name, str_group_name;
     String my_loan_requests = BASE_URL + "loan_repayment_group.php";
     String loan_response = BASE_URL + "loan_response.php";
@@ -220,7 +220,8 @@ public class BookWriterGroupLoanRepaymentActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 int position = loan_requests_recylerview.getChildLayoutPosition(view);
-                                //     LoanRequests currentLoanRequests = listLoanRequests.get(position);
+                                LoanRepaymentModel loanRepaymentModel = listLoanRequests.get(position);
+
 
 
                             }
