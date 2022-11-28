@@ -1,14 +1,19 @@
 package com.bluecode.weledger.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bluecode.weledger.BookWriterGroupLoanRepaymentActivity;
+import com.bluecode.weledger.BookWriterLoanRepaymentEdit;
 import com.bluecode.weledger.R;
 import com.bluecode.weledger.models.LoanRepaymentModel;
 import com.bluecode.weledger.models.LoanRequests;
@@ -18,13 +23,13 @@ import java.util.List;
 
 public class LoanRepaymentAdapter extends RecyclerView.Adapter<LoanRepaymentAdapter.ViewHolder> {
     ArrayList<LoanRepaymentModel> listLoanRequests;
-    private Context mContext;
+    private Context context;
     View.OnClickListener clickListener;
 
 
     //constructor
     public LoanRepaymentAdapter(Context context, ArrayList<LoanRepaymentModel> listLoanRequests) {
-        this.mContext = context;
+        this.context = context;
         this.listLoanRequests = listLoanRequests;
 
 
@@ -35,7 +40,7 @@ public class LoanRepaymentAdapter extends RecyclerView.Adapter<LoanRepaymentAdap
     @NonNull
     @Override
     public LoanRepaymentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.list_item_loan_repayment, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_item_loan_repayment, parent, false);
         LoanRepaymentAdapter.ViewHolder bind = new LoanRepaymentAdapter.ViewHolder(view);
         return bind;
 
@@ -43,10 +48,25 @@ public class LoanRepaymentAdapter extends RecyclerView.Adapter<LoanRepaymentAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LoanRepaymentAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final  LoanRepaymentModel loanRepaymentModel = listLoanRequests.get(position);
-        holder.amount.setText(loanRepaymentModel.getFull_name()+" made repayment of K"+loanRepaymentModel.getAmount());
+        holder.amount.setText(loanRepaymentModel.getFull_name()+"\n"+" Repayment of K"+loanRepaymentModel.getAmount());
         holder.date_created.setText("On: "+loanRepaymentModel.getDate_created()+" ID: "+loanRepaymentModel.getId());
+
+        holder.edit_loan.setOnClickListener(v -> {
+
+            Intent i = new Intent(context, BookWriterLoanRepaymentEdit.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra("tran_amount",loanRepaymentModel.getAmount());
+            i.putExtra("tran_month", loanRepaymentModel.getDate_created());
+            i.putExtra("contributor_id",loanRepaymentModel.getContributor_id());
+            i.putExtra("full_name",loanRepaymentModel.getFull_name());
+
+            context.startActivity(i);
+
+
+        });
+
     }
 
     @Override
@@ -55,11 +75,12 @@ public class LoanRepaymentAdapter extends RecyclerView.Adapter<LoanRepaymentAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView amount, date_created;
+        TextView amount, date_created, edit_loan;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             amount = itemView.findViewById(R.id.amount);
             date_created = itemView.findViewById(R.id.date_created);
+            edit_loan = itemView.findViewById(R.id.btn_loan_edit);
         }
     }
 }

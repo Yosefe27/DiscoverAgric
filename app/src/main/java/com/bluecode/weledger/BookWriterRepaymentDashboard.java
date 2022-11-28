@@ -64,9 +64,7 @@ public class BookWriterRepaymentDashboard extends AppCompatActivity {
                         Intent addSavings = new Intent(getApplicationContext(), NewLoanRepaymentActivity.class);
                         startActivity(addSavings);
                         break;
-                    case "Edit Repayments":
-                        Toast.makeText(getApplicationContext(), "Work In Progress.", Toast.LENGTH_SHORT).show();
-                        break;
+
 
                 }
 
@@ -101,7 +99,6 @@ public class BookWriterRepaymentDashboard extends AppCompatActivity {
         mainModel.add(new DefaultDashboardModel("My Repayments",R.drawable.ic_saving,"My Repayments"));
         mainModel.add(new DefaultDashboardModel("Group Repayments",R.drawable.ic_group_saving,"Group Repayments"));
         mainModel.add(new DefaultDashboardModel("Add Repayments",R.drawable.ic_money,"Add Repayments"));
-        mainModel.add(new DefaultDashboardModel("Edit Repayments",R.drawable.ic_add_pay,"Edit Repayments"));
         return mainModel;
     }
     @Override
