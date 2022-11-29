@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                        finish();
                        break;
                    case 12:
-                       Intent groupFines = new Intent(getBaseContext(), FacilitatorGroupFines.class);
+                       Intent groupFines = new Intent(getBaseContext(), ViewFinesFacilitatorActivity.class);
                        startActivity(groupFines);
                        finish();
                        break;
@@ -164,7 +164,9 @@ public class MainActivity extends AppCompatActivity {
                        Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
                        break;
                    case 14:
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                       Intent groupSocial = new Intent(getBaseContext(), ViewSocialFundFacilitatorActivity.class);
+                       startActivity(groupSocial);
+                       finish();
                        break;
                    case 15:
                        finish();
