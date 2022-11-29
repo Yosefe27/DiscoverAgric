@@ -44,7 +44,7 @@ public class BookWriterLoanRepaymentEdit extends AppCompatActivity {
     RequestQueue mRequestQueue;
     TextView save_member_details;
     EditText tran_amount,tran_month,contributor_id,full_name;
-    String submit_member_url = BASE_URL + "update_savings.php";
+    String submit_member_url = BASE_URL + "update_repayment.php";
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
