@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.bluecode.weledger.adapters.DefaultDashboardAdapter;
 import com.bluecode.weledger.models.DefaultDashboardModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,22 @@ public class BookWriterMemberRegisterDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_writer_member_register_dashboard);
+        FloatingActionButton btn_profile = findViewById(R.id.btn_profile);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String str_user_role = preferences.getString("user_role", "");
+        btn_profile.setOnClickListener(V ->{
+            if(str_user_role.equals("Facilitator")){
+                Intent intent = new Intent(getApplicationContext(), FacilitatorProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Savings");
