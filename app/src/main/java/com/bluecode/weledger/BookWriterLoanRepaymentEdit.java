@@ -91,7 +91,6 @@ public class BookWriterLoanRepaymentEdit extends AppCompatActivity {
                 }
                 else startSubmission(
                         str_tran_amount,
-                        str_full_name,
                         str_contributor_id,
                         str_tran_month
 
@@ -102,7 +101,6 @@ public class BookWriterLoanRepaymentEdit extends AppCompatActivity {
     }
     private void startSubmission(
             final String tran_amount,
-            final String full_name,
             final String contributor_id,
             final String tran_month
 
@@ -134,7 +132,7 @@ public class BookWriterLoanRepaymentEdit extends AppCompatActivity {
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
                         finish();
-                        Intent intent = new Intent(getApplicationContext(), BookWriterGroupLoanRepaymentActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), BookwriterRepaymentsActivity.class);
                         startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
@@ -154,7 +152,6 @@ public class BookWriterLoanRepaymentEdit extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> parms = new HashMap<String, String>();
                 parms.put("amount", tran_amount);
-                parms.put("full_name", full_name);
                 parms.put("contributor_id",contributor_id);
                 parms.put("date_created",tran_month);
 
