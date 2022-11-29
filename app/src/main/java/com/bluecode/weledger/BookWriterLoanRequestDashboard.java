@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.bluecode.weledger.adapters.DefaultDashboardAdapter;
 import com.bluecode.weledger.models.DefaultDashboardModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,10 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_request_dashboard);
+        FloatingActionButton btn_profile = findViewById(R.id.btn_profile);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String str_user_role = preferences.getString("user_role", "");
+
 //        toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //        toolbar.setTitle("Savings");
@@ -47,15 +54,18 @@ public class BookWriterLoanRequestDashboard extends AppCompatActivity {
             Log.e("Error","Attempt to invoke virtual method 'java.lang.String android.os.Bundle.getString(java.lang.String, java.lang.String)' on a null object reference ");
         }
 
-//        toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        btn_profile.setOnClickListener(V ->{
+            if(str_user_role.equals("Facilitator")){
+                Intent intent = new Intent(getApplicationContext(), FacilitatorProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Intent intent = new Intent(getApplicationContext(), MemberProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         recyclerView = findViewById(R.id.mainRecycler);
         models = (ArrayList<DefaultDashboardModel>) getData();
