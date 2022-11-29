@@ -5,7 +5,7 @@ package com.bluecode.weledger;
 
 public final class Constants {
 
-    public static final String BASE_URL = "https://microlinksolutionsltd.com/apis/";
+    public static final String BASE_URL = "https://microlinksolutionsltd.com/old_data/apis/";
     public static final String MIXPANEL_TOKEN = "test";
 
     public static final String GROUP_NAME = "group_name";
