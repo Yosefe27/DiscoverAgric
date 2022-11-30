@@ -105,13 +105,13 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.SingleVi
 
         holder.member_role.setSelected(true);
         if(currentMembers.getUser_role().equals("Facilitator")){
-            holder.member_role.setText("Facilitator");
+            holder.member_role.setText("Member");
         }
         else if(currentMembers.getUser_role().equals("Book Writer")) {
-            holder.member_role.setText("Book Writer");
+            holder.member_role.setText("Member");
         }
         else {
-            holder.member_role.setText("Ordinary Member");
+            holder.member_role.setText("Member");
         }
         String img_name = currentMembers.getNrc().replace("/", "");
 
