@@ -185,6 +185,9 @@ public class NewPaymentActivity extends AppCompatActivity {
 
                         reportsAlert.dismiss();
                         errorDialog(object.getString("msg"));
+                        finish();
+                        Intent intent = new Intent(getApplicationContext(), MyGroupTransactionsHistoryActivity.class);
+                        startActivity(intent);
                     } else if (object.getString("status").equals("failed")) {
                         reportsAlert.dismiss();
 //                        signin_progress.setVisibility(View.GONE);
