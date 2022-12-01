@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,13 +43,16 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BookwriterNewMemberActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     RequestQueue mRequestQueue;
-    TextView save_member_details,groupName,groupID,admissionDate;
-    EditText firstName,lastName,userName,passWord,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
+    Button save_member_details;
+    TextView groupName,groupID,admissionDate;
+    EditText firstName,lastName,userName,passWord,user_password2,gender,ecap_hh_ID,phoneNumber,userRole,singleFSW;
     Spinner spinner_singleFSW,spinner_gender,spinner_userRole;
     String submit_member_url=BASE_URL+"submit_member.php";
     String str_group_name;
@@ -66,6 +72,7 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         lastName = findViewById(R.id.last_name);
         userName = findViewById(R.id.user_name);
         passWord = findViewById(R.id.user_password);
+        user_password2 = findViewById(R.id.user_password2);
         groupName = findViewById(R.id.group_name);
         groupID = findViewById(R.id.group_id);
         admissionDate = findViewById(R.id.admission_date);
@@ -109,6 +116,31 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+        phoneNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(validatePhone(phoneNumber.getText().toString())){
+                    save_member_details.setEnabled(true);
+                }
+                else{
+
+                    phoneNumber.setError("Invalid phone number");
+                    save_member_details.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
@@ -139,16 +171,29 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
 
                 String str_singleFSW = null;
                 if (option_yes.isChecked()) {
-                    str_singleFSW  = option_yes.getText().toString();
+                    str_singleFSW = option_yes.getText().toString();
                 } else if (option_no.isChecked()) {
-                    str_singleFSW  = option_no.getText().toString();
+                    str_singleFSW = option_no.getText().toString();
                 }
 
 
 
-                if(userName.getText().toString().isEmpty()) {
-                    errorDialog("Username Cannot Be Empty");
+                if (userName.getText().toString().isEmpty()) {
+                    userName.setError("Username Cannot Be Empty");
+                } else if (firstName.getText().toString().isEmpty()) {
+                    firstName.setError("First Name Cannot Be Empty");
+                } else if (lastName.getText().toString().isEmpty()) {
+                    lastName.setError("Last Name Cannot Be Empty");
+                } else if (passWord.getText().toString().isEmpty()) {
+                    passWord.setError("Password Cannot Be Empty");
+
+                } else if (!passWord.getText().toString().equals(user_password2.getText().toString())) {
+
+                    user_password2.setError("Password Not Matching");
                 }
+
+
+
                 else startSubmission(
                         str_group_name,
                         str_group_id,
@@ -294,5 +339,10 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), BookWriterAdminDashboard.class);
         startActivity(intent);
         finish();
+    }
+    boolean validatePhone(String input){
+        Pattern pattern = Pattern.compile("((07||09)[5-7][0-9]{7})|s*");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
     }
 }
