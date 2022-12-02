@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -139,8 +140,52 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
 
             }
         });
+            firstName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(validateName(firstName.getText().toString())){
+                    save_member_details.setEnabled(true);
+                }
+                else{
+
+                    firstName.setError("Name cannot take in numbers or special characters");
+                    save_member_details.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        lastName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(validateName(lastName.getText().toString())){
+                    save_member_details.setEnabled(true);
+                }
+                else{
+
+                    lastName.setError("Name cannot take in numbers or  special characters");
+                    save_member_details.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         save_member_details.setOnClickListener(new View.OnClickListener() {
@@ -178,21 +223,42 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
 
 
 
-                if (userName.getText().toString().isEmpty()) {
-                    userName.setError("Username Cannot Be Empty");
-                } else if (firstName.getText().toString().isEmpty()) {
-                    firstName.setError("First Name Cannot Be Empty");
-                } else if (lastName.getText().toString().isEmpty()) {
-                    lastName.setError("Last Name Cannot Be Empty");
-                } else if (passWord.getText().toString().isEmpty()) {
-                    passWord.setError("Password Cannot Be Empty");
-
-                } else if (!passWord.getText().toString().equals(user_password2.getText().toString())) {
-
-                    user_password2.setError("Password Not Matching");
+                if(TextUtils.isEmpty(str_group_name )){
+                    groupName.setError("Group name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_firstName)){
+                    firstName.setError("First name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_lastName)){
+                    lastName.setError("Last name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_userName)){
+                    userName.setError("User name is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_passWord)){
+                    passWord.setError("Set user password");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_admissionDate)){
+                    admissionDate.setError("Admission date is required");
+                    return;
+                }
+                else if(TextUtils.isEmpty(str_gender)){
+                    return;
                 }
 
-
+                else if(TextUtils.isEmpty(str_phoneNumber)){
+                    phoneNumber.setError("Phone number");
+                    return;
+                }
+                else if (!passWord.getText().toString().equals(user_password2.getText().toString())) {
+                    user_password2.setError("Password Not Matching");
+                    return;
+                }
 
                 else startSubmission(
                         str_group_name,
@@ -342,6 +408,11 @@ public class BookwriterNewMemberActivity extends AppCompatActivity {
     }
     boolean validatePhone(String input){
         Pattern pattern = Pattern.compile("((07||09)[5-7][0-9]{7})|s*");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+    }
+    boolean validateName(String input){
+        Pattern pattern = Pattern.compile("[A-Za-z\\s\\.\\-]*");
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }

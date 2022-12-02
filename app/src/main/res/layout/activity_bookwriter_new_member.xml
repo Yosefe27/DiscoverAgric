@@ -326,7 +326,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
-                            android:checked="false"
+                            android:checked="true"
                             android:text="Ordinary Member"
                             android:textSize="20sp"
                              />

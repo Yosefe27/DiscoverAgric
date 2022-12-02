@@ -186,6 +186,7 @@
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp" />
                     <EditText
+                        android:id="@+id/user_password2"
                         style="@style/modifiedEditText"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/ic_edit_bg"
@@ -314,6 +315,15 @@
                         android:layout_height="wrap_content">
 
                         <RadioButton
+                            android:id="@+id/ordinary_member"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:checked="true"
+                            android:text="Ordinary Member"
+                            android:textSize="20sp" />
+                        <RadioButton
                             android:id="@+id/book_writer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -323,18 +333,6 @@
                             android:text="Book Writer"
                             android:textSize="20sp"
                            />
-
-                        <RadioButton
-                            android:id="@+id/ordinary_member"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
-                            android:checked="false"
-                            android:text="Ordinary Member"
-                            android:textSize="20sp" />
-
-
 
                     </RadioGroup>
 
@@ -387,9 +385,9 @@
                 android:minHeight="60dp"
                 app:cardBackgroundColor="#C51162"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="20dp">
+                >
 
-                <TextView
+                <Button
                     android:id="@+id/save_member_details"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -397,8 +395,10 @@
                     android:gravity="center"
                     android:text="Save Member Record"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="#C51162"/>
             </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
     </ScrollView>
