@@ -159,9 +159,10 @@ public class MainActivity extends AppCompatActivity {
                        finish();
                        break;
                    case 13:
-//                        Intent groupLedger = new Intent(context, FacilitatorGroupLoans.class);
-//                        context.startActivity(groupLedger);
-                       Toast.makeText(getBaseContext(),"Work in progress",Toast.LENGTH_SHORT).show();
+                        Intent facilitatorRegister = new Intent(getApplicationContext(),FacilitatorRegisterActivity.class);
+                        startActivity(facilitatorRegister);
+                        finish();
+
                        break;
                    case 14:
                        Intent groupSocial = new Intent(getBaseContext(), ViewSocialFundFacilitatorActivity.class);
