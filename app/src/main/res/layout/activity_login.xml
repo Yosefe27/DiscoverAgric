@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/canvasSV"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,40 +12,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
-        android:background="#ffffff"
+        android:background="#0D4927"
         android:paddingBottom="@dimen/login_bottom_margin">
 
 
         <!-- Top section -->
+
+        <!-- Middle section -->
         <LinearLayout
             android:id="@+id/top_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="-14dp"
             android:orientation="vertical"
             android:paddingTop="@dimen/login_logo_top_padding">
 
             <ImageView
                 android:id="@+id/login_logo"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="175dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="40dp"
                 android:layout_marginTop="70dp"
+                android:layout_marginBottom="40dp"
                 android:layout_weight="1"
-                android:scaleType="fitCenter"
+                android:scaleType="center"
                 android:src="@drawable/we_logo" />
 
-            <ImageView
-                android:id="@+id/login_log"
-                android:layout_width="match_parent"
-                android:layout_height="155dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/coat_of_arms_of_zambia_ecap" />
             <!--            <TextView-->
             <!--                android:id="@+id/login_title_text_view"-->
             <!--                android:layout_width="match_parent"-->
@@ -69,7 +63,6 @@
 
         </LinearLayout>
 
-        <!-- Middle section -->
         <LinearLayout
             android:id="@+id/middle_section"
             android:layout_width="match_parent"
@@ -79,6 +72,17 @@
             android:orientation="vertical"
             android:paddingLeft="@dimen/login_horizontal_margin"
             android:paddingRight="@dimen/login_horizontal_margin">
+
+            <TextView
+                android:id="@+id/sign_up_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:text="Click Here To Sign Up Or Login Below."
+                android:textColor="#FF6D00"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/email"
@@ -128,25 +132,27 @@
                 <CheckBox
                     android:id="@+id/stay_logged_in"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="27dp"
+                    android:layout_alignParentTop="true"
                     android:layout_marginTop="20dp"
                     android:text="Stay Logged In"
                     android:textColor="#FF6D00"
                     android:textSize="16sp" />
 
+
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/btn_login"
-                android:onClick="onClick"
-                android:layout_width="match_parent"
+                android:layout_width="318dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_weight="8"
-                android:background="@drawable/login_button_bg"
-                android:gravity="center"
+                android:background="?attr/colorError"
                 android:ems="10"
+                android:gravity="center"
+                android:onClick="onClick"
                 android:shadowColor="#ffffff"
                 android:shadowDx="0"
                 android:shadowDy="1"
@@ -166,17 +172,14 @@
             android:layout_below="@+id/middle_section"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:paddingTop="30dp" >
+
             <ImageView
-                android:id="@+id/opensrp_logo_image_view"
-                android:layout_width="wrap_content"
-                android:layout_height="180dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:adjustViewBounds="false"
-                android:cropToPadding="false"
-                android:scaleType="centerInside"
-                android:src="@drawable/coat_of_arms"/>
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/farmer1" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

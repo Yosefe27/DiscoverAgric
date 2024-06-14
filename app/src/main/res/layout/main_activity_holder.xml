@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?colorPrimary"
+            app:contentScrim="@color/DiscAgricGreen"
             app:expandedTitleMarginStart="12dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                app:contentScrim="?colorPrimary"
+                app:contentScrim="@color/DiscAgricGreen"
                 app:layout_collapseMode="parallax" />
 
             <View
@@ -34,23 +34,21 @@
                 android:layout_height="80dp"
                 android:layout_gravity="top"
                 android:background="@drawable/scrim_topdown"
-                android:fitsSystemWindows="true"
-                />
+                android:fitsSystemWindows="true" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/scrim" />
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="#0D4927"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-
-
 
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
