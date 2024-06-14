@@ -3,7 +3,7 @@
     android:id="@+id/toolbar_transparent"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="#eb2fc8"
+    android:background="#0D4927"
     android:theme="@style/AppTheme.AppBarOverlay"
     app:popupTheme="@style/AppTheme.PopupOverlay"
     app:subtitleTextColor="@color/white"
