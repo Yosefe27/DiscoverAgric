@@ -16,7 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#e3badb"
+        android:background="@color/DiscAgricTheme"
         android:orientation="vertical">
 
         <TextView
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="0dp"
-            android:background="#eb2fc8"
+            android:background="@color/DiscAgricTheme"
             android:text=" "
             android:textAlignment="textEnd"
             android:textColor="#ffffff"
@@ -32,10 +32,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#e3badb"
+            android:background="@color/DiscAgricTheme"
             android:layout_marginTop="10dp"
             android:text="  GROUP MEMBERS"
-            android:textColor="#0C1C75"
+            android:textColor="#FF9800"
             android:textSize="20dp" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
