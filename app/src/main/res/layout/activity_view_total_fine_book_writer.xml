@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/container_color2"
+        android:background="@color/DiscAgricTheme"
         android:orientation="vertical">
 
         <TextView
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="0dp"
-            android:background="@color/container_color2"
+            android:background="@color/DiscAgricTheme"
             android:text=" "
             android:textAlignment="textEnd"
             android:textColor="#ffffff"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#C51162"
+            android:background="@color/DiscAgricTheme"
             android:layout_marginTop="10dp"
             android:text="SOCIAL FUND FOR GROUP MEMBERS"
             android:textColor="#FCFDFF"
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:textColor="#FF6D00"
+        android:textColor="#FF9800"
         android:gravity="center"
         android:textSize="30sp"
         android:text="No fines added!!!" />

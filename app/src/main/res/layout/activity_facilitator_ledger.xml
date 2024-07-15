@@ -16,17 +16,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#e3badb"
+        android:background="@color/DiscAgricTheme"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:background="#e3badb"
+            android:background="@color/DiscAgricTheme"
             android:layout_marginTop="10dp"
             android:text="  LEDGER"
-            android:textColor="#0C1C75"
+            android:textColor="#FF9800"
             android:textSize="16dp" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView

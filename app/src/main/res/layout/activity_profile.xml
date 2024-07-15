@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/DiscAgricTheme"
         android:gravity="center"
         android:paddingLeft="@dimen/contact_drawable_padding"
         android:paddingTop="@dimen/contact_drawable_padding"

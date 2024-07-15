@@ -336,7 +336,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="@color/button"
+                app:cardBackgroundColor="@color/DiscAgricTheme"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="20dp">
 
@@ -345,6 +345,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
+                    android:background="@color/DiscAgricTheme"
                     android:gravity="center"
                     android:text="Update Member Record"
                     android:textColor="@color/white"

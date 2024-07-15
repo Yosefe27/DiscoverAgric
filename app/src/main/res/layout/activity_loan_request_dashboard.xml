@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?colorPrimary"
+            app:contentScrim="@color/DiscAgricTheme"
             app:expandedTitleMarginStart="12dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -24,9 +24,10 @@
                 android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/DiscAgricTheme"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                app:contentScrim="?colorPrimary"
+                app:contentScrim="@color/DiscAgricTheme"
                 app:layout_collapseMode="parallax" />
 
             <View
@@ -42,10 +43,12 @@
                 android:layout_height="80dp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/scrim" />
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@color/DiscAgricTheme"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 

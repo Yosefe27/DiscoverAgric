@@ -383,7 +383,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="#C51162"
+                app:cardBackgroundColor="@color/DiscAgricTheme"
                 app:cardCornerRadius="15dp"
                 >
 
@@ -396,7 +396,7 @@
                     android:text="Save Member Record"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:background="#C51162"/>
+                    android:background="@color/DiscAgricTheme"/>
             </androidx.cardview.widget.CardView>
 
 

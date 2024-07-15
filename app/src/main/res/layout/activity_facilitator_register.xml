@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:background="#C51162"
+        android:background="@color/DiscAgricTheme"
         android:orientation="vertical">
 
         <TextView

@@ -12,7 +12,7 @@
         android:layout_marginTop="1dp"
         android:fontFamily="@font/poppins_regular"
         android:text=""
-        android:background="#eb2fc8"
+        android:background="@color/DiscAgricTheme"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="17dp" />
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="11dp"
-                android:background="#DA9FE4"
+                android:background="@color/colorAccent"
                 android:scrollbars="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -187,7 +187,7 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/ic_edit_bg_box"
                     android:dropDownWidth="wrap_content"
-                    android:dropDownSelector="@color/colorBottomCardEnd"
+                    android:dropDownSelector="@color/colorAccent"
                     android:entries="@array/gender" />
                 <TextView
                     android:layout_width="match_parent"
@@ -249,7 +249,7 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/ic_edit_bg_box"
                     android:dropDownWidth="wrap_content"
-                    android:dropDownSelector="@color/colorBottomCardEnd"
+                    android:dropDownSelector="@color/colorAccent"
                     android:entries="@array/role_bkwriter" />
 
                 <TextView
@@ -268,7 +268,7 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/ic_edit_bg_box"
                     android:dropDownWidth="wrap_content"
-                    android:dropDownSelector="@color/colorBottomCardEnd"
+                    android:dropDownSelector="@color/colorAccent"
                     android:entries="@array/binary" />
 
 
@@ -285,7 +285,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardBackgroundColor="@color/DiscAgricTheme"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="20dp">
 

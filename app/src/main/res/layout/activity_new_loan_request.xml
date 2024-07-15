@@ -189,7 +189,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="@color/DiscAgricGreen"
+                app:cardBackgroundColor="@color/DiscAgricTheme"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="20dp">
 
@@ -200,7 +200,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="SAVE LOAN REQUEST"
-                    android:textColor="@color/yellow"
+                    android:textColor="@color/app_yellow"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>

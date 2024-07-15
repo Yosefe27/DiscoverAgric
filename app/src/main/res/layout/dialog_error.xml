@@ -26,7 +26,7 @@
                 android:id="@+id/success_image"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:background="@color/DiscAgricGreen"
+                android:background="@color/DiscAgricTheme"
                 android:gravity="center">
 
                 <ImageView
@@ -65,7 +65,7 @@
                 android:elevation="10dp"
                 android:gravity="center_horizontal"
                 android:visibility="visible"
-                app:cardBackgroundColor="@color/DiscAgricGreen"
+                app:cardBackgroundColor="@color/DiscAgricTheme"
                 app:cardCornerRadius="10dp">
 
                 <Button
@@ -134,7 +134,7 @@
                     android:layout_weight="1"
                     android:elevation="7dp"
                     android:gravity="center_horizontal"
-                    app:cardBackgroundColor="#225102"
+                    app:cardBackgroundColor="@color/DiscAgricTheme"
                     app:cardCornerRadius="10dp">
 
                     <Button

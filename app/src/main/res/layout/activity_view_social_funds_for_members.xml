@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#e3badb"
+        android:background="@color/DiscAgricTheme"
         android:orientation="vertical">
 
         <TextView
@@ -23,15 +23,15 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="0dp"
-            android:background="@color/container_color2"
+            android:background="@color/DiscAgricTheme"
             android:text=" "
             android:textAlignment="textEnd"
-            android:textColor="#ffffff"
+            android:textColor="@color/DiscAgricTheme"
             android:textSize="14dp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#e3badb"
+            android:background="@color/DiscAgricTheme"
             android:layout_marginTop="10dp"
             android:text="SOCIAL FUND FOR GROUP MEMBERS"
             android:textColor="#FCFDFF"
