@@ -46,7 +46,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#0D4927"
+                android:background="@color/DiscAgricGreen"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -68,7 +68,7 @@
         android:layout_margin="15dp"
         android:clickable="true"
         android:src="@drawable/ic_user"
-        app:backgroundTint="#ffff"
+        app:backgroundTint="@color/DiscAgricTheme"
         app:fabSize="normal"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"/>

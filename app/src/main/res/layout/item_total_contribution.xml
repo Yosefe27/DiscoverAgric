@@ -41,7 +41,7 @@
             <ImageView
                 android:padding="2dp"
                 android:layout_marginStart="10dp"
-                android:src="@drawable/ic_info"
+                android:src="@drawable/members_icon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"/>
             <LinearLayout
@@ -51,7 +51,7 @@
                 <TextView
                     android:text="Contribution"
                     android:textSize="17sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/DiscAgricTheme"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:text="Total Contribution"
                     android:textAlignment="textStart"
-                    android:textColor="#FFAB00"
+                    android:textColor="#FF6D00"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     card_view:ignore="RtlCompat" />

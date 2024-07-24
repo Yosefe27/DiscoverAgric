@@ -45,7 +45,7 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:text="ID"
-                    android:textColor="#232222"
+                    android:textColor="@color/DiscAgricTheme"
                     android:textSize="13sp"
 
                     android:textStyle="bold" />
@@ -69,7 +69,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Gender"
-                        android:textColor="#304FFE"
+                        android:textColor="@color/DiscAgricTheme"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -85,7 +85,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Admission Date"
-                        android:textColor="#1C1C1C"
+                        android:textColor="@color/DiscAgricTheme"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Group Name"
-                        android:textColor="#304FFE"
+                        android:textColor="@color/DiscAgricTheme"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
