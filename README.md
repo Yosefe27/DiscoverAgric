@@ -1,12 +1,12 @@
-# we_ledger
- Mobile Application for Women Empowered Village Banking
+# Discover_Agric
+ Mobile Application for Village Banking For Farmer
 
 Login credentials:
 
-username1: facilitator
+username1: admin
 Password: 123456
 
-username2: bookwriter
+username2: servicer
 Password: 123456
 
 username3: member
