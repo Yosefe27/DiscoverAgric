@@ -293,7 +293,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="#CF0A63"
+                app:cardBackgroundColor="@color/DiscAgricTheme"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="20dp">
 
