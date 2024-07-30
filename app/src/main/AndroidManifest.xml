@@ -382,6 +382,7 @@
         <activity android:name=".FacilitatorGroupLoansActivity" />
         <activity android:name=".BookWriterSavingEdit" />
         <activity android:name=".PostFineActivity" />
+        <activity android:name=".SignUpActivity" />
     </application>
 
 </manifest>

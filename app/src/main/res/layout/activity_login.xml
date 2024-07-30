@@ -79,7 +79,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:gravity="center"
-                android:text="Click Here To Sign Up Or Login Below."
+                android:text="@string/sign_up"
+                android:textColor="#FF6D00"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/spacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:text=" "
                 android:textColor="#FF6D00"
                 android:textSize="17sp"
                 android:textStyle="bold" />

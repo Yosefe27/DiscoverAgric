@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText email, password;
     CheckBox checkBox;
     TextView signin;
+    TextView signup;
     ProgressBar signin_progress;
     RequestQueue mRequestQueue;
     String login_url = BASE_URL + "login_url.php",str_device_id,login_status;
@@ -59,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.login_password);
         checkBox = findViewById(R.id.stay_logged_in);
         signin = findViewById(R.id.btn_login);
+        signup = findViewById(R.id.sign_up_text);
 
         mRequestQueue = Connectivity.getInstance(this).getRequestQueue();
         try {
@@ -85,6 +87,14 @@ public class LoginActivity extends AppCompatActivity {
         email.setFilters(new InputFilter[]{filter});
         password.setFilters(new InputFilter[]{filter});
 
+        signup.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
