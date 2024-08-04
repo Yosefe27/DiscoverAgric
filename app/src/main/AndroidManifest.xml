@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bluecode.weledger">
+    package="com.retrotech.disc_agric">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,318 +19,318 @@
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
         <activity
-            android:name=".FacilitatorRegisterActivity"
+            android:name="com.retrotech.disc_agric.FacilitatorRegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewSocialFundFacilitatorActivity"
+            android:name="com.retrotech.disc_agric.ViewSocialFundFacilitatorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewFinesFacilitatorActivity"
+            android:name="com.retrotech.disc_agric.ViewFinesFacilitatorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterLoanRepaymentEdit"
+            android:name="com.retrotech.disc_agric.BookWriterLoanRepaymentEdit"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ConstitutionBookWriterActivity"
+            android:name="com.retrotech.disc_agric.ConstitutionBookWriterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewRepaymentFacilitatorActivity"
+            android:name="com.retrotech.disc_agric.ViewRepaymentFacilitatorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewLoanFacilitatorActivity"
+            android:name="com.retrotech.disc_agric.ViewLoanFacilitatorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberGroupLoanRepaymentsActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberGroupLoanRepaymentsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberLoanRepaymentsActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberLoanRepaymentsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterGroupLoanRepaymentActivity"
+            android:name="com.retrotech.disc_agric.BookWriterGroupLoanRepaymentActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberMyGroupLoanActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberMyGroupLoanActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberMyLoanActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberMyLoanActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FacilitatorProfileActivity"
+            android:name="com.retrotech.disc_agric.FacilitatorProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewGroupSavingsFacilitatorActivity"
+            android:name="com.retrotech.disc_agric.ViewGroupSavingsFacilitatorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MemberProfileActivity"
+            android:name="com.retrotech.disc_agric.MemberProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewTotalFineOrdinaryMemberActivity"
+            android:name="com.retrotech.disc_agric.ViewTotalFineOrdinaryMemberActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewTotalFineBookWriterActivity"
+            android:name="com.retrotech.disc_agric.ViewTotalFineBookWriterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryTotalSocialFundsCollectedActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryTotalSocialFundsCollectedActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryViewSocialFundsForMembersActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryViewSocialFundsForMembersActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberSocialFundDashboard"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberSocialFundDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SocialFundDisbursementActivity"
+            android:name="com.retrotech.disc_agric.SocialFundDisbursementActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberViewRegister"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberViewRegister"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".TotalSocialFundsCollectedActivity"
+            android:name="com.retrotech.disc_agric.TotalSocialFundsCollectedActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewSocialFundsForMembersActivity"
+            android:name="com.retrotech.disc_agric.ViewSocialFundsForMembersActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterViewRegister"
+            android:name="com.retrotech.disc_agric.BookWriterViewRegister"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterConductRegisterActivity"
+            android:name="com.retrotech.disc_agric.BookWriterConductRegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterViewMemberRegisterActivity"
+            android:name="com.retrotech.disc_agric.BookWriterViewMemberRegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FacilitatorMemberDetailsActivity"
+            android:name="com.retrotech.disc_agric.FacilitatorMemberDetailsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.retrotech.disc_agric.ProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberFinesDashboard"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberFinesDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberRepaymentDashboard"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberRepaymentDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberLoanRequestDashboard"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberLoanRequestDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryGroupTransactionHistoryActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryGroupTransactionHistoryActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberTransactionHistoryActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberTransactionHistoryActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMemberSavingsDashboard"
+            android:name="com.retrotech.disc_agric.OrdinaryMemberSavingsDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMembersDetailsActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryMembersDetailsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OrdinaryMembersActivity"
+            android:name="com.retrotech.disc_agric.OrdinaryMembersActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterMemberRegisterDashboard"
+            android:name="com.retrotech.disc_agric.BookWriterMemberRegisterDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterSocialDashboard"
+            android:name="com.retrotech.disc_agric.BookWriterSocialDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterFinesDashboard"
+            android:name="com.retrotech.disc_agric.BookWriterFinesDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterRepaymentDashboard"
+            android:name="com.retrotech.disc_agric.BookWriterRepaymentDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".BookWriterLoanRequestDashboard"
+            android:name="com.retrotech.disc_agric.BookWriterLoanRequestDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewActualMembersFacilitator"
+            android:name="com.retrotech.disc_agric.ViewActualMembersFacilitator"
             android:exported="false" />
         <activity
-            android:name=".FacilitatorViewGroupsActivity"
+            android:name="com.retrotech.disc_agric.FacilitatorViewGroupsActivity"
             android:exported="false"
-            android:parentActivityName=".FacilitatorGroupAdminDashboard" />
+            android:parentActivityName="com.retrotech.disc_agric.FacilitatorGroupAdminDashboard" />
         <activity
-            android:name=".BookWriterAdminDashboard"
+            android:name="com.retrotech.disc_agric.BookWriterAdminDashboard"
             android:exported="false" />
         <activity
-            android:name=".AddMemberToGroupActivity"
+            android:name="com.retrotech.disc_agric.AddMemberToGroupActivity"
             android:exported="false"
-            android:parentActivityName=".FacilitatorGroupAdminDashboard" />
+            android:parentActivityName="com.retrotech.disc_agric.FacilitatorGroupAdminDashboard" />
         <activity
-            android:name=".FacilitatorGroupAdminDashboard"
+            android:name="com.retrotech.disc_agric.FacilitatorGroupAdminDashboard"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.retrotech.disc_agric.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -338,51 +338,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name="com.retrotech.disc_agric.LoginActivity" />
         <activity
-            android:name=".MainActivity"
-            android:parentActivityName=".MemberProfileActivity" />
-        <activity android:name=".MyTransactionsHistoryActivity" />
-        <activity android:name=".MembersActivity" />
-        <activity android:name=".MembersDetailsActivity" />
-        <activity android:name=".NewLoanRequestActivity" />
-        <activity android:name=".NewMemberActivity" />
-        <activity android:name=".MyLoanRequestsActivity" />
-        <activity android:name=".BookWriterMembersActivity" />
-        <activity android:name=".FacilitatorGroupTransactionsHistoryActivity" />
-        <activity android:name=".BookWriterLoansActivity" />
-        <activity android:name=".NewPaymentActivity" />
+            android:name="com.retrotech.disc_agric.MainActivity"
+            android:parentActivityName="com.retrotech.disc_agric.MemberProfileActivity" />
+        <activity android:name="com.retrotech.disc_agric.MyTransactionsHistoryActivity" />
+        <activity android:name="com.retrotech.disc_agric.MembersActivity" />
+        <activity android:name="com.retrotech.disc_agric.MembersDetailsActivity" />
+        <activity android:name="com.retrotech.disc_agric.NewLoanRequestActivity" />
+        <activity android:name="com.retrotech.disc_agric.NewMemberActivity" />
+        <activity android:name="com.retrotech.disc_agric.MyLoanRequestsActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookWriterMembersActivity" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorGroupTransactionsHistoryActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookWriterLoansActivity" />
+        <activity android:name="com.retrotech.disc_agric.NewPaymentActivity" />
         <activity
-            android:name=".FacilitatorGroupsActivity"
-            android:parentActivityName=".FacilitatorGroupAdminDashboard" />
-        <activity android:name=".FacilitatorNewMemberActivity" />
+            android:name="com.retrotech.disc_agric.FacilitatorGroupsActivity"
+            android:parentActivityName="com.retrotech.disc_agric.FacilitatorGroupAdminDashboard" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorNewMemberActivity" />
         <activity
-            android:name=".FacilitatorNewGroupActivity"
+            android:name="com.retrotech.disc_agric.FacilitatorNewGroupActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".GroupDetailsActivity" />
-        <activity android:name=".FacilitatorManageGroupsActivity" />
-        <activity android:name=".FacilitatorGroupSavings" />
-        <activity android:name=".FacilitatorGroupLoans" />
-        <activity android:name=".FacilitatorGroupRepayments" />
-        <activity android:name=".FacilitatorGroupFines" />
-        <activity android:name=".FacilitatorMembersFines" />
-        <activity android:name=".FacilitatorMembersLoans" />
-        <activity android:name=".FacilitatorMembersRepayments" />
-        <activity android:name=".BookwriterRepaymentsActivity" />
-        <activity android:name=".BookWriterSavingsOptionsDashboard" />
-        <activity android:name=".BookwriterSavingsActivity" />
-        <activity android:name=".BookwriterFinesActivity" />
-        <activity android:name=".BookwriterSocialFundActivity" />
-        <activity android:name=".BookwriterNewMemberActivity" />
-        <activity android:name=".MyGroupTransactionsHistoryActivity" />
-        <activity android:name=".NewLoanRepaymentActivity" />
-        <activity android:name=".ChargeFineActivity" />
-        <activity android:name=".NewSocialFundActivity" />
-        <activity android:name=".BookwriterGroupLoansActivity" />
-        <activity android:name=".FacilitatorGroupLoansActivity" />
-        <activity android:name=".BookWriterSavingEdit" />
-        <activity android:name=".PostFineActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name="com.retrotech.disc_agric.GroupDetailsActivity" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorManageGroupsActivity" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorGroupSavings" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorGroupLoans" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorGroupRepayments" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorGroupFines" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorMembersFines" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorMembersLoans" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorMembersRepayments" />
+        <activity android:name="com.retrotech.disc_agric.BookwriterRepaymentsActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookWriterSavingsOptionsDashboard" />
+        <activity android:name="com.retrotech.disc_agric.BookwriterSavingsActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookwriterFinesActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookwriterSocialFundActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookwriterNewMemberActivity" />
+        <activity android:name="com.retrotech.disc_agric.MyGroupTransactionsHistoryActivity" />
+        <activity android:name="com.retrotech.disc_agric.NewLoanRepaymentActivity" />
+        <activity android:name="com.retrotech.disc_agric.ChargeFineActivity" />
+        <activity android:name="com.retrotech.disc_agric.NewSocialFundActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookwriterGroupLoansActivity" />
+        <activity android:name="com.retrotech.disc_agric.FacilitatorGroupLoansActivity" />
+        <activity android:name="com.retrotech.disc_agric.BookWriterSavingEdit" />
+        <activity android:name="com.retrotech.disc_agric.PostFineActivity" />
+        <activity android:name="com.retrotech.disc_agric.SignUpActivity" android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Discover Agric</string>
+    <string name="app_name">Xcap</string>
     <string name="welcome">Welcome</string>
     <string name="sign_up">Click Here To Sign Up Or Login Below.</string>
     <string-array name="group_management">

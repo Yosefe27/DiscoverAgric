@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
-        android:background="#0D4927"
+        android:background="#0e7876"
         android:paddingBottom="@dimen/login_bottom_margin">
 
 
@@ -37,7 +37,7 @@
                 android:layout_marginBottom="40dp"
                 android:layout_weight="1"
                 android:scaleType="center"
-                android:src="@drawable/we_logo" />
+                android:src="@drawable/xcap_white_smalls" />
 
             <!--            <TextView-->
             <!--                android:id="@+id/login_title_text_view"-->
@@ -189,7 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/farmer1" />
+                app:srcCompat="@drawable/farmer111" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>
