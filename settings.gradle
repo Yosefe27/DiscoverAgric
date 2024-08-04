@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Discover Agric"
+rootProject.name = "Xcap"
 include ':app'

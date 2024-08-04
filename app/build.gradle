@@ -12,7 +12,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.bluecode.weledger"
+        applicationId "com.retrotech.disc_agric"
         minSdk 21
         targetSdk 32
         versionCode 1
