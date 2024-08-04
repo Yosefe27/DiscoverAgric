@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="70dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="New Group Member Details"
                 android:textAlignment="center"
@@ -269,7 +269,8 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="ECAP II HH ID"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:visibility="gone" />
 
                     <EditText
                         android:id="@+id/ecap_hh_id"
@@ -283,7 +284,8 @@
                         android:inputType="phone"
                         android:maxLines="1"
                         android:paddingStart="5dp"
-                        android:paddingEnd="5dp" />
+                        android:paddingEnd="5dp"
+                        android:visibility="gone" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -303,6 +305,144 @@
                         android:hint=""
                         android:imeOptions="actionNext"
                         android:inputType="phone"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Town"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/town"
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Town"
+                        android:clickable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Occupation"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/occupation"
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Occupation"
+                        android:clickable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Produce(Or Products Sold)"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/produce_products"
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Produce (Or Products Sold)"
+                        android:clickable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Nearest Landmark"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/landmark"
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Nearest Landmark"
+                        android:clickable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Township/Area"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/township_area"
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Township/Area"
+                        android:clickable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Farmland Square Footage (if Applicable)"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/square_footage"
+                        style="@style/modifiedEditText"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_edit_bg"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Farmland Square Footage"
+                        android:clickable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
                         android:maxLines="1"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp" />
@@ -341,7 +481,8 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="Single Female Caregiver (Y/N)"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:visibility="gone" />
 
                     <RadioGroup
                         android:layout_width="wrap_content"
@@ -355,7 +496,8 @@
                             android:layout_marginTop="10dp"
                             android:checked="true"
                             android:text="Yes"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="gone" />
 
                         <RadioButton
                             android:id="@+id/option_no"
@@ -366,7 +508,7 @@
                             android:checked="false"
                             android:text="No"
                             android:textSize="20sp"
-                            />
+                            android:visibility="gone" />
 
                     </RadioGroup>
 
@@ -380,10 +522,10 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="250dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="#C51162"
+                app:cardBackgroundColor="#0e7876"
                 app:cardCornerRadius="15dp"
                 >
 
@@ -396,7 +538,7 @@
                     android:text="Save Member Record"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:background="#C51162"/>
+                    android:background="#0e7876"/>
             </androidx.cardview.widget.CardView>
 
 
