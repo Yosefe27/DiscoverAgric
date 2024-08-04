@@ -116,7 +116,7 @@ public class BookWriterSocialDashboard extends AppCompatActivity {
         ArrayList<DefaultDashboardModel> mainModel = new ArrayList<>();
         mainModel.add(new DefaultDashboardModel("Add Social Funds",R.drawable.ic_money,"Add Social Funds"));
         mainModel.add(new DefaultDashboardModel("View Social Funds",R.drawable.ic_view_groups,"View Social Funds"));
-        mainModel.add(new DefaultDashboardModel("Add Disbursement",R.drawable.ic_disbursement,"Perform Disbursement"));
+        mainModel.add(new DefaultDashboardModel("Add Disbursement",R.drawable.ic_loan,"Perform Disbursement"));
         mainModel.add(new DefaultDashboardModel("Social Totals",R.drawable.ic__summarize,"Edit Social Funds"));
         return mainModel;
     }

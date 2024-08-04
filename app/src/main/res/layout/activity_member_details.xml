@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="70dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Group Member Details"
                 android:textAlignment="center"
@@ -218,13 +218,15 @@
                         android:dropDownWidth="wrap_content"
                         android:dropDownSelector="@color/colorBottomCardEnd"
                         android:entries="@array/gender" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="ECAP II HH ID"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:visibility="gone" />
 
                     <EditText
                         android:id="@+id/ecap_hh_id"
@@ -238,7 +240,8 @@
                         android:inputType="phone"
                         android:maxLines="1"
                         android:paddingStart="5dp"
-                        android:paddingEnd="5dp" />
+                        android:paddingEnd="5dp"
+                        android:visibility="gone" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -288,7 +291,9 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_regular"
                         android:text="Single Female Caregiver (Y/N)"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
                     <Spinner
                         android:id="@+id/single_fsw"
                         android:layout_width="150dp"
@@ -299,7 +304,8 @@
                         android:background="@drawable/ic_edit_bg_box"
                         android:dropDownWidth="wrap_content"
                         android:dropDownSelector="@color/colorBottomCardEnd"
-                        android:entries="@array/binary" />
+                        android:entries="@array/binary"
+                        android:visibility="gone" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -333,10 +339,10 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="250dp"
                 android:gravity="center"
                 android:minHeight="60dp"
-                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardBackgroundColor="#0E7876"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="20dp">
 
