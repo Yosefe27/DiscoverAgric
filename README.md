@@ -6,8 +6,8 @@ Login credentials:
 username1: admin
 Password: 123456
 
-username2: servicer
-Password: 123456
+username2: service
+Password: 123
 
-username3: member
-password: 123456
+username3: user
+password: 123
